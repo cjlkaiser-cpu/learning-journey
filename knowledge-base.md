@@ -3,7 +3,12 @@
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Última actualización**: 28 noviembre 2025
 >
+> **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
+> **Location**: Madrid, España
+>
 > **Áreas dominadas:** Desarrollo Web · Python & Automatización · IA/ML · Git/GitHub · Bases de Datos · Agentes IA
+>
+> **Idiomas**: 🇪🇸 Español (Nativo) · 🇬🇧 English (Fluent) · 🇮🇹 Italiano (Proficient)
 >
 > **Meta-objetivo:** Aprender a aprender. Los proyectos son vehículos, no destinos.
 
@@ -323,6 +328,38 @@ Predecir/Automatizar → Máximo valor (acciones sin intervención)
 - Transacciones y rollback
 - Migración de esquemas
 - Búsquedas geoespaciales (GPS)
+
+---
+
+## 🎓 Formación Académica
+
+### Licenciaturas
+
+**Licenciado en Física Teórica**
+- Universidad Autónoma de Madrid (UAM)
+- Formación: Matemáticas avanzadas, física computacional, pensamiento algorítmico
+- Metodología científica y rigor analítico
+
+**Licenciado en Farmacia**
+- Universidad CEU
+- Especialización: Farmacia clínica, farmacología, interacciones medicamentosas
+- Regulación sanitaria y atención farmacéutica
+
+### Experiencia Internacional
+
+**Università La Sapienza, Roma**
+- Año académico completo en Italia
+- Entorno académico internacional
+- Idioma: Italiano (nivel proficient)
+
+### Por Qué Esta Combinación Es Única
+
+```
+Física Teórica     →  Rigor matemático + Pensamiento algorítmico
++ Farmacia         →  Conocimiento clínico + Seguridad del paciente
++ Internacional    →  Perspectiva global + 3 idiomas
+= Perfil raro para IA en Healthcare
+```
 
 ---
 
