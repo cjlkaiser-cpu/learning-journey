@@ -261,7 +261,7 @@ v0.5.0 (17 Nov): EL PIVOTE
 ├── Insight: "La IA local no aporta valor, solo indexamos"
 ├── Cambio: De buscar docs → Responder preguntas
 ├── Parser fiscal con extracción cuantitativa
-└── "¿Cuánto IRPF pagó Carlos?" → "8.450€"
+└── "¿Cuánto IRPF pagó [usuario]?" → "[importe calculado]"
 ```
 
 ### La Lección
@@ -271,8 +271,8 @@ v0.5.0 (17 Nov): EL PIVOTE
 
 | Antes | Después |
 |-------|---------|
-| "Encuentra el Modelo 130 de Carlos" | "¿Cuánto IRPF pagó Carlos en 2024?" |
-| "Aquí está el PDF" | "8.450€ en 4 trimestres + anual" |
+| "Encuentra el Modelo 130 de [usuario]" | "¿Cuánto IRPF pagó [usuario] en 2024?" |
+| "Aquí está el PDF" | "[importe] en 4 trimestres + anual" |
 | **Valor: Organizar** | **Valor: Responder** |
 
 ### El Patrón de Valor
