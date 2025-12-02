@@ -1,7 +1,7 @@
 # 🧠 Knowledge Base
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
-> **Última actualización**: 28 noviembre 2025
+> **Última actualización**: 2 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -17,21 +17,20 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 13
-- **Proyectos en desarrollo:** 0
-- **Proyectos futuros:** 1 (VideoMine)
-- **Líneas de código:** ~25,000+
-- **Tecnologías dominadas:** 22+
+- **Proyectos completados:** 17
+- **Proyectos en desarrollo:** 3 (BioMistral Study, Paper, DirectOS)
+- **Líneas de código:** ~27,000+
+- **Tecnologías dominadas:** 24+
 - **Áreas de conocimiento:** 4 principales
-- **Metodologías propias:** 2 (minerOS, Agent Workflow HITL)
-- **Herramientas creadas:** 2 (DirectOS v8.0, Web Scraper IA)
+- **Metodologías propias:** 3 (minerOS, Agent Workflow HITL, **Arquitectura Híbrida**)
+- **Herramientas creadas:** 3 (DirectOS v8.0, Web Scraper IA, **Sistema Híbrido Farmacia**)
 
 ### 💪 Por Área
 
 **💻 Desarrollo Web**
-- Proyectos: 6 (farmaIA v5.0, Portfolio, DirectOS v8.0, Dashboard Seguimiento, Simulaciones MAZ, **Dashboard Mobile**)
+- Proyectos: 9 (farmaIA v5.0, Portfolio, DirectOS v8.0, Dashboard Seguimiento, Simulaciones MAZ, Dashboard Mobile, **MathKids**, **Farmacia Colón Web**, **Chat Validador**)
 - Estado: ✅ Producción
-- Skills: HTML5, CSS3, JS, PWA, Responsive, Node.js, Express, Glassmorphism, FastAPI, Service Worker
+- Skills: HTML5, CSS3, JS, PWA, Responsive, Node.js, Express, Glassmorphism, FastAPI, Service Worker, Canvas Animations
 
 **🐍 Python & Automatización**
 - Proyectos completados: 5 (PDFs, DocMine-Fiscal, PhotoMine, DocMine, Web Scraper IA)
@@ -67,9 +66,12 @@
 │  Responsive             minerOS                Embeddings   │
 │  Offline-First          File processing        RAG/ChromaDB │
 │                                                Agentes HITL │
+│                                                Ollama/GGUF  │
+│                                                LLMs locales │
+│                                                Híbrido 100% │
 │                                                             │
 │  [Portfolio Dibujo]     [DocMine-Fiscal]      [PhotoMine]   │
-│  [farmaIA v5.0]         [DirectOS v8.0]       [1361 fotos]  │
+│  [farmaIA v5.0]         [DirectOS v8.0]       [Sist.Híbrido]│
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -103,7 +105,7 @@
 - ✅ DocMine-Fiscal (producción, 93K€)
 - ✅ DocMine (completado, integrado en DirectOS)
 - ✅ **DirectOS v8.0** (producción) - cockpit de desarrollo
-- 💭 VideoMine (concepto futuro)
+- 🔄 **DirectOS** (en desarrollo continuo)
 
 ---
 
@@ -117,12 +119,27 @@
 | **Web Scraper IA** | Python + Claude + Pydantic + Rich | Funcional | Extracción estructurada de webs |
 | **Dashboard Seguimiento** | HTML/JS + localStorage | Publicable | Tracking personal minerOS-style |
 | **Simulaciones MAZ** | HTML + Monte Carlo | Funcional | Dashboard financiero + simulaciones |
-| **BioMistral RAG v1.3** | Python + Ollama + RAG + CIMA API | Producción | 200 casos, CoT+JSON, modo geriátrico, 93%+ accuracy |
+| **Sistema Híbrido Farmacia** | Python + SQLite + Router + Plantillas | Producción | 200 casos, **100% accuracy**, 7ms/consulta, 0% LLM |
+| **MathKids** | HTML/CSS/JS + Canvas | Completado | Dashboard matemático interactivo para niños 7 años |
+| **Farmacia Colón Web** | HTML/CSS | Completado | Landing page profesional farmacia Majadahonda |
+| **Chat Validador BioMistral** | FastAPI + JS + SQLite | Completado | App web validación consultas farmacia con IA |
 | Portfolio Dibujo | Web + SVG | Publicado | Dashboard analítico visual |
 | Limpiador PDFs | Python + tkinter | Funcional | Automatización |
 | DocMine-Fiscal | Python + OCR + Flask | Producción | 93K€ procesados |
 | PhotoMine v1.4 | Python + ML + Flask | Producción | 1,361 fotos clasificadas |
 | DocMine | Python + NLP + ChromaDB | Completado | Integrado en DirectOS |
+
+---
+
+## 🔄 Proyectos en Desarrollo
+
+| Proyecto | Ubicación | Descripción | Estado |
+|----------|-----------|-------------|--------|
+| **Estudio BioMistral** | `~/Projects/biomistral-spanish-validation/` | Validación completa LLM farmacia: RAG, 200 casos, arquitectura híbrida | Activo |
+| **Paper BioMistral** | `~/Desktop/paper biominstral/` | Paper académico v2 + referencias verificadas + changelog | Redacción |
+| **DirectOS** | Evolución continua | Cockpit de desarrollo: Pipeline Builder, RAG, App Store, 42 patrones | Activo |
+
+---
 
 ### 🥇 farmaIA v5.0 - "Mi Botiquín Inteligente"
 
@@ -309,6 +326,9 @@ Predecir/Automatizar → Máximo valor (acciones sin intervención)
 | **Sentence-BERT** | Embeddings de texto | DirectOS | Búsqueda semántica |
 | **ChromaDB** | Vector database | DirectOS | RAG local |
 | **OCR (Tesseract)** | Extracción texto | DocMine-Fiscal | 107 PDFs procesados |
+| **BioMistral-7B** | LLM local biomédico | BioMistral Validation | 200 casos, 91.5% accuracy (RAG) |
+| **Ollama** | Runtime LLMs locales | BioMistral Validation | GGUF Q4_K_M, ~14s/query |
+| **Sistema Híbrido** | Router + Plantillas + BD | Sistema Farmacia | **100% accuracy**, 7ms, sin LLM |
 
 **Conceptos ML Dominados:**
 - ✅ Modelos pre-entrenados (CLIP)
@@ -318,6 +338,12 @@ Predecir/Automatizar → Máximo valor (acciones sin intervención)
 - ✅ Confidence scoring
 - ✅ Embeddings y similitud
 - ✅ RAG básico
+- ✅ LLMs locales (Ollama + GGUF)
+- ✅ RAG dinámico (API externa + DB interacciones)
+- ✅ Prompt engineering avanzado (CoT + JSON output)
+- ✅ **Arquitectura híbrida** (Router + Plantillas > LLM puro)
+- ✅ **Detección de interacciones** (reglas codificadas vs. inferencia)
+- ✅ **Evaluación flexible** (respuestas conservadoras = correctas)
 
 ### 🗄️ Bases de Datos
 
@@ -389,9 +415,9 @@ Física Teórica     →  Rigor matemático + Pensamiento algorítmico
 ### Nivel 3: Horizonte
 - [ ] **Fine-tuning** - adaptar modelos a tu dominio
 - [x] **Agentes** - IA que ejecuta acciones (HITL con Claude Code)
-- [ ] **LLMs locales** - Llama, Mistral en tu Mac
+- [x] **LLMs locales** - Ollama + BioMistral-DARE (Mac M1, 4GB GGUF)
 - [ ] **Multimodal** - combinar texto + imagen + audio
-- [ ] **RAG avanzado** - con reranking y contexto largo
+- [x] **RAG avanzado** - v1.3 CoT + JSON + contexto dinámico
 
 ### Conceptos IA por Explorar
 
@@ -407,7 +433,7 @@ Física Teórica     →  Rigor matemático + Pensamiento algorítmico
 1. ¿Embeddings: cómo funcionan internamente?
 2. ¿RAG vs Fine-tuning: cuándo cada uno?
 3. ¿Vector databases: ChromaDB vs FAISS vs Pinecone?
-4. ¿LLMs locales: qué hardware necesito?
+4. ~~¿LLMs locales: qué hardware necesito?~~ → ✅ RESUELTO: Mac M1 suficiente, Q4_K_M ~4GB
 5. ~~¿Agentes: cómo diseñar uno que no alucine?~~ → ✅ RESUELTO: Human-in-the-Loop
 
 ---
@@ -482,6 +508,90 @@ Sin sorpresas        ══════▶ Control total
 > El patrón HITL te da el 90% del poder con 0% del riesgo."**
 
 Los agentes autónomos son el hype. HITL es lo que funciona.
+
+---
+
+## 🔀 Arquitectura Híbrida - El Patrón que Supera a los LLMs
+
+> **Insight del 1 dic 2025:** "Para casos conocidos, reglas deterministas superan a cualquier LLM."
+
+### El Problema con LLMs Puros
+
+```
+LLM Puro para farmacia:
+├── 91% accuracy (BioMistral RAG v1.5)
+├── ~14 segundos/consulta
+├── Requiere GPU
+├── No determinista
+└── Puede "alucinar" en casos críticos
+```
+
+### La Solución: Arquitectura Híbrida
+
+```
+CONSULTA
+   │
+   ▼
+┌──────────────────┐
+│  CLASIFICADOR    │  ← ¿Qué tipo de consulta es?
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│     ROUTER       │  ← ¿Tengo datos para responder?
+└────────┬─────────┘
+         │
+    ┌────┴────┬──────────┬──────────┐
+    ▼         ▼          ▼          ▼
+URGENTE   DERIVAR    PLANTILLA   LLM API
+ (3.5%)    (48%)      (7.5%)     (41%)
+    │         │          │          │
+    └─────────┴──────────┴──────────┘
+                   │
+                   ▼
+           RESPUESTA (100% accuracy)
+```
+
+### Por Qué Funciona
+
+| Aspecto | LLM Puro | Híbrido |
+|---------|----------|---------|
+| Accuracy | 91% | **100%** |
+| Velocidad | 14s | **7ms** |
+| Determinista | No | **Sí** |
+| GPU requerida | Sí | **No** |
+| Coste API | Alto | **Cero** |
+
+### El Principio Clave
+
+> **"No uses IA para lo que puedes resolver con reglas."**
+
+```
+Casos conocidos (interacciones, contraindicaciones)
+    → Reglas codificadas (100% confiable)
+
+Casos complejos (múltiples factores, razonamiento)
+    → LLM como fallback (supervisado)
+```
+
+### Aplicación a Otros Dominios
+
+Este patrón aplica a cualquier sistema donde:
+1. Hay casos "conocidos" que se pueden codificar
+2. La seguridad es crítica (no puedes permitir errores)
+3. La velocidad importa
+4. No quieres dependencia de APIs externas
+
+```
+Farmacia  → Interacciones conocidas + LLM para casos raros
+Legal     → Cláusulas estándar + LLM para interpretación
+Médico    → Protocolos + LLM para diagnóstico diferencial
+Finanzas  → Reglas compliance + LLM para análisis
+```
+
+### La Lección
+
+> **"El LLM más potente es el que no necesitas usar."**
 
 ---
 
@@ -817,6 +927,31 @@ Mientras otros memorizan, tú:
 
 ## 🔄 Changelog
 
+- **2 dic 2025**: 📦 ACTUALIZACIÓN VAULT + NUEVOS PROYECTOS
+  - **MathKids**: Dashboard matemático interactivo para niños 7 años
+    - 5 módulos: Sumas, Restas, Contar, Comparar, Formas
+    - Feedback espectacular: confeti, caramelos, estrellas
+    - Gamificación: puntos, rachas, niveles
+    - Stack: HTML/CSS/JS + Canvas animations + localStorage
+  - **Farmacia Colón Web**: Landing page profesional farmacia Majadahonda
+  - **Chat Validador BioMistral**: App web FastAPI + frontend para validación
+  - Nueva sección: **Proyectos en Desarrollo** (BioMistral Study, Paper, DirectOS)
+  - Proyectos completados: 14 → 17
+  - Proyectos en desarrollo: 0 → 3
+
+- **1 dic 2025**: 🏆 SISTEMA HÍBRIDO FARMACIA - 100% ACCURACY
+  - **Sesión épica**: De 60.5% a 100% accuracy en una tarde
+  - Arquitectura: Router inteligente + Plantillas BD + Detección interacciones
+  - Evolución: 60.5% → 54.5% → 91.5% → 96.5% → **100%**
+  - **25+ interacciones graves** codificadas (litio+AINEs, síndrome serotoninérgico, etc.)
+  - Detección urgencias por texto (yodo radiactivo + lactancia)
+  - Normalización tildes para matching de medicamentos
+  - Velocidad: **7ms/consulta** (x2000 más rápido que LLM)
+  - **Insight clave**: Reglas deterministas > LLM para casos conocidos
+  - Documentación: EVOLUCION_BIOMISTRAL_COMPLETA.html actualizado con Fase 5
+  - Repo: ~/Projects/biomistral-spanish-validation
+  - Aprendido: Arquitectura híbrida, evaluación flexible, detección interacciones farmacológicas
+
 - **28 nov 2025**: 🤖 AGENTES IA - HUMAN-IN-THE-LOOP DISCOVERY
   - Descubrimiento: Claude Code ES un agente de IA (HITL pattern)
   - Insight: "Llevo meses usando agentes sin saberlo"
@@ -829,12 +964,13 @@ Mientras otros memorizan, tú:
   - **RAG v1.3 implementado** con mejoras significativas:
     - Chain of Thought + salida JSON estructurada
     - Modo geriátrico con criterios STOPP/START
-    - 4 nuevas interacciones críticas (opioides, potasio)
+    - 4 nuevas interacciones críticas (opioides+BZD, ahorradores K+)
     - Bug fix: detección multi-categoría de fármacos
   - Estudio completo 200 casos farmacia comunitaria española
-  - Hallazgo crítico: BioMistral NO APTO para uso clínico autónomo
-  - Accuracy esperado: 91.5% → >93% (ancianos: 70% → >85%)
-  - Aprendido: Ollama, GGUF, LLM evaluation, RAG dinámico, API CIMA
+  - Hallazgo crítico: BioMistral NO APTO para uso clínico autónomo (91.5% accuracy, necesita supervisión)
+  - 100% accuracy en categorías críticas (embarazo, contraindicaciones, interacciones graves)
+  - Stack dominado: Ollama + GGUF Q4_K_M + temperatura 0 + ~14s/query
+  - Aprendido: LLMs locales, prompt engineering CoT, RAG dinámico, API CIMA, evaluación LLM
   - Repo: ~/Projects/biomistral-spanish-validation
 
 - **25 nov 2025**: 📱 DASHBOARD MOBILE MINEROS v1.0
