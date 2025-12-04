@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 Learning Journey - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .stat-card { transition: all 0.3s ease; }
+        .stat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+        .project-row { transition: all 0.2s ease; }
+        .project-row:hover { background: rgba(59, 130, 246, 0.1); }
+
+        .skill-badge { transition: all 0.2s ease; }
+        .skill-badge:hover { transform: scale(1.05); }
+
+        .changelog-item { border-left: 2px solid #334155; transition: all 0.2s ease; }
+        .changelog-item:hover { border-left-color: #3b82f6; background: rgba(59, 130, 246, 0.05); }
+
+        .progress-fill { transition: width 1s ease-out; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in { animation: fadeInUp 0.5s ease-out forwards; }
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .delay-4 { animation-delay: 0.4s; opacity: 0; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-slate-900/80 backdrop-blur-sm border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <i class="fa-solid fa-brain text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-white">Learning <span class="text-slate-500">Journey</span></h1>
+                    <p class="text-xs text-slate-500">Knowledge Base Dashboard</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-xs text-slate-500">Última actualización: <span class="text-slate-400">4 dic 2025</span></span>
+                <a href="https://github.com/cjlkaiser-cpu/learning-journey" target="_blank" class="text-slate-400 hover:text-white transition">
+                    <i class="fa-brands fa-github text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- Hero Stats -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="stat-card bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-5 animate-in delay-1">
+                <div class="flex items-center justify-between mb-2">
+                    <i class="fa-solid fa-folder-open text-blue-200 text-2xl"></i>
+                    <span class="text-3xl font-bold text-white">21</span>
+                </div>
+                <p class="text-blue-200 text-sm font-medium">Proyectos Completados</p>
+            </div>
+
+            <div class="stat-card bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl p-5 animate-in delay-2">
+                <div class="flex items-center justify-between mb-2">
+                    <i class="fa-solid fa-code text-purple-200 text-2xl"></i>
+                    <span class="text-3xl font-bold text-white">27K+</span>
+                </div>
+                <p class="text-purple-200 text-sm font-medium">Líneas de Código</p>
+            </div>
+
+            <div class="stat-card bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-5 animate-in delay-3">
+                <div class="flex items-center justify-between mb-2">
+                    <i class="fa-solid fa-microchip text-emerald-200 text-2xl"></i>
+                    <span class="text-3xl font-bold text-white">24+</span>
+                </div>
+                <p class="text-emerald-200 text-sm font-medium">Tecnologías</p>
+            </div>
+
+            <div class="stat-card bg-gradient-to-br from-amber-600 to-amber-700 rounded-2xl p-5 animate-in delay-4">
+                <div class="flex items-center justify-between mb-2">
+                    <i class="fa-solid fa-flask text-amber-200 text-2xl"></i>
+                    <span class="text-3xl font-bold text-white">3</span>
+                </div>
+                <p class="text-amber-200 text-sm font-medium">Metodologías Propias</p>
+            </div>
+        </section>
+
+        <!-- Progress Areas -->
+        <section class="bg-slate-900 rounded-2xl border border-slate-800 p-6 mb-8 animate-in delay-2">
+            <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-chart-line text-blue-500"></i>
+                Áreas de Conocimiento
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-slate-300"><i class="fa-solid fa-globe text-orange-500 mr-2"></i>Desarrollo Web</span>
+                        <span class="text-xs text-emerald-400 font-semibold">10 proyectos</span>
+                    </div>
+                    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="progress-fill h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full" style="width: 95%"></div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">HTML, CSS, JS, Node.js, Express, FastAPI, PWA</p>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-slate-300"><i class="fa-brands fa-python text-yellow-500 mr-2"></i>Python & Automatización</span>
+                        <span class="text-xs text-emerald-400 font-semibold">5 proyectos</span>
+                    </div>
+                    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="progress-fill h-full bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-full" style="width: 90%"></div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">Scripts, OCR, Flask, minerOS, Web Scraping</p>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-slate-300"><i class="fa-solid fa-brain text-purple-500 mr-2"></i>IA/ML Aplicada</span>
+                        <span class="text-xs text-emerald-400 font-semibold">Dominado</span>
+                    </div>
+                    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="progress-fill h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">CLIP, RAG, Embeddings, LLMs locales, Ollama</p>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-slate-300"><i class="fa-solid fa-database text-cyan-500 mr-2"></i>Bases de Datos</span>
+                        <span class="text-xs text-emerald-400 font-semibold">Dominado</span>
+                    </div>
+                    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="progress-fill h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">SQLite, ChromaDB, IndexedDB, localStorage</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two columns: Projects + Metodología -->
+        <div class="grid lg:grid-cols-3 gap-6 mb-8">
+
+            <!-- Projects Table -->
+            <div class="lg:col-span-2 bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden animate-in delay-3">
+                <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+                    <h2 class="text-lg font-semibold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-rocket text-blue-500"></i>
+                        Proyectos Destacados
+                    </h2>
+                    <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full">21 total</span>
+                </div>
+                <div class="max-h-96 overflow-y-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-slate-800/50 sticky top-0">
+                            <tr class="text-slate-400 text-xs uppercase tracking-wider">
+                                <th class="text-left p-3">Proyecto</th>
+                                <th class="text-left p-3">Stack</th>
+                                <th class="text-left p-3">Estado</th>
+                                <th class="text-center p-3 w-16">Link</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800">
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">farmaIA v5.0</td>
+                                <td class="p-3 text-slate-400">Node.js + Express + Claude</td>
+                                <td class="p-3"><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Producción</span></td>
+                                <td class="p-3 text-center">—</td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">DirectOS v8.1</td>
+                                <td class="p-3 text-slate-400">FastAPI + RAG + Tailwind</td>
+                                <td class="p-3"><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Producción</span></td>
+                                <td class="p-3 text-center">—</td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">Sistema Híbrido Farmacia</td>
+                                <td class="p-3 text-slate-400">Python + SQLite + Router</td>
+                                <td class="p-3"><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">100% Accuracy</span></td>
+                                <td class="p-3 text-center">—</td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">Chacona Estudio</td>
+                                <td class="p-3 text-slate-400">JS + IndexedDB + MediaRecorder</td>
+                                <td class="p-3"><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Producción</span></td>
+                                <td class="p-3 text-center"><a href="https://cjlkaiser-cpu.github.io/chacona-estudio/" target="_blank" class="text-blue-400 hover:text-blue-300 transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">Preludio BWV 1012</td>
+                                <td class="p-3 text-slate-400">JS + IndexedDB + MediaRecorder</td>
+                                <td class="p-3"><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Producción</span></td>
+                                <td class="p-3 text-center"><a href="https://cjlkaiser-cpu.github.io/preludio-bwv1012-estudio/" target="_blank" class="text-blue-400 hover:text-blue-300 transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">PhotoMine v1.4</td>
+                                <td class="p-3 text-slate-400">Python + CLIP + Flask</td>
+                                <td class="p-3"><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">1,361 fotos</span></td>
+                                <td class="p-3 text-center">—</td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">DocMine-Fiscal</td>
+                                <td class="p-3 text-slate-400">Python + OCR + Flask</td>
+                                <td class="p-3"><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">93K€</span></td>
+                                <td class="p-3 text-center">—</td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">MathKids</td>
+                                <td class="p-3 text-slate-400">HTML/CSS/JS + Canvas</td>
+                                <td class="p-3"><span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Completado</span></td>
+                                <td class="p-3 text-center"><a href="https://cjlkaiser-cpu.github.io/math-kids/" target="_blank" class="text-blue-400 hover:text-blue-300 transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">MusicKids</td>
+                                <td class="p-3 text-slate-400">HTML/CSS/JS + Web Audio</td>
+                                <td class="p-3"><span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Completado</span></td>
+                                <td class="p-3 text-center">—</td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">Educación Auditiva</td>
+                                <td class="p-3 text-slate-400">HTML + Tailwind + Audio</td>
+                                <td class="p-3"><span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Completado</span></td>
+                                <td class="p-3 text-center"><a href="https://cjlkaiser-cpu.github.io/educacion-auditiva/" target="_blank" class="text-blue-400 hover:text-blue-300 transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">Dashboard Seguimiento</td>
+                                <td class="p-3 text-slate-400">HTML/JS + localStorage</td>
+                                <td class="p-3"><span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Completado</span></td>
+                                <td class="p-3 text-center"><a href="https://cjlkaiser-cpu.github.io/dashboard-seguimiento/" target="_blank" class="text-blue-400 hover:text-blue-300 transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">Farmacia Colón Web</td>
+                                <td class="p-3 text-slate-400">HTML + CSS</td>
+                                <td class="p-3"><span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Completado</span></td>
+                                <td class="p-3 text-center"><a href="https://cjlkaiser-cpu.github.io/farmacia-colon-web/" target="_blank" class="text-blue-400 hover:text-blue-300 transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">Portfolio Dibujo</td>
+                                <td class="p-3 text-slate-400">Web + SVG</td>
+                                <td class="p-3"><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Publicado</span></td>
+                                <td class="p-3 text-center"><a href="https://cjlkaiser-cpu.github.io/portfolio-dibujo/" target="_blank" class="text-blue-400 hover:text-blue-300 transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                            </tr>
+                            <tr class="project-row">
+                                <td class="p-3 font-medium text-white">Web Scraper IA</td>
+                                <td class="p-3 text-slate-400">Python + Claude + Pydantic</td>
+                                <td class="p-3"><span class="text-xs bg-slate-500/20 text-slate-400 px-2 py-1 rounded">Funcional</span></td>
+                                <td class="p-3 text-center">—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- minerOS Methodology -->
+            <div class="bg-slate-900 rounded-2xl border border-slate-800 p-5 animate-in delay-4">
+                <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-gem text-amber-500"></i>
+                    minerOS
+                </h2>
+                <p class="text-xs text-slate-500 mb-4">Metodología propia: ORO → GEMAS → TESORO</p>
+
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800/50">
+                        <span class="text-lg">🔦</span>
+                        <div>
+                            <p class="text-sm font-medium text-slate-300">Tunnels</p>
+                            <p class="text-xs text-slate-500">Scanner (encuentra)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800/50">
+                        <span class="text-lg">⛏️</span>
+                        <div>
+                            <p class="text-sm font-medium text-slate-300">Pickaxe</p>
+                            <p class="text-xs text-slate-500">Extractor (extrae)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800/50">
+                        <span class="text-lg">💎</span>
+                        <div>
+                            <p class="text-sm font-medium text-slate-300">Gemcutter</p>
+                            <p class="text-xs text-slate-500">Clasificador (metadatos)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800/50">
+                        <span class="text-lg">🎯</span>
+                        <div>
+                            <p class="text-sm font-medium text-slate-300">Pipeline</p>
+                            <p class="text-xs text-slate-500">IA profunda</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800/50">
+                        <span class="text-lg">🏛️</span>
+                        <div>
+                            <p class="text-sm font-medium text-slate-300">Vault</p>
+                            <p class="text-xs text-slate-500">Base de datos</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800/50">
+                        <span class="text-lg">🧭</span>
+                        <div>
+                            <p class="text-sm font-medium text-slate-300">Compass</p>
+                            <p class="text-xs text-slate-500">Web (interfaz)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                    <p class="text-xs text-blue-400"><i class="fa-solid fa-lightbulb mr-1"></i> Principios: Modularidad · Sin magia negra · Datos primero · Local primero · KISS</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Grid -->
+        <section class="bg-slate-900 rounded-2xl border border-slate-800 p-6 mb-8 animate-in delay-3">
+            <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-toolbox text-emerald-500"></i>
+                Stack Tecnológico
+            </h2>
+            <div class="flex flex-wrap gap-2">
+                <span class="skill-badge px-3 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-xs font-medium border border-orange-500/30">HTML5</span>
+                <span class="skill-badge px-3 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium border border-blue-500/30">CSS3</span>
+                <span class="skill-badge px-3 py-1.5 bg-yellow-500/20 text-yellow-400 rounded-full text-xs font-medium border border-yellow-500/30">JavaScript</span>
+                <span class="skill-badge px-3 py-1.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-500/30">Node.js</span>
+                <span class="skill-badge px-3 py-1.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-500/30">Express</span>
+                <span class="skill-badge px-3 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-full text-xs font-medium border border-emerald-500/30">FastAPI</span>
+                <span class="skill-badge px-3 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium border border-blue-500/30">Python</span>
+                <span class="skill-badge px-3 py-1.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium border border-red-500/30">Flask</span>
+                <span class="skill-badge px-3 py-1.5 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-medium border border-cyan-500/30">SQLite</span>
+                <span class="skill-badge px-3 py-1.5 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium border border-purple-500/30">ChromaDB</span>
+                <span class="skill-badge px-3 py-1.5 bg-amber-500/20 text-amber-400 rounded-full text-xs font-medium border border-amber-500/30">IndexedDB</span>
+                <span class="skill-badge px-3 py-1.5 bg-pink-500/20 text-pink-400 rounded-full text-xs font-medium border border-pink-500/30">CLIP</span>
+                <span class="skill-badge px-3 py-1.5 bg-violet-500/20 text-violet-400 rounded-full text-xs font-medium border border-violet-500/30">RAG</span>
+                <span class="skill-badge px-3 py-1.5 bg-indigo-500/20 text-indigo-400 rounded-full text-xs font-medium border border-indigo-500/30">Embeddings</span>
+                <span class="skill-badge px-3 py-1.5 bg-rose-500/20 text-rose-400 rounded-full text-xs font-medium border border-rose-500/30">Ollama</span>
+                <span class="skill-badge px-3 py-1.5 bg-slate-500/20 text-slate-400 rounded-full text-xs font-medium border border-slate-500/30">Git</span>
+                <span class="skill-badge px-3 py-1.5 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-medium border border-cyan-500/30">Tailwind</span>
+                <span class="skill-badge px-3 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium border border-blue-500/30">PWA</span>
+                <span class="skill-badge px-3 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-xs font-medium border border-orange-500/30">OCR</span>
+                <span class="skill-badge px-3 py-1.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium border border-green-500/30">Web Audio API</span>
+                <span class="skill-badge px-3 py-1.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium border border-red-500/30">MediaRecorder</span>
+            </div>
+        </section>
+
+        <!-- Changelog -->
+        <section class="bg-slate-900 rounded-2xl border border-slate-800 p-6 animate-in delay-4">
+            <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-slate-400"></i>
+                Changelog Reciente
+            </h2>
+            <div class="space-y-3">
+                <div class="changelog-item pl-4 py-2">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs font-mono text-slate-500">4 dic 2025</span>
+                        <span class="text-sm">🎼</span>
+                    </div>
+                    <p class="text-sm font-medium text-white">Preludio BWV 1012 Estudio</p>
+                    <p class="text-xs text-slate-500 mt-1">12 secciones, análisis armónico/técnico, edición Bach-Gesellschaft</p>
+                </div>
+                <div class="changelog-item pl-4 py-2">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs font-mono text-slate-500">4 dic 2025</span>
+                        <span class="text-sm">🎻</span>
+                    </div>
+                    <p class="text-sm font-medium text-white">Chacona Estudio + Proyectos Educativos</p>
+                    <p class="text-xs text-slate-500 mt-1">MediaRecorder API, IndexedDB v2, MusicKids, Educación Auditiva</p>
+                </div>
+                <div class="changelog-item pl-4 py-2">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs font-mono text-slate-500">2 dic 2025</span>
+                        <span class="text-sm">📦</span>
+                    </div>
+                    <p class="text-sm font-medium text-white">MathKids + Farmacia Colón + Chat Validador</p>
+                    <p class="text-xs text-slate-500 mt-1">Dashboard matemático, landing page, validación BioMistral</p>
+                </div>
+                <div class="changelog-item pl-4 py-2">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs font-mono text-slate-500">1 dic 2025</span>
+                        <span class="text-sm">🏆</span>
+                    </div>
+                    <p class="text-sm font-medium text-white">Sistema Híbrido Farmacia - 100% Accuracy</p>
+                    <p class="text-xs text-slate-500 mt-1">Router inteligente + Plantillas BD + 7ms/consulta</p>
+                </div>
+                <div class="changelog-item pl-4 py-2">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs font-mono text-slate-500">27 nov 2025</span>
+                        <span class="text-sm">🧬</span>
+                    </div>
+                    <p class="text-sm font-medium text-white">BioMistral RAG v1.3 + Validation Study</p>
+                    <p class="text-xs text-slate-500 mt-1">200 casos, Chain of Thought, modo geriátrico</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Quote -->
+        <footer class="mt-8 text-center py-6 border-t border-slate-800">
+            <p class="text-slate-500 italic">"Piano piano se arriva lontano"</p>
+            <p class="text-xs text-slate-600 mt-2">No es la velocidad, es la dirección. No es memorizar, es entender.</p>
+        </footer>
+    </main>
+
+    <script>
+        // Animate progress bars on load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(bar => {
+                    bar.style.width = bar.style.width;
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>

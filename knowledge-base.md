@@ -17,7 +17,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 20
+- **Proyectos completados:** 21
 - **Proyectos en desarrollo:** 3 (BioMistral Study, Paper, DirectOS)
 - **Líneas de código:** ~27,000+
 - **Tecnologías dominadas:** 24+
@@ -28,7 +28,7 @@
 ### 💪 Por Área
 
 **💻 Desarrollo Web**
-- Proyectos: 9 (farmaIA v5.0, Portfolio, DirectOS v8.0, Dashboard Seguimiento, Simulaciones MAZ, Dashboard Mobile, **MathKids**, **Farmacia Colón Web**, **Chat Validador**)
+- Proyectos: 10 (farmaIA v5.0, Portfolio, DirectOS v8.0, Dashboard Seguimiento, Simulaciones MAZ, Dashboard Mobile, **MathKids**, **Farmacia Colón Web**, **Chat Validador**, **Preludio BWV 1012**)
 - Estado: ✅ Producción
 - Skills: HTML5, CSS3, JS, PWA, Responsive, Node.js, Express, Glassmorphism, FastAPI, Service Worker, Canvas Animations
 
@@ -126,6 +126,7 @@
 | **Farmacia Colón Web** | HTML/CSS | Completado | Landing page profesional farmacia Majadahonda |
 | **Chat Validador BioMistral** | FastAPI + JS + SQLite | Completado | App web validación consultas farmacia con IA |
 | **Chacona Estudio** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Chacona Bach (64 variaciones) |
+| **Preludio BWV 1012** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Preludio Suite 6 Bach (12 secciones) |
 | Portfolio Dibujo | Web + SVG | Publicado | Dashboard analítico visual |
 | Limpiador PDFs | Python + tkinter | Funcional | Automatización |
 | DocMine-Fiscal | Python + OCR + Flask | Producción | 93K€ procesados |
@@ -929,6 +930,14 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **4 dic 2025**: 🎼 PRELUDIO BWV 1012 ESTUDIO
+  - Web app para estudiar el Preludio de la Suite No. 6 en Re Mayor de Bach
+  - 12 secciones con análisis armónico, técnico e interpretativo
+  - Imágenes de edición Bach-Gesellschaft (con números de compás)
+  - Similar a Chacona Estudio (mismo patrón/stack)
+  - URL: https://cjlkaiser-cpu.github.io/preludio-bwv1012-estudio/
+  - Proyectos completados: 20 → 21
 
 - **4 dic 2025**: 🎻 CHACONA ESTUDIO + PROYECTOS EDUCATIVOS
   - **Chacona Estudio**: Web app para estudiar la Chacona BWV 1004 de Bach
