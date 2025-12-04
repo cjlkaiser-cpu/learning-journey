@@ -1,7 +1,7 @@
 # 🧠 Knowledge Base
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
-> **Última actualización**: 2 diciembre 2025
+> **Última actualización**: 4 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -17,7 +17,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 17
+- **Proyectos completados:** 20
 - **Proyectos en desarrollo:** 3 (BioMistral Study, Paper, DirectOS)
 - **Líneas de código:** ~27,000+
 - **Tecnologías dominadas:** 24+
@@ -121,8 +121,11 @@
 | **Simulaciones MAZ** | HTML + Monte Carlo | Funcional | Dashboard financiero + simulaciones |
 | **Sistema Híbrido Farmacia** | Python + SQLite + Router + Plantillas | Producción | 200 casos, **100% accuracy**, 7ms/consulta, 0% LLM |
 | **MathKids** | HTML/CSS/JS + Canvas | Completado | Dashboard matemático interactivo para niños 7 años |
+| **MusicKids** | HTML/CSS/JS + Web Audio | Completado | App educativa musical para niños |
+| **Educación Auditiva** | HTML + Tailwind + JS | Completado | Entrenamiento auditivo curso armonía (bustena.com) |
 | **Farmacia Colón Web** | HTML/CSS | Completado | Landing page profesional farmacia Majadahonda |
 | **Chat Validador BioMistral** | FastAPI + JS + SQLite | Completado | App web validación consultas farmacia con IA |
+| **Chacona Estudio** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Chacona Bach (64 variaciones) |
 | Portfolio Dibujo | Web + SVG | Publicado | Dashboard analítico visual |
 | Limpiador PDFs | Python + tkinter | Funcional | Automatización |
 | DocMine-Fiscal | Python + OCR + Flask | Producción | 93K€ procesados |
@@ -927,6 +930,16 @@ Mientras otros memorizan, tú:
 
 ## 🔄 Changelog
 
+- **4 dic 2025**: 🎻 CHACONA ESTUDIO + PROYECTOS EDUCATIVOS
+  - **Chacona Estudio**: Web app para estudiar la Chacona BWV 1004 de Bach
+    - 64 variaciones con manuscrito + descripciones (extraídas de deviolines.com)
+    - MediaRecorder API + IndexedDB v2 + Export/Import base64
+    - Repo: github.com/cjlkaiser-cpu/chacona-estudio
+  - **MusicKids**: App educativa musical para niños (estilo MathKids)
+  - **Educación Auditiva**: Entrenamiento auditivo curso armonía (bustena.com)
+  - Proyectos completados: 18 → 20
+  - Aprendido: MediaRecorder API, IndexedDB upgrades, Web Audio API
+
 - **2 dic 2025**: 📦 ACTUALIZACIÓN VAULT + NUEVOS PROYECTOS
   - **MathKids**: Dashboard matemático interactivo para niños 7 años
     - 5 módulos: Sumas, Restas, Contar, Comparar, Formas
@@ -952,13 +965,7 @@ Mientras otros memorizan, tú:
   - Repo: ~/Projects/biomistral-spanish-validation
   - Aprendido: Arquitectura híbrida, evaluación flexible, detección interacciones farmacológicas
 
-- **28 nov 2025**: 🤖 AGENTES IA - HUMAN-IN-THE-LOOP DISCOVERY
-  - Descubrimiento: Claude Code ES un agente de IA (HITL pattern)
-  - Insight: "Llevo meses usando agentes sin saberlo"
-  - Nueva metodología documentada: Agent Workflow HITL
-  - DirectOS v8.1: Offline-first + SyncQueue implementado
-  - Conexión minerOS ↔ HITL: "Sin magia negra" = "Apruebo cada acción"
-  - Nueva sección completa en knowledge-base.md
+- 
 
 - **27 nov 2025**: 🧬 BIOMISTRAL RAG v1.3 + VALIDATION STUDY
   - **RAG v1.3 implementado** con mejoras significativas:
