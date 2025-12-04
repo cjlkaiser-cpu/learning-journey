@@ -17,7 +17,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 21
+- **Proyectos completados:** 20
 - **Proyectos en desarrollo:** 3 (BioMistral Study, Paper, DirectOS)
 - **Líneas de código:** ~27,000+
 - **Tecnologías dominadas:** 24+
@@ -931,13 +931,22 @@ Mientras otros memorizan, tú:
 
 ## 🔄 Changelog
 
+- **4 dic 2025**: 🚀 LEARNING LAUNCHPAD - Centro de Control
+  - Upgrade de dashboard.html a **Launchpad operativo**
+  - Seccion "En Progreso" con 3 proyectos activos (Corelli, BioMistral, Launchpad)
+  - Quick Actions: "Subir a GitHub" y "Nuevo Proyecto" con modales
+  - Filtros interactivos: GitHub/Local, Produccion, Web, Python, IA/ML
+  - Paths locales para 10 proyectos con click-to-copy
+  - Publicado en GitHub Pages: https://cjlkaiser-cpu.github.io/learning-journey/dashboard.html
+  - Correccion: curso_armonia = educacion-auditiva (duplicado eliminado)
+  - Proyectos: 21 → 20 (limpieza duplicados)
+
 - **4 dic 2025**: 🎼 PRELUDIO BWV 1012 ESTUDIO
   - Web app para estudiar el Preludio de la Suite No. 6 en Re Mayor de Bach
   - 12 secciones con análisis armónico, técnico e interpretativo
   - Imágenes de edición Bach-Gesellschaft (con números de compás)
   - Similar a Chacona Estudio (mismo patrón/stack)
   - URL: https://cjlkaiser-cpu.github.io/preludio-bwv1012-estudio/
-  - Proyectos completados: 20 → 21
 
 - **4 dic 2025**: 🎻 CHACONA ESTUDIO + PROYECTOS EDUCATIVOS
   - **Chacona Estudio**: Web app para estudiar la Chacona BWV 1004 de Bach
