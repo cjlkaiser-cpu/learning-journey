@@ -1,7 +1,7 @@
 # 🧠 Knowledge Base
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
-> **Última actualización**: 4 diciembre 2025
+> **Última actualización**: 5 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -17,13 +17,13 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 20
+- **Proyectos completados:** 23
 - **Proyectos en desarrollo:** 3 (BioMistral Study, Paper, DirectOS)
 - **Líneas de código:** ~27,000+
 - **Tecnologías dominadas:** 24+
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 3 (minerOS, Agent Workflow HITL, **Arquitectura Híbrida**)
-- **Herramientas creadas:** 3 (DirectOS v8.0, Web Scraper IA, **Sistema Híbrido Farmacia**)
+- **Herramientas creadas:** 4 (DirectOS v8.0, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoNotes**)
 
 ### 💪 Por Área
 
@@ -125,8 +125,11 @@
 | **Educación Auditiva** | HTML + Tailwind + JS | Completado | Entrenamiento auditivo curso armonía (bustena.com) |
 | **Farmacia Colón Web** | HTML/CSS | Completado | Landing page profesional farmacia Majadahonda |
 | **Chat Validador BioMistral** | FastAPI + JS + SQLite | Completado | App web validación consultas farmacia con IA |
+| **Factoría Demo** | Flask + SQLite + Jinja2 + Faker | Demo | Sistema gestión escuela artes (50 alumnos, 7 tipos pago) |
 | **Chacona Estudio** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Chacona Bach (64 variaciones) |
 | **Preludio BWV 1012** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Preludio Suite 6 Bach (12 secciones) |
+| **Giga Estudio** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Giga BWV 1004 (secciones progresivas) |
+| **VideoNotes** | Python + Flask + yt-dlp + Ollama | Producción | Transcriptor/resumidor videos YouTube con IA local |
 | Portfolio Dibujo | Web + SVG | Publicado | Dashboard analítico visual |
 | Limpiador PDFs | Python + tkinter | Funcional | Automatización |
 | DocMine-Fiscal | Python + OCR + Flask | Producción | 93K€ procesados |
@@ -930,6 +933,31 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **5 dic 2025**: 🎬 VIDEONOTES + GIGA ESTUDIO
+  - **VideoNotes**: Herramienta para transcribir y resumir videos YouTube
+    - Stack: Python + Flask + yt-dlp + Whisper + Ollama (llama3.2)
+    - Motor dual: Ollama (automático) o Claude Code (manual)
+    - Features: Drag&drop URL, traducir transcripción, exportar Markdown
+    - App nativa macOS en Desktop para arranque con un clic
+    - Repo: ~/Projects/videonotes
+  - **Giga Estudio**: Web app estudio Giga BWV 1004 (similar a Chacona Estudio)
+    - Secciones progresivas con seguimiento de progreso
+    - Stack: JS + IndexedDB + MediaRecorder + Export/Import
+    - URL: https://cjlkaiser-cpu.github.io/giga-estudio/
+  - Proyectos completados: 21 → 23
+  - Skills usados: Whisper, Ollama, yt-dlp, Flask
+
+- **5 dic 2025**: 🏫 FACTORÍA DEMO - Sistema Gestión Escuela
+  - Nuevo proyecto: Sistema de gestión para Factoría Estudio (escuela de artes)
+  - Stack: Flask + SQLite + Jinja2 + Bootstrap + Faker (datos sintéticos)
+  - 50 alumnos sintéticos, 30 profesores reales, 81 actividades, 7 tipos de pago
+  - Módulos: Dashboard, Alumnos, Inscripciones, Horarios, Ausencias, Pagos
+  - Motor de cálculo con 7 tipos: hora, alumno, fijo, mixto_alumno, mixto_%, mixto_hora_alumno
+  - Guía de implementación estilo Directos publicada en GitHub Pages
+  - URL Pages: https://cjlkaiser-cpu.github.io/factoria-demo/
+  - Mejoras en Chacona Estudio
+  - Skills subidos: Flask (solid), SQLite (solid), Faker (solid)
 
 - **4 dic 2025**: 🚀 LEARNING LAUNCHPAD - Centro de Control
   - Upgrade de dashboard.html a **Launchpad operativo**
