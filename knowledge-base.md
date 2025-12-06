@@ -1,7 +1,7 @@
 # 🧠 Knowledge Base
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
-> **Última actualización**: 5 diciembre 2025
+> **Última actualización**: 6 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -933,6 +933,18 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **6 dic 2025**: 🔧 VIDEONOTES v2.0 - Refactor + Features
+  - **Code Review completo**: Seguridad (Path Traversal, CORS, validación URLs)
+  - **Refactor**: Configuración centralizada (`config.py`), funciones DRY (`utils.py`)
+  - **Nuevas features**:
+    - 🔍 **Búsqueda Global**: Buscar en títulos, transcripciones, glosario
+    - 🎯 **Modo Estudio**: Vista enfocada con video embebido + notas
+    - 🗃 **Export Obsidian**: Frontmatter YAML + wikilinks `[[término]]`
+    - 🃏 **Export Anki**: Flashcards TSV del glosario y puntos clave
+  - Variables de entorno para configuración flexible
+  - Documentación actualizada (README.md completo)
+  - Skills aplicados: Flask, Security best practices, Code refactoring
 
 - **5 dic 2025**: 🎬 VIDEONOTES + GIGA ESTUDIO
   - **VideoNotes**: Herramienta para transcribir y resumir videos YouTube
