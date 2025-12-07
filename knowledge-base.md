@@ -1,7 +1,7 @@
 # 🧠 Knowledge Base
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
-> **Última actualización**: 6 diciembre 2025
+> **Última actualización**: 7 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -23,7 +23,7 @@
 - **Tecnologías dominadas:** 24+
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 3 (minerOS, Agent Workflow HITL, **Arquitectura Híbrida**)
-- **Herramientas creadas:** 4 (DirectOS v8.0, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoNotes**)
+- **Herramientas creadas:** 4 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoNotes**)
 
 ### 💪 Por Área
 
@@ -162,7 +162,7 @@ De frontend simple a **sistema completo con backend seguro**:
 
 **Aprendizajes:** Node.js/Express, APIs REST, SQLite, Streaming SSE, Glassmorphism, Seguridad web
 
-### 🎛️ DirectOS v8.0 - Pipeline Builder
+### 🎛️ DirectOS v10.5 - Pipeline Builder Pro
 
 Centro de operaciones para el ecosistema minerOS:
 - **Pipeline Builder**: Canvas visual con conexiones SVG entre nodos (drag & drop)
@@ -933,6 +933,13 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **7 dic 2025**: 🎛️ DIRECTOS v10.5 - Human-in-the-Loop Completo
+  - **Inspector didáctico**: Pausa mostrando origen → proceso → datos → destino
+  - **Dry Run**: Simula pipeline sin ejecutar, muestra tiempo estimado
+  - **Pausas por nodo**: Checkbox para pausar antes/después de cada nodo
+  - **Tutorial completo**: TUTORIAL.md + tutorial.html interactivo (12 pasos)
+  - Skills: Canvas SVG, Promise-based modals, CSS animations, Documentation
 
 - **6 dic 2025**: 🔧 VIDEONOTES v2.0 - Refactor + Features
   - **Code Review completo**: Seguridad (Path Traversal, CORS, validación URLs)
