@@ -1,7 +1,8 @@
 # 🧠 Knowledge Base
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
-> **Última actualización**: 7 diciembre 2025
+> **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
+> **Última actualización**: 8 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -22,7 +23,7 @@
 - **Líneas de código:** ~27,000+
 - **Tecnologías dominadas:** 24+
 - **Áreas de conocimiento:** 4 principales
-- **Metodologías propias:** 3 (minerOS, Agent Workflow HITL, **Arquitectura Híbrida**)
+- **Metodologías propias:** 4 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**)
 - **Herramientas creadas:** 4 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoNotes**)
 
 ### 💪 Por Área
@@ -602,6 +603,151 @@ Finanzas  → Reglas compliance + LLM para análisis
 
 ---
 
+## 🧠 Memoria Evolutiva - El Multiplicador
+
+> **Insight del 8 dic 2025:** "La diferencia entre usar IA y tener IA que te conoce."
+
+### El Problema
+
+| Sin memoria | Con memoria |
+|-------------|-------------|
+| Proyecto N = mismo esfuerzo que Proyecto 1 | Proyecto N = fracción del esfuerzo |
+| Conocimiento encerrado en código | Conocimiento conectado y reutilizable |
+| Claude genérico | Claude-Carlos (conoce tu ecosistema) |
+
+### Implementación: DirectOS v10.9
+
+| Componente | Función |
+|------------|---------|
+| **MINEROS BRAIN** | System prompt + Context builder + Parser robusto |
+| **MINEROS MEMORY** | Trackea nodos, flujos, sugerencias, chat |
+| **getSummaryForClaude()** | Genera contexto de memoria para el LLM |
+
+### El Efecto Flywheel
+
+```
+Usas DirectOS → Memoria aprende → Claude te conoce
+      ↑                                    ↓
+      └──── Trabajas más rápido ←──────────┘
+```
+
+### Conexión con minerOS
+
+| Principio | + Memoria |
+|-----------|-----------|
+| Sin magia negra | Decisiones trazables (hay historial) |
+| Datos primero | Memoria SON datos acumulados |
+| Incremental | Cada proyecto suma al anterior |
+
+### Proyección
+
+| Proyecto | Eficiencia |
+|----------|------------|
+| #1 | 1.0x (baseline) |
+| #14 | ~2.5x |
+| #50 | ~5x (proyectado) |
+
+**Estado:** Piloto en DirectOS v10.9. Próximo: expandir a todo minerOS.
+
+### Sistema Multi-Motor: Un Contexto, Todos los LLMs
+
+> **Insight del 8 dic 2025:** "No te cases con un motor. El contexto es tuyo, no de la herramienta."
+
+El patrón de memoria evolutiva es **agnóstico al motor**. Funciona con Claude, Gemini, OpenAI, o cualquier LLM futuro.
+
+**El problema:**
+```
+Claude Code → CLAUDE.md
+Cursor      → .cursorrules
+Copilot     → .github/copilot-instructions.md
+Gemini      → System Instructions
+```
+
+**La solución: Una fuente, múltiples destinos**
+```
+proyecto/
+├── .ai-context/
+│   ├── base.md          # ← Fuente única de verdad
+│   ├── patterns.md      # Patrones del proyecto
+│   └── memory.md        # Historial evolutivo (si aplica)
+│
+├── CLAUDE.md            # → Generado desde .ai-context/
+├── .cursorrules         # → Generado desde .ai-context/
+└── .github/copilot-instructions.md
+```
+
+### Niveles de Contexto: No Todo Necesita Memoria
+
+| Nivel | Tipo de Proyecto | Qué Usar | Ejemplo |
+|-------|------------------|----------|---------|
+| **0** | Script one-shot | Nada | "Hazme un regex para emails" |
+| **1** | Proyecto pequeño | Solo `base.md` | Landing page, script backup |
+| **2** | Proyecto mediano | `base.md` + `patterns.md` | API, app móvil |
+| **3** | Proyecto largo plazo | Todo + memoria evolutiva | SaaS, tesis, producto |
+
+**Regla simple:** Si vas a trabajar en el proyecto **más de 1 semana**, usa al menos Nivel 2.
+
+### Cuándo SÍ usar Memoria Evolutiva (Nivel 3)
+
+- ✅ Proyectos que evolucionan durante meses
+- ✅ Múltiples sesiones de trabajo
+- ✅ Patrones que se descubren con el uso
+- ✅ Decisiones arquitectónicas que se toman gradualmente
+- ✅ Quieres que el LLM "te conozca"
+
+### Cuándo NO usar Memoria Evolutiva
+
+- ❌ Scripts de un solo uso
+- ❌ Proyectos con scope bien definido y corto
+- ❌ Cuando el overhead de mantenerla > beneficio
+- ❌ Proyectos que no vas a tocar más
+
+### Template base.md Universal
+
+```markdown
+# Proyecto: [NOMBRE]
+
+## Stack
+- Backend: [Python/Node/Go...]
+- Frontend: [React/Vue/Vanilla...]
+- DB: [SQLite/PostgreSQL/...]
+
+## Estructura
+proyecto/
+├── src/
+├── tests/
+└── docs/
+
+## Convenciones
+- Idioma: [español/inglés]
+- Nombres: [camelCase/snake_case]
+
+## Reglas
+1. Código funcional, no placeholders
+2. [Regla específica]
+
+## Contexto
+[Descripción breve del proyecto]
+```
+
+### Comparativa de Motores
+
+| Motor | Archivo Nativo | CLI | Memoria Nativa |
+|-------|----------------|-----|----------------|
+| **Claude Code** | `CLAUDE.md` | `claude -p` | Via archivo |
+| **Cursor** | `.cursorrules` | IDE only | Via archivo |
+| **Copilot** | `copilot-instructions.md` | `gh copilot` | Via archivo |
+| **Gemini** | System Instructions | Limitado | Web only |
+| **ChatGPT** | Custom GPTs | No | Custom GPTs |
+
+### La Ventaja
+
+> **"Mantén una sola fuente de verdad. Cambia de motor sin reescribir contexto."**
+
+El contexto es **tu activo**, no del proveedor. Si mañana sale un LLM mejor, copias tu `.ai-context/` y sigues trabajando.
+
+---
+
 ## 🧭 Sistema de Decisión Universal
 
 ### 🔧 Claude Code (Terminal)
@@ -933,6 +1079,22 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **8 dic 2025**: 🌐 SISTEMA MULTI-MOTOR - Contexto Agnóstico
+  - Sistema de contexto que funciona con Claude, Gemini, OpenAI, Copilot
+  - Estructura `.ai-context/` como fuente única de verdad
+  - 4 niveles de contexto (0-3) según complejidad del proyecto
+  - Template `base.md` universal para cualquier motor
+  - Presentación HTML actualizada: 12 slides (slides 10-12 nuevos)
+  - Insight: "El contexto es tuyo, no del proveedor"
+  - Ubicación: `~/Documents/claude-code-buenas-practicas/`
+
+- **8 dic 2025**: 🧠 MEMORIA EVOLUTIVA - Principio #0
+  - Descubrimiento: El conocimiento debe componerse, no solo acumularse
+  - MINEROS BRAIN: System prompt unificado + context builder
+  - MINEROS MEMORY: Tracking persistente de uso y patrones
+  - Piloto implementado en DirectOS v10.9
+  - Aprendido: localStorage para memoria, flywheel de aprendizaje, ventaja competitiva única
 
 - **7 dic 2025**: 🎛️ DIRECTOS v10.5 - Human-in-the-Loop Completo
   - **Inspector didáctico**: Pausa mostrando origen → proceso → datos → destino
