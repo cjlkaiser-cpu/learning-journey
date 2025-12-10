@@ -1080,6 +1080,14 @@ Mientras otros memorizan, tú:
 
 ## 🔄 Changelog
 
+- **10 dic 2025**: 🔬 PHYSICS SOUND LAB - Hub de Simulaciones Fisicas
+  - **Proyecto paraguas** que agrupa 7 metronomos fisicos + Harmonices Mundi
+  - **Landing page** con previews animados en vivo de cada simulacion
+  - **Licencia dual**: MIT (codigo) + CC BY 4.0 (contenido educativo)
+  - **README completo** con documentacion tecnica
+  - URL Hub: https://cjlkaiser-cpu.github.io/physics-sound-lab/
+  - Repos: physics-sound-lab (hub) + harmonices-mundi (coro planetario)
+
 - **10 dic 2025**: 🪐 HARMONICES MUNDI - Coro Planetario de Kepler
   - **Sistema Solar sonificado** según la visión de Kepler (1619)
   - **8 planetas** con órbitas keplerianas reales (Newton-Raphson)
