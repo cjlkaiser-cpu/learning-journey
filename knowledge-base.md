@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 8 diciembre 2025
+> **Última actualización**: 10 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -18,7 +18,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 23
+- **Proyectos completados:** 25
 - **Proyectos en desarrollo:** 3 (BioMistral Study, Paper, DirectOS)
 - **Líneas de código:** ~27,000+
 - **Tecnologías dominadas:** 24+
@@ -603,7 +603,7 @@ Finanzas  → Reglas compliance + LLM para análisis
 
 ---
 
-## 🧠 Memoria Evolutiva - El Multiplicador
+#, junto los niveles de uso
 
 > **Insight del 8 dic 2025:** "La diferencia entre usar IA y tener IA que te conoce."
 
@@ -1079,6 +1079,36 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **10 dic 2025**: 🎵 HARMONICES MUNDI - Simulaciones de Física Interactivas
+  - **Metrónomo Péndulo Simple**: Simulación física con Runge-Kutta 4º orden
+    - Controles: longitud (l), gravedad (g), ángulo inicial (θ₀)
+    - Vector velocidad tangencial + vector g
+    - Lagrangiano L = T - V en tiempo real
+    - Energías T, V, E con barras visuales
+    - Sonido Web Audio API en extremos (ω = 0)
+    - URL: https://cjlkaiser-cpu.github.io/metronomo-fisico/
+  - **Metrónomo Kepleriano (Harmonices Mundi)**: Órbitas planetarias con ritmo
+    - Leyes de Kepler implementadas (3 leyes)
+    - Sonido diferenciado: agudo perihelio, grave afelio
+    - Presets: Mercurio, Venus, Tierra, Marte, Cometa
+    - Ritmo asimétrico físicamente correcto (2ª ley)
+    - URL: https://cjlkaiser-cpu.github.io/metronomo-kepler/
+  - **Simulaciones adicionales**: Péndulos desacoplados, difusión calor, sistema solar
+  - Stack: HTML5 Canvas + Web Audio API + Runge-Kutta + Kepler equations
+  - Organizado en ~/Desktop/fisica/{metronomos, simulaciones}
+  - Aprendido: Integración numérica RK4, ecuación de Kepler, Newton-Raphson, Web Audio synthesis
+
+- **9 dic 2025**: 🎛️ DIRECTOS v10.10 - Canvas Pro + Sistema Educativo
+  - **Canvas Pro**: Insertar nodos en conexiones, conectar arrastrando a puertos
+  - **Minimap funcional**: Vista general con colores por categoría
+  - **Animación de flujo**: Conexiones animadas, estados de nodos (executing, success, error)
+  - **Atajos de teclado**: Ctrl+C/V (copiar/pegar), Ctrl+L (auto-layout), Delete, +/-/0 (zoom)
+  - **Sistema Educativo**: Tooltips en conexiones, panel de nodo mejorado (Qué hace, Input/Output, Cuándo usarlo)
+  - **Learning Path Export**: Genera guía Markdown con prompts para Claude Code
+  - **7 nuevos nodos**: Telegram Bot, Telegram Trigger, REST API Call, Text Splitter, Notion, Airtable, Spreadsheet
+  - Total nodos: 36 → 43
+  - Aprendido: Bezier curve sampling, port detection algorithms, educational metadata systems
 
 - **8 dic 2025**: 🌐 SISTEMA MULTI-MOTOR - Contexto Agnóstico
   - Sistema de contexto que funciona con Claude, Gemini, OpenAI, Copilot
