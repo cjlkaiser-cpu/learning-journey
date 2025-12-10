@@ -18,7 +18,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 30
+- **Proyectos completados:** 31
 - **Proyectos en desarrollo:** 3 (BioMistral Study, Paper, DirectOS)
 - **Líneas de código:** ~32,000+
 - **Tecnologías dominadas:** 26+
@@ -1079,6 +1079,18 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **10 dic 2025**: 🪐 HARMONICES MUNDI - Coro Planetario de Kepler
+  - **Sistema Solar sonificado** según la visión de Kepler (1619)
+  - **8 planetas** con órbitas keplerianas reales (Newton-Raphson)
+  - **3 modos de sonificación**: Kepler 1619, Tiempo Real, Musical
+  - **3 escalas visuales**: Lineal, Logarítmica, Adaptativa
+  - **Mixer planetario** con toggles y volumen individual
+  - **Presets armónicos**: Coro, Rocosos, Gigantes, Tríada, Quinta, Tritono
+  - **Spectrum Analyzer FFT** real con AnalyserNode
+  - **Concert Hall mode**: Fullscreen + trails + auras
+  - **Tutorial completo** con historia y física de Kepler
+  - URL: https://cjlkaiser-cpu.github.io/harmonices-mundi/
 
 - **10 dic 2025**: 🎛️ SERIE COMPLETA METRÓNOMOS FÍSICOS - 7 Simulaciones
   - **5 nuevos metrónomos** creados y publicados en GitHub Pages:
