@@ -18,10 +18,10 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 25
+- **Proyectos completados:** 30
 - **Proyectos en desarrollo:** 3 (BioMistral Study, Paper, DirectOS)
-- **Líneas de código:** ~27,000+
-- **Tecnologías dominadas:** 24+
+- **Líneas de código:** ~32,000+
+- **Tecnologías dominadas:** 26+
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 4 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**)
 - **Herramientas creadas:** 4 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoNotes**)
@@ -1079,6 +1079,23 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **10 dic 2025**: 🎛️ SERIE COMPLETA METRÓNOMOS FÍSICOS - 7 Simulaciones
+  - **5 nuevos metrónomos** creados y publicados en GitHub Pages:
+    - **Oscilador Armónico** (masa-resorte): Ecuaciones Newton + Lagrange, barras energía
+      - URL: https://cjlkaiser-cpu.github.io/metronomo-resorte/
+    - **Péndulos Acoplados** (polirritmo): Ratios 1:1, 2:3, 3:4, 4:5, 2:5, beat detection
+      - URL: https://cjlkaiser-cpu.github.io/metronomo-polirritmico/
+    - **Figuras Lissajous**: Patrones círculo, ocho, lazo, trenza, estrella, flor
+      - URL: https://cjlkaiser-cpu.github.io/metronomo-lissajous/
+    - **Onda Estacionaria**: Modos n=1-6, nodos/antinodos, nota musical equivalente
+      - URL: https://cjlkaiser-cpu.github.io/metronomo-onda/
+    - **Rebote Elástico**: Gravedad multiplaneta (Luna/Marte/Tierra/Júpiter), coef. restitución
+      - URL: https://cjlkaiser-cpu.github.io/metronomo-rebote/
+  - **Total serie**: 7 metrónomos físicos (+ péndulo simple + Kepler)
+  - Stack: HTML5 Canvas + Web Audio API + física real (RK4, Kepler, MAS)
+  - Todos mobile-responsive, self-contained HTML
+  - Organizados en ~/Desktop/fisica/metronomos/
 
 - **10 dic 2025**: 🎵 HARMONICES MUNDI - Simulaciones de Física Interactivas
   - **Metrónomo Péndulo Simple**: Simulación física con Runge-Kutta 4º orden
