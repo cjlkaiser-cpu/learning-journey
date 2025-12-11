@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 10 diciembre 2025
+> **Última actualización**: 11 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -19,12 +19,12 @@
 
 ### 🎯 Visión General
 - **Proyectos completados:** 31
-- **Proyectos en desarrollo:** 3 (BioMistral Study, Paper, DirectOS)
+- **Proyectos en desarrollo:** 4 (BioMistral Study, Paper, DirectOS, VideoMine)
 - **Líneas de código:** ~32,000+
 - **Tecnologías dominadas:** 26+
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 4 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**)
-- **Herramientas creadas:** 4 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoNotes**)
+- **Herramientas creadas:** 4 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**)
 
 ### 💪 Por Área
 
@@ -107,6 +107,7 @@
 - ✅ DocMine (completado, integrado en DirectOS)
 - ✅ **DirectOS v8.0** (producción) - cockpit de desarrollo
 - 🔄 **DirectOS** (en desarrollo continuo)
+- 🔄 **VideoMine** (activo) - extractor conocimiento YouTube
 
 ---
 
@@ -130,7 +131,7 @@
 | **Chacona Estudio** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Chacona Bach (64 variaciones) |
 | **Preludio BWV 1012** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Preludio Suite 6 Bach (12 secciones) |
 | **Giga Estudio** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Giga BWV 1004 (secciones progresivas) |
-| **VideoNotes** | Python + Flask + yt-dlp + Ollama | Producción | Transcriptor/resumidor videos YouTube con IA local |
+| **VideoMine** | Python + Flask + yt-dlp + Ollama + Jinja2 | Activo | Extractor conocimiento videos YouTube - metodología minerOS |
 | Portfolio Dibujo | Web + SVG | Publicado | Dashboard analítico visual |
 | Limpiador PDFs | Python + tkinter | Funcional | Automatización |
 | DocMine-Fiscal | Python + OCR + Flask | Producción | 93K€ procesados |
@@ -146,6 +147,7 @@
 | **Estudio BioMistral** | `~/Projects/biomistral-spanish-validation/` | Validación completa LLM farmacia: RAG, 200 casos, arquitectura híbrida | Activo |
 | **Paper BioMistral** | `~/Desktop/paper biominstral/` | Paper académico v2 + referencias verificadas + changelog | Redacción |
 | **DirectOS** | Evolución continua | Cockpit de desarrollo: Pipeline Builder, RAG, App Store, 42 patrones | Activo |
+| **VideoMine** | `~/Projects/videomine/` | Extractor conocimiento YouTube: minerOS, Modo Estudio, Export HTML/MD/Anki | Activo |
 
 ---
 
