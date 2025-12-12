@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph - Learning Journey</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .logo h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .logo h1 span { color: #3b82f6; }
+
+        .logo p {
+            font-size: 0.7rem;
+            color: #64748b;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 200px;
+            padding: 8px 12px 8px 36px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 0.8rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: #3b82f6;
+            width: 280px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        .btn {
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            text-decoration: none;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #94a3b8;
+            border-color: #334155;
+        }
+
+        .btn-ghost:hover {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+
+        /* Sidebar Filters */
+        .sidebar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 240px;
+            height: calc(100vh - 60px);
+            background: rgba(15, 23, 42, 0.95);
+            border-right: 1px solid #1e293b;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 50;
+            transition: transform 0.3s;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-240px);
+        }
+
+        .filter-section {
+            margin-bottom: 24px;
+        }
+
+        .filter-title {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        .filter-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 8px 12px;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .filter-btn:hover {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+
+        .filter-btn.active {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        .filter-btn .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .filter-btn .count {
+            margin-left: auto;
+            font-size: 0.7rem;
+            color: #475569;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .stat {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        /* Graph Container */
+        #graph-container {
+            position: fixed;
+            top: 60px;
+            left: 240px;
+            right: 0;
+            bottom: 0;
+            background: #0f172a;
+            transition: left 0.3s;
+        }
+
+        #graph-container.expanded {
+            left: 0;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Nodes */
+        .node {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .node circle {
+            stroke-width: 2px;
+            transition: all 0.2s;
+        }
+
+        .node:hover circle {
+            stroke-width: 4px;
+            filter: brightness(1.2);
+        }
+
+        .node text {
+            font-size: 10px;
+            fill: #e2e8f0;
+            pointer-events: none;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .node .label {
+            font-size: 9px;
+            fill: #94a3b8;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .node:hover .label {
+            opacity: 1;
+        }
+
+        /* Links */
+        .link {
+            stroke: #334155;
+            stroke-opacity: 0.6;
+            transition: all 0.2s;
+        }
+
+        .link.highlighted {
+            stroke: #3b82f6;
+            stroke-opacity: 1;
+            stroke-width: 2px;
+        }
+
+        /* Dimmed state */
+        .dimmed {
+            opacity: 0.15;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: fixed;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 16px;
+            max-width: 300px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 200;
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        .tooltip-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .tooltip-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .tooltip-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .tooltip-type {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        .tooltip-desc {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        .tooltip-connections {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #334155;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        /* Legend */
+        .legend {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 16px;
+            z-index: 50;
+        }
+
+        .legend-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* Controls */
+        .zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 50;
+            transition: left 0.3s;
+        }
+
+        .zoom-controls.expanded {
+            left: 20px;
+        }
+
+        .zoom-btn {
+            width: 36px;
+            height: 36px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #94a3b8;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .zoom-btn:hover {
+            background: #334155;
+            color: #e2e8f0;
+        }
+
+        /* Toggle sidebar */
+        .toggle-sidebar {
+            position: fixed;
+            top: 80px;
+            left: 240px;
+            width: 24px;
+            height: 48px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-left: none;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            transition: all 0.3s;
+            z-index: 60;
+        }
+
+        .toggle-sidebar:hover {
+            color: #e2e8f0;
+        }
+
+        .toggle-sidebar.collapsed {
+            left: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-240px); }
+            #graph-container { left: 0; }
+            .zoom-controls { left: 20px; }
+            .toggle-sidebar { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-diagram-project"></i>
+            </div>
+            <div>
+                <h1><span>Knowledge</span> Graph</h1>
+                <p>Mapa de conexiones del Learning Journey</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="search" placeholder="Buscar nodo...">
+            </div>
+            <a href="dashboard.html" class="btn btn-ghost">
+                <i class="fa-solid fa-table-columns"></i> Dashboard
+            </a>
+            <a href="https://github.com/cjlkaiser-cpu/learning-journey" target="_blank" class="btn btn-ghost">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="stat-nodes">0</div>
+                <div class="stat-label">Nodos</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="stat-links">0</div>
+                <div class="stat-label">Conexiones</div>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-title">Tipo de Nodo</div>
+            <button class="filter-btn active" data-filter="all">
+                <span class="dot" style="background: #64748b"></span>
+                Todos
+                <span class="count" id="count-all">0</span>
+            </button>
+            <button class="filter-btn" data-filter="project">
+                <span class="dot" style="background: #3b82f6"></span>
+                Proyectos
+                <span class="count" id="count-project">0</span>
+            </button>
+            <button class="filter-btn" data-filter="tech">
+                <span class="dot" style="background: #22c55e"></span>
+                Tecnologias
+                <span class="count" id="count-tech">0</span>
+            </button>
+            <button class="filter-btn" data-filter="methodology">
+                <span class="dot" style="background: #a855f7"></span>
+                Metodologias
+                <span class="count" id="count-methodology">0</span>
+            </button>
+            <button class="filter-btn" data-filter="concept">
+                <span class="dot" style="background: #f59e0b"></span>
+                Conceptos
+                <span class="count" id="count-concept">0</span>
+            </button>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-title">Estado Proyecto</div>
+            <button class="filter-btn" data-status="produccion">
+                <span class="dot" style="background: #10b981"></span>
+                Produccion
+            </button>
+            <button class="filter-btn" data-status="activo">
+                <span class="dot" style="background: #3b82f6"></span>
+                Activo
+            </button>
+            <button class="filter-btn" data-status="completado">
+                <span class="dot" style="background: #6366f1"></span>
+                Completado
+            </button>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-title">Acciones</div>
+            <button class="filter-btn" onclick="resetView()">
+                <i class="fa-solid fa-arrows-to-circle"></i>
+                Centrar Vista
+            </button>
+            <button class="filter-btn" onclick="toggleLabels()">
+                <i class="fa-solid fa-tag"></i>
+                Toggle Labels
+            </button>
+        </div>
+    </aside>
+
+    <!-- Toggle Sidebar Button -->
+    <button class="toggle-sidebar" id="toggle-sidebar">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <!-- Graph Container -->
+    <div id="graph-container">
+        <svg id="graph"></svg>
+    </div>
+
+    <!-- Zoom Controls -->
+    <div class="zoom-controls" id="zoom-controls">
+        <button class="zoom-btn" onclick="zoomIn()"><i class="fa-solid fa-plus"></i></button>
+        <button class="zoom-btn" onclick="zoomOut()"><i class="fa-solid fa-minus"></i></button>
+        <button class="zoom-btn" onclick="resetView()"><i class="fa-solid fa-compress"></i></button>
+    </div>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <!-- Legend -->
+    <div class="legend">
+        <div class="legend-title">Leyenda</div>
+        <div class="legend-items">
+            <div class="legend-item">
+                <span class="legend-dot" style="background: #3b82f6"></span>
+                Proyecto
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot" style="background: #22c55e"></span>
+                Tecnologia
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot" style="background: #a855f7"></span>
+                Metodologia
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot" style="background: #f59e0b"></span>
+                Concepto
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // DATA - Extracted from knowledge-base.md
+        // ============================================
+        const graphData = {
+            nodes: [
+                // === PROYECTOS ===
+                { id: "directos", label: "DirectOS", type: "project", status: "produccion", desc: "Cockpit de desarrollo con Pipeline Builder, RAG, App Store y 43 patrones" },
+                { id: "farmaia", label: "farmaIA", type: "project", status: "produccion", desc: "Mi Botiquin Inteligente con CIMA API y deteccion de emergencias" },
+                { id: "photomine", label: "PhotoMine", type: "project", status: "produccion", desc: "1,361 fotos clasificadas con CLIP y aceleracion GPU" },
+                { id: "docmine", label: "DocMine-Fiscal", type: "project", status: "produccion", desc: "93K EUR procesados con OCR y parser fiscal" },
+                { id: "biomistral", label: "BioMistral", type: "project", status: "activo", desc: "Validacion LLM farmaceutico con 200 casos y arquitectura hibrida" },
+                { id: "videomine", label: "VideoMine", type: "project", status: "activo", desc: "Extractor de conocimiento de YouTube con metodologia minerOS" },
+                { id: "physics-visual", label: "Physics Visual Lab", type: "project", status: "completado", desc: "16 simulaciones de fisica interactivas" },
+                { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
+                { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
+                { id: "chacona", label: "Chacona Estudio", type: "project", status: "produccion", desc: "64 variaciones de Bach con grabacion y progreso" },
+                { id: "mathkids", label: "MathKids", type: "project", status: "completado", desc: "Dashboard matematico interactivo para ninos" },
+                { id: "factoria", label: "Factoria Demo", type: "project", status: "completado", desc: "Sistema gestion escuela con 7 tipos de pago" },
+                { id: "biblioteca", label: "Biblioteca Prompts", type: "project", status: "activo", desc: "17 prompts de reproduccion de proyectos" },
+                { id: "dashboard", label: "Learning Dashboard", type: "project", status: "produccion", desc: "Launchpad con 33 proyectos y filtros" },
+                { id: "scraper", label: "Web Scraper IA", type: "project", status: "completado", desc: "Extraccion estructurada con Claude y Pydantic" },
+                { id: "hibrido", label: "Sistema Hibrido", type: "project", status: "produccion", desc: "100% accuracy con router + plantillas, 7ms/query" },
+
+                // === TECNOLOGIAS ===
+                { id: "python", label: "Python", type: "tech", category: "backend", desc: "Lenguaje principal para backend y automatizacion" },
+                { id: "javascript", label: "JavaScript", type: "tech", category: "frontend", desc: "Vanilla JS sin frameworks" },
+                { id: "html-css", label: "HTML/CSS", type: "tech", category: "frontend", desc: "Estructura y estilos web" },
+                { id: "flask", label: "Flask", type: "tech", category: "backend", desc: "Microframework web Python" },
+                { id: "fastapi", label: "FastAPI", type: "tech", category: "backend", desc: "API moderna con async y tipos" },
+                { id: "nodejs", label: "Node.js", type: "tech", category: "backend", desc: "Runtime JavaScript servidor" },
+                { id: "express", label: "Express", type: "tech", category: "backend", desc: "Framework web Node.js" },
+                { id: "sqlite", label: "SQLite", type: "tech", category: "database", desc: "Base de datos local embebida" },
+                { id: "chromadb", label: "ChromaDB", type: "tech", category: "database", desc: "Vector database para embeddings" },
+                { id: "indexeddb", label: "IndexedDB", type: "tech", category: "database", desc: "Base de datos del navegador" },
+                { id: "canvas", label: "Canvas 2D", type: "tech", category: "frontend", desc: "Renderizado grafico en navegador" },
+                { id: "webaudio", label: "Web Audio API", type: "tech", category: "frontend", desc: "Sintesis y procesamiento de audio" },
+                { id: "tailwind", label: "Tailwind CSS", type: "tech", category: "frontend", desc: "Framework CSS utility-first" },
+                { id: "d3", label: "D3.js", type: "tech", category: "frontend", desc: "Visualizacion de datos" },
+                { id: "clip", label: "CLIP", type: "tech", category: "ia", desc: "Modelo vision-lenguaje OpenAI" },
+                { id: "ollama", label: "Ollama", type: "tech", category: "ia", desc: "Runtime para LLMs locales" },
+                { id: "claude", label: "Claude API", type: "tech", category: "ia", desc: "API de Anthropic para LLMs" },
+                { id: "ocr", label: "OCR/Tesseract", type: "tech", category: "ia", desc: "Reconocimiento optico de caracteres" },
+                { id: "git", label: "Git/GitHub", type: "tech", category: "devops", desc: "Control de versiones y colaboracion" },
+
+                // === METODOLOGIAS ===
+                { id: "mineros", label: "minerOS", type: "methodology", desc: "ORO-GEMAS-TESORO: Scanner, Extractor, Clasificador, Pipeline, Vault, Compass" },
+                { id: "hitl", label: "HITL", type: "methodology", desc: "Human-in-the-Loop: Agentes con aprobacion humana" },
+                { id: "hibrida", label: "Arq. Hibrida", type: "methodology", desc: "Router + Plantillas + LLM fallback = 100% accuracy" },
+                { id: "memoria", label: "Memoria Evolutiva", type: "methodology", desc: "Principio #0: El conocimiento se compone" },
+                { id: "kiss", label: "KISS", type: "methodology", desc: "Keep It Simple - Sin sobreingenieria" },
+
+                // === CONCEPTOS ===
+                { id: "rag", label: "RAG", type: "concept", desc: "Retrieval-Augmented Generation" },
+                { id: "embeddings", label: "Embeddings", type: "concept", desc: "Representacion vectorial de texto" },
+                { id: "rk4", label: "Runge-Kutta", type: "concept", desc: "Integracion numerica de ODEs" },
+                { id: "kepler", label: "Leyes Kepler", type: "concept", desc: "Orbitas elipticas y T^2 = a^3" },
+                { id: "lorentz", label: "Lorentz γ", type: "concept", desc: "Factor de relatividad especial" },
+                { id: "maxwell", label: "Maxwell-Boltzmann", type: "concept", desc: "Distribucion de velocidades en gases" },
+                { id: "snell", label: "Ley de Snell", type: "concept", desc: "Refraccion de la luz n1·sin(θ1) = n2·sin(θ2)" },
+                { id: "fourier", label: "Fourier", type: "concept", desc: "Descomposicion en frecuencias" },
+                { id: "lagrangiano", label: "Lagrangiano", type: "concept", desc: "L = T - V mecanica analitica" }
+            ],
+            links: [
+                // DirectOS connections
+                { source: "directos", target: "fastapi" },
+                { source: "directos", target: "chromadb" },
+                { source: "directos", target: "rag" },
+                { source: "directos", target: "embeddings" },
+                { source: "directos", target: "mineros" },
+                { source: "directos", target: "hitl" },
+                { source: "directos", target: "claude" },
+                { source: "directos", target: "tailwind" },
+
+                // farmaIA connections
+                { source: "farmaia", target: "nodejs" },
+                { source: "farmaia", target: "express" },
+                { source: "farmaia", target: "sqlite" },
+                { source: "farmaia", target: "claude" },
+                { source: "farmaia", target: "javascript" },
+
+                // PhotoMine connections
+                { source: "photomine", target: "python" },
+                { source: "photomine", target: "clip" },
+                { source: "photomine", target: "flask" },
+                { source: "photomine", target: "mineros" },
+                { source: "photomine", target: "sqlite" },
+
+                // DocMine connections
+                { source: "docmine", target: "python" },
+                { source: "docmine", target: "ocr" },
+                { source: "docmine", target: "flask" },
+                { source: "docmine", target: "mineros" },
+
+                // BioMistral connections
+                { source: "biomistral", target: "python" },
+                { source: "biomistral", target: "ollama" },
+                { source: "biomistral", target: "rag" },
+                { source: "biomistral", target: "hibrida" },
+                { source: "biomistral", target: "hibrido" },
+
+                // VideoMine connections
+                { source: "videomine", target: "python" },
+                { source: "videomine", target: "flask" },
+                { source: "videomine", target: "ollama" },
+                { source: "videomine", target: "mineros" },
+
+                // Physics Visual Lab connections
+                { source: "physics-visual", target: "canvas" },
+                { source: "physics-visual", target: "javascript" },
+                { source: "physics-visual", target: "rk4" },
+                { source: "physics-visual", target: "kepler" },
+                { source: "physics-visual", target: "lorentz" },
+                { source: "physics-visual", target: "maxwell" },
+                { source: "physics-visual", target: "snell" },
+                { source: "physics-visual", target: "fourier" },
+                { source: "physics-visual", target: "lagrangiano" },
+
+                // Physics Sound Lab connections
+                { source: "physics-sound", target: "canvas" },
+                { source: "physics-sound", target: "webaudio" },
+                { source: "physics-sound", target: "javascript" },
+                { source: "physics-sound", target: "rk4" },
+
+                // Harmonices Mundi connections
+                { source: "harmonices", target: "canvas" },
+                { source: "harmonices", target: "webaudio" },
+                { source: "harmonices", target: "kepler" },
+                { source: "harmonices", target: "physics-sound" },
+
+                // Chacona connections
+                { source: "chacona", target: "javascript" },
+                { source: "chacona", target: "indexeddb" },
+                { source: "chacona", target: "webaudio" },
+
+                // MathKids connections
+                { source: "mathkids", target: "javascript" },
+                { source: "mathkids", target: "canvas" },
+                { source: "mathkids", target: "html-css" },
+
+                // Factoria connections
+                { source: "factoria", target: "flask" },
+                { source: "factoria", target: "sqlite" },
+                { source: "factoria", target: "python" },
+
+                // Dashboard connections
+                { source: "dashboard", target: "html-css" },
+                { source: "dashboard", target: "javascript" },
+                { source: "dashboard", target: "tailwind" },
+                { source: "dashboard", target: "d3" },
+
+                // Sistema Hibrido connections
+                { source: "hibrido", target: "python" },
+                { source: "hibrido", target: "sqlite" },
+                { source: "hibrido", target: "hibrida" },
+
+                // Scraper connections
+                { source: "scraper", target: "python" },
+                { source: "scraper", target: "claude" },
+
+                // Biblioteca connections
+                { source: "biblioteca", target: "mineros" },
+                { source: "biblioteca", target: "memoria" },
+
+                // Methodology connections
+                { source: "mineros", target: "kiss" },
+                { source: "hitl", target: "claude" },
+                { source: "hibrida", target: "rag" },
+                { source: "memoria", target: "mineros" },
+
+                // Tech interconnections
+                { source: "chromadb", target: "embeddings" },
+                { source: "rag", target: "embeddings" },
+                { source: "ollama", target: "rag" },
+                { source: "flask", target: "python" },
+                { source: "fastapi", target: "python" },
+                { source: "express", target: "nodejs" },
+
+                // Cross-project evolution
+                { source: "docmine", target: "photomine" },
+                { source: "photomine", target: "directos" },
+                { source: "physics-sound", target: "physics-visual" }
+            ]
+        };
+
+        // ============================================
+        // GRAPH SETUP
+        // ============================================
+        const container = document.getElementById('graph-container');
+        const svg = d3.select('#graph');
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        // Color scales
+        const typeColors = {
+            project: '#3b82f6',
+            tech: '#22c55e',
+            methodology: '#a855f7',
+            concept: '#f59e0b'
+        };
+
+        const statusColors = {
+            produccion: '#10b981',
+            activo: '#3b82f6',
+            completado: '#6366f1'
+        };
+
+        // Node size based on connections
+        const linkCount = {};
+        graphData.links.forEach(l => {
+            linkCount[l.source] = (linkCount[l.source] || 0) + 1;
+            linkCount[l.target] = (linkCount[l.target] || 0) + 1;
+        });
+
+        graphData.nodes.forEach(n => {
+            n.connections = linkCount[n.id] || 0;
+            n.radius = Math.max(8, Math.min(25, 6 + n.connections * 1.5));
+        });
+
+        // Create container group for zoom
+        const g = svg.append('g');
+
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([0.2, 4])
+            .on('zoom', (event) => {
+                g.attr('transform', event.transform);
+            });
+
+        svg.call(zoom);
+
+        // Force simulation
+        const simulation = d3.forceSimulation(graphData.nodes)
+            .force('link', d3.forceLink(graphData.links).id(d => d.id).distance(100))
+            .force('charge', d3.forceManyBody().strength(-300))
+            .force('center', d3.forceCenter(width / 2, height / 2))
+            .force('collision', d3.forceCollide().radius(d => d.radius + 10));
+
+        // Create links
+        const link = g.append('g')
+            .attr('class', 'links')
+            .selectAll('line')
+            .data(graphData.links)
+            .enter()
+            .append('line')
+            .attr('class', 'link')
+            .attr('stroke-width', 1);
+
+        // Create nodes
+        const node = g.append('g')
+            .attr('class', 'nodes')
+            .selectAll('g')
+            .data(graphData.nodes)
+            .enter()
+            .append('g')
+            .attr('class', 'node')
+            .call(d3.drag()
+                .on('start', dragStarted)
+                .on('drag', dragged)
+                .on('end', dragEnded));
+
+        // Node circles
+        node.append('circle')
+            .attr('r', d => d.radius)
+            .attr('fill', d => {
+                if (d.type === 'project' && d.status) {
+                    return statusColors[d.status] || typeColors[d.type];
+                }
+                return typeColors[d.type];
+            })
+            .attr('stroke', d => typeColors[d.type])
+            .attr('stroke-opacity', 0.5);
+
+        // Node icons/initials
+        node.append('text')
+            .attr('class', 'icon')
+            .attr('dy', 1)
+            .text(d => d.label.charAt(0).toUpperCase());
+
+        // Node labels (hidden by default)
+        node.append('text')
+            .attr('class', 'label')
+            .attr('dy', d => d.radius + 14)
+            .text(d => d.label);
+
+        // Tooltip
+        const tooltip = document.getElementById('tooltip');
+
+        node.on('mouseenter', (event, d) => {
+            showTooltip(event, d);
+            highlightConnections(d);
+        })
+        .on('mouseleave', () => {
+            hideTooltip();
+            resetHighlight();
+        })
+        .on('click', (event, d) => {
+            focusNode(d);
+        });
+
+        // Update positions on tick
+        simulation.on('tick', () => {
+            link
+                .attr('x1', d => d.source.x)
+                .attr('y1', d => d.source.y)
+                .attr('x2', d => d.target.x)
+                .attr('y2', d => d.target.y);
+
+            node.attr('transform', d => `translate(${d.x},${d.y})`);
+        });
+
+        // ============================================
+        // INTERACTIONS
+        // ============================================
+        function dragStarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragEnded(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        function showTooltip(event, d) {
+            const connectedNodes = graphData.links
+                .filter(l => l.source.id === d.id || l.target.id === d.id)
+                .map(l => l.source.id === d.id ? l.target.label : l.source.label);
+
+            tooltip.innerHTML = `
+                <div class="tooltip-header">
+                    <div class="tooltip-icon" style="background: ${typeColors[d.type]}30; color: ${typeColors[d.type]}">
+                        <i class="fa-solid fa-${d.type === 'project' ? 'rocket' : d.type === 'tech' ? 'code' : d.type === 'methodology' ? 'sitemap' : 'lightbulb'}"></i>
+                    </div>
+                    <div>
+                        <div class="tooltip-title">${d.label}</div>
+                        <div class="tooltip-type">${d.type}${d.status ? ' · ' + d.status : ''}</div>
+                    </div>
+                </div>
+                <div class="tooltip-desc">${d.desc || ''}</div>
+                <div class="tooltip-connections">
+                    <strong>${d.connections}</strong> conexiones: ${connectedNodes.slice(0, 5).join(', ')}${connectedNodes.length > 5 ? '...' : ''}
+                </div>
+            `;
+
+            tooltip.style.left = (event.pageX + 15) + 'px';
+            tooltip.style.top = (event.pageY - 10) + 'px';
+            tooltip.classList.add('visible');
+        }
+
+        function hideTooltip() {
+            tooltip.classList.remove('visible');
+        }
+
+        function highlightConnections(d) {
+            const connectedIds = new Set([d.id]);
+            graphData.links.forEach(l => {
+                if (l.source.id === d.id) connectedIds.add(l.target.id);
+                if (l.target.id === d.id) connectedIds.add(l.source.id);
+            });
+
+            node.classed('dimmed', n => !connectedIds.has(n.id));
+            link.classed('dimmed', l => l.source.id !== d.id && l.target.id !== d.id);
+            link.classed('highlighted', l => l.source.id === d.id || l.target.id === d.id);
+        }
+
+        function resetHighlight() {
+            node.classed('dimmed', false);
+            link.classed('dimmed', false);
+            link.classed('highlighted', false);
+        }
+
+        function focusNode(d) {
+            const transform = d3.zoomIdentity
+                .translate(width / 2, height / 2)
+                .scale(1.5)
+                .translate(-d.x, -d.y);
+
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, transform);
+        }
+
+        // ============================================
+        // CONTROLS
+        // ============================================
+        function zoomIn() {
+            svg.transition().duration(300).call(zoom.scaleBy, 1.3);
+        }
+
+        function zoomOut() {
+            svg.transition().duration(300).call(zoom.scaleBy, 0.7);
+        }
+
+        function resetView() {
+            svg.transition().duration(750).call(
+                zoom.transform,
+                d3.zoomIdentity.translate(width / 2, height / 2).scale(0.8).translate(-width / 2, -height / 2)
+            );
+        }
+
+        let labelsVisible = false;
+        function toggleLabels() {
+            labelsVisible = !labelsVisible;
+            node.selectAll('.label').style('opacity', labelsVisible ? 1 : 0);
+        }
+
+        // ============================================
+        // FILTERS
+        // ============================================
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                if (filter === 'all') {
+                    node.style('opacity', 1);
+                    link.style('opacity', 1);
+                } else {
+                    node.style('opacity', d => d.type === filter ? 1 : 0.15);
+                    link.style('opacity', l =>
+                        (l.source.type === filter || l.target.type === filter) ? 0.6 : 0.05
+                    );
+                }
+            });
+        });
+
+        document.querySelectorAll('.filter-btn[data-status]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const status = btn.dataset.status;
+
+                node.style('opacity', d => {
+                    if (d.type !== 'project') return 0.15;
+                    return d.status === status ? 1 : 0.15;
+                });
+                link.style('opacity', 0.1);
+            });
+        });
+
+        // Search
+        document.getElementById('search').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+
+            if (!query) {
+                node.style('opacity', 1);
+                link.style('opacity', 1);
+                return;
+            }
+
+            const matchingIds = new Set();
+            graphData.nodes.forEach(n => {
+                if (n.label.toLowerCase().includes(query) ||
+                    (n.desc && n.desc.toLowerCase().includes(query))) {
+                    matchingIds.add(n.id);
+                }
+            });
+
+            node.style('opacity', d => matchingIds.has(d.id) ? 1 : 0.1);
+            link.style('opacity', 0.1);
+
+            // Focus on first match
+            if (matchingIds.size > 0) {
+                const firstMatch = graphData.nodes.find(n => matchingIds.has(n.id));
+                if (firstMatch && firstMatch.x) {
+                    focusNode(firstMatch);
+                }
+            }
+        });
+
+        // Toggle sidebar
+        document.getElementById('toggle-sidebar').addEventListener('click', () => {
+            const sidebar = document.getElementById('sidebar');
+            const graphContainer = document.getElementById('graph-container');
+            const zoomControls = document.getElementById('zoom-controls');
+            const toggleBtn = document.getElementById('toggle-sidebar');
+
+            sidebar.classList.toggle('collapsed');
+            graphContainer.classList.toggle('expanded');
+            zoomControls.classList.toggle('expanded');
+            toggleBtn.classList.toggle('collapsed');
+
+            const icon = toggleBtn.querySelector('i');
+            icon.classList.toggle('fa-chevron-left');
+            icon.classList.toggle('fa-chevron-right');
+        });
+
+        // ============================================
+        // STATS
+        // ============================================
+        function updateStats() {
+            document.getElementById('stat-nodes').textContent = graphData.nodes.length;
+            document.getElementById('stat-links').textContent = graphData.links.length;
+
+            const counts = { all: graphData.nodes.length };
+            graphData.nodes.forEach(n => {
+                counts[n.type] = (counts[n.type] || 0) + 1;
+            });
+
+            document.getElementById('count-all').textContent = counts.all;
+            document.getElementById('count-project').textContent = counts.project || 0;
+            document.getElementById('count-tech').textContent = counts.tech || 0;
+            document.getElementById('count-methodology').textContent = counts.methodology || 0;
+            document.getElementById('count-concept').textContent = counts.concept || 0;
+        }
+
+        updateStats();
+
+        // Initial zoom to fit
+        setTimeout(() => {
+            resetView();
+        }, 500);
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            const newWidth = container.clientWidth;
+            const newHeight = container.clientHeight;
+            simulation.force('center', d3.forceCenter(newWidth / 2, newHeight / 2));
+            simulation.alpha(0.3).restart();
+        });
+    </script>
+</body>
+</html>
