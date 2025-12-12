@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude -p + Memoria Evolutiva</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+        }
+        .slide {
+            min-height: 100vh;
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 2px solid #333;
+        }
+        .slide:nth-child(odd) { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+        .slide:nth-child(even) { background: linear-gradient(135deg, #16213e 0%, #0f3460 100%); }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 20px; color: #e94560; }
+        h2 { font-size: 1.6rem; margin-bottom: 25px; color: #0f9b8e; }
+        h3 { font-size: 1.2rem; margin: 20px 0 12px 0; color: #ffc857; }
+
+        .two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .card.highlight { border-left: 4px solid #e94560; }
+        .card.success { border-left: 4px solid #22c55e; }
+        .card.warning { border-left: 4px solid #f59e0b; }
+
+        code {
+            background: #1e40af;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .insight-box {
+            background: rgba(233, 69, 96, 0.15);
+            border-left: 4px solid #e94560;
+            padding: 18px 22px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+            max-width: 900px;
+        }
+        .insight-box h4 { color: #e94560; margin-bottom: 8px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; }
+        th, td { padding: 12px; text-align: left; border: 1px solid #333; }
+        th { background: #2d3748; }
+
+        .check { color: #22c55e; }
+        .cross { color: #ef4444; }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+        }
+        .step-num {
+            background: #e94560;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+        .nav button {
+            padding: 10px 18px;
+            background: #e94560;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .nav button:hover { transform: scale(1.05); }
+
+        .toc {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.85);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            z-index: 100;
+        }
+        .toc a { color: #aaa; text-decoration: none; display: block; padding: 4px 0; }
+        .toc a:hover { color: #e94560; }
+        .toc-title { color: #e94560; font-weight: bold; margin-bottom: 10px; }
+
+        .command-box {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+        .command-box .prompt { color: #7ee787; }
+        .command-box .flag { color: #79c0ff; }
+        .command-box .string { color: #a5d6ff; }
+
+        .flywheel {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .flywheel-step {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .flywheel-arrow { color: #666; margin: 0 5px; }
+    </style>
+</head>
+<body>
+    <div class="toc">
+        <div class="toc-title">Claude -p + Memoria</div>
+        <a href="#slide1">1. Qué es claude -p</a>
+        <a href="#slide2">2. Instalación</a>
+        <a href="#slide3">3. Uso Básico</a>
+        <a href="#slide4">4. Integrar en Proyecto</a>
+        <a href="#slide5">5. System Prompt</a>
+        <a href="#slide6">6. Memoria Evolutiva</a>
+        <a href="#slide7">7. Implementación</a>
+        <a href="#slide8">8. Código Completo</a>
+        <a href="#slide9">9. Checklist</a>
+        <a href="#slide10">10. Multi-Motor</a>
+        <a href="#slide11">11. Niveles Contexto</a>
+        <a href="#slide12">12. Template Universal</a>
+    </div>
+
+    <!-- SLIDE 1 -->
+    <section class="slide" id="slide1">
+        <span class="slide-number">01</span>
+        <h1>Claude -p: Tu Suscripción en Código</h1>
+        <h2>Usa Claude Pro/Max desde cualquier proyecto sin pagar API</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>El Problema</h3>
+                <table>
+                    <tr>
+                        <th>API de Anthropic</th>
+                        <th>claude -p</th>
+                    </tr>
+                    <tr>
+                        <td>Pagas por token</td>
+                        <td><span class="check">Ya pagas suscripción</span></td>
+                    </tr>
+                    <tr>
+                        <td>Necesitas API key</td>
+                        <td><span class="check">Usa tu login</span></td>
+                    </tr>
+                    <tr>
+                        <td>Configuración compleja</td>
+                        <td><span class="check">Un comando</span></td>
+                    </tr>
+                </table>
+
+                <div class="insight-box" style="margin-top: 30px;">
+                    <h4>El Insight</h4>
+                    <p>Si tienes <strong>Claude Pro ($20/mes)</strong> o <strong>Max ($100/mes)</strong>, ya puedes usar Claude desde código.</p>
+                </div>
+            </div>
+
+            <div>
+                <h3>Qué es exactamente</h3>
+                <div class="card">
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        <code>claude -p "prompt"</code> es un comando de <strong>Claude Code CLI</strong> que:
+                    </p>
+                    <ul style="margin-top: 15px; margin-left: 20px; line-height: 2;">
+                        <li>Ejecuta un prompt <strong>sin abrir sesión interactiva</strong></li>
+                        <li>Devuelve la respuesta en <strong>stdout</strong></li>
+                        <li>Usa tu <strong>suscripción activa</strong> (no API)</li>
+                        <li>Permite <strong>integración con scripts</strong></li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 25px;">La Fórmula</h3>
+                <div class="command-box">
+                    <span class="prompt">$</span> claude <span class="flag">-p</span> <span class="string">"tu prompt aquí"</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section class="slide" id="slide2">
+        <span class="slide-number">02</span>
+        <h1>Instalación</h1>
+        <h2>3 pasos para tenerlo funcionando</h2>
+
+        <div style="max-width: 800px;">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div>
+                    <h3 style="margin-top: 0;">Instalar Claude Code CLI</h3>
+                    <div class="command-box">
+                        <span class="prompt">$</span> npm install -g @anthropic-ai/claude-code
+                    </div>
+                    <p style="color: #888; margin-top: 10px;">Requiere Node.js instalado. Si no lo tienes: <code>brew install node</code></p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">2</div>
+                <div>
+                    <h3 style="margin-top: 0;">Autenticarte</h3>
+                    <div class="command-box">
+                        <span class="prompt">$</span> claude login
+                    </div>
+                    <p style="color: #888; margin-top: 10px;">Se abre el navegador. Inicia sesión con tu cuenta Pro/Max.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">3</div>
+                <div>
+                    <h3 style="margin-top: 0;">Verificar</h3>
+                    <div class="command-box">
+                        <span class="prompt">$</span> claude <span class="flag">-p</span> <span class="string">"Responde solo: OK"</span>
+                    </div>
+                    <p style="color: #888; margin-top: 10px;">Si responde "OK", está listo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box" style="margin-top: 30px;">
+            <h4>Troubleshooting</h4>
+            <p><strong>Error "not logged in":</strong> Ejecuta <code>claude login</code> de nuevo</p>
+            <p><strong>Error "command not found":</strong> Añade npm global a tu PATH</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section class="slide" id="slide3">
+        <span class="slide-number">03</span>
+        <h1>Uso Básico</h1>
+        <h2>Comandos esenciales que debes conocer</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Prompt Simple</h3>
+                <div class="command-box">
+                    <span class="prompt">$</span> claude <span class="flag">-p</span> <span class="string">"Explica qué es RAG en 2 líneas"</span>
+                </div>
+
+                <h3>Salida JSON</h3>
+                <div class="command-box">
+                    <span class="prompt">$</span> claude <span class="flag">-p</span> <span class="string">"Dame 3 colores en JSON"</span> <span class="flag">--output-format</span> json
+                </div>
+
+                <h3>Desde archivo</h3>
+                <div class="command-box">
+                    <span class="prompt">$</span> cat archivo.txt | claude <span class="flag">-p</span> <span class="string">"Resume este texto"</span>
+                </div>
+
+                <h3>Guardar resultado</h3>
+                <div class="command-box">
+                    <span class="prompt">$</span> claude <span class="flag">-p</span> <span class="string">"Genera código Python"</span> > output.py
+                </div>
+            </div>
+
+            <div>
+                <h3>Flags Útiles</h3>
+                <table>
+                    <tr>
+                        <th>Flag</th>
+                        <th>Uso</th>
+                    </tr>
+                    <tr>
+                        <td><code>-p "prompt"</code></td>
+                        <td>Prompt directo (no interactivo)</td>
+                    </tr>
+                    <tr>
+                        <td><code>--output-format json</code></td>
+                        <td>Forzar salida JSON</td>
+                    </tr>
+                    <tr>
+                        <td><code>--no-markdown</code></td>
+                        <td>Sin formato markdown</td>
+                    </tr>
+                    <tr>
+                        <td><code>--max-tokens N</code></td>
+                        <td>Limitar respuesta</td>
+                    </tr>
+                </table>
+
+                <div class="card success" style="margin-top: 25px;">
+                    <h4 style="color: #22c55e;">Ejemplo Real: VideoNotes</h4>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">
+                        VideoNotes usa <code>claude -p</code> para resumir transcripciones de YouTube sin coste de API.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4 -->
+    <section class="slide" id="slide4">
+        <span class="slide-number">04</span>
+        <h1>Integrar en Tu Proyecto</h1>
+        <h2>Python, JavaScript, Bash - funciona en todos</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Python (subprocess)</h3>
+                <pre><span style="color: #7ee787;">import</span> subprocess
+<span style="color: #7ee787;">import</span> json
+
+<span style="color: #7ee787;">def</span> <span style="color: #d2a8ff;">ask_claude</span>(prompt):
+    result = subprocess.run(
+        [<span style="color: #a5d6ff;">"claude"</span>, <span style="color: #a5d6ff;">"-p"</span>, prompt,
+         <span style="color: #a5d6ff;">"--output-format"</span>, <span style="color: #a5d6ff;">"json"</span>],
+        capture_output=<span style="color: #ff7b72;">True</span>,
+        text=<span style="color: #ff7b72;">True</span>
+    )
+    <span style="color: #7ee787;">return</span> result.stdout
+
+<span style="color: #8b949e;"># Uso</span>
+respuesta = ask_claude(<span style="color: #a5d6ff;">"Explica KISS"</span>)
+print(respuesta)</pre>
+            </div>
+
+            <div>
+                <h3>JavaScript (Node.js)</h3>
+                <pre><span style="color: #7ee787;">const</span> { execSync } = <span style="color: #7ee787;">require</span>(<span style="color: #a5d6ff;">'child_process'</span>);
+
+<span style="color: #7ee787;">function</span> <span style="color: #d2a8ff;">askClaude</span>(prompt) {
+    <span style="color: #7ee787;">const</span> cmd = <span style="color: #a5d6ff;">`claude -p "${prompt}"`</span>;
+    <span style="color: #7ee787;">return</span> execSync(cmd, {
+        encoding: <span style="color: #a5d6ff;">'utf-8'</span>
+    });
+}
+
+<span style="color: #8b949e;">// Uso</span>
+<span style="color: #7ee787;">const</span> resp = askClaude(<span style="color: #a5d6ff;">"Explica KISS"</span>);
+console.log(resp);</pre>
+
+                <h3 style="margin-top: 20px;">Bash</h3>
+                <pre>response=$(claude -p "Explica KISS")
+echo "$response"</pre>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h4>FastAPI Endpoint</h4>
+            <p>Puedes crear un endpoint que internamente llame a <code>claude -p</code>. Así tu frontend habla con tu backend, y tu backend con Claude.</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 5 -->
+    <section class="slide" id="slide5">
+        <span class="slide-number">05</span>
+        <h1>System Prompt Personalizado</h1>
+        <h2>Dale identidad a TU Claude</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>El Problema</h3>
+                <div class="card">
+                    <p>Claude genérico no conoce:</p>
+                    <ul style="margin: 15px 0 0 20px; line-height: 1.8;">
+                        <li>Tu proyecto</li>
+                        <li>Tus herramientas</li>
+                        <li>Tu estilo de respuesta preferido</li>
+                        <li>Tu contexto específico</li>
+                    </ul>
+                </div>
+
+                <h3>La Solución</h3>
+                <div class="card success">
+                    <p><strong>System Prompt</strong>: Instrucción que define quién es Claude para TI.</p>
+                </div>
+
+                <h3>Estructura Recomendada</h3>
+                <pre style="font-size: 0.8rem;"><span style="color: #22c55e;">## Tu Identidad</span>
+Eres [nombre], experto en [dominio].
+
+<span style="color: #22c55e;">## Tu Conocimiento</span>
+- Herramientas: [lista]
+- Stack: [tecnologías]
+
+<span style="color: #22c55e;">## Reglas</span>
+1. Responde en [idioma/formato]
+2. Sé [conciso/detallado]
+3. Evita [X, Y, Z]</pre>
+            </div>
+
+            <div>
+                <h3>Ejemplo: Asistente de Farmacia</h3>
+                <pre style="font-size: 0.75rem;"><span style="color: #7ee787;">SYSTEM_PROMPT</span> = <span style="color: #a5d6ff;">"""
+Eres FarmaBot, asistente de farmacia comunitaria.
+
+## Conocimiento
+- 25,000+ medicamentos (CIMA API)
+- 79 interacciones graves codificadas
+- Protocolos SEFAC
+
+## Reglas
+1. NUNCA diagnostiques
+2. Ante duda, deriva al médico
+3. Respuestas breves y prácticas
+4. Detecta emergencias (112)
+"""</span>
+
+<span style="color: #7ee787;">def</span> <span style="color: #d2a8ff;">ask_farma</span>(pregunta):
+    prompt = f<span style="color: #a5d6ff;">"{SYSTEM_PROMPT}\n\n{pregunta}"</span>
+    <span style="color: #7ee787;">return</span> ask_claude(prompt)</pre>
+
+                <div class="card warning" style="margin-top: 20px;">
+                    <h4 style="color: #f59e0b;">Buenas Prácticas</h4>
+                    <ul style="font-size: 0.85rem; margin-top: 10px;">
+                        <li><span class="check">✓</span> Identidad específica (no "eres un asistente")</li>
+                        <li><span class="check">✓</span> Lista explícita de herramientas</li>
+                        <li><span class="check">✓</span> Reglas de formato claras</li>
+                        <li><span class="cross">✗</span> Prompts genéricos sin contexto</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 6 -->
+    <section class="slide" id="slide6">
+        <span class="slide-number">06</span>
+        <h1>Memoria Evolutiva</h1>
+        <h2>El multiplicador que hace a Claude conocerte</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Sin Memoria vs Con Memoria</h3>
+                <table>
+                    <tr>
+                        <th>Sin Memoria</th>
+                        <th>Con Memoria</th>
+                    </tr>
+                    <tr>
+                        <td>Cada llamada empieza de cero</td>
+                        <td>Cada llamada conoce el historial</td>
+                    </tr>
+                    <tr>
+                        <td>Claude genérico</td>
+                        <td><strong>Claude-TÚ</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Mismo esfuerzo siempre</td>
+                        <td>Esfuerzo decreciente</td>
+                    </tr>
+                </table>
+
+                <h3 style="margin-top: 25px;">El Efecto Flywheel</h3>
+                <div class="flywheel">
+                    <span class="flywheel-step" style="background: #3b82f6;">Usas el sistema</span>
+                    <span class="flywheel-arrow">→</span>
+                    <span class="flywheel-step" style="background: #a855f7;">Memoria guarda</span>
+                    <span class="flywheel-arrow">→</span>
+                    <span class="flywheel-step" style="background: #f59e0b;">Claude te conoce</span>
+                    <br><br>
+                    <span class="flywheel-step" style="background: #22c55e;">↑ Trabajas más rápido ←←←←←←←←←</span>
+                </div>
+            </div>
+
+            <div>
+                <h3>Qué Guardar</h3>
+                <div class="card">
+                    <table style="font-size: 0.85rem;">
+                        <tr><th>Dato</th><th>Por qué</th></tr>
+                        <tr><td>Acciones frecuentes</td><td>Sugerir atajos</td></tr>
+                        <tr><td>Preferencias</td><td>Personalizar respuestas</td></tr>
+                        <tr><td>Errores pasados</td><td>Evitar repetirlos</td></tr>
+                        <tr><td>Historial chat</td><td>Contexto conversacional</td></tr>
+                    </table>
+                </div>
+
+                <h3 style="margin-top: 20px;">Dónde Guardar</h3>
+                <div class="card">
+                    <ul style="font-size: 0.9rem; line-height: 1.8;">
+                        <li><strong>localStorage</strong> - Web apps (simple)</li>
+                        <li><strong>SQLite</strong> - Apps Python/Node</li>
+                        <li><strong>JSON file</strong> - Scripts simples</li>
+                    </ul>
+                </div>
+
+                <div class="insight-box" style="margin-top: 20px;">
+                    <h4>La Clave</h4>
+                    <p>Cada interacción debe <strong>enseñar algo</strong> al sistema.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 7 -->
+    <section class="slide" id="slide7">
+        <span class="slide-number">07</span>
+        <h1>Implementación Paso a Paso</h1>
+        <h2>4 componentes para memoria evolutiva</h2>
+
+        <div class="two-cols">
+            <div>
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <h3 style="margin-top: 0;">SYSTEM_PROMPT</h3>
+                        <p style="font-size: 0.9rem;">Identidad fija del asistente</p>
+                        <pre style="font-size: 0.75rem; margin-top: 10px;">SYSTEM_PROMPT = """
+Eres MiAsistente.
+Conoces: [herramientas]
+Reglas: [formato]
+"""</pre>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h3 style="margin-top: 0;">MEMORY</h3>
+                        <p style="font-size: 0.9rem;">Objeto que persiste datos</p>
+                        <pre style="font-size: 0.75rem; margin-top: 10px;">Memory = {
+    load(): leer de disco,
+    save(): guardar a disco,
+    track(accion): registrar uso,
+    get_summary(): resumen para LLM
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h3 style="margin-top: 0;">build_context()</h3>
+                        <p style="font-size: 0.9rem;">Construye contexto dinámico</p>
+                        <pre style="font-size: 0.75rem; margin-top: 10px;">def build_context():
+    return f"""
+{SYSTEM_PROMPT}
+
+## Tu Memoria
+{Memory.get_summary()}
+
+## Historial Reciente
+{get_last_messages(5)}
+"""</pre>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div>
+                        <h3 style="margin-top: 0;">ask_claude()</h3>
+                        <p style="font-size: 0.9rem;">Función unificada</p>
+                        <pre style="font-size: 0.75rem; margin-top: 10px;">def ask_claude(pregunta):
+    ctx = build_context()
+    prompt = f"{ctx}\n\n{pregunta}"
+    resp = subprocess.run(...)
+    Memory.track(pregunta, resp)
+    return resp</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 8 -->
+    <section class="slide" id="slide8">
+        <span class="slide-number">08</span>
+        <h1>Código Completo</h1>
+        <h2>Copia y adapta a tu proyecto</h2>
+
+        <pre style="font-size: 0.7rem; max-height: 70vh; overflow-y: auto;"><span style="color: #7ee787;">import</span> subprocess
+<span style="color: #7ee787;">import</span> json
+<span style="color: #7ee787;">from</span> pathlib <span style="color: #7ee787;">import</span> Path
+
+<span style="color: #8b949e;"># ============ 1. SYSTEM PROMPT ============</span>
+<span style="color: #7ee787;">SYSTEM_PROMPT</span> = <span style="color: #a5d6ff;">"""
+Eres MiAsistente, experto en desarrollo web.
+
+## Conocimiento
+- Stack: Python, FastAPI, JavaScript, SQLite
+- Metodología: KISS, local-first
+
+## Reglas
+1. Respuestas concisas
+2. Código funcional, no placeholder
+3. Explica el por qué, no solo el cómo
+"""</span>
+
+<span style="color: #8b949e;"># ============ 2. MEMORY ============</span>
+<span style="color: #7ee787;">class</span> <span style="color: #d2a8ff;">Memory</span>:
+    FILE = Path(<span style="color: #a5d6ff;">"memory.json"</span>)
+
+    <span style="color: #7ee787;">@classmethod</span>
+    <span style="color: #7ee787;">def</span> <span style="color: #d2a8ff;">load</span>(cls):
+        <span style="color: #7ee787;">if</span> cls.FILE.exists():
+            <span style="color: #7ee787;">return</span> json.loads(cls.FILE.read_text())
+        <span style="color: #7ee787;">return</span> {<span style="color: #a5d6ff;">"history"</span>: [], <span style="color: #a5d6ff;">"actions"</span>: {}, <span style="color: #a5d6ff;">"sessions"</span>: 0}
+
+    <span style="color: #7ee787;">@classmethod</span>
+    <span style="color: #7ee787;">def</span> <span style="color: #d2a8ff;">save</span>(cls, data):
+        cls.FILE.write_text(json.dumps(data, indent=2))
+
+    <span style="color: #7ee787;">@classmethod</span>
+    <span style="color: #7ee787;">def</span> <span style="color: #d2a8ff;">track</span>(cls, question, answer):
+        data = cls.load()
+        data[<span style="color: #a5d6ff;">"history"</span>].append({<span style="color: #a5d6ff;">"q"</span>: question, <span style="color: #a5d6ff;">"a"</span>: answer[:200]})
+        data[<span style="color: #a5d6ff;">"history"</span>] = data[<span style="color: #a5d6ff;">"history"</span>][-50:]  <span style="color: #8b949e;"># Últimas 50</span>
+        cls.save(data)
+
+    <span style="color: #7ee787;">@classmethod</span>
+    <span style="color: #7ee787;">def</span> <span style="color: #d2a8ff;">get_summary</span>(cls):
+        data = cls.load()
+        <span style="color: #7ee787;">return</span> f<span style="color: #a5d6ff;">"""Sesiones: {data['sessions']}
+Preguntas anteriores: {len(data['history'])}
+Última pregunta: {data['history'][-1]['q'] if data['history'] else 'ninguna'}"""</span>
+
+<span style="color: #8b949e;"># ============ 3. BUILD CONTEXT ============</span>
+<span style="color: #7ee787;">def</span> <span style="color: #d2a8ff;">build_context</span>():
+    memory_summary = Memory.get_summary()
+    data = Memory.load()
+    recent = data[<span style="color: #a5d6ff;">"history"</span>][-3:]  <span style="color: #8b949e;"># Últimas 3 interacciones</span>
+
+    history_str = <span style="color: #a5d6ff;">"\n"</span>.join([f<span style="color: #a5d6ff;">"- {h['q']}"</span> <span style="color: #7ee787;">for</span> h <span style="color: #7ee787;">in</span> recent])
+
+    <span style="color: #7ee787;">return</span> f<span style="color: #a5d6ff;">"""{SYSTEM_PROMPT}
+
+## Tu Memoria
+{memory_summary}
+
+## Historial Reciente
+{history_str if history_str else "Primera interacción"}
+"""</span>
+
+<span style="color: #8b949e;"># ============ 4. ASK CLAUDE ============</span>
+<span style="color: #7ee787;">def</span> <span style="color: #d2a8ff;">ask_claude</span>(question):
+    context = build_context()
+    full_prompt = f<span style="color: #a5d6ff;">"{context}\n\n## Pregunta\n{question}"</span>
+
+    result = subprocess.run(
+        [<span style="color: #a5d6ff;">"claude"</span>, <span style="color: #a5d6ff;">"-p"</span>, full_prompt],
+        capture_output=<span style="color: #ff7b72;">True</span>,
+        text=<span style="color: #ff7b72;">True</span>
+    )
+
+    answer = result.stdout.strip()
+    Memory.track(question, answer)
+    <span style="color: #7ee787;">return</span> answer
+
+<span style="color: #8b949e;"># ============ USO ============</span>
+<span style="color: #7ee787;">if</span> __name__ == <span style="color: #a5d6ff;">"__main__"</span>:
+    <span style="color: #8b949e;"># Incrementar contador de sesiones</span>
+    data = Memory.load()
+    data[<span style="color: #a5d6ff;">"sessions"</span>] += 1
+    Memory.save(data)
+
+    <span style="color: #8b949e;"># Preguntar</span>
+    resp = ask_claude(<span style="color: #a5d6ff;">"¿Cómo creo un endpoint FastAPI?"</span>)
+    print(resp)</pre>
+    </section>
+
+    <!-- SLIDE 9 -->
+    <section class="slide" id="slide9">
+        <span class="slide-number">09</span>
+        <h1>Checklist Final</h1>
+        <h2>Verifica que tienes todo configurado</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Instalación</h3>
+                <div class="card">
+                    <ul style="font-size: 0.95rem; line-height: 2;">
+                        <li><input type="checkbox"> Claude Code CLI instalado</li>
+                        <li><input type="checkbox"> <code>claude login</code> ejecutado</li>
+                        <li><input type="checkbox"> <code>claude -p "test"</code> funciona</li>
+                    </ul>
+                </div>
+
+                <h3>System Prompt</h3>
+                <div class="card">
+                    <ul style="font-size: 0.95rem; line-height: 2;">
+                        <li><input type="checkbox"> Identidad específica definida</li>
+                        <li><input type="checkbox"> Lista de herramientas/stack</li>
+                        <li><input type="checkbox"> Reglas de formato claras</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h3>Memoria Evolutiva</h3>
+                <div class="card">
+                    <ul style="font-size: 0.95rem; line-height: 2;">
+                        <li><input type="checkbox"> Clase/objeto Memory creado</li>
+                        <li><input type="checkbox"> Persistencia (JSON/SQLite/localStorage)</li>
+                        <li><input type="checkbox"> track() en cada interacción</li>
+                        <li><input type="checkbox"> get_summary() para el LLM</li>
+                    </ul>
+                </div>
+
+                <h3>Integración</h3>
+                <div class="card">
+                    <ul style="font-size: 0.95rem; line-height: 2;">
+                        <li><input type="checkbox"> build_context() con memoria</li>
+                        <li><input type="checkbox"> ask_claude() unificado</li>
+                        <li><input type="checkbox"> Testeado en tu proyecto</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box" style="margin-top: 30px;">
+            <h4>El Resultado</h4>
+            <p>Tienes un Claude personalizado que:</p>
+            <ul style="margin-top: 10px; margin-left: 20px;">
+                <li><span class="check">✓</span> Conoce tu proyecto y stack</li>
+                <li><span class="check">✓</span> Recuerda interacciones pasadas</li>
+                <li><span class="check">✓</span> Mejora con cada uso (flywheel)</li>
+                <li><span class="check">✓</span> No cuesta tokens extra (usa tu suscripción)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 10 -->
+    <section class="slide" id="slide10">
+        <span class="slide-number">10</span>
+        <h1>Sistema Multi-Motor</h1>
+        <h2>Un contexto, tres motores: Claude, Gemini, OpenAI</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>El Problema</h3>
+                <div class="card">
+                    <p>Cada motor tiene su archivo de contexto:</p>
+                    <ul style="margin: 15px 0 0 20px; line-height: 1.8;">
+                        <li><strong>Claude Code:</strong> <code>CLAUDE.md</code></li>
+                        <li><strong>Cursor:</strong> <code>.cursorrules</code></li>
+                        <li><strong>Copilot:</strong> <code>.github/copilot-instructions.md</code></li>
+                        <li><strong>Gemini:</strong> <code>.gemini.md</code> (no oficial)</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 20px;">La Solución</h3>
+                <div class="card success">
+                    <p><strong>Un archivo base, múltiples symlinks/includes</strong></p>
+                    <pre style="font-size: 0.8rem; margin-top: 10px;">proyecto/
+├── .ai-context/
+│   ├── base.md          # Fuente única
+│   ├── patterns.md      # Patrones
+│   └── memory.md        # Opcional
+│
+├── CLAUDE.md            # → include base.md
+├── .cursorrules         # → include base.md
+└── .gemini.md           # → include base.md</pre>
+                </div>
+            </div>
+
+            <div>
+                <h3>Comparativa de Motores</h3>
+                <table style="font-size: 0.85rem;">
+                    <tr>
+                        <th>Motor</th>
+                        <th>Archivo Nativo</th>
+                        <th>CLI</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Claude Code</strong></td>
+                        <td><code>CLAUDE.md</code></td>
+                        <td><span class="check">✓</span> claude -p</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cursor (GPT/Claude)</strong></td>
+                        <td><code>.cursorrules</code></td>
+                        <td><span class="cross">✗</span> IDE only</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GitHub Copilot</strong></td>
+                        <td><code>copilot-instructions.md</code></td>
+                        <td><span class="check">✓</span> gh copilot</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gemini</strong></td>
+                        <td>System Instructions</td>
+                        <td><span class="cross">✗</span> Limitado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ChatGPT</strong></td>
+                        <td>Custom GPTs</td>
+                        <td><span class="cross">✗</span> Web only</td>
+                    </tr>
+                </table>
+
+                <div class="insight-box" style="margin-top: 20px;">
+                    <h4>Ventaja</h4>
+                    <p>Mantén <strong>una sola fuente de verdad</strong>. Cambia de motor sin reescribir contexto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 11 -->
+    <section class="slide" id="slide11">
+        <span class="slide-number">11</span>
+        <h1>Niveles de Contexto</h1>
+        <h2>No todo proyecto necesita memoria evolutiva</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Elige según complejidad</h3>
+                <table>
+                    <tr>
+                        <th>Nivel</th>
+                        <th>Proyecto</th>
+                        <th>¿Qué usar?</th>
+                    </tr>
+                    <tr>
+                        <td style="background: #374151;"><strong>0</strong></td>
+                        <td>Script simple, one-shot</td>
+                        <td>Nada</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #1e40af;"><strong>1</strong></td>
+                        <td>Proyecto pequeño</td>
+                        <td><code>base.md</code> estático</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #7e22ce;"><strong>2</strong></td>
+                        <td>Proyecto mediano</td>
+                        <td><code>base.md</code> + <code>patterns.md</code></td>
+                    </tr>
+                    <tr>
+                        <td style="background: #be123c;"><strong>3</strong></td>
+                        <td>Proyecto largo plazo</td>
+                        <td>Todo + memoria evolutiva</td>
+                    </tr>
+                </table>
+
+                <h3 style="margin-top: 25px;">Cuándo usar cada nivel</h3>
+                <div class="card">
+                    <ul style="font-size: 0.9rem; line-height: 1.8;">
+                        <li><strong>Nivel 0:</strong> "Hazme un regex para emails"</li>
+                        <li><strong>Nivel 1:</strong> Landing page, script de backup</li>
+                        <li><strong>Nivel 2:</strong> API con varios endpoints, app móvil</li>
+                        <li><strong>Nivel 3:</strong> SaaS, proyecto de tesis, producto</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h3>Estructura por Nivel</h3>
+
+                <div class="card" style="margin-bottom: 15px;">
+                    <h4 style="color: #3b82f6;">Nivel 1 - Solo base.md</h4>
+                    <pre style="font-size: 0.75rem; margin-top: 8px;">.ai-context/
+└── base.md    # Stack, convenciones básicas</pre>
+                </div>
+
+                <div class="card" style="margin-bottom: 15px;">
+                    <h4 style="color: #a855f7;">Nivel 2 - Base + Patterns</h4>
+                    <pre style="font-size: 0.75rem; margin-top: 8px;">.ai-context/
+├── base.md       # Stack, estructura
+└── patterns.md   # Cómo hacemos X, Y, Z</pre>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: #e94560;">Nivel 3 - Completo</h4>
+                    <pre style="font-size: 0.75rem; margin-top: 8px;">.ai-context/
+├── base.md       # Stack, estructura
+├── patterns.md   # Patrones del proyecto
+├── decisions.md  # ADRs (decisiones)
+└── memory.md     # Historial evolutivo</pre>
+                </div>
+
+                <div class="insight-box" style="margin-top: 15px;">
+                    <h4>Regla simple</h4>
+                    <p>Si vas a trabajar en el proyecto <strong>más de 1 semana</strong>, usa al menos Nivel 2.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 12 -->
+    <section class="slide" id="slide12">
+        <span class="slide-number">12</span>
+        <h1>Template Universal</h1>
+        <h2>Copia esto como punto de partida</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>base.md (agnóstico al motor)</h3>
+                <pre style="font-size: 0.75rem; max-height: 50vh; overflow-y: auto;"><span style="color: #22c55e;"># Proyecto: [NOMBRE]</span>
+
+<span style="color: #22c55e;">## Stack</span>
+- Backend: [Python/Node/Go...]
+- Frontend: [React/Vue/Vanilla...]
+- DB: [SQLite/PostgreSQL/MongoDB...]
+- Hosting: [Local/Vercel/Railway...]
+
+<span style="color: #22c55e;">## Estructura</span>
+```
+proyecto/
+├── src/           # Código fuente
+├── tests/         # Tests
+├── docs/          # Documentación
+└── scripts/       # Utilidades
+```
+
+<span style="color: #22c55e;">## Convenciones</span>
+- Idioma código: [español/inglés]
+- Formato: [tabs/spaces, comillas]
+- Nombres: [camelCase/snake_case]
+
+<span style="color: #22c55e;">## Reglas</span>
+1. Código funcional, no placeholders
+2. [Regla específica del proyecto]
+3. [Otra regla]
+
+<span style="color: #22c55e;">## Contexto</span>
+[Descripción breve del proyecto y su objetivo]</pre>
+            </div>
+
+            <div>
+                <h3>Script generador (opcional)</h3>
+                <pre style="font-size: 0.75rem;"><span style="color: #8b949e;">#!/bin/bash</span>
+<span style="color: #8b949e;"># generate-ai-context.sh</span>
+
+<span style="color: #7ee787;">mkdir</span> -p .ai-context
+
+<span style="color: #8b949e;"># Crear CLAUDE.md</span>
+<span style="color: #7ee787;">cat</span> > CLAUDE.md << 'EOF'
+<span style="color: #8b949e;"># Contexto del Proyecto</span>
+<span style="color: #8b949e;"># Ver .ai-context/base.md para detalles</span>
+
+$(cat .ai-context/base.md)
+EOF
+
+<span style="color: #8b949e;"># Crear .cursorrules</span>
+<span style="color: #7ee787;">cp</span> CLAUDE.md .cursorrules
+
+<span style="color: #8b949e;"># Crear para Copilot</span>
+<span style="color: #7ee787;">mkdir</span> -p .github
+<span style="color: #7ee787;">cp</span> CLAUDE.md .github/copilot-instructions.md
+
+<span style="color: #7ee787;">echo</span> "Contexto generado para todos los motores"</pre>
+
+                <h3 style="margin-top: 20px;">Checklist Multi-Motor</h3>
+                <div class="card">
+                    <ul style="font-size: 0.9rem; line-height: 2;">
+                        <li><input type="checkbox"> Crear <code>.ai-context/base.md</code></li>
+                        <li><input type="checkbox"> Generar archivos por motor</li>
+                        <li><input type="checkbox"> Añadir <code>.ai-context/</code> a git</li>
+                        <li><input type="checkbox"> Decidir nivel (1, 2 o 3)</li>
+                        <li><input type="checkbox"> Si nivel 3: implementar memoria</li>
+                    </ul>
+                </div>
+
+                <div class="card success" style="margin-top: 15px;">
+                    <h4 style="color: #22c55e;">Resultado</h4>
+                    <p style="font-size: 0.9rem;">Un sistema de contexto que funciona con Claude, Cursor, Copilot, y cualquier motor futuro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navegación -->
+    <div class="nav">
+        <button onclick="prevSlide()">← Anterior</button>
+        <button onclick="nextSlide()">Siguiente →</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            if (n >= slides.length) n = 0;
+            if (n < 0) n = slides.length - 1;
+            currentSlide = n;
+            slides[n].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    currentSlide = Array.from(slides).indexOf(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>

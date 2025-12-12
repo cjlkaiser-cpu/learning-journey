@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code - Buenas Prácticas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #e94560;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #0f9b8e;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 20px 0 12px 0;
+            color: #ffc857;
+        }
+
+        .diagram {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+            margin: 25px auto;
+        }
+
+        .component {
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .component h4 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .component .subtitle {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        .component ul {
+            text-align: left;
+            padding-left: 18px;
+        }
+
+        .component li {
+            margin: 6px 0;
+            font-size: 0.9rem;
+        }
+
+        .skills { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); }
+        .mcp { background: linear-gradient(135deg, #047857 0%, #10b981 100%); }
+        .slash { background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%); }
+        .subagent { background: linear-gradient(135deg, #b45309 0%, #f59e0b 100%); }
+
+        table {
+            width: 100%;
+            max-width: 1100px;
+            margin: 15px auto;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: #2d3748;
+            font-weight: 600;
+        }
+
+        th:nth-child(2) { color: #3b82f6; }
+        th:nth-child(3) { color: #10b981; }
+        th:nth-child(4) { color: #f59e0b; }
+        th:nth-child(5) { color: #ef4444; }
+
+        td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .check { color: #10b981; }
+        .cross { color: #ef4444; }
+
+        .insight-box {
+            background: rgba(233, 69, 96, 0.15);
+            border-left: 4px solid #e94560;
+            padding: 18px 22px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+            max-width: 900px;
+        }
+
+        .insight-box h4 {
+            color: #e94560;
+            margin-bottom: 8px;
+        }
+
+        .insight-box p {
+            line-height: 1.5;
+            margin: 8px 0;
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .nav button {
+            padding: 10px 18px;
+            background: #e94560;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: transform 0.2s;
+        }
+
+        .nav button:hover {
+            transform: scale(1.05);
+        }
+
+        .toc {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.85);
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            z-index: 100;
+            max-height: 90vh;
+            overflow-y: auto;
+            max-width: 200px;
+        }
+
+        .toc a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            padding: 4px 0;
+        }
+
+        .toc a:hover {
+            color: #e94560;
+        }
+
+        .toc-section {
+            color: #e94560;
+            font-weight: bold;
+            margin-top: 8px;
+            font-size: 0.8rem;
+        }
+
+        .highlight {
+            background: rgba(249, 158, 11, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Código */
+        .code-block {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 18px;
+            margin: 15px 0;
+            overflow-x: auto;
+            border: 1px solid #30363d;
+            max-width: 900px;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #c9d1d9;
+        }
+
+        .code-title {
+            background: #161b22;
+            color: #8b949e;
+            padding: 8px 15px;
+            border-radius: 8px 8px 0 0;
+            font-size: 0.8rem;
+            margin-bottom: -8px;
+            border: 1px solid #30363d;
+            border-bottom: none;
+            max-width: 900px;
+        }
+
+        .code-block.with-title {
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* Grid de ejemplos */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px 0;
+        }
+
+        .example-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #333;
+        }
+
+        .example-card h4 {
+            color: #0f9b8e;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .example-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 12px;
+        }
+
+        /* Best practice cards */
+        .bp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            max-width: 1000px;
+            margin: 20px 0;
+        }
+
+        .bp-card {
+            background: rgba(16, 155, 142, 0.1);
+            border-left: 3px solid #0f9b8e;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .bp-card.warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left-color: #ef4444;
+        }
+
+        .bp-card h5 {
+            color: #0f9b8e;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .bp-card.warning h5 {
+            color: #ef4444;
+        }
+
+        .bp-card p, .bp-card li {
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .bp-card ul {
+            padding-left: 18px;
+            margin-top: 8px;
+        }
+
+        /* Estructura de archivos */
+        .file-tree {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 18px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            border: 1px solid #30363d;
+            max-width: 500px;
+        }
+
+        .file-tree .folder { color: #58a6ff; }
+        .file-tree .file { color: #c9d1d9; }
+        .file-tree .comment { color: #8b949e; }
+
+        /* Decision flow */
+        .decision-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 20px 0;
+        }
+
+        .decision-card {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .decision-card h4 {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .decision-card ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .decision-card li {
+            margin: 6px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin: 2px;
+        }
+
+        .tag-blue { background: #1e40af; }
+        .tag-green { background: #047857; }
+        .tag-red { background: #b91c1c; }
+        .tag-orange { background: #b45309; }
+
+        /* Two columns */
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1100px;
+        }
+
+        @media (max-width: 900px) {
+            .two-cols, .decision-grid, .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            .toc { display: none; }
+            .slide { padding: 30px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Tabla de contenidos -->
+    <div class="toc">
+        <strong style="color: #e94560;">Buenas Prácticas</strong>
+        <div class="toc-section">Fundamentos</div>
+        <a href="#slide1">1. Arquitectura</a>
+        <a href="#slide2">2. Comparativa</a>
+        <a href="#slide3">3. Cuándo usar cada una</a>
+        <div class="toc-section">Filosofía</div>
+        <a href="#slide4">4. Stakeholder Trifecta</a>
+        <a href="#slide5">5. Anatomía del Prompt</a>
+        <div class="toc-section">Skills</div>
+        <a href="#slide6">6. Skills: Concepto</a>
+        <a href="#slide7">7. Skills: Ejemplo práctico</a>
+        <div class="toc-section">MCP</div>
+        <a href="#slide8">8. MCP: Concepto</a>
+        <a href="#slide9">9. MCP: Configuración</a>
+        <div class="toc-section">Slash Commands</div>
+        <a href="#slide10">10. Commands: Concepto</a>
+        <a href="#slide11">11. Commands: Ejemplos</a>
+        <div class="toc-section">Subagents</div>
+        <a href="#slide12">12. Subagents: Concepto</a>
+        <a href="#slide13">13. Subagents: Ejemplos</a>
+        <div class="toc-section">Antipatrones</div>
+        <a href="#slide14">14. Errores Comunes</a>
+        <a href="#slide15">15. Caso Real: memory-orchestrator</a>
+        <a href="#slide16">16. Checklist Final</a>
+        <div class="toc-section">Workflows Largos</div>
+        <a href="#slide17">17. Tu Flujo Actual</a>
+        <a href="#slide18">18. Patrón Avanzado: Agent Harness</a>
+        <a href="#slide19">19. Evolución: Básico → Avanzado</a>
+        <div class="toc-section">Tu Toolkit</div>
+        <a href="#slide20">20. Comandos Esenciales</a>
+        <a href="#slide21">21. CLAUDE.md vs /vault</a>
+        <a href="#slide22">22. API vs Suscripción</a>
+        <a href="#slide23">23. DirectOS: Prompt Builder</a>
+        <div class="toc-section">Memoria Evolutiva</div>
+        <a href="#slide24">24. El Concepto</a>
+        <a href="#slide25">25. System Prompt (p-prompt)</a>
+        <a href="#slide26">26. Integración en Proyectos</a>
+    </div>
+
+    <!-- ==================== SLIDE 1 ==================== -->
+    <section class="slide" id="slide1">
+        <span class="slide-number">01</span>
+        <h1>Arquitectura de Extensibilidad</h1>
+        <h2>Los 4 pilares de automatización en Claude Code</h2>
+
+        <div class="diagram">
+            <div class="component skills">
+                <h4>Skills</h4>
+                <div class="subtitle">Comportamientos Automáticos</div>
+                <ul>
+                    <li>Extraer texto y datos de PDFs</li>
+                    <li>Detectar violaciones de guía de estilo</li>
+                </ul>
+            </div>
+
+            <div class="component mcp">
+                <h4>MCP</h4>
+                <div class="subtitle">Integraciones Externas</div>
+                <ul>
+                    <li>Conectar a Jira para tickets</li>
+                    <li>Consultar bases de datos PostgreSQL</li>
+                    <li>Obtener datos de APIs externas</li>
+                </ul>
+            </div>
+
+            <div class="component slash">
+                <h4>Slash Commands</h4>
+                <div class="subtitle">Disparadores Manuales</div>
+                <ul>
+                    <li>Crear componentes React desde plantilla</li>
+                    <li>Generar mensajes de commit estandarizados</li>
+                </ul>
+            </div>
+
+            <div class="component subagent">
+                <h4>Subagents</h4>
+                <div class="subtitle">Workflows Aislados</div>
+                <ul>
+                    <li>Debug de suites de tests fallidas</li>
+                    <li>Auditorías de seguridad completas</li>
+                    <li>Análisis de calidad en paralelo</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h4>Valoración</h4>
+            <p><strong>Skills</strong> y <strong>Slash Commands</strong> son los más accesibles para empezar. Los Skills actúan como "reflejos" del agente, mientras que los Slash Commands son atajos que tú controlas.</p>
+            <p><strong>MCP</strong> es el puente con el mundo exterior - úsalo cuando necesites datos que Claude no tiene.</p>
+            <p><strong>Subagents</strong> son el arma secreta para tareas pesadas que pueden correr en paralelo.</p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 2 ==================== -->
+    <section class="slide" id="slide2">
+        <span class="slide-number">02</span>
+        <h1>Comparativa de Extensiones</h1>
+        <h2>Características técnicas de cada tipo</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Skill</th>
+                    <th>MCP</th>
+                    <th>Subagent</th>
+                    <th>Slash Command</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Disparado por</td>
+                    <td>Agente</td>
+                    <td>Ambos</td>
+                    <td>Ambos</td>
+                    <td>Usuario</td>
+                </tr>
+                <tr>
+                    <td>Eficiencia de Contexto</td>
+                    <td><strong>Alta</strong></td>
+                    <td class="cross"><strong>Baja</strong></td>
+                    <td><strong>Alta</strong></td>
+                    <td><strong>Alta</strong></td>
+                </tr>
+                <tr>
+                    <td>Persistencia de Contexto</td>
+                    <td class="check">✓</td>
+                    <td class="check">✓</td>
+                    <td class="cross">✗</td>
+                    <td class="check">✓</td>
+                </tr>
+                <tr>
+                    <td>Paralelizable</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="check">✓</td>
+                    <td class="cross">✗</td>
+                </tr>
+                <tr>
+                    <td>Modularidad</td>
+                    <td><strong>Alta</strong></td>
+                    <td><strong>Alta</strong></td>
+                    <td>Media</td>
+                    <td>Media</td>
+                </tr>
+                <tr>
+                    <td>Puede usar Subagents</td>
+                    <td class="check">✓</td>
+                    <td class="check">✓</td>
+                    <td class="cross">✗</td>
+                    <td class="check">✓</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insight-box">
+            <h4>Claves para elegir</h4>
+            <p><span class="highlight">Subagents</span> son los únicos <strong>paralelizables</strong>, pero NO persisten contexto. Ideales para tareas independientes.</p>
+            <p><span class="highlight">MCP</span> tiene <strong>baja eficiencia de contexto</strong> porque cada llamada externa consume tokens.</p>
+            <p><span class="highlight">Skills</span> el agente decide cuándo usarlos automáticamente.</p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 3 ==================== -->
+    <section class="slide" id="slide3">
+        <span class="slide-number">03</span>
+        <h1>¿Cuándo usar cada extensión?</h1>
+        <h2>Guía de decisión rápida</h2>
+
+        <div class="decision-grid">
+            <div class="decision-card skills">
+                <h4>Skills</h4>
+                <ul>
+                    <li>Claude debe activarlo <strong>automáticamente</strong></li>
+                    <li>Es una "capacidad" del sistema</li>
+                    <li>Se repite en múltiples contextos</li>
+                </ul>
+                <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.9;">
+                    <strong>Ejemplo:</strong> "Cuando veas un PDF, extrae el texto"
+                </p>
+            </div>
+
+            <div class="decision-card mcp">
+                <h4>MCP Servers</h4>
+                <ul>
+                    <li>Necesitas <strong>datos externos</strong></li>
+                    <li>Integración con servicios (Jira, GitHub, DB)</li>
+                    <li>APIs que Claude no puede acceder directamente</li>
+                </ul>
+                <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.9;">
+                    <strong>Ejemplo:</strong> "Consulta los tickets de Jira"
+                </p>
+            </div>
+
+            <div class="decision-card slash">
+                <h4>Slash Commands</h4>
+                <ul>
+                    <li>Quieres <strong>control explícito</strong></li>
+                    <li>Es una acción frecuente y rápida</li>
+                    <li>Necesitas pasar argumentos específicos</li>
+                </ul>
+                <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.9;">
+                    <strong>Ejemplo:</strong> "/commit fix: corregir login"
+                </p>
+            </div>
+
+            <div class="decision-card subagent">
+                <h4>Subagents</h4>
+                <ul>
+                    <li>Tarea <strong>compleja y especializada</strong></li>
+                    <li>Puede correr en <strong>paralelo</strong></li>
+                    <li>No necesita contexto de conversación</li>
+                </ul>
+                <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.9;">
+                    <strong>Ejemplo:</strong> "Audita seguridad mientras sigo trabajando"
+                </p>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h4>Mi recomendación</h4>
+            <p><strong>Empieza con Slash Commands</strong> - son los más fáciles de crear y entender. Luego avanza a Skills cuando veas patrones repetitivos. Usa MCP para integraciones y Subagents para tareas pesadas.</p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 4 ==================== -->
+    <section class="slide" id="slide4">
+        <span class="slide-number">04</span>
+        <h1>Stakeholder Trifecta</h1>
+        <h2>Los prompts se diseñan para 3 audiencias</h2>
+
+        <div class="diagram" style="grid-template-columns: repeat(3, 1fr); max-width: 1100px;">
+            <div class="component" style="background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);">
+                <h4>Tú</h4>
+                <div class="subtitle">Claridad Personal</div>
+                <ul>
+                    <li>¿Entenderás esto en 6 meses?</li>
+                    <li>¿El nombre es descriptivo?</li>
+                    <li>¿La estructura es clara?</li>
+                </ul>
+            </div>
+
+            <div class="component" style="background: linear-gradient(135deg, #0891b2 0%, #22d3ee 100%);">
+                <h4>Tu Equipo</h4>
+                <div class="subtitle">Colaboración</div>
+                <ul>
+                    <li>¿Un colega nuevo lo entendería?</li>
+                    <li>¿Sigue convenciones del equipo?</li>
+                    <li>¿Es reutilizable?</li>
+                </ul>
+            </div>
+
+            <div class="component" style="background: linear-gradient(135deg, #059669 0%, #34d399 100%);">
+                <h4>Tus Agentes</h4>
+                <div class="subtitle">Ejecución</div>
+                <ul>
+                    <li>¿El workflow es secuencial?</li>
+                    <li>¿Las instrucciones son precisas?</li>
+                    <li>¿El output está definido?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="two-cols" style="margin-top: 30px;">
+            <div>
+                <h3>El cambio mental</h3>
+                <div class="bp-card">
+                    <h5>Antes: Prompts desechables</h5>
+                    <p>"Funciona para mí ahora mismo"</p>
+                </div>
+                <div class="bp-card" style="background: rgba(16, 155, 142, 0.2);">
+                    <h5>Ahora: Prompts como activos</h5>
+                    <p>"Esto generará horas de trabajo productivo"</p>
+                </div>
+            </div>
+
+            <div>
+                <h3>Force Multiplier</h3>
+                <div class="insight-box">
+                    <h4>La matemática</h4>
+                    <p><strong>1 hora</strong> diseñando un buen prompt</p>
+                    <p>= <strong>100+ horas</strong> de trabajo productivo del agente</p>
+                    <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Los prompts bien construidos son una inversión, no un gasto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 5 ==================== -->
+    <section class="slide" id="slide5">
+        <span class="slide-number">05</span>
+        <h1>Anatomía del Prompt Agéntico</h1>
+        <h2>Secciones composables como bloques de Lego</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Las 6 secciones clave</h3>
+                <div style="background: #0d1117; border-radius: 10px; padding: 20px; border: 1px solid #30363d;">
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="background: #1e40af; padding: 12px; border-radius: 6px;">
+                            <strong>1. Metadata</strong> <span style="opacity: 0.7; font-size: 0.85rem;">— Configuración</span><br>
+                            <code style="font-size: 0.8rem;">allowed-tools, model, version</code>
+                        </div>
+                        <div style="background: #7c3aed; padding: 12px; border-radius: 6px;">
+                            <strong>2. Title + Purpose</strong> <span style="opacity: 0.7; font-size: 0.85rem;">— Identidad</span><br>
+                            <code style="font-size: 0.8rem;">name, description (qué + cuándo)</code>
+                        </div>
+                        <div style="background: #059669; padding: 12px; border-radius: 6px; border: 2px solid #34d399;">
+                            <strong>3. Workflow</strong> <span style="opacity: 0.7; font-size: 0.85rem;">— S-TIER</span><br>
+                            <code style="font-size: 0.8rem;">Secuencia de pasos numerados</code>
+                        </div>
+                        <div style="background: #b45309; padding: 12px; border-radius: 6px;">
+                            <strong>4. Variables</strong> <span style="opacity: 0.7; font-size: 0.85rem;">— Contexto</span><br>
+                            <code style="font-size: 0.8rem;">$ARGUMENTS, $1, estáticas</code>
+                        </div>
+                        <div style="background: #0891b2; padding: 12px; border-radius: 6px;">
+                            <strong>5. Instructions</strong> <span style="opacity: 0.7; font-size: 0.85rem;">— Cómo</span><br>
+                            <code style="font-size: 0.8rem;">Guías para ejecutar el workflow</code>
+                        </div>
+                        <div style="background: #be185d; padding: 12px; border-radius: 6px;">
+                            <strong>6. Report</strong> <span style="opacity: 0.7; font-size: 0.85rem;">— Output</span><br>
+                            <code style="font-size: 0.8rem;">Formato esperado de salida</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Ejemplo completo</h3>
+                <div class="code-title">.claude/commands/analyze.md</div>
+                <div class="code-block with-title" style="font-size: 0.75rem;">
+<pre>---
+description: Analiza código y genera reporte
+allowed-tools: Read, Grep, Glob
+argument-hint: [archivo o directorio]
+---
+
+# Analyzer Agent
+
+## Variables
+- TARGET: $ARGUMENTS (requerido)
+- DEPTH: superficial | profundo
+
+## Workflow
+1. Leer el código en TARGET
+2. Identificar patrones y problemas
+3. Clasificar por severidad
+4. Generar recomendaciones
+
+## Instructions
+- Si TARGET es directorio, analiza recursivo
+- Prioriza seguridad sobre estilo
+- Máximo 10 issues por archivo
+
+## Report
+```
+## Resumen
+[1-2 líneas]
+
+## Issues
+| Archivo | Línea | Severidad | Issue |
+...
+
+## Recomendaciones
+1. ...
+```</pre>
+                </div>
+
+                <div class="bp-card" style="margin-top: 15px;">
+                    <h5>Workflow = S-Tier</h5>
+                    <p>La sección más importante. Define <strong>qué</strong> hace el agente paso a paso. Las instructions explican <strong>cómo</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 6 ==================== -->
+    <section class="slide" id="slide6">
+        <span class="slide-number">06</span>
+        <h1>Skills: Capacidades Automáticas</h1>
+        <h2>Claude decide cuándo usarlas basándose en el contexto</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Estructura de archivos</h3>
+                <div class="file-tree">
+                    <span class="folder">.claude/skills/</span><br>
+                    <span class="folder">├── pdf-processing/</span><br>
+                    <span class="file">│   ├── SKILL.md</span> <span class="comment"># Requerido</span><br>
+                    <span class="file">│   └── scripts/</span><br>
+                    <span class="file">│       └── extract.py</span><br>
+                    <span class="folder">└── data-analysis/</span><br>
+                    <span class="file">    └── SKILL.md</span>
+                </div>
+
+                <h3>Ubicaciones válidas</h3>
+                <div class="bp-grid" style="grid-template-columns: 1fr;">
+                    <div class="bp-card">
+                        <h5>Proyecto (compartido)</h5>
+                        <p><code>.claude/skills/</code></p>
+                    </div>
+                    <div class="bp-card">
+                        <h5>Personal (todos tus proyectos)</h5>
+                        <p><code>~/.claude/skills/</code></p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Anatomía del SKILL.md</h3>
+                <div class="code-title">SKILL.md - Frontmatter YAML</div>
+                <div class="code-block with-title">
+<pre>---
+name: pdf-processing
+description: Extrae texto de PDFs, rellena
+  formularios. Úsalo cuando trabajes con
+  archivos PDF o extracción de documentos.
+allowed-tools: Read, Bash(python3:*), Write
+version: 1.0.0
+---
+
+# Instrucciones detalladas aquí...</pre>
+                </div>
+
+                <div class="bp-card" style="margin-top: 15px;">
+                    <h5>Clave: La descripción</h5>
+                    <p>Claude usa la descripción para decidir <strong>cuándo</strong> activar la skill. Sé específico sobre el "cuándo" y el "qué".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 7 ==================== -->
+    <section class="slide" id="slide7">
+        <span class="slide-number">07</span>
+        <h1>Skills: Ejemplo Práctico</h1>
+        <h2>Skill de análisis de datos con Python</h2>
+
+        <div class="two-cols">
+            <div>
+                <div class="code-title">.claude/skills/data-analysis/SKILL.md</div>
+                <div class="code-block with-title">
+<pre>---
+name: data-analysis
+description: Analiza archivos CSV/Excel,
+  genera estadísticas y gráficos. Úsalo
+  cuando trabajes con datos tabulares o
+  necesites visualizaciones.
+allowed-tools: Read, Write, Bash(python3:*)
+version: 1.0.0
+---
+
+# Análisis de Datos
+
+## Paso 1: Cargar datos
+```python
+import pandas as pd
+df = pd.read_csv('datos.csv')
+# o Excel:
+df = pd.read_excel('datos.xlsx')
+```
+
+## Paso 2: Análisis exploratorio
+```python
+print(df.describe())  # Estadísticas
+print(df.corr())      # Correlaciones
+```
+
+## Paso 3: Visualización
+```python
+import matplotlib.pyplot as plt
+df['columna'].plot(kind='bar')
+plt.savefig('grafico.png')
+```
+
+## Limitaciones
+- Archivos menores a 100MB
+- Máximo 1 millón de filas</pre>
+                </div>
+            </div>
+
+            <div>
+                <h3>Buenas Prácticas para Skills</h3>
+
+                <div class="bp-card">
+                    <h5>Descripción específica</h5>
+                    <ul>
+                        <li>Incluye QUÉ hace y CUÁNDO usarla</li>
+                        <li>Menciona formatos de entrada/salida</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <h5>Una skill = una capacidad</h5>
+                    <ul>
+                        <li>Mantén cada skill enfocada</li>
+                        <li>Si crece mucho, divide en varias</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <h5>Restringe herramientas</h5>
+                    <ul>
+                        <li>Solo las necesarias: <code>allowed-tools</code></li>
+                        <li>Más seguro y predecible</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>Evita</h5>
+                    <ul>
+                        <li>Descripciones vagas: "Ayuda con cosas"</li>
+                        <li>Mezclar responsabilidades</li>
+                        <li>Hardcodear rutas absolutas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 8 ==================== -->
+    <section class="slide" id="slide8">
+        <span class="slide-number">08</span>
+        <h1>MCP: Integraciones Externas</h1>
+        <h2>Model Context Protocol - El puente con el mundo exterior</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>¿Qué es MCP?</h3>
+                <p style="margin-bottom: 20px; line-height: 1.6;">
+                    MCP es un <strong>estándar abierto</strong> que permite conectar Claude Code con herramientas externas: APIs, bases de datos, servicios como GitHub, Jira, Notion, etc.
+                </p>
+
+                <h3>Servidores MCP populares</h3>
+                <table style="font-size: 0.85rem;">
+                    <tr>
+                        <th>Servidor</th>
+                        <th>Uso</th>
+                    </tr>
+                    <tr>
+                        <td>GitHub</td>
+                        <td>Repos, PRs, Issues</td>
+                    </tr>
+                    <tr>
+                        <td>PostgreSQL</td>
+                        <td>Consultas SQL</td>
+                    </tr>
+                    <tr>
+                        <td>Notion</td>
+                        <td>Docs, bases de datos</td>
+                    </tr>
+                    <tr>
+                        <td>Slack</td>
+                        <td>Mensajes, canales</td>
+                    </tr>
+                    <tr>
+                        <td>Browser</td>
+                        <td>Web scraping</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <h3>Comandos esenciales</h3>
+                <div class="code-block">
+<pre># Listar servidores configurados
+claude mcp list
+
+# Agregar servidor HTTP
+claude mcp add --transport http \
+  notion https://mcp.notion.com/mcp
+
+# Agregar servidor local (stdio)
+claude mcp add --transport stdio github \
+  -e GITHUB_TOKEN=$GITHUB_TOKEN \
+  -- npx -y @modelcontextprotocol/server-github
+
+# Verificar estado
+/mcp</pre>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>Cuidado con el contexto</h5>
+                    <p>MCP tiene <strong>baja eficiencia de contexto</strong>. Cada llamada consume tokens. Úsalo para datos externos, no para lógica que Claude ya puede hacer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 9 ==================== -->
+    <section class="slide" id="slide9">
+        <span class="slide-number">09</span>
+        <h1>MCP: Configuración</h1>
+        <h2>Archivo ~/.claude.json para múltiples servidores</h2>
+
+        <div class="two-cols">
+            <div>
+                <div class="code-title">~/.claude.json</div>
+                <div class="code-block with-title">
+<pre>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y",
+        "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN":
+          "${GITHUB_TOKEN}"
+      }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y",
+        "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL":
+          "postgresql://user:pass@localhost/db"
+      }
+    },
+    "notion": {
+      "transport": "http",
+      "url": "https://mcp.notion.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${NOTION_TOKEN}"
+      }
+    }
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div>
+                <h3>Buenas Prácticas MCP</h3>
+
+                <div class="bp-card">
+                    <h5>Usa variables de entorno</h5>
+                    <p>Nunca hardcodees tokens: <code>${GITHUB_TOKEN}</code></p>
+                </div>
+
+                <div class="bp-card">
+                    <h5>Scope apropiado</h5>
+                    <ul>
+                        <li><strong>Usuario</strong> (~/.claude.json): tokens personales</li>
+                        <li><strong>Proyecto</strong> (.mcp.json): configs del equipo</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <h5>HTTP vs Stdio</h5>
+                    <ul>
+                        <li><strong>HTTP</strong>: Servidores remotos, más fácil</li>
+                        <li><strong>Stdio</strong>: Local, requiere Node/Python</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>Evita</h5>
+                    <ul>
+                        <li>Tokens en el código fuente</li>
+                        <li>Commits de .claude.json con secretos</li>
+                        <li>Demasiados servidores activos (consume recursos)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 10 ==================== -->
+    <section class="slide" id="slide10">
+        <span class="slide-number">10</span>
+        <h1>Slash Commands: Atajos Manuales</h1>
+        <h2>Tú decides exactamente cuándo ejecutarlos</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Estructura de archivos</h3>
+                <div class="file-tree">
+                    <span class="folder">.claude/commands/</span><br>
+                    <span class="file">├── commit.md</span> <span class="comment"># /commit</span><br>
+                    <span class="file">├── code-review.md</span> <span class="comment"># /code-review</span><br>
+                    <span class="folder">├── db/</span><br>
+                    <span class="file">│   ├── backup.md</span> <span class="comment"># /db/backup</span><br>
+                    <span class="file">│   └── restore.md</span> <span class="comment"># /db/restore</span><br>
+                    <span class="folder">└── test/</span><br>
+                    <span class="file">    └── run.md</span> <span class="comment"># /test/run</span>
+                </div>
+
+                <h3>Variables disponibles</h3>
+                <table style="font-size: 0.85rem; margin-top: 15px;">
+                    <tr>
+                        <th>Variable</th>
+                        <th>Descripción</th>
+                    </tr>
+                    <tr>
+                        <td><code>$ARGUMENTS</code></td>
+                        <td>Todo el texto después del comando</td>
+                    </tr>
+                    <tr>
+                        <td><code>$1, $2...</code></td>
+                        <td>Argumentos posicionales</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <h3>Anatomía del comando</h3>
+                <div class="code-title">.claude/commands/commit.md</div>
+                <div class="code-block with-title">
+<pre>---
+description: Crea commit con mensaje convencional
+allowed-tools: Bash(git:*)
+argument-hint: [tipo] [mensaje]
+---
+
+Crea un commit git siguiendo convenciones:
+
+## Tipos válidos:
+- feat: Nueva funcionalidad
+- fix: Corrección de bug
+- docs: Documentación
+- refactor: Refactorización
+
+## Proceso:
+1. git add -A
+2. git commit -m "$1: $ARGUMENTS"
+
+Ejemplo de uso:
+/commit feat agregar login con OAuth</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 11 ==================== -->
+    <section class="slide" id="slide11">
+        <span class="slide-number">11</span>
+        <h1>Slash Commands: Ejemplos Útiles</h1>
+        <h2>Comandos que recomiendo crear en cualquier proyecto</h2>
+
+        <div class="examples-grid">
+            <div class="example-card">
+                <h4>/code-review - Code Review</h4>
+                <p>Analiza código para calidad y seguridad</p>
+                <div class="code-block" style="margin: 0;">
+<pre>---
+description: Revisa código para calidad
+allowed-tools: Read, Grep, Glob
+---
+
+Analiza el código en: $ARGUMENTS
+
+Busca:
+1. Vulnerabilidades de seguridad
+2. Code smells
+3. Oportunidades de refactor
+4. Tests faltantes
+
+Reporta con archivo:línea</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>/test - Ejecutar tests</h4>
+                <p>Corre tests y analiza fallos</p>
+                <div class="code-block" style="margin: 0;">
+<pre>---
+description: Ejecuta tests y analiza fallos
+allowed-tools: Bash(npm test:*), Read
+argument-hint: [archivo o patrón]
+---
+
+1. Ejecuta: npm test $ARGUMENTS
+2. Si hay fallos, analiza el error
+3. Sugiere correcciones específicas
+4. Muestra el código problemático</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>/doc - Generar documentación</h4>
+                <p>Crea README o docs de API</p>
+                <div class="code-block" style="margin: 0;">
+<pre>---
+description: Genera documentación
+allowed-tools: Read, Write, Glob
+argument-hint: [archivo o directorio]
+---
+
+Genera documentación para: $ARGUMENTS
+
+Incluye:
+- Descripción del propósito
+- Parámetros y tipos
+- Ejemplos de uso
+- Casos edge</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>/security - Auditoría rápida</h4>
+                <p>Escanea vulnerabilidades comunes</p>
+                <div class="code-block" style="margin: 0;">
+<pre>---
+description: Escanea vulnerabilidades
+allowed-tools: Grep, Glob, Read
+---
+
+Busca en el código:
+- Contraseñas hardcodeadas
+- SQL injection
+- XSS vulnerabilities
+- Secrets expuestos
+- APIs inseguras
+
+Reporta: CRÍTICO/ALTO/MEDIO/BAJO</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>/reproduce-prompt - Prompt de Reproducción</h4>
+                <p>Genera el prompt para recrear el proyecto con IA</p>
+                <div class="code-block" style="margin: 0;">
+<pre>---
+description: Genera prompt para reproducir proyecto
+allowed-tools: Read, Glob, Grep
+---
+
+Analiza el proyecto y genera un prompt que
+permita a Claude Code recrearlo desde cero.
+
+1. Lee CLAUDE.md, README.md, dependencias
+2. Analiza estructura y arquitectura
+3. Detecta stack, CLI, API, convenciones
+4. Genera prompt estructurado
+5. Ofrece añadirlo al README</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 12 ==================== -->
+    <section class="slide" id="slide12">
+        <span class="slide-number">12</span>
+        <h1>Subagents: Especialistas Paralelos</h1>
+        <h2>Agentes con contexto independiente para tareas complejas</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>¿Por qué usar Subagents?</h3>
+                <div class="bp-card">
+                    <h5>Contexto limpio</h5>
+                    <p>Cada subagent tiene su propio contexto. No hay "contaminación" de otras tareas.</p>
+                </div>
+
+                <div class="bp-card">
+                    <h5>Paralelización</h5>
+                    <p>Puedes lanzar varios subagents simultáneamente mientras sigues trabajando.</p>
+                </div>
+
+                <div class="bp-card">
+                    <h5>Especialización</h5>
+                    <p>Cada uno tiene su system prompt optimizado para una tarea específica.</p>
+                </div>
+
+                <h3>Estructura de archivos</h3>
+                <div class="file-tree">
+                    <span class="folder">.claude/agents/</span><br>
+                    <span class="file">├── code-reviewer.md</span><br>
+                    <span class="file">├── security-auditor.md</span><br>
+                    <span class="file">├── test-writer.md</span><br>
+                    <span class="file">└── doc-writer.md</span>
+                </div>
+            </div>
+
+            <div>
+                <h3>Anatomía del Subagent</h3>
+                <div class="code-title">.claude/agents/code-reviewer.md</div>
+                <div class="code-block with-title">
+<pre>---
+name: code-reviewer
+description: Experto en revisión de código.
+  Revisa calidad, seguridad y mantenibilidad.
+  Úsalo después de escribir código.
+model: opus
+tools: Read, Grep, Glob
+disallowedTools: Write, Edit
+---
+
+# Senior Code Reviewer
+
+Eres un revisor senior con 15+ años
+de experiencia.
+
+## Tu proceso:
+1. Lee el código modificado
+2. Identifica problemas de calidad
+3. Busca vulnerabilidades
+4. Sugiere mejoras concretas
+
+## Formato de reporte:
+**Línea XX**: [SEVERIDAD] - Problema
+Sugerencia: código mejorado</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 13 ==================== -->
+    <section class="slide" id="slide13">
+        <span class="slide-number">13</span>
+        <h1>Subagents: Ejemplos Recomendados</h1>
+        <h2>Los 4 subagents que todo proyecto debería tener</h2>
+
+        <div class="examples-grid">
+            <div class="example-card">
+                <h4>Security Auditor</h4>
+                <span class="tag tag-orange">model: opus</span>
+                <span class="tag tag-green">read-only</span>
+                <p>Audita OWASP Top 10, busca secrets expuestos, valida inputs.</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.8rem;">
+<pre>disallowedTools: Write, Edit, Bash
+# Solo puede leer, nunca modificar</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>Test Writer</h4>
+                <span class="tag tag-blue">model: sonnet</span>
+                <span class="tag tag-red">can write</span>
+                <p>Escribe tests unitarios, integración. Cobertura mínima 80%.</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.8rem;">
+<pre>tools: Read, Write, Bash(npm test:*)
+# Puede escribir tests y ejecutarlos</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>Performance Analyst</h4>
+                <span class="tag tag-blue">model: sonnet</span>
+                <span class="tag tag-green">read-only</span>
+                <p>Identifica bottlenecks, N+1 queries, memory leaks.</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.8rem;">
+<pre>tools: Read, Grep, Glob, Bash
+# Puede ejecutar profilers</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>Documentation Writer</h4>
+                <span class="tag tag-blue">model: sonnet</span>
+                <span class="tag tag-red">can write</span>
+                <p>Genera README, API docs, guías de usuario.</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.8rem;">
+<pre>tools: Read, Write, Glob
+# Lee código, escribe documentación</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h4>Modelo según complejidad</h4>
+            <p><strong>Opus</strong>: Tareas críticas (seguridad, arquitectura) - más caro pero más profundo</p>
+            <p><strong>Sonnet</strong>: Balance general - la mayoría de tareas</p>
+            <p><strong>Haiku</strong>: Tareas simples y rápidas - 3x más económico</p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 14 ==================== -->
+    <section class="slide" id="slide14">
+        <span class="slide-number">14</span>
+        <h1>Antipatrones Comunes</h1>
+        <h2>Errores que consumen tokens y frustran</h2>
+
+        <div class="examples-grid">
+            <div class="example-card" style="border-color: #ef4444;">
+                <h4 style="color: #ef4444;">Sin Frontmatter YAML</h4>
+                <p>El comando funciona pero no aparece en listados y no tiene restricciones de herramientas.</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.8rem; border-color: #ef4444;">
+<pre># Mi comando genial
+
+Haz esto y aquello...
+
+# Falta el frontmatter:
+# ---
+# description: ...
+# allowed-tools: ...
+# ---</pre>
+                </div>
+            </div>
+
+            <div class="example-card" style="border-color: #ef4444;">
+                <h4 style="color: #ef4444;">Comando Demasiado Largo</h4>
+                <p>+300 líneas = consume contexto innecesariamente. Divide en comandos más pequeños.</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.8rem; border-color: #ef4444;">
+<pre># vault.md (330 líneas)
+# Actualiza: knowledge-base, dashboard,
+# tools/, projects/, patterns/
+
+# Mejor dividir:
+# /vault        → knowledge-base
+# /vault/tool   → tools/
+# /vault/project → projects/</pre>
+                </div>
+            </div>
+
+            <div class="example-card" style="border-color: #ef4444;">
+                <h4 style="color: #ef4444;">Rutas Hardcodeadas</h4>
+                <p>Poco portable. Si cambias de máquina o reorganizas, se rompe todo.</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.8rem; border-color: #ef4444;">
+<pre># Malo:
+~/Desktop/DirectOS/data/content/
+~/learning-journey/knowledge-base.md
+
+# Mejor: usar variables o rutas relativas
+$PROJECT_ROOT/content/
+./knowledge-base.md</pre>
+                </div>
+            </div>
+
+            <div class="example-card" style="border-color: #ef4444;">
+                <h4 style="color: #ef4444;">Reinventar lo Nativo</h4>
+                <p>Claude Code ya tiene memoria, resúmenes automáticos, y CLAUDE.md. No crees agentes para replicar esto.</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.8rem; border-color: #ef4444;">
+<pre># Innecesario:
+"Agente para conservar memoria
+ y contexto entre sesiones"
+
+# Ya existe:
+- CLAUDE.md (contexto de proyecto)
+- Resúmenes automáticos
+- /vault para persistir a archivos</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h4>Regla de oro</h4>
+            <p>Antes de crear un agente o skill, pregúntate: <strong>¿Claude ya hace esto de forma nativa?</strong> Si la respuesta es sí, probablemente solo necesitas un slash command simple o nada.</p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 15 ==================== -->
+    <section class="slide" id="slide15">
+        <span class="slide-number">15</span>
+        <h1>Caso Real: memory-orchestrator</h1>
+        <h2>Análisis de un agente que no funcionó</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>El agente original</h3>
+                <div class="code-block" style="font-size: 0.8rem;">
+<pre>---
+name: memory-orchestrator
+description: Use this agent when the
+  user needs to manage long-running,
+  multi-phase projects that require
+  context preservation across
+  conversation sessions...
+  [+800 caracteres con ejemplos]
+model: haiku
+---
+
+# Tu Rol Principal
+Gestionar la memoria y contexto de
+proyectos multifase, creando documentos
+guía que permitan:
+- Preservar estado entre sesiones
+- Permitir clear sin pérdida
+- Continuar fase por fase</pre>
+                </div>
+
+                <div class="bp-card warning" style="margin-top: 15px;">
+                    <h5>Resultado</h5>
+                    <p>Quemaba tokens para algo que Claude ya hace automáticamente.</p>
+                </div>
+            </div>
+
+            <div>
+                <h3>Los problemas</h3>
+
+                <div class="bp-card warning">
+                    <h5>1. Modelo incorrecto</h5>
+                    <p><code>model: haiku</code> para gestión compleja de contexto. Haiku es para tareas simples y rápidas.</p>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>2. Descripción excesiva</h5>
+                    <p>~1000 caracteres con ejemplos en el frontmatter. Los ejemplos van en el body.</p>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>3. Reinventa lo nativo</h5>
+                    <p>Claude ya tiene: CLAUDE.md, resúmenes automáticos, memoria de sesión.</p>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>4. Subagents NO persisten</h5>
+                    <p>Slide 2: Subagents tienen <strong>Context Persistence: ✗</strong>. No pueden "recordar" entre sesiones.</p>
+                </div>
+
+                <h3 style="margin-top: 20px;">La solución correcta</h3>
+                <div class="bp-card">
+                    <h5>Usar /vault (slash command)</h5>
+                    <p>Sesión → <code>/vault</code> (guarda a archivos) → clear → nueva sesión → Claude lee archivos automáticamente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 16 ==================== -->
+    <section class="slide" id="slide16">
+        <span class="slide-number">16</span>
+        <h1>Checklist Final</h1>
+        <h2>Antes de crear cualquier extensión</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Preguntas obligatorias</h3>
+
+                <div class="bp-card">
+                    <h5>1. ¿Claude ya lo hace?</h5>
+                    <ul>
+                        <li>Memoria de sesión → Ya existe</li>
+                        <li>Resúmenes → Ya existe</li>
+                        <li>Leer archivos → Ya existe</li>
+                        <li>Contexto de proyecto → CLAUDE.md</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <h5>2. ¿Qué tipo necesito?</h5>
+                    <ul>
+                        <li>Automático → <strong>Skill</strong></li>
+                        <li>Manual y rápido → <strong>Slash Command</strong></li>
+                        <li>Paralelo y complejo → <strong>Subagent</strong></li>
+                        <li>Datos externos → <strong>MCP</strong></li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <h5>3. ¿Tengo frontmatter?</h5>
+                    <ul>
+                        <li><code>description</code> - obligatorio</li>
+                        <li><code>allowed-tools</code> - recomendado</li>
+                        <li><code>model</code> - solo si necesitas otro</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h3>Validación rápida</h3>
+
+                <table style="font-size: 0.85rem;">
+                    <tr>
+                        <th>Check</th>
+                        <th>Criterio</th>
+                    </tr>
+                    <tr>
+                        <td class="check">✓</td>
+                        <td>Tiene frontmatter YAML</td>
+                    </tr>
+                    <tr>
+                        <td class="check">✓</td>
+                        <td>Descripción < 200 caracteres</td>
+                    </tr>
+                    <tr>
+                        <td class="check">✓</td>
+                        <td>Menos de 100 líneas (idealmente)</td>
+                    </tr>
+                    <tr>
+                        <td class="check">✓</td>
+                        <td>Sin rutas hardcodeadas</td>
+                    </tr>
+                    <tr>
+                        <td class="check">✓</td>
+                        <td>Una responsabilidad</td>
+                    </tr>
+                    <tr>
+                        <td class="check">✓</td>
+                        <td>No replica funcionalidad nativa</td>
+                    </tr>
+                    <tr>
+                        <td class="check">✓</td>
+                        <td>Modelo apropiado al costo</td>
+                    </tr>
+                </table>
+
+                <div class="insight-box" style="margin-top: 20px;">
+                    <h4>Filosofía</h4>
+                    <p><strong>Menos es más.</strong> Un slash command de 20 líneas que hace una cosa bien es mejor que un agente de 200 líneas que intenta hacer todo.</p>
+                    <p style="margin-top: 10px;"><strong>KISS + DRY + Incremental</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 17 ==================== -->
+    <section class="slide" id="slide17">
+        <span class="slide-number">17</span>
+        <h1>Tu Flujo Actual</h1>
+        <h2>Patrón básico de persistencia entre sesiones</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>El patrón que usas</h3>
+                <div style="background: #0d1117; border-radius: 10px; padding: 25px; border: 1px solid #30363d;">
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div style="background: #1e40af; padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong>Sesión 1</strong><br>
+                            <span style="font-size: 0.85rem;">Trabajo en proyecto multifase</span>
+                        </div>
+                        <div style="text-align: center; color: #666;">↓</div>
+                        <div style="background: #b45309; padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong>/vault</strong><br>
+                            <span style="font-size: 0.85rem;">Guarda progreso en documentos</span>
+                        </div>
+                        <div style="text-align: center; color: #666;">↓</div>
+                        <div style="background: #ef4444; padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong>clear</strong><br>
+                            <span style="font-size: 0.85rem;">Contexto fresco</span>
+                        </div>
+                        <div style="text-align: center; color: #666;">↓</div>
+                        <div style="background: #047857; padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong>Sesión 2</strong><br>
+                            <span style="font-size: 0.85rem;">Lee documentos → continúa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Fortalezas</h3>
+                <div class="bp-card">
+                    <h5>Simple y funcional</h5>
+                    <ul>
+                        <li>No requiere setup complejo</li>
+                        <li>Documentos legibles por humanos</li>
+                        <li>/vault automatiza la persistencia</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 20px;">Limitaciones</h3>
+                <div class="bp-card warning">
+                    <h5>Documento en prosa</h5>
+                    <ul>
+                        <li>Claude debe <strong>interpretar</strong> qué está hecho</li>
+                        <li>No hay fuente de verdad objetiva</li>
+                        <li>Depende de tu memoria para actualizar</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>Sin verificación automática</h5>
+                    <ul>
+                        <li>No hay tests que validen progreso</li>
+                        <li>Puedes marcar algo "hecho" que no funciona</li>
+                        <li>Regresiones pasan desapercibidas</li>
+                    </ul>
+                </div>
+
+                <div class="insight-box" style="margin-top: 15px;">
+                    <h4>Veredicto</h4>
+                    <p>Funciona bien para proyectos pequeños/medianos. Para proyectos grandes (+50 features), necesitas algo más estructurado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 18 ==================== -->
+    <section class="slide" id="slide18">
+        <span class="slide-number">18</span>
+        <h1>Patrón Avanzado: Long-Running Agent Harness</h1>
+        <h2>Proyectos de 200+ features con contexto fresco</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Arquitectura</h3>
+                <div style="background: #0d1117; border-radius: 10px; padding: 20px; border: 1px solid #30363d; font-size: 0.85rem;">
+                    <div style="background: #1e40af; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                        <strong>SESSION 1: Initializer Agent</strong><br>
+                        app_spec.txt → feature_list.json (200+ tests)<br>
+                        → claude-progress.txt → init.sh → scaffold
+                    </div>
+
+                    <div style="text-align: center; color: #666; margin: 10px 0;">↓ creates</div>
+
+                    <div style="background: #b45309; padding: 12px; border-radius: 8px; margin-bottom: 10px; border: 2px solid #f59e0b;">
+                        <strong>CORE ARTIFACTS (Shared State)</strong><br>
+                        <code>feature_list.json</code> - Source of truth<br>
+                        <code>claude-progress.txt</code> - Handoff notes<br>
+                        <code>init.sh</code> - Bootstrap script
+                    </div>
+
+                    <div style="text-align: center; color: #666; margin: 10px 0;">↓ reads/updates</div>
+
+                    <div style="background: #047857; padding: 12px; border-radius: 8px;">
+                        <strong>SESSIONS 2-N: Coding Agent Loop</strong><br>
+                        1. Get Bearings (read files, git log)<br>
+                        2. Regression Test (verify passing)<br>
+                        3. Pick Next Feature (passes: false)<br>
+                        4. Implement & Test<br>
+                        5. Update & Commit<br>
+                        <span style="color: #10b981;">↻ Loop until all tests pass</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>El secreto: feature_list.json</h3>
+                <div class="code-block" style="font-size: 0.8rem;">
+<pre>{
+  "features": [
+    {
+      "id": 1,
+      "name": "User authentication",
+      "passes": true,
+      "test": "npm test auth"
+    },
+    {
+      "id": 2,
+      "name": "Dashboard view",
+      "passes": true,
+      "test": "npm test dashboard"
+    },
+    {
+      "id": 3,
+      "name": "Export to PDF",
+      "passes": false,  // ← Próximo
+      "test": "npm test export"
+    }
+  ]
+}</pre>
+                </div>
+
+                <div class="bp-card">
+                    <h5>Por qué funciona</h5>
+                    <ul>
+                        <li><strong>Parseable:</strong> Claude no interpreta, lee JSON</li>
+                        <li><strong>Tests = verdad:</strong> passes:true solo si el test pasa</li>
+                        <li><strong>Automatizable:</strong> El loop puede correr solo</li>
+                        <li><strong>Fresh context:</strong> Cada sesión empieza limpia</li>
+                    </ul>
+                </div>
+
+                <div class="insight-box" style="margin-top: 15px;">
+                    <h4>Clave mental</h4>
+                    <p>Los <strong>archivos son la memoria</strong>. Los <strong>tests son la verdad</strong>. El agente solo ejecuta el loop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 19 ==================== -->
+    <section class="slide" id="slide19">
+        <span class="slide-number">19</span>
+        <h1>Evolución: Básico → Avanzado</h1>
+        <h2>Cómo migrar tu flujo actual al patrón avanzado</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Comparativa</h3>
+                <table style="font-size: 0.85rem;">
+                    <tr>
+                        <th>Aspecto</th>
+                        <th style="color: #3b82f6;">Tu flujo</th>
+                        <th style="color: #10b981;">Avanzado</th>
+                    </tr>
+                    <tr>
+                        <td>Estado</td>
+                        <td>Prosa (MD)</td>
+                        <td>Estructurado (JSON)</td>
+                    </tr>
+                    <tr>
+                        <td>Verdad</td>
+                        <td>Tu criterio</td>
+                        <td>Tests automatizados</td>
+                    </tr>
+                    <tr>
+                        <td>Progreso</td>
+                        <td>Manual</td>
+                        <td>Automático</td>
+                    </tr>
+                    <tr>
+                        <td>Regresiones</td>
+                        <td>No detectadas</td>
+                        <td>Tests las capturan</td>
+                    </tr>
+                    <tr>
+                        <td>Setup</td>
+                        <td>Ninguno</td>
+                        <td>Initializer + JSON</td>
+                    </tr>
+                    <tr>
+                        <td>Ideal para</td>
+                        <td>1-20 features</td>
+                        <td>50-200+ features</td>
+                    </tr>
+                </table>
+
+                <h3 style="margin-top: 20px;">Pasos para migrar</h3>
+                <div class="bp-card">
+                    <h5>1. Crea feature_list.json</h5>
+                    <p>Convierte tu documento de fases en JSON con <code>passes: true/false</code></p>
+                </div>
+                <div class="bp-card">
+                    <h5>2. Añade tests básicos</h5>
+                    <p>Aunque sean smoke tests, tener algo verificable</p>
+                </div>
+                <div class="bp-card">
+                    <h5>3. Crea /harness command</h5>
+                    <p>Un slash command que ejecute el loop automáticamente</p>
+                </div>
+            </div>
+
+            <div>
+                <h3>Ejemplo: Tu /vault evolucionado</h3>
+                <div class="code-title">~/.claude/commands/harness.md</div>
+                <div class="code-block with-title" style="font-size: 0.75rem;">
+<pre>---
+description: Ejecuta loop de desarrollo hasta completar features
+allowed-tools: Read, Write, Bash(npm:*), Bash(git:*)
+---
+
+# Agent Harness Loop
+
+## 1. Get Bearings
+- Lee feature_list.json
+- Lee claude-progress.txt
+- git log --oneline -5
+
+## 2. Regression Test
+- npm run test
+- Si falla algo que pasaba → arreglar primero
+
+## 3. Pick Next Feature
+- Busca en feature_list.json: passes: false
+- Selecciona el primero
+
+## 4. Implement & Test
+- Implementa la feature
+- Corre el test específico
+- Si pasa → actualiza JSON
+
+## 5. Update & Commit
+- feature_list.json → passes: true
+- claude-progress.txt → notas
+- git commit -m "feat: {feature name}"
+
+## 6. ¿Continuar?
+- Si hay más features: sugiere continuar
+- Si contexto lleno: sugiere clear + /harness</pre>
+                </div>
+
+                <div class="insight-box" style="margin-top: 15px;">
+                    <h4>El upgrade mental</h4>
+                    <p><strong>Antes:</strong> "Creo que ya terminé esta parte"</p>
+                    <p><strong>Después:</strong> "El test pasa, está terminado"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 20 ==================== -->
+    <section class="slide" id="slide20">
+        <span class="slide-number">20</span>
+        <h1>Tu Toolkit de Comandos</h1>
+        <h2>5 comandos esenciales instalados en ~/.claude/commands/</h2>
+
+        <div class="examples-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+            <div class="example-card">
+                <h4 style="color: #3b82f6;">/code-review</h4>
+                <p>Code review de calidad, seguridad y mantenibilidad</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.75rem;">
+<pre>/code-review src/auth/
+/code-review main.py
+
+Analiza:
+- Calidad (nombres, complejidad, DRY)
+- Seguridad (OWASP Top 10)
+- Mantenibilidad (tipos, tests)
+
+Output: CRÍTICO | ALTO | MEDIO | BAJO</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4 style="color: #10b981;">/test</h4>
+                <p>Ejecuta tests, analiza fallos y sugiere correcciones</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.75rem;">
+<pre>/test
+/test auth.test.ts
+
+Detecta framework automáticamente:
+- npm test / jest / vitest
+- pytest
+- go test / cargo test
+
+Si falla: analiza causa + sugiere fix</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4 style="color: #f59e0b;">/doc</h4>
+                <p>Genera documentación técnica desde código</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.75rem;">
+<pre>/doc readme     → README.md completo
+/doc src/api.ts → Doc de ese archivo
+/doc src/       → Índice del directorio
+
+Incluye:
+- Ejemplos reales del código
+- Estructura detectada
+- API/endpoints</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4 style="color: #ef4444;">/security</h4>
+                <p>Auditoría OWASP Top 10 + secrets expuestos</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.75rem;">
+<pre>/security
+/security src/
+
+Busca:
+- API keys, passwords hardcodeados
+- SQL injection, XSS
+- Input sin validar
+- npm audit / pip-audit
+
+Output: 🔴 CRÍTICO → 🔵 BAJO</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4 style="color: #8b5cf6;">/refactor</h4>
+                <p>Analiza código y sugiere mejoras</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.75rem;">
+<pre>/refactor src/utils.ts
+/refactor lib/
+
+Detecta:
+- Funciones largas (+30 líneas)
+- Código duplicado
+- God classes
+- Dead code
+
+Prioriza: Impacto × Esfuerzo</pre>
+                </div>
+            </div>
+
+            <div class="example-card" style="background: rgba(16, 155, 142, 0.1); border-color: #0f9b8e;">
+                <h4 style="color: #0f9b8e;">Tu toolkit actual</h4>
+                <p>Comandos en ~/.claude/commands/</p>
+                <div class="code-block" style="margin: 10px 0 0 0; font-size: 0.75rem; border-color: #0f9b8e;">
+<pre>~/.claude/commands/
+├── vault.md         # Persistencia
+├── scan-projects.md # Detectar proyectos
+├── code-review.md   # Code review
+├── test.md          # Tests
+├── doc.md           # Documentación
+├── security.md      # Auditoría
+├── refactor.md      # Mejoras
+└── update-context.md # Actualizar CLAUDE.md</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h4>Workflow recomendado</h4>
+            <p><code>/code-review</code> después de escribir código → <code>/test</code> para validar → <code>/security</code> antes de commit → <code>/doc</code> al completar feature → <code>/vault</code> al final de sesión</p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 21 ==================== -->
+    <section class="slide" id="slide21">
+        <span class="slide-number">21</span>
+        <h1>CLAUDE.md vs /vault</h1>
+        <h2>Dos mecanismos complementarios, no competidores</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>CLAUDE.md</h3>
+                <div style="background: linear-gradient(135deg, #047857 0%, #10b981 100%); padding: 20px; border-radius: 12px; margin-bottom: 15px;">
+                    <h4 style="margin-bottom: 10px;">Contexto de Proyecto</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Archivo en la raíz del proyecto que Claude lee <strong>automáticamente</strong> al inicio de cada sesión.</p>
+                </div>
+
+                <div class="bp-card">
+                    <h5>Lectura: Automática</h5>
+                    <p>Claude lo lee sin que lo pidas</p>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>Escritura: Manual</h5>
+                    <p><strong>NO se actualiza solo.</strong> Debes editarlo tú o usar /update-context</p>
+                </div>
+
+                <div class="bp-card">
+                    <h5>Contenido típico</h5>
+                    <ul>
+                        <li>Estructura del proyecto</li>
+                        <li>Comandos de desarrollo</li>
+                        <li>Decisiones arquitectónicas</li>
+                        <li>Configuración especial</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h3>/vault (tu comando)</h3>
+                <div style="background: linear-gradient(135deg, #b45309 0%, #f59e0b 100%); padding: 20px; border-radius: 12px; margin-bottom: 15px;">
+                    <h4 style="margin-bottom: 10px;">Diario de Aprendizaje Personal</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Sistema de archivos personales que persisten conocimiento <strong>entre proyectos</strong>.</p>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>Lectura: Manual</h5>
+                    <p>Claude no lo lee automáticamente (está fuera del proyecto)</p>
+                </div>
+
+                <div class="bp-card warning">
+                    <h5>Escritura: Manual</h5>
+                    <p>Ejecutas /vault cuando quieres guardar</p>
+                </div>
+
+                <div class="bp-card">
+                    <h5>Contenido típico</h5>
+                    <ul>
+                        <li>Lecciones aprendidas</li>
+                        <li>Patrones descubiertos</li>
+                        <li>Tools y snippets útiles</li>
+                        <li>Notas de todos tus proyectos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box" style="margin-top: 20px;">
+            <h4>¿Por qué ambos?</h4>
+            <p><strong>CLAUDE.md</strong> = "Lo que Claude debe saber de ESTE proyecto" (scope: proyecto)</p>
+            <p><strong>/vault</strong> = "Lo que yo quiero recordar de TODO lo que aprendo" (scope: personal)</p>
+            <p style="margin-top: 10px;">Nuevo comando: <code>/update-context</code> para mantener CLAUDE.md actualizado con cambios recientes del proyecto.</p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 22 ==================== -->
+    <section class="slide" id="slide22">
+        <span class="slide-number">22</span>
+        <h1>API vs Suscripción</h1>
+        <h2>Usa tu suscripción Pro/Max en lugar de pagar por tokens</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>El problema común</h3>
+                <div class="bp-card warning">
+                    <h5>Proyectos que usan API directa</h5>
+                    <p>Muchos tutoriales y proyectos usan la librería <code>anthropic</code>:</p>
+                </div>
+
+                <div class="code-block" style="font-size: 0.8rem;">
+<pre>import anthropic
+
+client = anthropic.Anthropic()  # API_KEY
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    messages=[{"role": "user", "content": prompt}]
+)
+# → PAGA POR TOKENS 💸</pre>
+                </div>
+
+                <div class="bp-card warning" style="margin-top: 15px;">
+                    <h5>Resultado</h5>
+                    <ul>
+                        <li>Necesitas <code>ANTHROPIC_API_KEY</code></li>
+                        <li>Pagas por cada token</li>
+                        <li>Separado de tu suscripción</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h3>La solución: <code>claude -p</code></h3>
+                <div class="bp-card">
+                    <h5>Usa tu suscripción Pro/Max</h5>
+                    <p>Claude Code CLI puede ejecutarse desde Python:</p>
+                </div>
+
+                <div class="code-block" style="font-size: 0.8rem;">
+<pre>import subprocess
+import json
+
+result = subprocess.run(
+    ["claude", "-p", prompt,
+     "--output-format", "json"],
+    capture_output=True, text=True
+)
+
+response = json.loads(result.stdout)
+# → USA TU SUSCRIPCIÓN ✅</pre>
+                </div>
+
+                <div class="bp-card" style="margin-top: 15px;">
+                    <h5>Ventajas</h5>
+                    <ul>
+                        <li>Sin API key adicional</li>
+                        <li>Incluido en tu suscripción</li>
+                        <li>Mismo Claude, sin costo extra</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box" style="margin-top: 20px;">
+            <h4>La clave</h4>
+            <p><code style="background: #1e40af; padding: 5px 10px; border-radius: 4px;">claude -p "prompt"</code> <strong>usa tu suscripción, no la API.</strong></p>
+            <p style="margin-top: 10px;">Ejemplo real: VideoNotes adaptado con <code>--claude-code</code> para resumir videos sin pagar tokens.</p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 23 ==================== -->
+    <section class="slide" id="slide23">
+        <span class="slide-number">23</span>
+        <h1>DirectOS: Tu Cockpit de Prompts</h1>
+        <h2>Constructor visual de prompts agénticos con el patrón de 6 secciones</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Prompt Builder Pro</h3>
+                <div class="bp-card">
+                    <h5>Anatomía de un Prompt Agéntico</h5>
+                    <div style="font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin-top: 10px;">
+                        <div style="color: #60a5fa;">1. METADATA</div>
+                        <div style="padding-left: 15px; color: #94a3b8;">→ description, tools, argument-hint</div>
+                        <div style="color: #60a5fa;">2. VARIABLES</div>
+                        <div style="padding-left: 15px; color: #94a3b8;">→ dinámicas ($ARGUMENTS) y estáticas</div>
+                        <div style="color: #22c55e; font-weight: bold;">3. WORKFLOW ★ S-TIER</div>
+                        <div style="padding-left: 15px; color: #94a3b8;">→ pasos secuenciales (QUÉ hacer)</div>
+                        <div style="color: #60a5fa;">4. INSTRUCTIONS</div>
+                        <div style="padding-left: 15px; color: #94a3b8;">→ reglas y guías (CÓMO hacerlo)</div>
+                        <div style="color: #60a5fa;">5. REPORT</div>
+                        <div style="padding-left: 15px; color: #94a3b8;">→ formato exacto de salida</div>
+                    </div>
+                </div>
+
+                <div class="bp-card warning" style="margin-top: 15px;">
+                    <h5>Force Multiplier</h5>
+                    <p style="font-size: 1.1rem;">1 hora diseñando prompts = 100+ horas de trabajo productivo</p>
+                </div>
+            </div>
+
+            <div>
+                <h3>8 Plantillas Precargadas</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <div class="bp-card" style="padding: 10px; text-align: center;">
+                        <div style="font-size: 1.5rem;">📋</div>
+                        <div style="font-size: 0.85rem;">/code-review</div>
+                    </div>
+                    <div class="bp-card" style="padding: 10px; text-align: center;">
+                        <div style="font-size: 1.5rem;">📝</div>
+                        <div style="font-size: 0.85rem;">/doc</div>
+                    </div>
+                    <div class="bp-card" style="padding: 10px; text-align: center;">
+                        <div style="font-size: 1.5rem;">🧪</div>
+                        <div style="font-size: 0.85rem;">/test</div>
+                    </div>
+                    <div class="bp-card" style="padding: 10px; text-align: center;">
+                        <div style="font-size: 1.5rem;">🛡️</div>
+                        <div style="font-size: 0.85rem;">/security</div>
+                    </div>
+                    <div class="bp-card" style="padding: 10px; text-align: center;">
+                        <div style="font-size: 1.5rem;">🔧</div>
+                        <div style="font-size: 0.85rem;">/refactor</div>
+                    </div>
+                    <div class="bp-card" style="padding: 10px; text-align: center;">
+                        <div style="font-size: 1.5rem;">📦</div>
+                        <div style="font-size: 0.85rem;">/vault</div>
+                    </div>
+                    <div class="bp-card" style="padding: 10px; text-align: center;">
+                        <div style="font-size: 1.5rem;">🔍</div>
+                        <div style="font-size: 0.85rem;">/scan-projects</div>
+                    </div>
+                    <div class="bp-card" style="padding: 10px; text-align: center;">
+                        <div style="font-size: 1.5rem;">📝</div>
+                        <div style="font-size: 0.85rem;">/update-context</div>
+                    </div>
+                </div>
+
+                <div class="bp-card" style="margin-top: 15px;">
+                    <h5>Flujo de trabajo</h5>
+                    <ol style="margin-left: 20px; font-size: 0.9rem;">
+                        <li>Selecciona plantilla o crea desde cero</li>
+                        <li>Edita las 6 secciones visualmente</li>
+                        <li>Valida con checklist en tiempo real</li>
+                        <li><strong>Instala directo</strong> a ~/.claude/commands/</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box" style="margin-top: 20px;">
+            <h4>Stakeholder Trifecta</h4>
+            <p>Todo prompt agéntico se diseña para <strong>3 audiencias</strong>:</p>
+            <p style="margin-top: 8px;">
+                <span style="color: #3b82f6;">👤 Tú</span> (¿Lo entenderé en 6 meses?) •
+                <span style="color: #10b981;">👥 Tu Equipo</span> (¿Un colega nuevo lo entendería?) •
+                <span style="color: #f59e0b;">🤖 Tus Agentes</span> (¿El workflow es ejecutable?)
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 24 ==================== -->
+    <section class="slide" id="slide24">
+        <span class="slide-number">24</span>
+        <h1>Memoria Evolutiva</h1>
+        <h2>El principio que multiplica todo lo demás</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>El Problema</h3>
+                <table style="font-size: 0.85rem;">
+                    <tr>
+                        <th>Sin Memoria</th>
+                        <th>Con Memoria</th>
+                    </tr>
+                    <tr>
+                        <td>Proyecto N = mismo esfuerzo</td>
+                        <td>Proyecto N = fracción del esfuerzo</td>
+                    </tr>
+                    <tr>
+                        <td>Conocimiento encerrado en código</td>
+                        <td>Conocimiento conectado</td>
+                    </tr>
+                    <tr>
+                        <td>Claude genérico</td>
+                        <td><strong>Claude-TÚ</strong></td>
+                    </tr>
+                </table>
+
+                <h3 style="margin-top: 25px;">El Efecto Flywheel</h3>
+                <div class="bp-card" style="text-align: center; padding: 20px;">
+                    <div style="font-family: monospace; font-size: 0.9rem; line-height: 2;">
+                        <span style="color: #3b82f6;">Usas el sistema</span> →
+                        <span style="color: #a855f7;">Memoria aprende</span> →
+                        <span style="color: #f59e0b;">Claude te conoce</span>
+                        <br>
+                        <span style="color: #22c55e;">↑ Trabajas más rápido ←←←←←←←←←←←←←←←</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Implementación (DirectOS v10.9)</h3>
+                <div class="bp-card">
+                    <h5 style="color: #a855f7;">MINEROS BRAIN</h5>
+                    <ul style="font-size: 0.85rem; margin-top: 8px;">
+                        <li><strong>System Prompt</strong> - Identidad consistente</li>
+                        <li><strong>Context Builder</strong> - Contexto dinámico</li>
+                        <li><strong>JSON Parser</strong> - Auto-repara respuestas</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card" style="margin-top: 12px;">
+                    <h5 style="color: #f59e0b;">MINEROS MEMORY</h5>
+                    <ul style="font-size: 0.85rem; margin-top: 8px;">
+                        <li><strong>trackNodeUsed()</strong> - Qué usas más</li>
+                        <li><strong>trackSuggestion()</strong> - Qué aceptas/rechazas</li>
+                        <li><strong>getSummaryForClaude()</strong> - Contexto para LLM</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 20px;">Proyección</h3>
+                <table style="font-size: 0.85rem;">
+                    <tr><th>Proyecto</th><th>Eficiencia</th></tr>
+                    <tr><td>#1</td><td>1.0x (baseline)</td></tr>
+                    <tr><td>#14</td><td>~2.5x</td></tr>
+                    <tr><td>#50</td><td>~5x</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="insight-box" style="margin-top: 20px;">
+            <h4>El Insight Clave</h4>
+            <p>La diferencia entre <strong>usar IA</strong> y tener <strong>IA que te conoce</strong>.</p>
+            <p style="margin-top: 8px;">Todos usan Claude. Solo TÚ tendrías Claude que conoce tu ecosistema, tus patrones, tus preferencias.</p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 25 ==================== -->
+    <section class="slide" id="slide25">
+        <span class="slide-number">25</span>
+        <h1>System Prompt (p-prompt)</h1>
+        <h2>La identidad persistente de tu asistente</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>¿Qué es?</h3>
+                <div class="bp-card">
+                    <p style="font-size: 0.9rem; line-height: 1.6;">
+                        El <strong>system prompt</strong> es la instrucción inicial que define la personalidad, conocimiento y comportamiento del LLM.
+                    </p>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">
+                        Con <code style="background: #1e40af; padding: 3px 8px; border-radius: 4px;">claude -p "prompt"</code> puedes inyectar contexto personalizado.
+                    </p>
+                </div>
+
+                <h3 style="margin-top: 20px;">Anatomía de un Buen System Prompt</h3>
+                <div style="font-family: monospace; font-size: 0.8rem; background: #1e293b; padding: 15px; border-radius: 8px; line-height: 1.8;">
+                    <div style="color: #22c55e;">## Tu Identidad</div>
+                    <div style="color: #94a3b8;">- Nombre y rol específico</div>
+                    <div style="color: #94a3b8;">- Ecosistema que conoces</div>
+                    <div style="color: #22c55e; margin-top: 10px;">## Tu Conocimiento</div>
+                    <div style="color: #94a3b8;">- Herramientas disponibles</div>
+                    <div style="color: #94a3b8;">- Patrones del usuario</div>
+                    <div style="color: #22c55e; margin-top: 10px;">## Reglas de Respuesta</div>
+                    <div style="color: #94a3b8;">- Formato preferido</div>
+                    <div style="color: #94a3b8;">- Qué evitar</div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Ejemplo Real (DirectOS)</h3>
+                <div style="font-family: monospace; font-size: 0.75rem; background: #1e293b; padding: 12px; border-radius: 8px; line-height: 1.6; max-height: 280px; overflow-y: auto;">
+                    <span style="color: #22c55e;">const MINEROS_SYSTEM_PROMPT = `</span><br>
+                    <span style="color: #f59e0b;">Eres DirectOS Assistant.</span><br><br>
+                    <span style="color: #60a5fa;">## Tu Conocimiento</span><br>
+                    - 36 nodos: Trigger, Proceso, IA, Storage, Flow, Output<br>
+                    - Ecosistema: DirectOS, Dashboard Mobile, Vault<br><br>
+                    <span style="color: #60a5fa;">## Reglas</span><br>
+                    1. Usa IDs exactos de nodos<br>
+                    2. JSON sin markdown<br>
+                    3. Respuestas concisas<br>
+                    <span style="color: #22c55e;">`;</span>
+                </div>
+
+                <h3 style="margin-top: 20px;">Buenas Prácticas</h3>
+                <div class="bp-card success">
+                    <ul style="font-size: 0.85rem;">
+                        <li><span class="check">✓</span> Identidad clara y específica</li>
+                        <li><span class="check">✓</span> Lista de herramientas/nodos</li>
+                        <li><span class="check">✓</span> Reglas de formato explícitas</li>
+                        <li><span class="check">✓</span> Contexto dinámico (inyectado)</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card error" style="margin-top: 10px;">
+                    <ul style="font-size: 0.85rem;">
+                        <li><span class="cross">✗</span> Prompts genéricos sin contexto</li>
+                        <li><span class="cross">✗</span> Identidad vaga ("eres un asistente")</li>
+                        <li><span class="cross">✗</span> Sin reglas de formato</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box" style="margin-top: 15px;">
+            <h4>La Fórmula</h4>
+            <p><code style="background: #1e40af; padding: 5px 10px; border-radius: 4px;">System Prompt + Contexto Dinámico + Memoria = Claude Personalizado</code></p>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDE 26 ==================== -->
+    <section class="slide" id="slide26">
+        <span class="slide-number">26</span>
+        <h1>Integración en Proyectos</h1>
+        <h2>Cómo llevar Memoria Evolutiva a tu ecosistema</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Patrón de Implementación</h3>
+                <div style="font-family: monospace; font-size: 0.8rem; background: #1e293b; padding: 15px; border-radius: 8px; line-height: 1.8;">
+                    <div style="color: #22c55e;">// 1. SYSTEM PROMPT centralizado</div>
+                    <div style="color: #94a3b8;">const SYSTEM_PROMPT = `...`;</div>
+                    <br>
+                    <div style="color: #22c55e;">// 2. CONTEXT BUILDER dinámico</div>
+                    <div style="color: #94a3b8;">function buildContext(options) {</div>
+                    <div style="color: #94a3b8;">  return { pipeline, history, memory };</div>
+                    <div style="color: #94a3b8;">}</div>
+                    <br>
+                    <div style="color: #22c55e;">// 3. MEMORY persistente</div>
+                    <div style="color: #94a3b8;">const Memory = {</div>
+                    <div style="color: #94a3b8;">  track(), load(), save(),</div>
+                    <div style="color: #94a3b8;">  getSummaryForLLM()</div>
+                    <div style="color: #94a3b8;">};</div>
+                    <br>
+                    <div style="color: #22c55e;">// 4. API UNIFICADA</div>
+                    <div style="color: #94a3b8;">async function askLLM(prompt) {</div>
+                    <div style="color: #94a3b8;">  const ctx = buildContext();</div>
+                    <div style="color: #94a3b8;">  return fetch('/api/ask', {...});</div>
+                    <div style="color: #94a3b8;">}</div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Qué Trackear</h3>
+                <table style="font-size: 0.85rem;">
+                    <tr><th>Métrica</th><th>Por qué</th></tr>
+                    <tr><td>Acciones frecuentes</td><td>Sugerir atajos</td></tr>
+                    <tr><td>Secuencias repetidas</td><td>Detectar workflows</td></tr>
+                    <tr><td>Sugerencias aceptadas</td><td>Mejorar precisión</td></tr>
+                    <tr><td>Errores comunes</td><td>Prevenir proactivamente</td></tr>
+                </table>
+
+                <h3 style="margin-top: 20px;">Almacenamiento</h3>
+                <div class="bp-card">
+                    <ul style="font-size: 0.85rem;">
+                        <li><strong>localStorage</strong> - Web apps (simple, inmediato)</li>
+                        <li><strong>SQLite</strong> - Apps desktop/móvil</li>
+                        <li><strong>CLAUDE.md</strong> - Contexto de proyecto</li>
+                        <li><strong>knowledge-base.md</strong> - Conocimiento global</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 20px;">El Ciclo Completo</h3>
+                <div class="bp-card" style="text-align: center;">
+                    <div style="font-size: 0.9rem;">
+                        <span style="color: #3b82f6;">Usuario actúa</span> →
+                        <span style="color: #a855f7;">Sistema trackea</span> →
+                        <span style="color: #f59e0b;">Memoria actualiza</span>
+                        <br>↓<br>
+                        <span style="color: #22c55e;">LLM recibe contexto enriquecido</span> →
+                        <span style="color: #ef4444;">Mejor respuesta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box" style="margin-top: 15px;">
+            <h4>Regla de Oro</h4>
+            <p>Cada interacción debe <strong>enseñar algo</strong> al sistema. Si no estás trackeando, estás perdiendo conocimiento.</p>
+        </div>
+    </section>
+
+    <!-- Navegación -->
+    <div class="nav">
+        <button onclick="prevSlide()">← Anterior</button>
+        <button onclick="nextSlide()">Siguiente →</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            if (n >= slides.length) n = 0;
+            if (n < 0) n = slides.length - 1;
+            currentSlide = n;
+            slides[n].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Detectar slide actual al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    currentSlide = Array.from(slides).indexOf(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>

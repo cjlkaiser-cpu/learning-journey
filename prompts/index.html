@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Prompts - Learning Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .card { transition: all 0.2s ease; }
+        .card:hover { transform: translateY(-4px); border-color: #f59e0b; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <header class="bg-slate-900/80 backdrop-blur-sm border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+                        <i class="fa-solid fa-book text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-white">Biblioteca de <span class="text-amber-400">Prompts</span></h1>
+                        <p class="text-xs text-slate-500">Prompts de reproducción de proyectos</p>
+                    </div>
+                </div>
+                <a href="../dashboard.html" class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium border border-slate-700 hover:bg-slate-700">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Dashboard
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-8">
+        <p class="text-slate-400 mb-8">
+            Cada prompt contiene toda la información necesaria para que Claude Code (o cualquier LLM)
+            pueda recrear el proyecto desde cero: stack, estructura, convenciones y features.
+        </p>
+
+        <div class="grid gap-4">
+            <!-- Projects -->
+            <a href="directos.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
+                        <i class="fa-solid fa-terminal"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-white">DirectOS</h3>
+                        <p class="text-xs text-slate-500">FastAPI + RAG + Pipeline Builder</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="physics-visual-lab.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
+                        <i class="fa-solid fa-atom"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-white">Physics Visual Lab</h3>
+                        <p class="text-xs text-slate-500">16 simulaciones de física + Canvas 2D</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="physics-sound-lab.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400">
+                        <i class="fa-solid fa-wave-square"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-white">Physics Sound Lab</h3>
+                        <p class="text-xs text-slate-500">7 metrónomos físicos + Web Audio</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="harmonices-mundi.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-white">Harmonices Mundi</h3>
+                        <p class="text-xs text-slate-500">Coro planetario de Kepler + FFT</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="videomine.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-white">VideoMine</h3>
+                        <p class="text-xs text-slate-500">Extractor YouTube + Ollama + minerOS</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="learning-journey.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-white">Learning Journey</h3>
+                        <p class="text-xs text-slate-500">Knowledge Vault + Dashboard + D3 Graph</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="factoria-demo.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+                        <i class="fa-solid fa-school"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-white">Factoría Demo</h3>
+                        <p class="text-xs text-slate-500">Flask + SQLite + Gestión escuela</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="math-kids.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-white">MathKids</h3>
+                        <p class="text-xs text-slate-500">Dashboard matemático para niños</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="educacion-auditiva.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+                        <i class="fa-solid fa-ear-listen"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-white">Educación Auditiva</h3>
+                        <p class="text-xs text-slate-500">Entrenamiento auditivo armonía</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- More prompts -->
+            <div class="mt-4 pt-4 border-t border-slate-800">
+                <p class="text-xs text-slate-500 mb-3">Más prompts disponibles:</p>
+                <div class="flex flex-wrap gap-2">
+                    <a href="farmaia-web.md" class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 hover:text-white">farmaIA</a>
+                    <a href="dashboard-seguimiento.md" class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 hover:text-white">Dashboard Seguimiento</a>
+                    <a href="dashboard-mobile-mineros.md" class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 hover:text-white">Dashboard Mobile</a>
+                    <a href="obsidian-dataview.md" class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 hover:text-white">Obsidian Dataview</a>
+                    <a href="farmaceutico-conservador.md" class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 hover:text-white">Farmacéutico Conservador</a>
+                    <a href="farmazero-copiloto.md" class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 hover:text-white">FarmaZero Copiloto</a>
+                    <a href="dashboard-trebol-farmacias.md" class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 hover:text-white">Dashboard Trébol</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800 py-6 mt-12">
+        <div class="max-w-4xl mx-auto px-6 text-center text-slate-500 text-sm">
+            18 prompts de reproducción · Learning Journey
+        </div>
+    </footer>
+</body>
+</html>

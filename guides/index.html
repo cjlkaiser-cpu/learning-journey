@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guides - Learning Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .card { transition: all 0.2s ease; }
+        .card:hover { transform: translateY(-4px); border-color: #06b6d4; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <header class="bg-slate-900/80 backdrop-blur-sm border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                        <i class="fa-solid fa-graduation-cap text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-white">Guides & <span class="text-cyan-400">Best Practices</span></h1>
+                        <p class="text-xs text-slate-500">Claude Code y metodologías</p>
+                    </div>
+                </div>
+                <a href="../dashboard.html" class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium border border-slate-700 hover:bg-slate-700">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Dashboard
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-8">
+        <p class="text-slate-400 mb-8">
+            Presentaciones y guías sobre buenas prácticas con Claude Code,
+            memoria evolutiva y metodologías de desarrollo con IA.
+        </p>
+
+        <div class="grid gap-4">
+            <a href="presentacion.html" class="card block bg-slate-900 border border-slate-800 rounded-xl p-6 hover:bg-slate-800/50">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-presentation-screen"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white text-lg">Claude Code - Buenas Prácticas</h3>
+                        <p class="text-sm text-slate-400 mt-1">Presentación completa sobre cómo usar Claude Code efectivamente. Incluye CLAUDE.md, memoria evolutiva, niveles de contexto y multi-motor.</p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs">12 slides</span>
+                            <span class="px-2 py-0.5 bg-slate-700 text-slate-400 rounded text-xs">Interactivo</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="claude-p-memoria-evolutiva.html" class="card block bg-slate-900 border border-slate-800 rounded-xl p-6 hover:bg-slate-800/50">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white text-lg">Memoria Evolutiva</h3>
+                        <p class="text-sm text-slate-400 mt-1">Principio #0: El conocimiento se compone, no solo se acumula. Guía sobre cómo implementar memoria evolutiva en proyectos con Claude Code.</p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="px-2 py-0.5 bg-purple-500/20 text-purple-400 rounded text-xs">Metodología</span>
+                            <span class="px-2 py-0.5 bg-slate-700 text-slate-400 rounded text-xs">minerOS</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="template-ai-context-base.md" class="card block bg-slate-900 border border-slate-800 rounded-xl p-6 hover:bg-slate-800/50">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-file-code"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white text-lg">Template .ai-context</h3>
+                        <p class="text-sm text-slate-400 mt-1">Template base.md para iniciar proyectos con contexto IA. Funciona con Claude, Cursor, Copilot, Gemini.</p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded text-xs">Template</span>
+                            <span class="px-2 py-0.5 bg-slate-700 text-slate-400 rounded text-xs">Multi-motor</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800 py-6 mt-12">
+        <div class="max-w-4xl mx-auto px-6 text-center text-slate-500 text-sm">
+            Guides & Best Practices · Learning Journey
+        </div>
+    </footer>
+</body>
+</html>
