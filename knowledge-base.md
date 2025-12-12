@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 11 diciembre 2025
+> **Última actualización**: 12 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -1081,6 +1081,18 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **12 dic 2025**: 🔬 PHYSICS VISUAL LAB - Nuevo Proyecto Independiente
+  - **Separación de proyectos**: Physics Sound Lab (metrónomos) vs Physics Visual Lab (simulaciones)
+  - **16 simulaciones** con índice interactivo y previews animados
+  - **4 nuevas simulaciones Fase 3**:
+    - **Gas Ideal**: Teoría cinética, distribución Maxwell-Boltzmann, histograma de velocidades
+    - **Oscilador Forzado**: Resonancia, amortiguamiento, curva de respuesta en frecuencia
+    - **Óptica (Snell)**: Reflexión, refracción, reflexión total interna, presets materiales
+    - **Relatividad Especial**: Dilatación temporal, contracción longitud, factor Lorentz γ
+  - **Tecnologías**: Maxwell-Boltzmann, Lorentz γ, Ley de Snell, oscilador armónico forzado
+  - **Stack**: Canvas 2D + física real + controles interactivos
+  - Ubicación: `~/Desktop/Physics Visual Lab/`
 
 - **10 dic 2025**: 🔬 PHYSICS SOUND LAB - Hub de Simulaciones Fisicas
   - **Proyecto paraguas** que agrupa 7 metronomos fisicos + Harmonices Mundi
