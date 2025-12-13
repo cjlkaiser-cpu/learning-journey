@@ -19,7 +19,7 @@
 
 ### 🎯 Visión General
 - **Proyectos completados:** 32
-- **Proyectos en desarrollo:** 4 (BioMistral Study, Paper, DirectOS, VideoMine)
+- **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~32,000+
 - **Tecnologías dominadas:** 26+
 - **Áreas de conocimiento:** 4 principales
@@ -1081,6 +1081,15 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **13 dic 2025**: 📄 PAPER TONNETZ ATRACTOR - Artículo Académico Completo
+  - **Paper científico** para Leonardo, Computer Music Journal, Journal of Mathematics and Music
+  - ~6,500 palabras con 7 secciones: Introduction, Background, System Design, Implementation, Results, Future Work, Conclusion
+  - **8 figuras SVG** profesionales: Tonnetz hexagonal, arquitectura sistema, transformaciones P/L/R, trayectoria caótica, sensibilidad, 5 modos, notación musical, comparativa métodos
+  - Conceptos formalizados: Neo-Riemannian theory, magnetic pendulum chaos, parsimonious voice leading
+  - Draft compilado: PAPER_DRAFT_v1.md + secciones individuales para revisión
+  - Ubicación: `~/Desktop/Physics Sound Lab/paper-tonnetz-atractor/`
+  - Aprendido: Escritura académica en inglés, creación figuras SVG para papers, formalización teórica
 
 - **13 dic 2025**: 🎵 TONNETZ ATRACTOR - Instrumento Generativo Neo-Riemanniano
   - **Nuevo proyecto**: Física del caos + teoría Neo-Riemanniana = música emergente

@@ -622,6 +622,7 @@
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
                 { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
+                { id: "paper-tonnetz", label: "Paper Tonnetz", type: "project", status: "activo", desc: "Paper academico: Neo-Riemannian + Chaos Theory. 6500 palabras, 8 figuras SVG. Target: Leonardo, CMJ" },
                 { id: "chacona", label: "Chacona Estudio", type: "project", status: "produccion", desc: "64 variaciones de Bach con grabacion y progreso" },
                 { id: "mathkids", label: "MathKids", type: "project", status: "completado", desc: "Dashboard matematico interactivo para ninos" },
                 { id: "factoria", label: "Factoria Demo", type: "project", status: "completado", desc: "Sistema gestion escuela con 7 tipos de pago" },
@@ -743,6 +744,10 @@
                 { source: "tonnetz", target: "javascript" },
                 { source: "tonnetz", target: "neoriemann" },
                 { source: "tonnetz", target: "physics-sound" },
+
+                // Paper Tonnetz connections
+                { source: "paper-tonnetz", target: "tonnetz" },
+                { source: "paper-tonnetz", target: "neoriemann" },
 
                 // Chacona connections
                 { source: "chacona", target: "javascript" },
