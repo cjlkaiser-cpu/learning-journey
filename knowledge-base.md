@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 12 diciembre 2025
+> **Última actualización**: 13 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -18,7 +18,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 31
+- **Proyectos completados:** 32
 - **Proyectos en desarrollo:** 4 (BioMistral Study, Paper, DirectOS, VideoMine)
 - **Líneas de código:** ~32,000+
 - **Tecnologías dominadas:** 26+
@@ -1081,6 +1081,19 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **13 dic 2025**: 🎵 TONNETZ ATRACTOR - Instrumento Generativo Neo-Riemanniano
+  - **Nuevo proyecto**: Física del caos + teoría Neo-Riemanniana = música emergente
+  - **Concepto**: Partícula magnética orbita hexágono Tonnetz, acordes emergen del movimiento
+  - **5 modos armónicos**: Mayor, Menor, Frigio, Lidio, Blues
+  - **Síntesis mejorada**: 4 osciladores, ADSR envelope, filtro lowpass, reverb convolución
+  - **Física**: Pendulum magnético múltiple, F = Σ K·(r_i - r) / |r_i - r|² - friction·v
+  - **Features**: Drag particle, impulso hacia acordes, visualización campo potencial
+  - **Tutorial interactivo**: Historia del Tonnetz (Euler 1739 → Cohn 1996)
+  - **Stack**: Canvas 2D + Web Audio API + Neo-Riemannian theory
+  - URL: https://cjlkaiser-cpu.github.io/tonnetz-atractor/
+  - Repo: github.com/cjlkaiser-cpu/tonnetz-atractor
+  - Aprendido: Teoría Neo-Riemanniana (P/L/R), Tonnetz hexagonal, síntesis polifónica
 
 - **12 dic 2025**: 🔬 PHYSICS VISUAL LAB - Nuevo Proyecto Independiente
   - **Separación de proyectos**: Physics Sound Lab (metrónomos) vs Physics Visual Lab (simulaciones)

@@ -621,6 +621,7 @@
                 { id: "physics-visual", label: "Physics Visual Lab", type: "project", status: "completado", desc: "16 simulaciones de fisica interactivas" },
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
                 { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
+                { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
                 { id: "chacona", label: "Chacona Estudio", type: "project", status: "produccion", desc: "64 variaciones de Bach con grabacion y progreso" },
                 { id: "mathkids", label: "MathKids", type: "project", status: "completado", desc: "Dashboard matematico interactivo para ninos" },
                 { id: "factoria", label: "Factoria Demo", type: "project", status: "completado", desc: "Sistema gestion escuela con 7 tipos de pago" },
@@ -666,7 +667,8 @@
                 { id: "maxwell", label: "Maxwell-Boltzmann", type: "concept", desc: "Distribucion de velocidades en gases" },
                 { id: "snell", label: "Ley de Snell", type: "concept", desc: "Refraccion de la luz n1·sin(θ1) = n2·sin(θ2)" },
                 { id: "fourier", label: "Fourier", type: "concept", desc: "Descomposicion en frecuencias" },
-                { id: "lagrangiano", label: "Lagrangiano", type: "concept", desc: "L = T - V mecanica analitica" }
+                { id: "lagrangiano", label: "Lagrangiano", type: "concept", desc: "L = T - V mecanica analitica" },
+                { id: "neoriemann", label: "Neo-Riemannian", type: "concept", desc: "Teoria musical: transformaciones P/L/R entre triadas en el Tonnetz" }
             ],
             links: [
                 // DirectOS connections
@@ -734,6 +736,13 @@
                 { source: "harmonices", target: "webaudio" },
                 { source: "harmonices", target: "kepler" },
                 { source: "harmonices", target: "physics-sound" },
+
+                // Tonnetz Atractor connections
+                { source: "tonnetz", target: "canvas" },
+                { source: "tonnetz", target: "webaudio" },
+                { source: "tonnetz", target: "javascript" },
+                { source: "tonnetz", target: "neoriemann" },
+                { source: "tonnetz", target: "physics-sound" },
 
                 // Chacona connections
                 { source: "chacona", target: "javascript" },
