@@ -1090,6 +1090,17 @@ Mientras otros memorizan, tú:
 
 ## 🔄 Changelog
 
+- **13 dic 2024**: 📦 PHYSICS SOUND LAB - Reorganización y Documentación
+  - **Nueva estructura**: `metronomos/` + `generativos/` + `papers/`
+  - **Hub animado**: Péndulo doble + partícula Tonnetz como previews interactivos
+  - **2 artículos divulgativos** (HTML+PDF):
+    - "De Kepler a Web Audio: Reviviendo la Música de las Esferas"
+    - "El Atractor del Tonnetz: Cuando el Caos Compone Música"
+  - **Documentación pública**: README.md + ROADMAP.md en repo
+  - **Roadmap generativos**: Coupled Attractors, Orbifold Walker, Rhythm Tonnetz, Set-Class Attractor
+  - **Git reorganizado**: physics-sound-lab como repo principal
+  - Aprendido: weasyprint (HTML→PDF), estructura hub/landing pages, planificación de portfolio
+
 - **13 dic 2025**: 📄 PAPER TONNETZ ATRACTOR v3 - Artículo Académico Completo + Simulaciones
   - **Paper científico** para Leonardo, Computer Music Journal, Journal of Mathematics and Music
   - **3 versiones del draft**: v1 (inicial), v2 (~5K palabras), v3 (~12K palabras, completo)
