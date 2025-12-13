@@ -23,8 +23,8 @@
 - **Líneas de código:** ~32,000+
 - **Tecnologías dominadas:** 26+
 - **Áreas de conocimiento:** 4 principales
-- **Metodologías propias:** 4 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**)
-- **Herramientas creadas:** 4 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**)
+- **Metodologías propias:** 5 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**, **Simulación Headless**)
+- **Herramientas creadas:** 5 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**, **Tonnetz Simulator**)
 
 ### 💪 Por Área
 
@@ -1074,35 +1074,62 @@ Mientras otros memorizan, tú:
 - [Anthropic Docs](https://docs.anthropic.com/)
 - [Fast.ai](https://www.fast.ai/)
 
-### Herramientas
+### Herramientas CLI
 - [Regex101](https://regex101.com/)
 - [Excalidraw](https://excalidraw.com/)
+
+### Publicación Académica
+| Tool | Uso | Instalación |
+|------|-----|-------------|
+| **pandoc** | Markdown → HTML/PDF/DOCX | `brew install pandoc` |
+| **rsvg-convert** | SVG → PNG (300dpi) | `brew install librsvg` |
+| **markdown-pdf** | MD → PDF directo | `pip install markdown-pdf` |
+| **wkhtmltopdf** | HTML → PDF | `brew install wkhtmltopdf` |
 
 ---
 
 ## 🔄 Changelog
 
-- **13 dic 2025**: 📄 PAPER TONNETZ ATRACTOR - Artículo Académico Completo
+- **13 dic 2025**: 📄 PAPER TONNETZ ATRACTOR v3 - Artículo Académico Completo + Simulaciones
   - **Paper científico** para Leonardo, Computer Music Journal, Journal of Mathematics and Music
-  - ~6,500 palabras con 7 secciones: Introduction, Background, System Design, Implementation, Results, Future Work, Conclusion
-  - **8 figuras SVG** profesionales: Tonnetz hexagonal, arquitectura sistema, transformaciones P/L/R, trayectoria caótica, sensibilidad, 5 modos, notación musical, comparativa métodos
-  - Conceptos formalizados: Neo-Riemannian theory, magnetic pendulum chaos, parsimonious voice leading
-  - Draft compilado: PAPER_DRAFT_v1.md + secciones individuales para revisión
+  - **3 versiones del draft**: v1 (inicial), v2 (~5K palabras), v3 (~12K palabras, completo)
+  - **8 figuras SVG** convertidas a PNG 300dpi para publicación
+  - **Framework de simulación headless**: 450 simulaciones sistemáticas
+    - Node.js runner con SQLite para datos
+    - Python analysis para estadísticas y visualización
+    - Parámetros barridos: friction (0.01-0.10), force (0.5-2.5), deltaT (0.01-0.05)
+    - Métricas: Lyapunov exponent proxy, chord transitions, dwell times
+  - **Herramientas de publicación**: pandoc (HTML), markdown-pdf (PDF), rsvg-convert (PNG 300dpi)
   - Ubicación: `~/Desktop/Physics Sound Lab/paper-tonnetz-atractor/`
-  - Aprendido: Escritura académica en inglés, creación figuras SVG para papers, formalización teórica
+  - Aprendido: Simulación headless, análisis estadístico de sistemas caóticos, conversión SVG→PNG
 
-- **13 dic 2025**: 🎵 TONNETZ ATRACTOR - Instrumento Generativo Neo-Riemanniano
-  - **Nuevo proyecto**: Física del caos + teoría Neo-Riemanniana = música emergente
-  - **Concepto**: Partícula magnética orbita hexágono Tonnetz, acordes emergen del movimiento
-  - **5 modos armónicos**: Mayor, Menor, Frigio, Lidio, Blues
-  - **Síntesis mejorada**: 4 osciladores, ADSR envelope, filtro lowpass, reverb convolución
-  - **Física**: Pendulum magnético múltiple, F = Σ K·(r_i - r) / |r_i - r|² - friction·v
-  - **Features**: Drag particle, impulso hacia acordes, visualización campo potencial
-  - **Tutorial interactivo**: Historia del Tonnetz (Euler 1739 → Cohn 1996)
+- **13 dic 2025**: 🎵 TONNETZ ATRACTOR - 3 Versiones del Instrumento Generativo
+  - **Proyecto triple**: Evolución desde hexagonal diatónico hasta grid cromático riguroso
+
+  - **v1 - Tonnetz Hexagonal** (original):
+    - 7 nodos diatónicos (teclas blancas)
+    - 6 tríadas: C, Dm, Em, F, G, Am
+    - 5 modos armónicos: Mayor, Menor, Frigio, Lidio, Blues
+    - Física: 1/r² (inverse-square)
+    - URL: https://cjlkaiser-cpu.github.io/tonnetz-atractor/
+
+  - **v2 - Tonnetz Cromático** (12 notas, dual-ring):
+    - 12 pitch classes cromáticos
+    - 24 tríadas (12 mayores + 12 menores)
+    - Layout dual-ring: anillo exterior (quintas) + interior (bemoles)
+    - Transformaciones P, L, R completas
+    - Física: 1/r³ (mejor estabilidad)
+
+  - **v3 - Tonnetz Grid** (paper-ready):
+    - 20 nodos en rejilla 4×5 triangular
+    - 24 tríadas con detección geométrica precisa
+    - Topología fiel al Tonnetz de Euler
+    - Física: 1/r³ + parámetros optimizados
+    - Base para el paper académico
+
   - **Stack**: Canvas 2D + Web Audio API + Neo-Riemannian theory
-  - URL: https://cjlkaiser-cpu.github.io/tonnetz-atractor/
   - Repo: github.com/cjlkaiser-cpu/tonnetz-atractor
-  - Aprendido: Teoría Neo-Riemanniana (P/L/R), Tonnetz hexagonal, síntesis polifónica
+  - Aprendido: Teoría Neo-Riemanniana (P/L/R), topología Tonnetz, física de péndulo magnético
 
 - **12 dic 2025**: 🔬 PHYSICS VISUAL LAB - Nuevo Proyecto Independiente
   - **Separación de proyectos**: Physics Sound Lab (metrónomos) vs Physics Visual Lab (simulaciones)
