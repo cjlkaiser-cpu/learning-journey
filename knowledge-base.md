@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 13 diciembre 2025
+> **Última actualización**: 15 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -1089,6 +1089,18 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **15 dic 2025**: 🎵 CADENCIA ORBITAL - Instrumento Generativo con Modulación Armónica
+  - **Nuevo instrumento** en Physics Sound Lab: multi-atractores + progresiones armónicas
+  - **Física RK4** con 3-8 atractores representando grados tonales (I, ii, iii, IV, V, vi, vii°)
+  - **Modulación automática** por zonas: centro → relativo, exterior → dominante
+  - **Círculo de quintas** completo con navegación V↑/IV↓/Rel/Par
+  - **Controles de sonido**: arpegio (4 modos), delay, waveform, ADSR, octava
+  - **Grabación audio**: MediaRecorder API → export WebM/Opus
+  - **Variante Tonnetz Dual** añadida al hub (2 partículas independientes)
+  - Stack: Canvas 2D + Web Audio API + RK4 + MediaRecorder
+  - URL: https://cjlkaiser-cpu.github.io/physics-sound-lab/generativos/cadencia-orbital/
+  - Aprendido: MediaRecorder API, modulación armónica automática, grabación Web Audio
 
 - **13 dic 2024**: 📦 PHYSICS SOUND LAB - Reorganización y Documentación
   - **Nueva estructura**: `metronomos/` + `generativos/` + `papers/`

@@ -42,7 +42,7 @@ physics-visual-lab/
   - Termodinámica: naranja (#f97316)
   - Astrofísica: índigo (#6366f1)
   - Física Moderna: ámbar (#fbbf24)
-- Ecuaciones en Times New Roman italic
+- Ecuaciones en Times New Roman 
 - Canvas con devicePixelRatio para retina
 
 ## Patrón de Simulación (cada archivo)
