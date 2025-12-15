@@ -622,6 +622,8 @@
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
                 { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
+                { id: "orbifold", label: "Orbifold Walker", type: "project", status: "produccion", desc: "Explorador 3D del espacio de acordes de Tymoczko. Three.js + Web Audio" },
+                { id: "cadencia", label: "Cadencia Orbital", type: "project", status: "produccion", desc: "Multi-atractores + progresiones armonicas. Modulacion automatica + grabacion" },
                 { id: "paper-tonnetz", label: "Paper Tonnetz", type: "project", status: "activo", desc: "Paper academico: Neo-Riemannian + Chaos Theory. 6500 palabras, 8 figuras SVG. Target: Leonardo, CMJ" },
                 { id: "chacona", label: "Chacona Estudio", type: "project", status: "produccion", desc: "64 variaciones de Bach con grabacion y progreso" },
                 { id: "mathkids", label: "MathKids", type: "project", status: "completado", desc: "Dashboard matematico interactivo para ninos" },
@@ -646,6 +648,7 @@
                 { id: "webaudio", label: "Web Audio API", type: "tech", category: "frontend", desc: "Sintesis y procesamiento de audio" },
                 { id: "tailwind", label: "Tailwind CSS", type: "tech", category: "frontend", desc: "Framework CSS utility-first" },
                 { id: "d3", label: "D3.js", type: "tech", category: "frontend", desc: "Visualizacion de datos" },
+                { id: "threejs", label: "Three.js", type: "tech", category: "frontend", desc: "Visualizacion 3D en navegador con WebGL" },
                 { id: "clip", label: "CLIP", type: "tech", category: "ia", desc: "Modelo vision-lenguaje OpenAI" },
                 { id: "ollama", label: "Ollama", type: "tech", category: "ia", desc: "Runtime para LLMs locales" },
                 { id: "claude", label: "Claude API", type: "tech", category: "ia", desc: "API de Anthropic para LLMs" },
@@ -797,10 +800,26 @@
                 { source: "fastapi", target: "python" },
                 { source: "express", target: "nodejs" },
 
+                // Orbifold Walker connections
+                { source: "orbifold", target: "threejs" },
+                { source: "orbifold", target: "webaudio" },
+                { source: "orbifold", target: "javascript" },
+                { source: "orbifold", target: "rk4" },
+                { source: "orbifold", target: "physics-sound" },
+
+                // Cadencia Orbital connections
+                { source: "cadencia", target: "canvas" },
+                { source: "cadencia", target: "webaudio" },
+                { source: "cadencia", target: "javascript" },
+                { source: "cadencia", target: "rk4" },
+                { source: "cadencia", target: "physics-sound" },
+
                 // Cross-project evolution
                 { source: "docmine", target: "photomine" },
                 { source: "photomine", target: "directos" },
-                { source: "physics-sound", target: "physics-visual" }
+                { source: "physics-sound", target: "physics-visual" },
+                { source: "tonnetz", target: "cadencia" },
+                { source: "orbifold", target: "tonnetz" }
             ]
         };
 

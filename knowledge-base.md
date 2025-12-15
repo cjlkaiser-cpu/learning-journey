@@ -1092,6 +1092,40 @@ Mientras otros memorizan, tú:
 
 ## 🔄 Changelog
 
+- **15 dic 2025**: 🎵 PHYSICS SOUND LAB - Visión Completa + Plan Exhibition-Ready
+  - **ESTADO DEL PROYECTO**: 4 generativos completos + 4 artículos divulgativos
+    - Harmonices Mundi (Kepler 1619)
+    - Tonnetz Atractor (Neo-Riemannian + caos)
+    - Rameau Machine (T-S-D funcional + modo menor)
+    - Orbifold Walker (Tymoczko 3D)
+  - **RAMEAU MACHINE** - Features completadas:
+    - **Modo menor**: Armónica con matriz de transiciones específica
+    - **Micro-detune**: ±1-4 cents por voz (humanización)
+    - **Narrador pedagógico**: Explica cada movimiento armónico
+    - Artículo actualizado con sección "Modo Menor: La Otra Mitad de la Armonía"
+  - **SET-CLASS ATTRACTOR** - Plan completo creado:
+    - Pitch-Class Set Theory (Forte, Straus) como sistema de atractores
+    - 223 set-classes organizados por cardinalidad
+    - **4 features distintivas diseñadas**:
+      1. **Parsimonious Voice Leading** (slider 0-1: Webern ↔ parsimonia)
+      2. **Z-Portals** (teletransporte entre Z-mates)
+      3. **Heat Map Emocional** (color por Interval Vector / tensión)
+      4. **Ghost Traces** (memoria visual + reverb al retornar)
+    - Tiempo estimado: 10-14 días
+    - Plan: `generativos/set-class-attractor/PLAN.md`
+  - **PLAN DE MEJORAS v1** - Exhibition-Ready (MoMA/Sónar):
+    - **Audio profesional**: Master bus + reverb convolution + síntesis mejorada + audio espacial 3D
+    - **Visual unificado**: Paleta de colores + tipografía + modo fullscreen inmersivo + 60fps
+    - **Reproducibilidad**: PWA offline + modo kiosko + documentación instalación
+    - Tiempo estimado: 8-12 días
+    - Plan: `PLAN_MEJORAS_v1.md`
+  - **REFLEXIÓN ESTRATÉGICA**: Caminos posibles del proyecto:
+    - Académico (tesis doctoral en musicología computacional)
+    - Artístico (instalación MoMA/Sónar/Ars Electronica)
+    - Didáctico (herramienta educativa teoría musical)
+    - Publicación (Leonardo, Computer Music Journal)
+  - Aprendido: Pitch-Class Set Theory, Z-relations, Interval Vectors, arquitectura exhibition-ready
+
 - **15 dic 2025**: 🎵 PHYSICS SOUND LAB - Dos Nuevos Instrumentos Generativos
   - **CADENCIA ORBITAL** - Multi-atractores + progresiones armónicas
     - Física RK4 con 3-8 atractores representando grados tonales (I, ii, iii, IV, V, vi, vii°)
