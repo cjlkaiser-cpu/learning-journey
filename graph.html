@@ -672,7 +672,10 @@
                 { id: "snell", label: "Ley de Snell", type: "concept", desc: "Refraccion de la luz n1·sin(θ1) = n2·sin(θ2)" },
                 { id: "fourier", label: "Fourier", type: "concept", desc: "Descomposicion en frecuencias" },
                 { id: "lagrangiano", label: "Lagrangiano", type: "concept", desc: "L = T - V mecanica analitica" },
-                { id: "neoriemann", label: "Neo-Riemannian", type: "concept", desc: "Teoria musical: transformaciones P/L/R entre triadas en el Tonnetz" }
+                { id: "neoriemann", label: "Neo-Riemannian", type: "concept", desc: "Teoria musical: transformaciones P/L/R entre triadas en el Tonnetz" },
+                { id: "tymoczko", label: "Tymoczko", type: "concept", desc: "Geometria de acordes: orbifolds como espacios de voicings (A Geometry of Music, 2011)" },
+                { id: "markov", label: "Markov Chains", type: "concept", desc: "Cadenas de Markov: transiciones probabilisticas entre estados" },
+                { id: "rameau", label: "Rameau Machine", type: "project", status: "produccion", desc: "Armonia funcional T-S-D generativa. Modo mayor/menor, voice leading SATB, narrador pedagogico" }
             ],
             links: [
                 // DirectOS connections
@@ -814,12 +817,23 @@
                 { source: "cadencia", target: "rk4" },
                 { source: "cadencia", target: "physics-sound" },
 
+                // Rameau Machine connections
+                { source: "rameau", target: "canvas" },
+                { source: "rameau", target: "webaudio" },
+                { source: "rameau", target: "javascript" },
+                { source: "rameau", target: "markov" },
+                { source: "rameau", target: "physics-sound" },
+
+                // Orbifold → Tymoczko connection
+                { source: "orbifold", target: "tymoczko" },
+
                 // Cross-project evolution
                 { source: "docmine", target: "photomine" },
                 { source: "photomine", target: "directos" },
                 { source: "physics-sound", target: "physics-visual" },
                 { source: "tonnetz", target: "cadencia" },
-                { source: "orbifold", target: "tonnetz" }
+                { source: "orbifold", target: "tonnetz" },
+                { source: "rameau", target: "tonnetz" }
             ]
         };
 
