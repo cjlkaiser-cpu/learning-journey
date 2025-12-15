@@ -18,7 +18,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 32
+- **Proyectos completados:** 33
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~32,000+
 - **Tecnologías dominadas:** 26+
@@ -31,7 +31,7 @@
 **💻 Desarrollo Web**
 - Proyectos: 10 (farmaIA v5.0, Portfolio, DirectOS v8.0, Dashboard Seguimiento, Simulaciones MAZ, Dashboard Mobile, **MathKids**, **Farmacia Colón Web**, **Chat Validador**, **Preludio BWV 1012**)
 - Estado: ✅ Producción
-- Skills: HTML5, CSS3, JS, PWA, Responsive, Node.js, Express, Glassmorphism, FastAPI, Service Worker, Canvas Animations
+- Skills: HTML5, CSS3, JS, PWA, Responsive, Node.js, Express, Glassmorphism, FastAPI, Service Worker, Canvas Animations, Three.js
 
 **🐍 Python & Automatización**
 - Proyectos completados: 5 (PDFs, DocMine-Fiscal, PhotoMine, DocMine, Web Scraper IA)
@@ -132,6 +132,7 @@
 | **Preludio BWV 1012** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Preludio Suite 6 Bach (12 secciones) |
 | **Giga Estudio** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Giga BWV 1004 (secciones progresivas) |
 | **VideoMine** | Python + Flask + yt-dlp + Ollama + Jinja2 | Activo | Extractor conocimiento videos YouTube - metodología minerOS |
+| **Orbifold Walker** | Three.js + Web Audio + RK4 | Producción | Explorador 3D espacio acordes Tymoczko + artículo divulgativo |
 | Portfolio Dibujo | Web + SVG | Publicado | Dashboard analítico visual |
 | Limpiador PDFs | Python + tkinter | Funcional | Automatización |
 | DocMine-Fiscal | Python + OCR + Flask | Producción | 93K€ procesados |
@@ -311,6 +312,7 @@ Predecir/Automatizar → Máximo valor (acciones sin intervención)
 - ✅ FastAPI (Python backend)
 - ✅ Streaming SSE
 - ✅ Rate Limiting + CORS + Helmet.js
+- ✅ Three.js + OrbitControls (3D)
 
 ### 🐍 Python & Automatización
 
@@ -1090,17 +1092,25 @@ Mientras otros memorizan, tú:
 
 ## 🔄 Changelog
 
-- **15 dic 2025**: 🎵 CADENCIA ORBITAL - Instrumento Generativo con Modulación Armónica
-  - **Nuevo instrumento** en Physics Sound Lab: multi-atractores + progresiones armónicas
-  - **Física RK4** con 3-8 atractores representando grados tonales (I, ii, iii, IV, V, vi, vii°)
-  - **Modulación automática** por zonas: centro → relativo, exterior → dominante
-  - **Círculo de quintas** completo con navegación V↑/IV↓/Rel/Par
-  - **Controles de sonido**: arpegio (4 modos), delay, waveform, ADSR, octava
-  - **Grabación audio**: MediaRecorder API → export WebM/Opus
-  - **Variante Tonnetz Dual** añadida al hub (2 partículas independientes)
-  - Stack: Canvas 2D + Web Audio API + RK4 + MediaRecorder
-  - URL: https://cjlkaiser-cpu.github.io/physics-sound-lab/generativos/cadencia-orbital/
-  - Aprendido: MediaRecorder API, modulación armónica automática, grabación Web Audio
+- **15 dic 2025**: 🎵 PHYSICS SOUND LAB - Dos Nuevos Instrumentos Generativos
+  - **CADENCIA ORBITAL** - Multi-atractores + progresiones armónicas
+    - Física RK4 con 3-8 atractores representando grados tonales (I, ii, iii, IV, V, vi, vii°)
+    - Modulación automática por zonas: centro → relativo, exterior → dominante
+    - Círculo de quintas completo con navegación V↑/IV↓/Rel/Par
+    - Grabación audio: MediaRecorder API → export WebM/Opus
+    - URL: https://cjlkaiser-cpu.github.io/physics-sound-lab/generativos/cadencia-orbital/
+  - **ORBIFOLD WALKER** - Explorador 3D del espacio de acordes de Tymoczko
+    - **Three.js** para visualización 3D del orbifold T³/S₃ (prisma de tríadas)
+    - Coordenadas: x=transposición, y=intervalo inferior, z=intervalo superior
+    - **4 atractores** en acordes consonantes: Mayor (4,3), menor (3,4), dim (3,3), aug (4,4)
+    - **Topología twisted**: bordes identificados con transposición de tritono
+    - **Modos audio**: Drone (3 osciladores mutando) + Trigger (ADSR al acercarse)
+    - **Artículo divulgativo** completo (~2500 palabras): De Euler a Tymoczko
+    - Repo independiente: https://github.com/cjlkaiser-cpu/orbifold-walker
+    - URL: https://cjlkaiser-cpu.github.io/orbifold-walker/
+  - **Hub actualizado** con previews animados para ambos proyectos
+  - Stack: Three.js + Canvas 2D + Web Audio API + RK4 + MediaRecorder
+  - Aprendido: Three.js, OrbitControls, geometría de orbifolds (Tymoczko), topología musical
 
 - **13 dic 2024**: 📦 PHYSICS SOUND LAB - Reorganización y Documentación
   - **Nueva estructura**: `metronomos/` + `generativos/` + `papers/`
