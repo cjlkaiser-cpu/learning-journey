@@ -619,6 +619,7 @@
                 { id: "biomistral", label: "BioMistral", type: "project", status: "activo", desc: "Validacion LLM farmaceutico con 200 casos y arquitectura hibrida" },
                 { id: "videomine", label: "VideoMine", type: "project", status: "activo", desc: "Extractor de conocimiento de YouTube con metodologia minerOS" },
                 { id: "physics-visual", label: "Physics Visual Lab", type: "project", status: "completado", desc: "16 simulaciones de fisica interactivas" },
+                { id: "chemistry-visual", label: "Chemistry Visual Lab", type: "project", status: "completado", desc: "17 simulaciones de quimica con 3 Three.js moleculares (VSEPR, orbitales, isomeria)" },
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
                 { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
@@ -731,6 +732,12 @@
                 { source: "physics-visual", target: "snell" },
                 { source: "physics-visual", target: "fourier" },
                 { source: "physics-visual", target: "lagrangiano" },
+
+                // Chemistry Visual Lab connections
+                { source: "chemistry-visual", target: "canvas" },
+                { source: "chemistry-visual", target: "threejs" },
+                { source: "chemistry-visual", target: "javascript" },
+                { source: "chemistry-visual", target: "physics-visual" },
 
                 // Physics Sound Lab connections
                 { source: "physics-sound", target: "canvas" },

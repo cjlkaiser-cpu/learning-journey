@@ -18,7 +18,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 33
+- **Proyectos completados:** 34
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~32,000+
 - **Tecnologías dominadas:** 26+
@@ -133,6 +133,7 @@
 | **Giga Estudio** | JS + IndexedDB + MediaRecorder | Producción | Web app estudio Giga BWV 1004 (secciones progresivas) |
 | **VideoMine** | Python + Flask + yt-dlp + Ollama + Jinja2 | Activo | Extractor conocimiento videos YouTube - metodología minerOS |
 | **Orbifold Walker** | Three.js + Web Audio + RK4 | Producción | Explorador 3D espacio acordes Tymoczko + artículo divulgativo |
+| **Chemistry Visual Lab** | HTML5 + Canvas + Three.js | Completado | 17 simulaciones química, 3 con Three.js (VSEPR, Orbitales, Isomería) |
 | Portfolio Dibujo | Web + SVG | Publicado | Dashboard analítico visual |
 | Limpiador PDFs | Python + tkinter | Funcional | Automatización |
 | DocMine-Fiscal | Python + OCR + Flask | Producción | 93K€ procesados |
@@ -1091,6 +1092,18 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **15 dic 2025**: 🧪 CHEMISTRY VISUAL LAB - 17 Simulaciones de Química
+  - **Nuevo proyecto** basado en Physics Visual Lab, adaptado para química
+  - **17 simulaciones interactivas** cubriendo química general, orgánica, termodinámica y electroquímica
+  - **3 simulaciones con Three.js** para visualización molecular 3D:
+    - **VSEPR**: 22 moléculas con geometría 3D, enlaces, pares solitarios, ángulos
+    - **Orbitales Atómicos**: Nubes de densidad electrónica (s, p, d), Monte Carlo, distribución radial
+    - **Isomería Geométrica**: cis-trans/E-Z con propiedades físicas reales
+  - **Simulaciones 2D**: Modelo de Bohr, Gases Reales, Diagrama de Fases, Titulación, Le Chatelier, Nernst, etc.
+  - Stack: HTML5 Canvas + Three.js + OrbitControls + Web fonts
+  - Repo: github.com/cjlkaiser-cpu/chemistry-visual-lab
+  - Aprendido: Three.js para visualización molecular, BufferGeometry, PointsMaterial, simulación Monte Carlo
 
 - **15 dic 2025**: 🎵 PHYSICS SOUND LAB - Visión Completa + Plan Exhibition-Ready
   - **ESTADO DEL PROYECTO**: 4 generativos completos + 4 artículos divulgativos
