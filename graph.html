@@ -625,6 +625,7 @@
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
                 { id: "orbifold", label: "Orbifold Walker", type: "project", status: "produccion", desc: "Explorador 3D del espacio de acordes de Tymoczko. Three.js + Web Audio" },
                 { id: "cadencia", label: "Cadencia Orbital", type: "project", status: "produccion", desc: "Multi-atractores + progresiones armonicas. Modulacion automatica + grabacion" },
+                { id: "set-class", label: "Set-Class Attractor", type: "project", status: "produccion", desc: "223 set-classes Forte con gravedad IC-vector. Fisica orbital + fotones sonoros" },
                 { id: "paper-tonnetz", label: "Paper Tonnetz", type: "project", status: "activo", desc: "Paper academico: Neo-Riemannian + Chaos Theory. 6500 palabras, 8 figuras SVG. Target: Leonardo, CMJ" },
                 { id: "chacona", label: "Chacona Estudio", type: "project", status: "produccion", desc: "64 variaciones de Bach con grabacion y progreso" },
                 { id: "mathkids", label: "MathKids", type: "project", status: "completado", desc: "Dashboard matematico interactivo para ninos" },
@@ -676,7 +677,10 @@
                 { id: "neoriemann", label: "Neo-Riemannian", type: "concept", desc: "Teoria musical: transformaciones P/L/R entre triadas en el Tonnetz" },
                 { id: "tymoczko", label: "Tymoczko", type: "concept", desc: "Geometria de acordes: orbifolds como espacios de voicings (A Geometry of Music, 2011)" },
                 { id: "markov", label: "Markov Chains", type: "concept", desc: "Cadenas de Markov: transiciones probabilisticas entre estados" },
-                { id: "rameau", label: "Rameau Machine", type: "project", status: "produccion", desc: "Armonia funcional T-S-D generativa. Modo mayor/menor, voice leading SATB, narrador pedagogico" }
+                { id: "rameau", label: "Rameau Machine", type: "project", status: "produccion", desc: "Armonia funcional T-S-D generativa. Modo mayor/menor, voice leading SATB, narrador pedagogico" },
+                { id: "pcset", label: "Pitch-Class Set", type: "concept", desc: "Teoria de conjuntos de clases de alturas (Forte, 1973). 223 set-classes organizados por cardinalidad" },
+                { id: "icvector", label: "IC-Vector", type: "concept", desc: "Vector de clases intervalicas: 6 componentes que caracterizan la sonoridad de un set-class" },
+                { id: "forte", label: "Forte Notation", type: "concept", desc: "Sistema de clasificacion de Allen Forte: cardinalidad-ordinal (ej: 3-11 = triada mayor)" }
             ],
             links: [
                 // DirectOS connections
@@ -824,6 +828,15 @@
                 { source: "cadencia", target: "rk4" },
                 { source: "cadencia", target: "physics-sound" },
 
+                // Set-Class Attractor connections
+                { source: "set-class", target: "canvas" },
+                { source: "set-class", target: "webaudio" },
+                { source: "set-class", target: "javascript" },
+                { source: "set-class", target: "pcset" },
+                { source: "set-class", target: "icvector" },
+                { source: "set-class", target: "forte" },
+                { source: "set-class", target: "physics-sound" },
+
                 // Rameau Machine connections
                 { source: "rameau", target: "canvas" },
                 { source: "rameau", target: "webaudio" },
@@ -840,7 +853,9 @@
                 { source: "physics-sound", target: "physics-visual" },
                 { source: "tonnetz", target: "cadencia" },
                 { source: "orbifold", target: "tonnetz" },
-                { source: "rameau", target: "tonnetz" }
+                { source: "rameau", target: "tonnetz" },
+                { source: "set-class", target: "tonnetz" },
+                { source: "set-class", target: "cadencia" }
             ]
         };
 
