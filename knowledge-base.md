@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 15 diciembre 2025
+> **Última actualización**: 16 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -18,7 +18,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 34
+- **Proyectos completados:** 35
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~32,000+
 - **Tecnologías dominadas:** 26+
@@ -134,6 +134,7 @@
 | **VideoMine** | Python + Flask + yt-dlp + Ollama + Jinja2 | Activo | Extractor conocimiento videos YouTube - metodología minerOS |
 | **Orbifold Walker** | Three.js + Web Audio + RK4 | Producción | Explorador 3D espacio acordes Tymoczko + artículo divulgativo |
 | **Chemistry Visual Lab** | HTML5 + Canvas + Three.js | Completado | 17 simulaciones química, 3 con Three.js (VSEPR, Orbitales, Isomería) |
+| **Set-Class Attractor** | HTML5 + Canvas + Web Audio + Pitch-Class Set Theory | Producción | 223 set-classes Forte, IC-vector gravity, instrumentos generativos |
 | Portfolio Dibujo | Web + SVG | Publicado | Dashboard analítico visual |
 | Limpiador PDFs | Python + tkinter | Funcional | Automatización |
 | DocMine-Fiscal | Python + OCR + Flask | Producción | 93K€ procesados |
@@ -1092,6 +1093,16 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **16 dic 2025**: 🎼 SET-CLASS ATTRACTOR - Instrumento Generativo Pitch-Class Set Theory
+  - **Nuevo generativo** en Physics Sound Lab basado en Teoría de Conjuntos de Clases de Alturas
+  - **223 set-classes** del catálogo Forte organizados por cardinalidad (3-6 notas)
+  - **Sistema de gravedad IC-vector**: Atracción basada en vector de clases interválicas
+  - **Física de partículas**: Órbita central alrededor del canvas, excitación por velocidad
+  - **Fotones sonoros**: Emisión espectral al cambiar de set-class
+  - Stack: HTML5 Canvas + Web Audio API + Pitch-Class Set Theory + RK4
+  - URL: https://cjlkaiser-cpu.github.io/physics-sound-lab/generativos/set-class-attractor/
+  - Aprendido: Pitch-Class Set Theory (Forte), IC-vectors, Z-relations, física orbital central
 
 - **15 dic 2025**: 🧪 CHEMISTRY VISUAL LAB - 17 Simulaciones de Química
   - **Nuevo proyecto** basado en Physics Visual Lab, adaptado para química
