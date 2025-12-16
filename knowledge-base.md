@@ -18,9 +18,9 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 35
+- **Proyectos completados:** 36
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
-- **Líneas de código:** ~32,000+
+- **Líneas de código:** ~43,000+
 - **Tecnologías dominadas:** 26+
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 5 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**, **Simulación Headless**)
@@ -134,6 +134,7 @@
 | **VideoMine** | Python + Flask + yt-dlp + Ollama + Jinja2 | Activo | Extractor conocimiento videos YouTube - metodología minerOS |
 | **Orbifold Walker** | Three.js + Web Audio + RK4 | Producción | Explorador 3D espacio acordes Tymoczko + artículo divulgativo |
 | **Chemistry Visual Lab** | HTML5 + Canvas + Three.js | Completado | 17 simulaciones química, 3 con Three.js (VSEPR, Orbitales, Isomería) |
+| **Math Visual Lab** | HTML5 + Canvas + Tailwind | Completado | 15 simulaciones matemáticas: Mandelbrot, Fourier, Lorenz, Voronoi, Collatz, etc. |
 | **Set-Class Attractor** | HTML5 + Canvas + Web Audio + Pitch-Class Set Theory | Producción | 223 set-classes Forte, IC-vector gravity, instrumentos generativos |
 | Portfolio Dibujo | Web + SVG | Publicado | Dashboard analítico visual |
 | Limpiador PDFs | Python + tkinter | Funcional | Automatización |
@@ -1093,6 +1094,21 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **16 dic 2025**: 🔢 MATH VISUAL LAB - 15 Simulaciones Matemáticas Interactivas
+  - **Nuevo proyecto** basado en Physics Visual Lab y Chemistry Visual Lab
+  - **15 simulaciones** cubriendo fractales, cálculo, geometría, teoría de números, probabilidad y caos:
+    - **Fractales/Caos**: Mandelbrot (zoom/pan/Julia), Lorenz Attractor (RK4 3D), Juego del Caos (Sierpinski/helecho/dragón IFS), Péndulo Doble (espacio de fases)
+    - **Cálculo**: Fourier Epicycles (DFT puro JS), Taylor Series (8 funciones), Sumas de Riemann (5 métodos)
+    - **Geometría**: Voronoi (Bowyer-Watson), Transformaciones Matriciales (eigenvalores), Campos Vectoriales (12 presets + RK4)
+    - **Teoría de Números**: Espiral de Ulam (primos), Collatz Tree (4 modos visualización)
+    - **Probabilidad**: Monte Carlo Pi, Tablero de Galton (curva normal)
+    - **Autómatas**: Game of Life (Gosper Gun, presets)
+  - **11,062 líneas** de código total, 16 archivos HTML self-contained
+  - **Estética Cyber-Math**: fondo negro profundo, líneas 1px, colores neón (pink, yellow, violet, cyan, lime)
+  - Stack: HTML5 Canvas + Tailwind CSS + Vanilla JS (zero build tools)
+  - Repo: github.com/cjlkaiser-cpu/math-visual-lab
+  - Aprendido: DFT implementación, Bowyer-Watson triangulation, IFS (Iterated Function Systems), integración RK4 para sistemas caóticos
 
 - **16 dic 2025**: 🎼 SET-CLASS ATTRACTOR - Instrumento Generativo Pitch-Class Set Theory
   - **Nuevo generativo** en Physics Sound Lab basado en Teoría de Conjuntos de Clases de Alturas
