@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 16 diciembre 2025
+> **Última actualización**: 17 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -18,7 +18,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 36
+- **Proyectos completados:** 34
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~43,000+
 - **Tecnologías dominadas:** 26+
@@ -1094,6 +1094,22 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **16 dic 2025**: 🎨 MATH GENERATIVE ART LAB - 7 Simulaciones de Arte Algorítmico
+  - **Nuevo lab** dentro del ecosistema EigenLab (junto a Math Visual Lab)
+  - **7 simulaciones** de arte generativo basadas en matemáticas:
+    - **Reacción-Difusión**: Modelo Gray-Scott con 8 presets (coral, mitosis, espirales, laberinto...)
+    - **L-Systems**: Editor de gramáticas formales, 10 presets (árboles, Koch, Sierpinski, Dragón, Hilbert)
+    - **Flow Fields**: Perlin Noise 3D con partículas, 4 presets, evolución temporal
+    - **Strange Attractors**: 8 atractores caóticos (Lorenz, Rössler, Aizawa, Thomas, Halvorsen, Dadras, Chen, Sprott)
+    - **Phyllotaxis**: Ángulo áureo (137.5°), 8 presets, 4 formas (círculo, pétalo, semilla, cuadrado)
+    - **Fractales IFS**: 8 fractales (Barnsley Fern, Sierpinski, Dragón, Koch, Maple, Spiral...)
+    - **Teselaciones Aperiódicas**: Penrose P3 con subdivisión recursiva, ratio kites/darts → φ
+  - **Index con previews animados** en tiempo real (Gray-Scott, Rössler, Phyllotaxis creciendo...)
+  - Stack: HTML5 Canvas + Tailwind CSS + Vanilla JS + Perlin Noise + RK4
+  - Ubicación: `~/Projects/EigenLab/Mathematics/Math Generative Art Lab/`
+  - **ROADMAP actualizado** con Top 7 Simulaciones + Top 7 Generative Art priorizados
+  - Aprendido: Gray-Scott EDP, Laplaciano discreto, L-Systems turtle graphics, Perlin Noise 3D, Penrose subdivision
 
 - **16 dic 2025**: 🔢 MATH VISUAL LAB - 15 Simulaciones Matemáticas Interactivas
   - **Nuevo proyecto** basado en Physics Visual Lab y Chemistry Visual Lab

@@ -620,7 +620,9 @@
                 { id: "videomine", label: "VideoMine", type: "project", status: "activo", desc: "Extractor de conocimiento de YouTube con metodologia minerOS" },
                 { id: "physics-visual", label: "Physics Visual Lab", type: "project", status: "completado", desc: "16 simulaciones de fisica interactivas" },
                 { id: "chemistry-visual", label: "Chemistry Visual Lab", type: "project", status: "completado", desc: "17 simulaciones de quimica con 3 Three.js moleculares (VSEPR, orbitales, isomeria)" },
-                { id: "math-visual", label: "Math Visual Lab", type: "project", status: "completado", desc: "15 simulaciones matematicas: Mandelbrot, Fourier, Lorenz, Voronoi, Collatz, Riemann, Game of Life" },
+                { id: "math-visual", label: "Math Visual Lab", type: "project", status: "completado", desc: "22 simulaciones matematicas: Mandelbrot, Poincaré, Domain Coloring, 3-Body, Möbius, Nudos, Simetría" },
+                { id: "math-generative", label: "Math Generative Art Lab", type: "project", status: "completado", desc: "7 simulaciones generativas: Gray-Scott, L-Systems, Flow Fields, Strange Attractors, Phyllotaxis, IFS, Penrose" },
+                { id: "biochem-visual", label: "Biochem Visual Lab", type: "project", status: "completado", desc: "15 simulaciones de bioquimica: enzimas, ADN, membrana, glucolisis, Krebs, proteinas, genetica" },
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
                 { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
@@ -752,6 +754,21 @@
                 { source: "math-visual", target: "fourier" },
                 { source: "math-visual", target: "physics-visual" },
                 { source: "math-visual", target: "chemistry-visual" },
+
+                // Math Generative Art Lab connections
+                { source: "math-generative", target: "canvas" },
+                { source: "math-generative", target: "javascript" },
+                { source: "math-generative", target: "tailwind" },
+                { source: "math-generative", target: "rk4" },
+                { source: "math-generative", target: "math-visual" },
+
+                // Biochem Visual Lab connections
+                { source: "biochem-visual", target: "canvas" },
+                { source: "biochem-visual", target: "javascript" },
+                { source: "biochem-visual", target: "tailwind" },
+                { source: "biochem-visual", target: "physics-visual" },
+                { source: "biochem-visual", target: "chemistry-visual" },
+                { source: "biochem-visual", target: "math-visual" },
 
                 // Physics Sound Lab connections
                 { source: "physics-sound", target: "canvas" },
