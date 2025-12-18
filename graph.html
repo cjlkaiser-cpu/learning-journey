@@ -627,6 +627,7 @@
                 { id: "astronomy-sound", label: "Astronomy Sound Lab", type: "project", status: "completado", desc: "3 simulaciones de sonificacion cosmica: pulsares, ondas gravitacionales, musica de las esferas" },
                 { id: "biology-visual", label: "Biology Visual Lab", type: "project", status: "completado", desc: "6 simulaciones de biologia: Hodgkin-Huxley, Lotka-Volterra, Hardy-Weinberg, Mitosis, Meiosis, Algoritmo Genetico" },
                 { id: "geology-visual", label: "Geology Visual Lab", type: "project", status: "completado", desc: "6 simulaciones de geologia: terremotos, volcanes, tectonica de placas, ciclo de rocas, erosion, estratigrafia" },
+                { id: "computation-lab", label: "Computation Lab", type: "project", status: "completado", desc: "6 simulaciones de computacion: Bubble Sort, BST, Logic Gates, Stack/Heap, Perceptron, DFA + 6 guias pedagogicas" },
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
                 { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
@@ -804,6 +805,12 @@
                 { source: "geology-visual", target: "javascript" },
                 { source: "geology-visual", target: "tailwind" },
                 { source: "geology-visual", target: "physics-visual" },
+
+                // Computation Lab connections
+                { source: "computation-lab", target: "canvas" },
+                { source: "computation-lab", target: "javascript" },
+                { source: "computation-lab", target: "tailwind" },
+                { source: "computation-lab", target: "math-visual" },
 
                 // Physics Sound Lab connections
                 { source: "physics-sound", target: "canvas" },

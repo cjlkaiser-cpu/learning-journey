@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 17 diciembre 2025
+> **Última actualización**: 18 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -18,10 +18,10 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 34
+- **Proyectos completados:** 35
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
-- **Líneas de código:** ~43,000+
-- **Tecnologías dominadas:** 26+
+- **Líneas de código:** ~45,000+
+- **Tecnologías dominadas:** 27+
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 5 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**, **Simulación Headless**)
 - **Herramientas creadas:** 5 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**, **Tonnetz Simulator**)
@@ -1094,6 +1094,31 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **18 dic 2025**: 💻 EIGENLAB COMPUTATION LAB - 6 simulaciones + guías pedagógicas + consolidación
+  - **Computation Lab** - 6 simulaciones de ciencias de la computación:
+    - **Bubble Sort Race**: Ordenamiento burbuja con visualización de barras
+    - **Binary Search Tree**: BST interactivo con inserción/búsqueda/eliminación
+    - **Logic Gates Sandbox**: Compuertas lógicas drag & drop (AND/OR/NOT/XOR/NAND/NOR)
+    - **Stack & Heap Visualizer**: Modelo de memoria con punteros
+    - **Perceptron Playground**: Clasificador lineal binario
+    - **Finite Automata**: DFA con estados, transiciones y testing de strings
+  - **6 guías pedagógicas** en `guides/` con:
+    - Explicación conceptual + ecuación + experimento guiado + conexiones
+    - Patrón reutilizable para todos los labs de EigenLab
+  - **MANIFESTO.md** - Filosofía pedagógica documentada:
+    - "Visual State": representación directa del estado interno
+    - "Las ecuaciones no describen objetos — describen comportamientos"
+    - Orden de aprendizaje: Ver → Explorar → Manipular → Detectar → Formalizar
+  - **Portal actualizado** con nuevo header + tagline + epígrafes
+  - **ROADMAP consolidación** - Plan de profundidad antes que amplitud:
+    - Guías pedagógicas para todos los labs
+    - Caminos de aprendizaje cross-disciplina (Caos, Oscilaciones, Estados, Algoritmos, Emergencia)
+    - Conexiones explícitas entre simulaciones que comparten patrones
+  - Stack: HTML5 Canvas + Tailwind CSS + Vanilla JS
+  - Color scheme: Electric Blue (#3b82f6) para Computation
+  - Ubicación: `~/Projects/EigenLab/Computation/Computation Lab/`
+  - Aprendido: DFA, BST, stack/heap memory model, perceptron learning rule, pedagogía Visual State
 
 - **18 dic 2025**: 🌍 EIGENLAB BIOLOGY + GEOLOGY VISUAL LABS - 12 nuevas simulaciones
   - **Biology Visual Lab** - 6 simulaciones de biología y neurociencia:
