@@ -1095,6 +1095,47 @@ Mientras otros memorizan, tú:
 
 ## 🔄 Changelog
 
+- **18 dic 2025**: 🌍 EIGENLAB BIOLOGY + GEOLOGY VISUAL LABS - 12 nuevas simulaciones
+  - **Biology Visual Lab** - 6 simulaciones de biología y neurociencia:
+    - **Hodgkin-Huxley**: Potencial de acción neuronal completo con canales Na+/K+
+    - **Lotka-Volterra**: Dinámica depredador-presa con espacio de fases
+    - **Hardy-Weinberg**: Equilibrio genético poblacional + deriva genética
+    - **Mitosis**: 5 fases de división celular con animación
+    - **Meiosis**: División reductiva con crossing-over
+    - **Algoritmo Genético**: Selección natural simulada
+  - **Geology Visual Lab** - 6 simulaciones de geología:
+    - **Terremotos**: Ondas P, S, superficiales + sismograma multi-estación con TIME_SCALE
+    - **Volcanes**: Escudo, estratovolcán, caldera con índice VEI
+    - **Tectónica de Placas**: Deriva continental + tipos de bordes
+    - **Ciclo de Rocas**: Ígneas, sedimentarias, metamórficas
+    - **Erosión**: Hídrica, eólica, glaciar, costera
+    - **Estratigrafía**: Columna estratigráfica + datación relativa/absoluta
+  - **Portal EigenLab actualizado**: 10 labs, 99+ simulaciones, 7 disciplinas
+  - Stack: HTML5 Canvas + Tailwind CSS + Vanilla JS + RK4
+  - Color schemes: Emerald (#10b981) para Biology, Amber (#d97706) para Geology
+  - Ubicación: `~/Projects/EigenLab/Biology/` y `~/Projects/EigenLab/Geology/`
+  - Aprendido: Hodgkin-Huxley ODEs, ondas sísmicas con TIME_SCALE, estaciones móviles
+
+- **17 dic 2025**: 🔭 EIGENLAB ASTRONOMY LABS - Visual Lab (6 sims) + Sound Lab (3 sims)
+  - **Nuevo ecosistema** dentro de EigenLab: Astronomy Visual Lab + Astronomy Sound Lab
+  - **Astronomy Visual Lab** - 6 simulaciones de astrofísica y cosmología:
+    - **Ley de Hubble**: Expansión del universo, velocidad de recesión, constante H₀
+    - **Agujero Negro**: Disco de acreción, horizonte de eventos, espacio-tiempo curvado
+    - **Lente Gravitacional**: Anillo de Einstein, deflexión de luz
+    - **Diagrama H-R**: Clasificación estelar, secuencia principal, gigantes, enanas
+    - **Órbitas Kepler**: 3 leyes de Kepler con RK4, Newton-Raphson para anomalía excéntrica
+    - **Fusión Estelar**: Cadena pp y ciclo CNO, núcleo solar con E=mc²
+  - **Astronomy Sound Lab** - 3 simulaciones de sonificación cósmica:
+    - **Pulsares**: Períodos de rotación → ritmo, Joy Division visualization, Crab/Vela/PSR B1919+21
+    - **Ondas Gravitacionales**: Chirp de fusión de agujeros negros, GW150914/GW170817, waveform + spectrogram
+    - **Música de las Esferas**: Kepler modernizado con TRAPPIST-1 y Kepler-90, escalas musicales
+  - **Portal EigenLab actualizado**: 8 labs, 87+ simulaciones, 5 disciplinas
+  - **ROADMAP actualizado**: Astronomy marcado como ✅ COMPLETADO
+  - Stack: HTML5 Canvas + Web Audio API + Tailwind CSS
+  - Color scheme: Indigo (#6366f1) para Astronomy
+  - Ubicación: `~/Projects/EigenLab/Astronomy/`
+  - Aprendido: Sonificación de pulsares, chirp gravitacional, sistemas planetarios resonantes (TRAPPIST-1)
+
 - **16 dic 2025**: 🎨 MATH GENERATIVE ART LAB - 7 Simulaciones de Arte Algorítmico
   - **Nuevo lab** dentro del ecosistema EigenLab (junto a Math Visual Lab)
   - **7 simulaciones** de arte generativo basadas en matemáticas:

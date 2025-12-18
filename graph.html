@@ -622,7 +622,11 @@
                 { id: "chemistry-visual", label: "Chemistry Visual Lab", type: "project", status: "completado", desc: "17 simulaciones de quimica con 3 Three.js moleculares (VSEPR, orbitales, isomeria)" },
                 { id: "math-visual", label: "Math Visual Lab", type: "project", status: "completado", desc: "22 simulaciones matematicas: Mandelbrot, Poincaré, Domain Coloring, 3-Body, Möbius, Nudos, Simetría" },
                 { id: "math-generative", label: "Math Generative Art Lab", type: "project", status: "completado", desc: "7 simulaciones generativas: Gray-Scott, L-Systems, Flow Fields, Strange Attractors, Phyllotaxis, IFS, Penrose" },
-                { id: "biochem-visual", label: "Biochem Visual Lab", type: "project", status: "completado", desc: "15 simulaciones de bioquimica: enzimas, ADN, membrana, glucolisis, Krebs, proteinas, genetica" },
+                { id: "biochem-visual", label: "Biochem Visual Lab", type: "project", status: "completado", desc: "16 simulaciones de bioquimica: enzimas, ADN, membrana, glucolisis, Krebs, proteinas, genetica" },
+                { id: "astronomy-visual", label: "Astronomy Visual Lab", type: "project", status: "completado", desc: "6 simulaciones de astrofisica: Hubble, agujero negro, lente gravitacional, H-R, Kepler, fusion estelar" },
+                { id: "astronomy-sound", label: "Astronomy Sound Lab", type: "project", status: "completado", desc: "3 simulaciones de sonificacion cosmica: pulsares, ondas gravitacionales, musica de las esferas" },
+                { id: "biology-visual", label: "Biology Visual Lab", type: "project", status: "completado", desc: "6 simulaciones de biologia: Hodgkin-Huxley, Lotka-Volterra, Hardy-Weinberg, Mitosis, Meiosis, Algoritmo Genetico" },
+                { id: "geology-visual", label: "Geology Visual Lab", type: "project", status: "completado", desc: "6 simulaciones de geologia: terremotos, volcanes, tectonica de placas, ciclo de rocas, erosion, estratigrafia" },
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
                 { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
@@ -769,6 +773,37 @@
                 { source: "biochem-visual", target: "physics-visual" },
                 { source: "biochem-visual", target: "chemistry-visual" },
                 { source: "biochem-visual", target: "math-visual" },
+
+                // Astronomy Visual Lab connections
+                { source: "astronomy-visual", target: "canvas" },
+                { source: "astronomy-visual", target: "javascript" },
+                { source: "astronomy-visual", target: "tailwind" },
+                { source: "astronomy-visual", target: "rk4" },
+                { source: "astronomy-visual", target: "kepler" },
+                { source: "astronomy-visual", target: "lorentz" },
+                { source: "astronomy-visual", target: "physics-visual" },
+
+                // Astronomy Sound Lab connections
+                { source: "astronomy-sound", target: "canvas" },
+                { source: "astronomy-sound", target: "webaudio" },
+                { source: "astronomy-sound", target: "javascript" },
+                { source: "astronomy-sound", target: "tailwind" },
+                { source: "astronomy-sound", target: "astronomy-visual" },
+                { source: "astronomy-sound", target: "physics-sound" },
+
+                // Biology Visual Lab connections
+                { source: "biology-visual", target: "canvas" },
+                { source: "biology-visual", target: "javascript" },
+                { source: "biology-visual", target: "tailwind" },
+                { source: "biology-visual", target: "rk4" },
+                { source: "biology-visual", target: "physics-visual" },
+                { source: "biology-visual", target: "biochem-visual" },
+
+                // Geology Visual Lab connections
+                { source: "geology-visual", target: "canvas" },
+                { source: "geology-visual", target: "javascript" },
+                { source: "geology-visual", target: "tailwind" },
+                { source: "geology-visual", target: "physics-visual" },
 
                 // Physics Sound Lab connections
                 { source: "physics-sound", target: "canvas" },
