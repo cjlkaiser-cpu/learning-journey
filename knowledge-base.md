@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 18 diciembre 2025
+> **Última actualización**: 19 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -18,10 +18,10 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 35
+- **Proyectos completados:** 36
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~45,000+
-- **Tecnologías dominadas:** 27+
+- **Tecnologías dominadas:** 29+ (Aseprite, Phaser.js)
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 5 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**, **Simulación Headless**)
 - **Herramientas creadas:** 5 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**, **Tonnetz Simulator**)
@@ -1094,6 +1094,28 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **19 dic 2025**: 🎮 GAME DEV - Aseprite + Phaser.js + Mi Juego Plataformas
+  - **Aseprite compilado desde source** (GitHub, gratuito, legal):
+    - cmake + ninja + Skia m124 para macOS ARM64
+    - Instalado en `/Applications/Aseprite.app`
+    - Source en `~/aseprite-source/`
+  - **3 scripts Lua** creados para automatizacion:
+    - `paleta_personaje.lua` - Crea paleta 11 colores pixel art
+    - `animacion_correr.lua` - Genera 4 frames + tags (Run, Idle, Jump, Fall)
+    - `exportar_spritesheet.lua` - Exporta PNG + JSON para Phaser.js
+  - **Mi Juego de Plataformas** - Proyecto completo Phaser.js:
+    - 3 escenas: Menu, Juego, Victoria
+    - **Selector de 5 personajes** con preview y sistema de registro
+    - Fisica arcade: gravedad, colisiones, rebote
+    - Enemigos (slimes) + 8 monedas + animaciones
+    - Sistema modular CHARACTERS object
+    - ~590 lineas de codigo
+  - **Workflow nuevo documentado**: Aseprite → Export Sprite Sheet → Phaser.js
+  - **Conexion con EigenLab**: Misma filosofia visual-first, interactivo, modular
+  - Stack: Aseprite + Lua + Phaser.js 3.60 + HTML5 Canvas + Arcade Physics
+  - Ubicacion: `~/Projects/mi-juego-plataformas/`
+  - Aprendido: Compilacion C++ desde source, scripting Lua, pixel art workflow, game dev basico
 
 - **18 dic 2025**: 💻 EIGENLAB COMPUTATION LAB - 6 simulaciones + guías pedagógicas + consolidación
   - **Computation Lab** - 6 simulaciones de ciencias de la computación:
