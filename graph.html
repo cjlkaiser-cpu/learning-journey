@@ -642,6 +642,7 @@
                 { id: "dashboard", label: "Learning Dashboard", type: "project", status: "produccion", desc: "Launchpad con 33 proyectos y filtros" },
                 { id: "scraper", label: "Web Scraper IA", type: "project", status: "completado", desc: "Extraccion estructurada con Claude y Pydantic" },
                 { id: "hibrido", label: "Sistema Hibrido", type: "project", status: "produccion", desc: "100% accuracy con router + plantillas, 7ms/query" },
+                { id: "mi-juego", label: "Mi Juego Plataformas", type: "project", status: "completado", desc: "Juego 2D con Phaser.js: selector de 5 personajes, enemigos, monedas, 3 escenas" },
 
                 // === TECNOLOGIAS ===
                 { id: "python", label: "Python", type: "tech", category: "backend", desc: "Lenguaje principal para backend y automatizacion" },
@@ -664,6 +665,9 @@
                 { id: "claude", label: "Claude API", type: "tech", category: "ia", desc: "API de Anthropic para LLMs" },
                 { id: "ocr", label: "OCR/Tesseract", type: "tech", category: "ia", desc: "Reconocimiento optico de caracteres" },
                 { id: "git", label: "Git/GitHub", type: "tech", category: "devops", desc: "Control de versiones y colaboracion" },
+                { id: "phaser", label: "Phaser.js", type: "tech", category: "frontend", desc: "Framework de videojuegos 2D para web con Arcade Physics" },
+                { id: "aseprite", label: "Aseprite", type: "tech", category: "frontend", desc: "Editor de pixel art y animaciones. Compilado desde source" },
+                { id: "lua", label: "Lua", type: "tech", category: "backend", desc: "Scripting para automatizacion en Aseprite" },
 
                 // === METODOLOGIAS ===
                 { id: "mineros", label: "minerOS", type: "methodology", desc: "ORO-GEMAS-TESORO: Scanner, Extractor, Clasificador, Pipeline, Vault, Compass" },
@@ -915,6 +919,17 @@
 
                 // Orbifold → Tymoczko connection
                 { source: "orbifold", target: "tymoczko" },
+
+                // Mi Juego Plataformas connections
+                { source: "mi-juego", target: "phaser" },
+                { source: "mi-juego", target: "aseprite" },
+                { source: "mi-juego", target: "javascript" },
+                { source: "mi-juego", target: "canvas" },
+                { source: "mi-juego", target: "html-css" },
+
+                // Aseprite connections
+                { source: "aseprite", target: "lua" },
+                { source: "aseprite", target: "phaser" },
 
                 // Cross-project evolution
                 { source: "docmine", target: "photomine" },
