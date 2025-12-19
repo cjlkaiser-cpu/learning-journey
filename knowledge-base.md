@@ -18,7 +18,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 36
+- **Proyectos completados:** 37
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~45,000+
 - **Tecnologías dominadas:** 29+ (Aseprite, Phaser.js)
@@ -115,6 +115,7 @@
 
 | Proyecto | Stack | Estado | Impacto |
 |----------|-------|--------|---------|
+| **Eco del Alma** | Phaser.js 3.60 + Web Audio + ES6 | Nivel 1 | Juego puzzle musical con Lira, narrativa y puzzles |
 | **farmaIA v5.0** | Node.js + Express + SQLite + Claude | Producción | Mi Botiquín + CIMA API (25K+ meds) |
 | **DirectOS v8.0** | FastAPI + RAG + Tailwind | Producción | Pipeline Builder + 42 patrones + App Store |
 | **DirectOS v8.1** | FastAPI + Offline-First + HITL | Producción | Sync Queue + Agent Workflow Human-in-the-Loop |
@@ -1094,6 +1095,27 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **19 dic 2025**: 🎵 ECO DEL ALMA - Juego Musical Puzzle con Phaser.js
+  - **Nuevo proyecto** creado desde cero con arquitectura modular:
+    - `js/game.js` - Config Phaser con 4 escenas
+    - `js/scenes/` - BootScene, MenuScene, Level1Scene, UIScene
+    - `js/systems/` - Player, Lira, PuzzleSystem, Narrative
+  - **Sistema Lira (notas musicales)**:
+    - 5 notas: Do-Re-Mi-Fa-Sol (teclas 1-5)
+    - Web Audio API con osciladores y envelope ADSR
+    - Feedback visual en tiempo real
+  - **PuzzleSystem**: Validacion de secuencias musicales
+    - Puzzle "atrio": Do-Re-Mi abre la puerta
+    - Acorde de exito (Do-Mi-Sol) al resolver
+  - **Narrative**: Sistema de dialogos con typewriter effect
+    - 11 dialogos predefinidos (intro + victoria)
+    - Personajes: Narrador, El Maestro, La Discordia
+  - **Tilemap**: Castle-Dungeon 64x64 (OpenGameArt CC-BY 4.0)
+  - **Assets**: Square Characters CC0 (Hero, Monster, Skeleton)
+  - Stack: Phaser.js 3.60 + Web Audio API + ES6 Modules
+  - Ubicacion: `~/Projects/ecodelalma/`
+  - Aprendido: Tilemap desde array, arcade physics sin gravedad, sistemas modulares para puzzles
 
 - **19 dic 2025**: 🎮 GAME DEV - Aseprite + Phaser.js + Mi Juego Plataformas
   - **Aseprite compilado desde source** (GitHub, gratuito, legal):

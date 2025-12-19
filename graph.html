@@ -643,6 +643,7 @@
                 { id: "scraper", label: "Web Scraper IA", type: "project", status: "completado", desc: "Extraccion estructurada con Claude y Pydantic" },
                 { id: "hibrido", label: "Sistema Hibrido", type: "project", status: "produccion", desc: "100% accuracy con router + plantillas, 7ms/query" },
                 { id: "mi-juego", label: "Mi Juego Plataformas", type: "project", status: "completado", desc: "Juego 2D con Phaser.js: selector de 5 personajes, enemigos, monedas, 3 escenas" },
+                { id: "ecodelalma", label: "Eco del Alma", type: "project", status: "activo", desc: "Puzzle musical con Phaser.js: sistema Lira (Do-Re-Mi-Fa-Sol), puzzles de secuencias, narrativa typewriter, tilemap Castle-Dungeon" },
 
                 // === TECNOLOGIAS ===
                 { id: "python", label: "Python", type: "tech", category: "backend", desc: "Lenguaje principal para backend y automatizacion" },
@@ -930,6 +931,13 @@
                 // Aseprite connections
                 { source: "aseprite", target: "lua" },
                 { source: "aseprite", target: "phaser" },
+
+                // Eco del Alma connections
+                { source: "ecodelalma", target: "phaser" },
+                { source: "ecodelalma", target: "webaudio" },
+                { source: "ecodelalma", target: "javascript" },
+                { source: "ecodelalma", target: "canvas" },
+                { source: "ecodelalma", target: "mi-juego" },
 
                 // Cross-project evolution
                 { source: "docmine", target: "photomine" },
