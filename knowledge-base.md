@@ -18,7 +18,7 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 37
+- **Proyectos completados:** 38
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~45,000+
 - **Tecnologías dominadas:** 29+ (Aseprite, Phaser.js)
@@ -1250,6 +1250,21 @@ Mientras otros memorizan, tú:
   - Stack: HTML5 Canvas + Tailwind CSS + Vanilla JS (zero build tools)
   - Repo: github.com/cjlkaiser-cpu/math-visual-lab
   - Aprendido: DFT implementación, Bowyer-Watson triangulation, IFS (Iterated Function Systems), integración RK4 para sistemas caóticos
+
+- **21 dic 2025**: 🎼 CONTRAPUNCTUS - Species Counterpoint Trainer
+  - **Nuevo generativo** en Physics Sound Lab basado en método Fux/Schoenberg
+  - **Primera Especie completa** con 15 reglas implementadas:
+    - Consonancias (P1, P5, P8, m3, M3, m6, M6)
+    - Sin quintas/octavas paralelas ni ocultas
+    - Cadencia apropiada (sensible→tónica)
+  - **Audio profesional**: Lowpass filter con envelope, osciladores duales con detune
+  - **Controles mejorados**: Flechas diatónicas, Shift+flechas cromáticas
+  - **Canvas responsivo** con CSS-driven sizing
+  - **ROADMAP completo**: 10 fases desde 1ª especie hasta SATB a 4 voces
+  - Stack: HTML5 Canvas + Web Audio API + Schoenberg/Fux
+  - URL: https://cjlkaiser-cpu.github.io/contrapunctus/
+  - Repo: github.com/cjlkaiser-cpu/contrapunctus
+  - Aprendido: Species counterpoint, reglas Schoenberg, navegación diatónica/cromática
 
 - **16 dic 2025**: 🎼 SET-CLASS ATTRACTOR - Instrumento Generativo Pitch-Class Set Theory
   - **Nuevo generativo** en Physics Sound Lab basado en Teoría de Conjuntos de Clases de Alturas
