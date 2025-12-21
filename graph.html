@@ -620,7 +620,7 @@
                 { id: "videomine", label: "VideoMine", type: "project", status: "activo", desc: "Extractor de conocimiento de YouTube con metodologia minerOS" },
                 { id: "physics-visual", label: "Physics Visual Lab", type: "project", status: "completado", desc: "16 simulaciones de fisica interactivas" },
                 { id: "chemistry-visual", label: "Chemistry Visual Lab", type: "project", status: "completado", desc: "17 simulaciones de quimica con 3 Three.js moleculares (VSEPR, orbitales, isomeria)" },
-                { id: "math-visual", label: "Math Visual Lab", type: "project", status: "completado", desc: "22 simulaciones matematicas: Mandelbrot, Poincaré, Domain Coloring, 3-Body, Möbius, Nudos, Simetría" },
+                { id: "math-visual", label: "Math Visual Lab", type: "project", status: "completado", desc: "27 simulaciones matematicas: Mandelbrot, Poincaré, EDOs, Probabilidad, Geometria 3D, Funciones, Domain Coloring, 3-Body, Möbius" },
                 { id: "math-generative", label: "Math Generative Art Lab", type: "project", status: "completado", desc: "7 simulaciones generativas: Gray-Scott, L-Systems, Flow Fields, Strange Attractors, Phyllotaxis, IFS, Penrose" },
                 { id: "biochem-visual", label: "Biochem Visual Lab", type: "project", status: "completado", desc: "16 simulaciones de bioquimica: enzimas, ADN, membrana, glucolisis, Krebs, proteinas, genetica" },
                 { id: "astronomy-visual", label: "Astronomy Visual Lab", type: "project", status: "completado", desc: "6 simulaciones de astrofisica: Hubble, agujero negro, lente gravitacional, H-R, Kepler, fusion estelar" },
@@ -693,7 +693,12 @@
                 { id: "rameau", label: "Rameau Machine", type: "project", status: "produccion", desc: "Armonia funcional T-S-D generativa. Modo mayor/menor, voice leading SATB, narrador pedagogico" },
                 { id: "pcset", label: "Pitch-Class Set", type: "concept", desc: "Teoria de conjuntos de clases de alturas (Forte, 1973). 223 set-classes organizados por cardinalidad" },
                 { id: "icvector", label: "IC-Vector", type: "concept", desc: "Vector de clases intervalicas: 6 componentes que caracterizan la sonoridad de un set-class" },
-                { id: "forte", label: "Forte Notation", type: "concept", desc: "Sistema de clasificacion de Allen Forte: cardinalidad-ordinal (ej: 3-11 = triada mayor)" }
+                { id: "forte", label: "Forte Notation", type: "concept", desc: "Sistema de clasificacion de Allen Forte: cardinalidad-ordinal (ej: 3-11 = triada mayor)" },
+                { id: "edo", label: "EDOs", type: "concept", desc: "Ecuaciones diferenciales ordinarias: dy/dx = f(x,y). Campos de pendientes y soluciones numericas" },
+                { id: "euler-method", label: "Metodo Euler", type: "concept", desc: "Integracion numerica basica: y_{n+1} = y_n + h*f(x_n, y_n). Simple pero acumula error" },
+                { id: "slope-field", label: "Slope Fields", type: "concept", desc: "Visualizacion de EDOs: flechas que muestran la pendiente en cada punto del plano" },
+                { id: "platonic", label: "Solidos Platonicos", type: "concept", desc: "5 poliedros regulares convexos: tetraedro, cubo, octaedro, dodecaedro, icosaedro. Euler: V-A+C=2" },
+                { id: "box-muller", label: "Box-Muller", type: "concept", desc: "Transformacion para generar numeros aleatorios con distribucion normal desde uniformes" }
             ],
             links: [
                 // DirectOS connections
@@ -760,8 +765,14 @@
                 { source: "math-visual", target: "canvas" },
                 { source: "math-visual", target: "javascript" },
                 { source: "math-visual", target: "tailwind" },
+                { source: "math-visual", target: "threejs" },
                 { source: "math-visual", target: "rk4" },
                 { source: "math-visual", target: "fourier" },
+                { source: "math-visual", target: "edo" },
+                { source: "math-visual", target: "euler-method" },
+                { source: "math-visual", target: "slope-field" },
+                { source: "math-visual", target: "platonic" },
+                { source: "math-visual", target: "box-muller" },
                 { source: "math-visual", target: "physics-visual" },
                 { source: "math-visual", target: "chemistry-visual" },
 
@@ -947,7 +958,13 @@
                 { source: "orbifold", target: "tonnetz" },
                 { source: "rameau", target: "tonnetz" },
                 { source: "set-class", target: "tonnetz" },
-                { source: "set-class", target: "cadencia" }
+                { source: "set-class", target: "cadencia" },
+
+                // Concept connections (EDOs and numerical methods)
+                { source: "edo", target: "euler-method" },
+                { source: "edo", target: "slope-field" },
+                { source: "edo", target: "rk4" },
+                { source: "euler-method", target: "rk4" }
             ]
         };
 

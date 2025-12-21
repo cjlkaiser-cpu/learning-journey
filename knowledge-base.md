@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 19 diciembre 2025
+> **Última actualización**: 21 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -1095,6 +1095,21 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **21 dic 2025**: 🧪 EIGENLAB EXPANSIÓN - 10 Nuevas Simulaciones
+  - **Math Visual Lab** ampliado de 22 → 27 experiencias:
+    - `probabilidad.html` - 4 distribuciones (uniforme, normal, binomial, Poisson) + Box-Muller
+    - `funciones.html` - Explorador con transformaciones (a·f(b(x-h))+k) + derivadas/integrales
+    - `geometria-3d.html` - 9 sólidos 3D (cubo, esfera, 5 Platónicos) + secciones + Euler V-A+C=2
+    - `ecuaciones-diferenciales.html` - 6 EDOs + campos de pendientes + Euler vs RK4
+  - **6 guías pedagógicas** creadas con auto-referencias (HTML autocontenido)
+  - **Portal EigenLab** actualizado: 105+ → 117+ simulaciones
+  - **Knowledge Graph** ampliado con 6 nuevos nodos + 15 conexiones
+  - Stack: Canvas 2D, **Three.js** (geometría 3D), OrbitControls
+  - **Nuevo skill**: Visualización de EDOs con método Euler (integración numérica básica)
+  - **Totales EigenLab**: 120+ simulaciones, 80+ guías, learning paths por disciplina
+  - Ubicación: `~/Projects/EigenLab/`
+  - Aprendido: Slope fields, Euler vs RK4 comparación, proyección 3D→2D para previews
 
 - **19 dic 2025**: 🎵 ECO DEL ALMA - Juego Musical Puzzle con Phaser.js
   - **Nuevo proyecto** creado desde cero con arquitectura modular:

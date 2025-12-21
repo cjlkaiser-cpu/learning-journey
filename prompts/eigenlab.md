@@ -3,7 +3,7 @@
 > Ecosistema de laboratorios virtuales donde las ecuaciones cobran vida
 
 ## Descripción
-Colección de simulaciones interactivas de Física, Química, Bioquímica, Matemáticas y Astronomía. 8 laboratorios, 87+ simulaciones, archivos HTML autocontenidos.
+Colección de simulaciones interactivas de Física, Química, Bioquímica, Matemáticas y Astronomía. 8 laboratorios, 120+ simulaciones, 80+ guías pedagógicas, archivos HTML autocontenidos.
 
 ## Fuente
 - **Repo:** ~/Projects/EigenLab/
@@ -48,7 +48,7 @@ EigenLab/
 ├── Biochemistry/
 │   └── Biochem Visual Lab/     # 16 simulaciones (ADN, metabolismo)
 ├── Mathematics/
-│   ├── Math Visual Lab/        # 22 simulaciones (fractales, caos, topología)
+│   ├── Math Visual Lab/        # 27 simulaciones (fractales, caos, EDOs, probabilidad, geometría 3D)
 │   └── Math Generative Art Lab/# 7 simulaciones (Gray-Scott, L-Systems)
 ├── Astronomy/
 │   ├── Astronomy Visual Lab/   # 6 simulaciones (Hubble, H-R, agujeros negros)
