@@ -644,6 +644,7 @@
                 { id: "hibrido", label: "Sistema Hibrido", type: "project", status: "produccion", desc: "100% accuracy con router + plantillas, 7ms/query" },
                 { id: "mi-juego", label: "Mi Juego Plataformas", type: "project", status: "completado", desc: "Juego 2D con Phaser.js: selector de 5 personajes, enemigos, monedas, 3 escenas" },
                 { id: "ecodelalma", label: "Eco del Alma", type: "project", status: "activo", desc: "Puzzle musical con Phaser.js: sistema Lira (Do-Re-Mi-Fa-Sol), puzzles de secuencias, narrativa typewriter, tilemap Castle-Dungeon" },
+                { id: "eigenlab-core", label: "eigenlab-core", type: "project", status: "produccion", desc: "Motor C++/WASM de alto rendimiento: Navier-Stokes, Boids, N-body Barnes-Hut, Erosion, Cloth PBD. 158KB, 5 sims @ 60fps" },
 
                 // === TECNOLOGIAS ===
                 { id: "python", label: "Python", type: "tech", category: "backend", desc: "Lenguaje principal para backend y automatizacion" },
@@ -661,6 +662,9 @@
                 { id: "tailwind", label: "Tailwind CSS", type: "tech", category: "frontend", desc: "Framework CSS utility-first" },
                 { id: "d3", label: "D3.js", type: "tech", category: "frontend", desc: "Visualizacion de datos" },
                 { id: "threejs", label: "Three.js", type: "tech", category: "frontend", desc: "Visualizacion 3D en navegador con WebGL" },
+                { id: "cpp", label: "C++17", type: "tech", category: "backend", desc: "Lenguaje de alto rendimiento para motores" },
+                { id: "wasm", label: "WebAssembly", type: "tech", category: "frontend", desc: "Codigo compilado a velocidad nativa en navegador" },
+                { id: "emscripten", label: "Emscripten", type: "tech", category: "devops", desc: "Compilador C++ a WebAssembly" },
                 { id: "clip", label: "CLIP", type: "tech", category: "ia", desc: "Modelo vision-lenguaje OpenAI" },
                 { id: "ollama", label: "Ollama", type: "tech", category: "ia", desc: "Runtime para LLMs locales" },
                 { id: "claude", label: "Claude API", type: "tech", category: "ia", desc: "API de Anthropic para LLMs" },
@@ -957,6 +961,17 @@
                 { source: "ecodelalma", target: "javascript" },
                 { source: "ecodelalma", target: "canvas" },
                 { source: "ecodelalma", target: "mi-juego" },
+
+                // eigenlab-core connections
+                { source: "eigenlab-core", target: "cpp" },
+                { source: "eigenlab-core", target: "wasm" },
+                { source: "eigenlab-core", target: "emscripten" },
+                { source: "eigenlab-core", target: "canvas" },
+                { source: "eigenlab-core", target: "javascript" },
+                { source: "eigenlab-core", target: "physics-visual" },
+                { source: "eigenlab-core", target: "biology-visual" },
+                { source: "eigenlab-core", target: "astronomy-visual" },
+                { source: "eigenlab-core", target: "geology-visual" },
 
                 // Cross-project evolution
                 { source: "docmine", target: "photomine" },

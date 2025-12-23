@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 21 diciembre 2025
+> **Última actualización**: 23 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -21,7 +21,7 @@
 - **Proyectos completados:** 38
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~45,000+
-- **Tecnologías dominadas:** 29+ (Aseprite, Phaser.js)
+- **Tecnologías dominadas:** 32+ (C++/WASM, Emscripten, Phaser.js)
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 5 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**, **Simulación Headless**)
 - **Herramientas creadas:** 5 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**, **Tonnetz Simulator**)
@@ -1095,6 +1095,21 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **23 dic 2025**: ⚡ EIGENLAB-CORE - Motor C++/WebAssembly de Alto Rendimiento
+  - **eigenlab-core**: Nuevo motor C++17 compilado a WebAssembly (158KB)
+  - **5 simulaciones WASM** de alto rendimiento:
+    - `fluidos-2d.html` - Navier-Stokes 2D con proyección de presión (256×256 @ 60fps)
+    - `boids-masivo.html` - Reynolds flocking + spatial hash O(n) (1000+ agentes)
+    - `formacion-galaxias.html` - N-body Barnes-Hut O(n log n) (5000+ estrellas)
+    - `erosion-hidraulica.html` - Erosión por gotas con sedimentación
+    - `simulacion-tela.html` - Verlet + Position-Based Dynamics (1200 partículas)
+  - **Nuevas tecnologías dominadas**:
+    - C++17, Emscripten, WebAssembly, Embind (JS↔C++ bindings)
+    - Barnes-Hut quadtree, Spatial hashing, Verlet integration, PBD
+  - **Totales EigenLab**: 120 simulaciones, 94 guías, 8 disciplinas
+  - Ubicación: `~/Projects/EigenLab/eigenlab-core/`
+  - Aprendido: WASM requiere servidor HTTP (CORS), compilación cruzada, optimización -O3 -flto
 
 - **21 dic 2025**: 🧪 EIGENLAB EXPANSIÓN - 10 Nuevas Simulaciones
   - **Math Visual Lab** ampliado de 22 → 27 experiencias:
