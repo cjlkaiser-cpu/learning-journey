@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 23 diciembre 2025
+> **Última actualización**: 24 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -21,7 +21,7 @@
 - **Proyectos completados:** 38
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~45,000+
-- **Tecnologías dominadas:** 32+ (C++/WASM, Emscripten, Phaser.js)
+- **Tecnologías dominadas:** 35+ (Rust/WASM, Karplus-Strong, FDN Reverb)
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 5 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**, **Simulación Headless**)
 - **Herramientas creadas:** 5 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**, **Tonnetz Simulator**)
@@ -1095,6 +1095,23 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **24 dic 2025**: 🎸 SYMPATHETIC 12 - Sintetizador Rust/WASM con Resonancia Simpática
+  - **Sympathetic 12**: Physical modeling synth con 12 cuerdas resonantes (Karplus-Strong)
+  - **Stack Rust/WASM**: Primer proyecto Rust compilado a WebAssembly (58KB)
+  - **DSP completo**:
+    - Karplus-Strong string synthesis con pluck position
+    - Matriz simpática 12×12 basada en intervalos musicales
+    - FDN Reverb (Schroeder/Moorer) con 8 combs + 4 allpass
+    - DC Blocker, soft limiter, protección NaN
+  - **Bugs críticos resueltos**:
+    - DC blocker tenía ganancia 99x (¡causaba explosión de audio!)
+    - pluck() corrompía buffer leyendo/escribiendo simultáneamente
+    - Resonancia y reverb causaban NaN por falta de clamps
+  - **Patrón aprendido**: DSP Stability Pattern (protección NaN, soft limiting, clamps)
+  - **Nuevas tecnologías**: Rust, wasm-pack, wasm-bindgen, Karplus-Strong, FDN Reverb
+  - **Nota**: Sonido funcional pero perdió "magia" del original inestable (TODO: recuperar riqueza armónica)
+  - Ubicación: `~/Projects/EigenLab/Physics/Physics Sound Lab/generativos/sympathetic-12/`
 
 - **23 dic 2025**: ⚡ EIGENLAB-CORE - Motor C++/WebAssembly de Alto Rendimiento
   - **eigenlab-core**: Nuevo motor C++17 compilado a WebAssembly (158KB)

@@ -634,6 +634,7 @@
                 { id: "orbifold", label: "Orbifold Walker", type: "project", status: "produccion", desc: "Explorador 3D del espacio de acordes de Tymoczko. Three.js + Web Audio" },
                 { id: "cadencia", label: "Cadencia Orbital", type: "project", status: "produccion", desc: "Multi-atractores + progresiones armonicas. Modulacion automatica + grabacion" },
                 { id: "set-class", label: "Set-Class Attractor", type: "project", status: "produccion", desc: "223 set-classes Forte con gravedad IC-vector. Fisica orbital + fotones sonoros" },
+                { id: "sympathetic-12", label: "Sympathetic 12", type: "project", status: "produccion", desc: "Sintetizador Rust/WASM: 12 cuerdas Karplus-Strong con resonancia simpatica 12x12 + FDN Reverb. 58KB" },
                 { id: "paper-tonnetz", label: "Paper Tonnetz", type: "project", status: "activo", desc: "Paper academico: Neo-Riemannian + Chaos Theory. 6500 palabras, 8 figuras SVG. Target: Leonardo, CMJ" },
                 { id: "chacona", label: "Chacona Estudio", type: "project", status: "produccion", desc: "64 variaciones de Bach con grabacion y progreso" },
                 { id: "mathkids", label: "MathKids", type: "project", status: "completado", desc: "Dashboard matematico interactivo para ninos" },
@@ -665,6 +666,7 @@
                 { id: "cpp", label: "C++17", type: "tech", category: "backend", desc: "Lenguaje de alto rendimiento para motores" },
                 { id: "wasm", label: "WebAssembly", type: "tech", category: "frontend", desc: "Codigo compilado a velocidad nativa en navegador" },
                 { id: "emscripten", label: "Emscripten", type: "tech", category: "devops", desc: "Compilador C++ a WebAssembly" },
+                { id: "rust", label: "Rust", type: "tech", category: "backend", desc: "Lenguaje de sistemas seguro, compilado a WebAssembly" },
                 { id: "clip", label: "CLIP", type: "tech", category: "ia", desc: "Modelo vision-lenguaje OpenAI" },
                 { id: "ollama", label: "Ollama", type: "tech", category: "ia", desc: "Runtime para LLMs locales" },
                 { id: "claude", label: "Claude API", type: "tech", category: "ia", desc: "API de Anthropic para LLMs" },
@@ -961,6 +963,14 @@
                 { source: "ecodelalma", target: "javascript" },
                 { source: "ecodelalma", target: "canvas" },
                 { source: "ecodelalma", target: "mi-juego" },
+
+                // Sympathetic 12 connections
+                { source: "sympathetic-12", target: "rust" },
+                { source: "sympathetic-12", target: "wasm" },
+                { source: "sympathetic-12", target: "webaudio" },
+                { source: "sympathetic-12", target: "canvas" },
+                { source: "sympathetic-12", target: "javascript" },
+                { source: "sympathetic-12", target: "physics-sound" },
 
                 // eigenlab-core connections
                 { source: "eigenlab-core", target: "cpp" },
