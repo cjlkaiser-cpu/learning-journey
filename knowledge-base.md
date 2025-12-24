@@ -19,7 +19,7 @@
 
 ### 🎯 Visión General
 - **Proyectos completados:** 38
-- **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
+- **Proyectos en desarrollo:** 6 (EigenLab Odyssey, BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~45,000+
 - **Tecnologías dominadas:** 35+ (Rust/WASM, Karplus-Strong, FDN Reverb)
 - **Áreas de conocimiento:** 4 principales
@@ -149,6 +149,7 @@
 
 | Proyecto | Ubicación | Descripción | Estado |
 |----------|-----------|-------------|--------|
+| **EigenLab Odyssey** | `~/Projects/eigenlab-odyssey/` | Juego aventura Phaser.js: 150+ simulaciones EigenLab en narrativa unificada, 9 reinos, audio procedural | Alpha 0.3 |
 | **Estudio BioMistral** | `~/Projects/biomistral-spanish-validation/` | Validación completa LLM farmacia: RAG, 200 casos, arquitectura híbrida | Activo |
 | **Paper BioMistral** | `~/Desktop/paper biominstral/` | Paper académico v2 + referencias verificadas + changelog | Redacción |
 | **DirectOS** | Evolución continua | Cockpit de desarrollo: Pipeline Builder, RAG, App Store, 42 patrones | Activo |
