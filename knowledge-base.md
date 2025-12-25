@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 24 diciembre 2025
+> **Última actualización**: 25 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -18,10 +18,10 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 39
+- **Proyectos completados:** 40
 - **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~45,000+
-- **Tecnologías dominadas:** 35+ (Rust/WASM, Karplus-Strong, FDN Reverb)
+- **Tecnologías dominadas:** 37+ (Rust/WASM, Karplus-Strong, FDN Reverb, **C++/JUCE**, **CMake**)
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 5 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**, **Simulación Headless**)
 - **Herramientas creadas:** 5 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**, **Tonnetz Simulator**)
