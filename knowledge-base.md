@@ -19,7 +19,7 @@
 
 ### 🎯 Visión General
 - **Proyectos completados:** 40
-- **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
+- **Proyectos en desarrollo:** 7 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine, Resonant Graph Synth, Harmonic Groove Engine)
 - **Líneas de código:** ~45,000+
 - **Tecnologías dominadas:** 37+ (Rust/WASM, Karplus-Strong, FDN Reverb, **C++/JUCE**, **CMake**)
 - **Áreas de conocimiento:** 4 principales
@@ -1096,6 +1096,17 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **25 dic 2025**: 🎹 HARMONIC GROOVE ENGINE - Estructura del Plugin JUCE
+  - **eigenlab-instruments**: Monorepo de plugins nativos C++/JUCE (VST3/AU/Standalone)
+  - **HarmonicGrooveEngine**: Autómata celular → secuenciador polirítmico
+    - `src/core/`: Grid.h, Zone.h (sistema de zonas modales)
+    - `src/groove/`: GrooveClock.h (reloj polimétrico)
+    - `src/harmony/`: ModalMixer.h, PatternAge.h, ModulationZones.h
+  - **Concepto**: Células evolucionan en grid, zonas determinan modo/escala, patrones envejecen
+  - **Estado**: WIP - estructura creada, implementación pendiente
+  - **También**: sympathetic-strings UI educativa (modal PDE vs Karplus-Strong)
+  - Ubicación: `~/Projects/eigenlab-instruments/plugins/HarmonicGrooveEngine/`
 
 - **25 dic 2025**: 🎮 EIGENLAB ODYSSEY - Fix de Assets + Verificación Release 1.0
   - **Fix crítico Vite**: Assets movidos de `/assets/` a `/public/assets/` (requisito Vite)
