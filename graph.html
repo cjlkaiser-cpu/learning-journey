@@ -646,6 +646,7 @@
                 { id: "mi-juego", label: "Mi Juego Plataformas", type: "project", status: "completado", desc: "Juego 2D con Phaser.js: selector de 5 personajes, enemigos, monedas, 3 escenas" },
                 { id: "ecodelalma", label: "Eco del Alma", type: "project", status: "activo", desc: "Puzzle musical con Phaser.js: sistema Lira (Do-Re-Mi-Fa-Sol), puzzles de secuencias, narrativa typewriter, tilemap Castle-Dungeon" },
                 { id: "eigenlab-core", label: "eigenlab-core", type: "project", status: "produccion", desc: "Motor C++/WASM de alto rendimiento: Navier-Stokes, Boids, N-body Barnes-Hut, Erosion, Cloth PBD. 158KB, 5 sims @ 60fps" },
+                { id: "eigenlab-odyssey", label: "EigenLab Odyssey", type: "project", status: "produccion", desc: "Juego narrativo que conecta 150+ simulaciones EigenLab. Phaser.js + Vite + Web Audio. 9 reinos, 12 eigenvalores, sistema de exploracion" },
 
                 // === TECNOLOGIAS ===
                 { id: "python", label: "Python", type: "tech", category: "backend", desc: "Lenguaje principal para backend y automatizacion" },
@@ -982,6 +983,21 @@
                 { source: "eigenlab-core", target: "biology-visual" },
                 { source: "eigenlab-core", target: "astronomy-visual" },
                 { source: "eigenlab-core", target: "geology-visual" },
+
+                // EigenLab Odyssey connections
+                { source: "eigenlab-odyssey", target: "phaser" },
+                { source: "eigenlab-odyssey", target: "webaudio" },
+                { source: "eigenlab-odyssey", target: "javascript" },
+                { source: "eigenlab-odyssey", target: "canvas" },
+                { source: "eigenlab-odyssey", target: "physics-visual" },
+                { source: "eigenlab-odyssey", target: "chemistry-visual" },
+                { source: "eigenlab-odyssey", target: "math-visual" },
+                { source: "eigenlab-odyssey", target: "biology-visual" },
+                { source: "eigenlab-odyssey", target: "geology-visual" },
+                { source: "eigenlab-odyssey", target: "astronomy-visual" },
+                { source: "eigenlab-odyssey", target: "computation-lab" },
+                { source: "eigenlab-odyssey", target: "harmonices" },
+                { source: "eigenlab-odyssey", target: "ecodelalma" },
 
                 // Cross-project evolution
                 { source: "docmine", target: "photomine" },

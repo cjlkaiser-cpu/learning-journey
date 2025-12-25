@@ -18,8 +18,8 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 38
-- **Proyectos en desarrollo:** 6 (EigenLab Odyssey, BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
+- **Proyectos completados:** 39
+- **Proyectos en desarrollo:** 5 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine)
 - **Líneas de código:** ~45,000+
 - **Tecnologías dominadas:** 35+ (Rust/WASM, Karplus-Strong, FDN Reverb)
 - **Áreas de conocimiento:** 4 principales
@@ -115,6 +115,7 @@
 
 | Proyecto | Stack | Estado | Impacto |
 |----------|-------|--------|---------|
+| **EigenLab Odyssey** | Phaser.js + Web Audio + Vite | Release 1.0 | Juego aventura: 150+ simulaciones EigenLab, 9 reinos, 12 eigenvalores, audio procedural por reino |
 | **Eco del Alma** | Phaser.js 3.60 + Web Audio + ES6 | Nivel 1 | Juego puzzle musical con Lira, narrativa y puzzles |
 | **farmaIA v5.0** | Node.js + Express + SQLite + Claude | Producción | Mi Botiquín + CIMA API (25K+ meds) |
 | **DirectOS v8.0** | FastAPI + RAG + Tailwind | Producción | Pipeline Builder + 42 patrones + App Store |
@@ -149,7 +150,6 @@
 
 | Proyecto | Ubicación | Descripción | Estado |
 |----------|-----------|-------------|--------|
-| **EigenLab Odyssey** | `~/Projects/eigenlab-odyssey/` | Juego aventura Phaser.js: 150+ simulaciones EigenLab en narrativa unificada, 9 reinos, audio procedural | Alpha 0.3 |
 | **Estudio BioMistral** | `~/Projects/biomistral-spanish-validation/` | Validación completa LLM farmacia: RAG, 200 casos, arquitectura híbrida | Activo |
 | **Paper BioMistral** | `~/Desktop/paper biominstral/` | Paper académico v2 + referencias verificadas + changelog | Redacción |
 | **DirectOS** | Evolución continua | Cockpit de desarrollo: Pipeline Builder, RAG, App Store, 42 patrones | Activo |
@@ -1096,6 +1096,13 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **25 dic 2025**: 🎮 EIGENLAB ODYSSEY - Fix de Assets + Verificación Release 1.0
+  - **Fix crítico Vite**: Assets movidos de `/assets/` a `/public/assets/` (requisito Vite)
+  - **Sprites del Resonador y Constructo** ahora se cargan correctamente
+  - **Verificado Release 1.0**: 7 milestones completados, juego funcional
+  - **Lección Vite**: Archivos estáticos deben estar en `public/` para ser servidos
+  - Ubicación: `~/Projects/eigenlab-odyssey/`
 
 - **24 dic 2025**: 🎸 SYMPATHETIC 12 - Sintetizador Rust/WASM con Resonancia Simpática
   - **Sympathetic 12**: Physical modeling synth con 12 cuerdas resonantes (Karplus-Strong)
