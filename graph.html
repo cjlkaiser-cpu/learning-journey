@@ -653,6 +653,9 @@
                 { id: "ecodelalma", label: "Eco del Alma", type: "project", status: "activo", desc: "Puzzle musical con Phaser.js: sistema Lira (Do-Re-Mi-Fa-Sol), puzzles de secuencias, narrativa typewriter, tilemap Castle-Dungeon" },
                 { id: "eigenlab-core", label: "eigenlab-core", type: "project", status: "produccion", desc: "Motor C++/WASM de alto rendimiento: Navier-Stokes, Boids, N-body Barnes-Hut, Erosion, Cloth PBD. 158KB, 5 sims @ 60fps" },
                 { id: "eigenlab-odyssey", label: "EigenLab Odyssey", type: "project", status: "produccion", desc: "Juego narrativo que conecta 150+ simulaciones EigenLab. Phaser.js + Vite + Web Audio. 9 reinos, 12 eigenvalores, sistema de exploracion" },
+                { id: "eigentools", label: "EigenTools", type: "project", status: "activo", desc: "Monorepo Rust de 16 herramientas: watchers, scrapers, analyzers. Patrón Dual UI (Web + TUI)" },
+                { id: "network-watcher", label: "Network Watcher", type: "project", status: "produccion", desc: "Monitor de red v1.0: pcap, dispositivos, 5 experimentos Lab Mode. Web + TUI" },
+                { id: "process-watcher", label: "Process Watcher", type: "project", status: "activo", desc: "Monitor de procesos v0.1: CPU, memoria, árbol, señales Unix. Web + TUI" },
 
                 // === TECNOLOGIAS ===
                 { id: "python", label: "Python", type: "tech", category: "backend", desc: "Lenguaje principal para backend y automatizacion" },
@@ -674,6 +677,11 @@
                 { id: "wasm", label: "WebAssembly", type: "tech", category: "frontend", desc: "Codigo compilado a velocidad nativa en navegador" },
                 { id: "emscripten", label: "Emscripten", type: "tech", category: "devops", desc: "Compilador C++ a WebAssembly" },
                 { id: "rust", label: "Rust", type: "tech", category: "backend", desc: "Lenguaje de sistemas seguro, compilado a WebAssembly" },
+                { id: "axum", label: "Axum", type: "tech", category: "backend", desc: "Framework web async Rust con Tokio. Ergonomico y modular" },
+                { id: "ratatui", label: "Ratatui", type: "tech", category: "backend", desc: "Framework TUI Rust para interfaces de terminal ricas" },
+                { id: "tokio", label: "Tokio", type: "tech", category: "backend", desc: "Runtime async Rust con tareas, channels y IO no bloqueante" },
+                { id: "sysinfo", label: "sysinfo", type: "tech", category: "backend", desc: "Crate Rust para info de sistema: CPU, memoria, procesos" },
+                { id: "pcap", label: "pcap", type: "tech", category: "backend", desc: "Crate Rust para captura de paquetes de red via libpcap" },
                 { id: "clip", label: "CLIP", type: "tech", category: "ia", desc: "Modelo vision-lenguaje OpenAI" },
                 { id: "ollama", label: "Ollama", type: "tech", category: "ia", desc: "Runtime para LLMs locales" },
                 { id: "claude", label: "Claude API", type: "tech", category: "ia", desc: "API de Anthropic para LLMs" },
@@ -691,6 +699,7 @@
                 { id: "hibrida", label: "Arq. Hibrida", type: "methodology", desc: "Router + Plantillas + LLM fallback = 100% accuracy" },
                 { id: "memoria", label: "Memoria Evolutiva", type: "methodology", desc: "Principio #0: El conocimiento se compone" },
                 { id: "kiss", label: "KISS", type: "methodology", desc: "Keep It Simple - Sin sobreingenieria" },
+                { id: "dual-ui", label: "Dual UI Pattern", type: "methodology", desc: "Web + TUI desde estado compartido Arc<RwLock>. Axum + Ratatui" },
 
                 // === CONCEPTOS ===
                 { id: "bessel", label: "Bessel Functions", type: "concept", desc: "Funciones especiales J_m(x) que describen modos de vibracion de membranas circulares" },
@@ -1070,7 +1079,46 @@
                 { source: "edo", target: "euler-method" },
                 { source: "edo", target: "slope-field" },
                 { source: "edo", target: "rk4" },
-                { source: "euler-method", target: "rk4" }
+                { source: "euler-method", target: "rk4" },
+
+                // EigenTools connections
+                { source: "eigentools", target: "rust" },
+                { source: "eigentools", target: "tokio" },
+                { source: "eigentools", target: "axum" },
+                { source: "eigentools", target: "ratatui" },
+                { source: "eigentools", target: "dual-ui" },
+                { source: "eigentools", target: "network-watcher" },
+                { source: "eigentools", target: "process-watcher" },
+
+                // Network Watcher connections
+                { source: "network-watcher", target: "rust" },
+                { source: "network-watcher", target: "tokio" },
+                { source: "network-watcher", target: "axum" },
+                { source: "network-watcher", target: "ratatui" },
+                { source: "network-watcher", target: "pcap" },
+                { source: "network-watcher", target: "sqlite" },
+                { source: "network-watcher", target: "dual-ui" },
+
+                // Process Watcher connections
+                { source: "process-watcher", target: "rust" },
+                { source: "process-watcher", target: "tokio" },
+                { source: "process-watcher", target: "axum" },
+                { source: "process-watcher", target: "ratatui" },
+                { source: "process-watcher", target: "sysinfo" },
+                { source: "process-watcher", target: "sqlite" },
+                { source: "process-watcher", target: "dual-ui" },
+
+                // Dual UI Pattern connections
+                { source: "dual-ui", target: "axum" },
+                { source: "dual-ui", target: "ratatui" },
+                { source: "dual-ui", target: "tokio" },
+
+                // Rust ecosystem connections
+                { source: "axum", target: "rust" },
+                { source: "ratatui", target: "rust" },
+                { source: "tokio", target: "rust" },
+                { source: "sysinfo", target: "rust" },
+                { source: "pcap", target: "rust" }
             ]
         };
 

@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 26 diciembre 2025
+> **Última actualización**: 27 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -18,13 +18,13 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 44
-- **Proyectos en desarrollo:** 7 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine, Resonant Graph Synth, Harmonic Groove Engine)
-- **Líneas de código:** ~55,000+
-- **Tecnologías dominadas:** 40+ (Rust/WASM, Karplus-Strong, FDN Reverb, **C++/JUCE**, **CMake**, **Bessel Functions**, **Navier-Stokes**, **Granular Synthesis**)
-- **Áreas de conocimiento:** 4 principales
-- **Metodologías propias:** 5 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**, **Simulación Headless**)
-- **Herramientas creadas:** 5 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**, **Tonnetz Simulator**)
+- **Proyectos completados:** 45
+- **Proyectos en desarrollo:** 8 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine, Resonant Graph Synth, Harmonic Groove Engine, **EigenTools**)
+- **Líneas de código:** ~58,000+
+- **Tecnologías dominadas:** 45+ (Rust/WASM, Karplus-Strong, FDN Reverb, C++/JUCE, CMake, Bessel Functions, Navier-Stokes, Granular Synthesis, **Rust**, **Axum**, **Ratatui**, **Tokio**, **sysinfo**)
+- **Áreas de conocimiento:** 5 principales (Web, Python, IA/ML, Audio/JUCE, **Sistemas/Rust**)
+- **Metodologías propias:** 6 (minerOS, HITL, Arquitectura Híbrida, Memoria Evolutiva, Simulación Headless, **Dual UI Pattern**)
+- **Herramientas creadas:** 7 (DirectOS v10.5, Web Scraper IA, Sistema Híbrido Farmacia, VideoMine, Tonnetz Simulator, **Network Watcher**, **Process Watcher**)
 
 ### 💪 Por Área
 
@@ -1096,6 +1096,23 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **27 dic 2025**: ⚙️ EIGENTOOLS - Ecosistema de Herramientas Educativas en Rust
+  - **EigenTools**: Monorepo Rust con herramientas de monitoreo de sistemas
+    - Workspace Cargo con dependencias compartidas
+    - eigentools-core: Traits y utilidades comunes
+  - **Network Watcher v1.0**: Monitor de red con Web UI + TUI
+    - Captura de paquetes (pcap), detección de dispositivos
+    - Lab Mode: 5 experimentos (DNS, ARP, Traceroute, Ping, Port Scan)
+    - Arquitectura Dual UI (Axum + Ratatui)
+  - **Process Watcher v0.1**: Monitor de procesos educativo
+    - UI profesional estilo EigenLab (Playfair + Inter + JetBrains Mono)
+    - Gauges con sparklines, alertas automáticas
+    - Lab Mode: 6 experimentos (Árbol, Detalles, Señales, Threads, Zombies)
+    - API endpoints funcionales (/api/tree, /api/process/:pid)
+  - **Nuevo patrón**: Dual UI Pattern (Web + TUI desde mismo backend)
+  - **Rust level**: solid (ownership, async/await, tokio, axum, ratatui)
+  - Ubicación: `~/Projects/eigentools/`
 
 - **26 dic 2025**: 🎛️ EIGENLAB INSTRUMENTS - 4 Nuevos Plugins JUCE de Síntesis Física
   - **Modal Percussion**: Síntesis modal con 24 modos Bessel (4 azimutales × 6 radiales)
