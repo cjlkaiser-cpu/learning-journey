@@ -637,6 +637,10 @@
                 { id: "sympathetic-12", label: "Sympathetic 12", type: "project", status: "produccion", desc: "Sintetizador Rust/WASM: 12 cuerdas Karplus-Strong con resonancia simpatica 12x12 + FDN Reverb. 58KB" },
                 { id: "resonant-graph", label: "Resonant Graph Synth", type: "project", status: "activo", desc: "Sintetizador C++/JUCE: grafo de 12 resonadores acoplados. Topologias musicales. Standalone + VST3 + AU" },
                 { id: "harmonic-groove", label: "Harmonic Groove Engine", type: "project", status: "activo", desc: "Plugin C++/JUCE: automata celular → secuenciador poliritmico con evolucion armonica. Zonas modales + pattern aging" },
+                { id: "modal-percussion", label: "Modal Percussion", type: "project", status: "produccion", desc: "Plugin C++/JUCE: sintesis modal para percusion metalica. 24 modos Bessel, XY strike pad, visualizacion de membrana" },
+                { id: "gravity-well", label: "GravityWell", type: "project", status: "produccion", desc: "Plugin C++/JUCE: sintetizador orbital con 8 particulas y 7 atractores. RK4 + Karplus-Strong. Visualizacion de orbitas" },
+                { id: "membrane-synth", label: "MembraneSynth", type: "project", status: "produccion", desc: "Plugin C++/JUCE: fisica de membranas con funciones Bessel. 24 modos armonicos, posicion de golpe variable" },
+                { id: "fluid-harmonic", label: "FluidHarmonicField", type: "project", status: "produccion", desc: "Plugin C++/JUCE: Navier-Stokes → sintesis granular. 64 granos modulados por velocidad/presion del fluido" },
                 { id: "paper-tonnetz", label: "Paper Tonnetz", type: "project", status: "activo", desc: "Paper academico: Neo-Riemannian + Chaos Theory. 6500 palabras, 8 figuras SVG. Target: Leonardo, CMJ" },
                 { id: "chacona", label: "Chacona Estudio", type: "project", status: "produccion", desc: "64 variaciones de Bach con grabacion y progreso" },
                 { id: "mathkids", label: "MathKids", type: "project", status: "completado", desc: "Dashboard matematico interactivo para ninos" },
@@ -689,6 +693,10 @@
                 { id: "kiss", label: "KISS", type: "methodology", desc: "Keep It Simple - Sin sobreingenieria" },
 
                 // === CONCEPTOS ===
+                { id: "bessel", label: "Bessel Functions", type: "concept", desc: "Funciones especiales J_m(x) que describen modos de vibracion de membranas circulares" },
+                { id: "navier-stokes", label: "Navier-Stokes", type: "concept", desc: "Ecuaciones de dinamica de fluidos: adveccion, difusion, proyeccion de presion" },
+                { id: "granular", label: "Granular Synthesis", type: "concept", desc: "Sintesis basada en micro-granos de audio (10-100ms) con modulacion de pitch/pan/amp" },
+                { id: "karplus-strong", label: "Karplus-Strong", type: "concept", desc: "Sintesis de cuerdas pulsadas: delay line + filtro paso bajo + feedback" },
                 { id: "rag", label: "RAG", type: "concept", desc: "Retrieval-Augmented Generation" },
                 { id: "embeddings", label: "Embeddings", type: "concept", desc: "Representacion vectorial de texto" },
                 { id: "rk4", label: "Runge-Kutta", type: "concept", desc: "Integracion numerica de ODEs" },
@@ -990,6 +998,37 @@
                 { source: "harmonic-groove", target: "cmake" },
                 { source: "harmonic-groove", target: "resonant-graph" },
                 { source: "harmonic-groove", target: "markov" },
+
+                // Modal Percussion connections
+                { source: "modal-percussion", target: "cpp" },
+                { source: "modal-percussion", target: "juce" },
+                { source: "modal-percussion", target: "cmake" },
+                { source: "modal-percussion", target: "bessel" },
+                { source: "modal-percussion", target: "resonant-graph" },
+
+                // GravityWell connections
+                { source: "gravity-well", target: "cpp" },
+                { source: "gravity-well", target: "juce" },
+                { source: "gravity-well", target: "cmake" },
+                { source: "gravity-well", target: "rk4" },
+                { source: "gravity-well", target: "karplus-strong" },
+                { source: "gravity-well", target: "resonant-graph" },
+                { source: "gravity-well", target: "cadencia" },
+
+                // MembraneSynth connections
+                { source: "membrane-synth", target: "cpp" },
+                { source: "membrane-synth", target: "juce" },
+                { source: "membrane-synth", target: "cmake" },
+                { source: "membrane-synth", target: "bessel" },
+                { source: "membrane-synth", target: "modal-percussion" },
+
+                // FluidHarmonicField connections
+                { source: "fluid-harmonic", target: "cpp" },
+                { source: "fluid-harmonic", target: "juce" },
+                { source: "fluid-harmonic", target: "cmake" },
+                { source: "fluid-harmonic", target: "navier-stokes" },
+                { source: "fluid-harmonic", target: "granular" },
+                { source: "fluid-harmonic", target: "physics-visual" },
 
                 // eigenlab-core connections
                 { source: "eigenlab-core", target: "cpp" },

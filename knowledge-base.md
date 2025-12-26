@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 25 diciembre 2025
+> **Última actualización**: 26 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
 > **Location**: Madrid, España
@@ -18,10 +18,10 @@
 ## 📊 Estadísticas de Progreso
 
 ### 🎯 Visión General
-- **Proyectos completados:** 40
+- **Proyectos completados:** 44
 - **Proyectos en desarrollo:** 7 (BioMistral Study, Paper BioMistral, Paper Tonnetz, DirectOS, VideoMine, Resonant Graph Synth, Harmonic Groove Engine)
-- **Líneas de código:** ~45,000+
-- **Tecnologías dominadas:** 37+ (Rust/WASM, Karplus-Strong, FDN Reverb, **C++/JUCE**, **CMake**)
+- **Líneas de código:** ~55,000+
+- **Tecnologías dominadas:** 40+ (Rust/WASM, Karplus-Strong, FDN Reverb, **C++/JUCE**, **CMake**, **Bessel Functions**, **Navier-Stokes**, **Granular Synthesis**)
 - **Áreas de conocimiento:** 4 principales
 - **Metodologías propias:** 5 (minerOS, HITL, Arquitectura Híbrida, **Memoria Evolutiva**, **Simulación Headless**)
 - **Herramientas creadas:** 5 (DirectOS v10.5, Web Scraper IA, **Sistema Híbrido Farmacia**, **VideoMine**, **Tonnetz Simulator**)
@@ -1096,6 +1096,36 @@ Mientras otros memorizan, tú:
 ---
 
 ## 🔄 Changelog
+
+- **26 dic 2025**: 🎛️ EIGENLAB INSTRUMENTS - 4 Nuevos Plugins JUCE de Síntesis Física
+  - **Modal Percussion**: Síntesis modal con 24 modos Bessel (4 azimutales × 6 radiales)
+    - Funciones Bessel precalculadas para física de membranas
+    - XY Strike Pad para posición de golpe variable
+    - Visualización en tiempo real de modos de vibración
+    - Presets: Timpani, Hang Drum, Gong
+  - **GravityWell**: Sintetizador orbital con partículas y atractores
+    - 8 partículas orbitando 7 atractores gravitacionales
+    - Integración RK4 (Runge-Kutta 4to orden) para física precisa
+    - Karplus-Strong synthesis modulado por velocidad de partículas
+    - Visualización de órbitas con trails
+    - Presets: Solar System, Binary Star, Chaos Orbit
+  - **MembraneSynth**: Física de membranas con Bessel (distinto a Modal Percussion)
+    - 24 modos armónicos (m,n) con frecuencias calculadas desde zeros Bessel
+    - Control de posición de golpe afecta amplitud de modos
+    - Voice manager con 8 voces polifónicas
+    - Presets: Timpani, Hang Drum, Gong
+  - **FluidHarmonicField**: Simulación Navier-Stokes → Síntesis Granular
+    - Grid 64×64 con advección, difusión, proyección de presión
+    - 64 granos controlados por propiedades del fluido
+    - Velocidad→pitch, presión→amplitud, vorticidad→detune
+    - Visualización de fluido dibujable con mouse
+    - Presets: Ocean Waves, Turbulence, Gentle Stream
+  - **Nuevos conceptos dominados**:
+    - Bessel Functions para modos de membrana circular
+    - Navier-Stokes para simulación de fluidos incompresibles
+    - Granular Synthesis con modulación física
+  - **Total plugins eigenlab-instruments**: 6 (ResonantGraphSynth, HarmonicGrooveEngine, ModalPercussion, GravityWell, MembraneSynth, FluidHarmonicField)
+  - Ubicación: `~/Projects/eigenlab-instruments/plugins/`
 
 - **25 dic 2025**: 🎹 HARMONIC GROOVE ENGINE - Estructura del Plugin JUCE
   - **eigenlab-instruments**: Monorepo de plugins nativos C++/JUCE (VST3/AU/Standalone)
