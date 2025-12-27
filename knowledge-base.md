@@ -4,10 +4,10 @@
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
 > **Última actualización**: 27 diciembre 2025
 >
-> **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia (CEU) + Año en La Sapienza (Roma)
+> **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia 
 > **Location**: Madrid, España
 >
-> **Meta-objetivo:** Aprender a aprender. Los proyectos son vehículos, no destinos.
+> **Meta-objetivo:** Los proyectos son vehículos, no destinos.
 
 ---
 
