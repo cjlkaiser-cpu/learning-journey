@@ -1,13 +1,13 @@
 ---
 id: process-watcher
 name: Process Watcher
-status: active
+status: production
 stack: [rust, axum, ratatui, sysinfo, tokio]
 ---
 
-# Process Watcher v0.1
+# Process Watcher v1.0
 
-Monitor de procesos educativo con interfaz web profesional estilo EigenLab. Visualiza CPU, memoria, árbol de procesos, y ofrece experimentos para entender cómo funcionan los procesos en sistemas Unix.
+Monitor de procesos educativo con interfaz web profesional estilo EigenLab. Visualiza CPU, memoria, árbol de procesos, y ofrece experimentos interactivos para entender cómo funcionan los procesos en sistemas Unix.
 
 ## Ubicación
 
@@ -90,4 +90,17 @@ cargo run --release -p process_watcher -- --tui
 
 ## Changelog
 
-**27 dic 2024**: v0.1 - Scaffold completo, UI profesional EigenLab, endpoints funcionales
+**27 dic 2025**: v1.0 - Producción
+- Username resolution (UID → username)
+- Start time real de procesos
+- Búsqueda/filtro en Web UI
+- Ordenamiento por columna (click header)
+- Alertas funcionales (CPU>80%, zombies, memoria)
+- Lab: Señales Unix completo con documentación
+- Kill desde TUI (tecla x + confirmación y/n)
+- Endpoint /api/signals con docs
+- Endpoint /api/alerts
+- Toast notifications en Web UI
+- TUI: búsqueda, mensajes de estado
+
+**27 dic 2025**: v0.1 - Scaffold inicial, UI EigenLab
