@@ -1,93 +1,69 @@
 ---
 id: eigentools
 name: EigenTools
-status: active
-stack: [rust, axum, ratatui, tokio, sysinfo, pcap]
+status: production
+stack: [rust, axum, ratatui, tokio, sysinfo, pcap, jwt, bcrypt, argon2, totp]
 ---
 
-# EigenTools
+# EigenTools v1.0
 
-Ecosistema de herramientas educativas de monitoreo de sistemas en Rust. Monorepo con arquitectura de workspace compartido.
+Ecosistema de 10 herramientas educativas de monitoreo de sistemas en Rust.
 
 ## Ubicación
 
-`~/Projects/eigentools/`
-
-## Estructura
-
-```
-eigentools/
-├── Cargo.toml              # Workspace config
-├── README.md
-├── ROADMAP.md              # 16 herramientas planificadas
-├── shared/
-│   └── eigentools-core/    # Traits y utilidades comunes
-│       ├── Cargo.toml
-│       └── src/lib.rs
-└── tools/
-    ├── network-watcher/    # Monitor de red v1.0
-    └── process-watcher/    # Monitor de procesos v0.1
-```
-
-## Filosofía
-
-- **Educativo**: Cada herramienta enseña conceptos de sistemas operativos
-- **Lab Mode**: Experimentos interactivos para aprender haciendo
-- **Dual UI**: Web (Axum) + Terminal (Ratatui) desde el mismo código
-- **Monorepo**: Código compartido, dependencias unificadas
+- Local: `~/Projects/eigentools/`
+- GitHub: https://github.com/cjlkaiser-cpu/eigentools (privado)
 
 ## Herramientas
 
-| Tool | Versión | Estado | Descripción |
-|------|---------|--------|-------------|
-| Network Watcher | v1.0 | Producción | Monitor de red, dispositivos, paquetes |
-| Process Watcher | v0.1 | Desarrollo | Monitor de procesos, CPU, memoria |
+| Tool | Puerto | Categoría | Descripción |
+|------|--------|-----------|-------------|
+| Network Watcher | 3000 | Red | Captura paquetes, DNS, ARP, traceroute |
+| Process Watcher | 3001 | Sistema | Procesos, CPU, señales Unix, árbol |
+| Disk Watcher | 3002 | Sistema | Almacenamiento, I/O, filesystems |
+| Crypto Lab | 3003 | Seguridad | AES, ChaCha20, hashes, firmas |
+| HTTP Lab | 3004 | Web | Métodos, headers, cookies, CORS |
+| SQL Lab | 3005 | Datos | SQLite, JOINs, índices, EXPLAIN |
+| Regex Lab | 3006 | Datos | Tester, patrones, explain engine |
+| JSON Explorer | 3007 | Datos | JSON/YAML/TOML, JSONPath, diff |
+| Memory Lab | 3008 | Sistema | Stack/heap, pressure, page faults |
+| Auth Playground | 3009 | Seguridad | JWT, bcrypt, argon2, TOTP, OAuth2 |
 
-## Roadmap (16 herramientas)
+## TUI Launcher
 
-### Prioridad Alta
-- File Watcher - Monitor de cambios en filesystem
-- Log Viewer - Visor de logs con filtros y búsqueda
-- Port Scanner - Escáner de puertos educativo
-
-### Sistema
-- Disk Analyzer - Visualizador de uso de disco
-- Memory Inspector - Análisis de memoria en tiempo real
-- CPU Profiler - Profiling de CPU por proceso
-
-### Seguridad
-- Firewall Monitor - Monitor de reglas de firewall
-- Permission Auditor - Auditoría de permisos
-
-### Web/APIs
-- HTTP Inspector - Análisis de tráfico HTTP
-- DNS Explorer - Explorador de DNS
-
-## Stack Técnico
-
+Gestor central para todas las herramientas:
+```bash
+./target/release/eigentools
 ```
-┌─────────────────────────────────────────┐
-│            eigentools-core              │
-│   ToolConfig, ToolState, format_bytes   │
-└─────────────────────────────────────────┘
-              ▲           ▲
-              │           │
-    ┌─────────┴───┐   ┌───┴─────────┐
-    │   network   │   │   process   │
-    │   watcher   │   │   watcher   │
-    └─────────────┘   └─────────────┘
+- ↑↓ navegar
+- Enter iniciar/detener
+- q salir
+- Estado en vivo (●/○)
+
+## Filosofía
+
+1. **Educativo**: Cada herramienta enseña conceptos de sistemas
+2. **Lab Mode**: Experimentos interactivos
+3. **Dual UI**: Web (Axum) + Terminal (Ratatui)
+4. **10 herramientas consolidadas**: No se añaden más
+
+## Quick Start
+
+```bash
+cd ~/Projects/eigentools
+cargo build --release
+./target/release/eigentools
 ```
 
-## Dependencias Compartidas
+## Stack
 
-- tokio 1.40 (async runtime)
-- axum 0.7 (web framework)
-- ratatui 0.28 (TUI)
-- serde 1.0 (serialization)
-- rusqlite 0.31 (database)
-- chrono 0.4 (time)
+- Rust + Tokio (async runtime)
+- Axum (web framework)
+- Ratatui (TUI)
+- SQLite (persistencia)
 
 ## Changelog
 
-**27 dic 2024**: Scaffold Process Watcher con UI profesional estilo EigenLab
-**26 dic 2024**: Monorepo creado, Network Watcher v1.0 completado
+- **27 dic 2025**: v1.0 - 10 herramientas + TUI launcher + GitHub
+- **27 dic 2025**: Auth Playground v1.0 (JWT, bcrypt, TOTP)
+- **26 dic 2025**: Consolidación a 10 herramientas

@@ -6,9 +6,13 @@
 
 | Archivo | Descripción |
 |---------|-------------|
-| `knowledge-base.md` | Base de conocimiento (proyectos, metodologías, skills) |
-| `dashboard.html` | Launchpad interactivo con 33 proyectos |
-| `graph.html` | Knowledge Graph D3.js con 44 nodos y 70+ conexiones |
+| `knowledge-base.md` | Base de conocimiento 2026 (~100 líneas, limpio) |
+| `dashboard.html` | Launchpad interactivo con 42 proyectos |
+| `graph.html` | Knowledge Graph D3.js con 50+ nodos |
+| `archive/` | Histórico por año |
+| `projects/` | Detalles de proyectos individuales |
+| `tools/` | Detalles de tecnologías |
+| `patterns/` | Patrones arquitectónicos |
 
 ## URLs
 
@@ -49,11 +53,14 @@ Crea un sistema de documentación personal ("Personal Knowledge Vault") con dash
 ```
 learning-journey/
 ├── README.md              # Introducción y filosofía
-├── knowledge-base.md      # Base de conocimiento (~1300 líneas)
+├── knowledge-base.md      # Base 2026 (~100 líneas)
 ├── dashboard.html         # Launchpad interactivo
 ├── graph.html             # Knowledge Graph D3.js
-├── CV.md                  # CV en markdown
-└── generate_cv_pdf.py     # Script generador PDF
+├── archive/               # Histórico
+│   └── 2025-year-in-review.md
+├── projects/              # Proyectos individuales
+├── tools/                 # Tecnologías
+└── patterns/              # Patrones
 ```
 
 ### Módulos
@@ -145,4 +152,4 @@ Knowledge Graph interactivo con D3.js:
 
 ---
 
-*Iniciado: Noviembre 2024 | En constante evolución*
+*Iniciado: Noviembre 2024 | Reestructurado: Diciembre 2025 | En constante evolución*
