@@ -24,7 +24,7 @@
 - **Tecnologías dominadas:** 45+ (Rust/WASM, Karplus-Strong, FDN Reverb, C++/JUCE, CMake, Bessel Functions, Navier-Stokes, Granular Synthesis, **Rust**, **Axum**, **Ratatui**, **Tokio**, **sysinfo**)
 - **Áreas de conocimiento:** 5 principales (Web, Python, IA/ML, Audio/JUCE, **Sistemas/Rust**)
 - **Metodologías propias:** 6 (minerOS, HITL, Arquitectura Híbrida, Memoria Evolutiva, Simulación Headless, **Dual UI Pattern**)
-- **Herramientas creadas:** 7 (DirectOS v10.5, Web Scraper IA, Sistema Híbrido Farmacia, VideoMine, Tonnetz Simulator, **Network Watcher**, **Process Watcher**)
+- **Herramientas creadas:** 11 (DirectOS v10.5, Web Scraper IA, Sistema Híbrido Farmacia, VideoMine, Tonnetz Simulator, **EigenTools TUI Launcher**, **Auth Playground**, Network Watcher, Process Watcher, Memory Lab, Crypto Lab)
 
 ### 💪 Por Área
 
@@ -1097,21 +1097,32 @@ Mientras otros memorizan, tú:
 
 ## 🔄 Changelog
 
-- **27 dic 2025**: ⚙️ EIGENTOOLS - Ecosistema de Herramientas Educativas en Rust
-  - **EigenTools**: Monorepo Rust con herramientas de monitoreo de sistemas
+- **27 dic 2025**: ⚙️ EIGENTOOLS v1.0 - Ecosistema Completo + TUI Launcher + GitHub
+  - **EigenTools**: Monorepo Rust con 10 herramientas educativas consolidadas
     - Workspace Cargo con dependencias compartidas
     - eigentools-core: Traits y utilidades comunes
-  - **Network Watcher v1.0**: Monitor de red con Web UI + TUI
-    - Captura de paquetes (pcap), detección de dispositivos
-    - Lab Mode: 5 experimentos (DNS, ARP, Traceroute, Ping, Port Scan)
-    - Arquitectura Dual UI (Axum + Ratatui)
-  - **Process Watcher v0.1**: Monitor de procesos educativo
-    - UI profesional estilo EigenLab (Playfair + Inter + JetBrains Mono)
-    - Gauges con sparklines, alertas automáticas
-    - Lab Mode: 6 experimentos (Árbol, Detalles, Señales, Threads, Zombies)
-    - API endpoints funcionales (/api/tree, /api/process/:pid)
-  - **Nuevo patrón**: Dual UI Pattern (Web + TUI desde mismo backend)
-  - **Rust level**: solid (ownership, async/await, tokio, axum, ratatui)
+    - **GitHub**: https://github.com/cjlkaiser-cpu/eigentools (privado)
+  - **TUI Launcher** (`eigentools`): Gestor central de todas las herramientas
+    - Lista las 10 herramientas con estado en vivo (●/○)
+    - ↑↓ navegar, Enter iniciar/detener, q salir
+    - Arquitectura Ratatui standalone
+  - **Auth Playground v1.0**: Laboratorio de autenticación y seguridad
+    - JWT encode/decode/validate (HS256, HS384, HS512)
+    - Password hashing: bcrypt (cost 4-14), Argon2
+    - TOTP/2FA: generación, QR otpauth://, verificación
+    - Password strength analyzer con entropía
+    - OAuth2 flows explicados + conceptos CORS/CSRF/XSS
+  - **index.html mejorado**:
+    - Indicadores de estado en vivo (●/○) por puerto
+    - JavaScript fetch cada 5s para detectar herramientas activas
+    - Sección de instrucciones con comandos
+  - **10 herramientas consolidadas**:
+    - Sistema: Process Watcher :3001, Disk Watcher :3002, Memory Lab :3008
+    - Red: Network Watcher :3000
+    - Seguridad: Crypto Lab :3003, Auth Playground :3009
+    - Web: HTTP Lab :3004
+    - Datos: SQL Lab :3005, Regex Lab :3006, JSON Explorer :3007
+  - **Rust level**: solid → expert (JWT, bcrypt, argon2, totp-rs)
   - Ubicación: `~/Projects/eigentools/`
 
 - **26 dic 2025**: 🎛️ EIGENLAB INSTRUMENTS - 4 Nuevos Plugins JUCE de Síntesis Física

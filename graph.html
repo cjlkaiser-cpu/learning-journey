@@ -653,7 +653,9 @@
                 { id: "ecodelalma", label: "Eco del Alma", type: "project", status: "activo", desc: "Puzzle musical con Phaser.js: sistema Lira (Do-Re-Mi-Fa-Sol), puzzles de secuencias, narrativa typewriter, tilemap Castle-Dungeon" },
                 { id: "eigenlab-core", label: "eigenlab-core", type: "project", status: "produccion", desc: "Motor C++/WASM de alto rendimiento: Navier-Stokes, Boids, N-body Barnes-Hut, Erosion, Cloth PBD. 158KB, 5 sims @ 60fps" },
                 { id: "eigenlab-odyssey", label: "EigenLab Odyssey", type: "project", status: "produccion", desc: "Juego narrativo que conecta 150+ simulaciones EigenLab. Phaser.js + Vite + Web Audio. 9 reinos, 12 eigenvalores, sistema de exploracion" },
-                { id: "eigentools", label: "EigenTools", type: "project", status: "activo", desc: "Monorepo Rust de 16 herramientas: watchers, scrapers, analyzers. Patrón Dual UI (Web + TUI)" },
+                { id: "eigentools", label: "EigenTools", type: "project", status: "produccion", desc: "Monorepo Rust v1.0: 10 herramientas educativas + TUI launcher. GitHub privado. Patrón Dual UI" },
+                { id: "auth-playground", label: "Auth Playground", type: "project", status: "produccion", desc: "Lab de autenticación v1.0: JWT, bcrypt/argon2, TOTP/2FA, OAuth2, CORS/CSRF/XSS" },
+                { id: "eigentools-launcher", label: "EigenTools Launcher", type: "project", status: "produccion", desc: "TUI central para gestionar las 10 herramientas. Ratatui standalone" },
                 { id: "network-watcher", label: "Network Watcher", type: "project", status: "produccion", desc: "Monitor de red v1.0: pcap, dispositivos, 5 experimentos Lab Mode. Web + TUI" },
                 { id: "process-watcher", label: "Process Watcher", type: "project", status: "produccion", desc: "Monitor de procesos v1.0: CPU, memoria, árbol, señales Unix, Lab Mode. Web + TUI" },
                 { id: "disk-watcher", label: "Disk Watcher", type: "project", status: "produccion", desc: "Monitor de almacenamiento v1.0: espacio, archivos grandes, I/O benchmark, filesystems. Web + TUI" },
@@ -1093,6 +1095,12 @@
                 { source: "eigentools", target: "process-watcher" },
                 { source: "eigentools", target: "disk-watcher" },
                 { source: "eigentools", target: "crypto-lab" },
+                { source: "eigentools", target: "auth-playground" },
+                { source: "eigentools", target: "eigentools-launcher" },
+                { source: "auth-playground", target: "rust" },
+                { source: "auth-playground", target: "axum" },
+                { source: "auth-playground", target: "dual-ui" },
+                { source: "eigentools-launcher", target: "ratatui" },
 
                 // Network Watcher connections
                 { source: "network-watcher", target: "rust" },
