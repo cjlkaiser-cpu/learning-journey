@@ -656,6 +656,8 @@
                 { id: "eigentools", label: "EigenTools", type: "project", status: "activo", desc: "Monorepo Rust de 16 herramientas: watchers, scrapers, analyzers. Patrón Dual UI (Web + TUI)" },
                 { id: "network-watcher", label: "Network Watcher", type: "project", status: "produccion", desc: "Monitor de red v1.0: pcap, dispositivos, 5 experimentos Lab Mode. Web + TUI" },
                 { id: "process-watcher", label: "Process Watcher", type: "project", status: "produccion", desc: "Monitor de procesos v1.0: CPU, memoria, árbol, señales Unix, Lab Mode. Web + TUI" },
+                { id: "disk-watcher", label: "Disk Watcher", type: "project", status: "produccion", desc: "Monitor de almacenamiento v1.0: espacio, archivos grandes, I/O benchmark, filesystems. Web + TUI" },
+                { id: "crypto-lab", label: "Crypto Lab", type: "project", status: "produccion", desc: "Playground de criptografía v1.0: hashes (SHA-256/BLAKE3), cifrado AES/ChaCha20, JWT, passwords. Web + TUI" },
 
                 // === TECNOLOGIAS ===
                 { id: "python", label: "Python", type: "tech", category: "backend", desc: "Lenguaje principal para backend y automatizacion" },
@@ -1089,6 +1091,8 @@
                 { source: "eigentools", target: "dual-ui" },
                 { source: "eigentools", target: "network-watcher" },
                 { source: "eigentools", target: "process-watcher" },
+                { source: "eigentools", target: "disk-watcher" },
+                { source: "eigentools", target: "crypto-lab" },
 
                 // Network Watcher connections
                 { source: "network-watcher", target: "rust" },
@@ -1107,6 +1111,22 @@
                 { source: "process-watcher", target: "sysinfo" },
                 { source: "process-watcher", target: "sqlite" },
                 { source: "process-watcher", target: "dual-ui" },
+
+                // Disk Watcher connections
+                { source: "disk-watcher", target: "rust" },
+                { source: "disk-watcher", target: "tokio" },
+                { source: "disk-watcher", target: "axum" },
+                { source: "disk-watcher", target: "ratatui" },
+                { source: "disk-watcher", target: "sysinfo" },
+                { source: "disk-watcher", target: "sqlite" },
+                { source: "disk-watcher", target: "dual-ui" },
+
+                // Crypto Lab connections
+                { source: "crypto-lab", target: "rust" },
+                { source: "crypto-lab", target: "tokio" },
+                { source: "crypto-lab", target: "axum" },
+                { source: "crypto-lab", target: "ratatui" },
+                { source: "crypto-lab", target: "dual-ui" },
 
                 // Dual UI Pattern connections
                 { source: "dual-ui", target: "axum" },
