@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Year in Review | Learning Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent-emerald: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-amber: #f59e0b;
+            --accent-pink: #ec4899;
+            --accent-cyan: #06b6d4;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: #e2e8f0;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #10b981, #3b82f6, #8b5cf6, #f59e0b);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+        }
+
+        .event-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            border-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .ecosystem-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ecosystem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .ecosystem-eigenlab::before { background: linear-gradient(90deg, #10b981, #06b6d4); }
+        .ecosystem-eigentools::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+        .ecosystem-instruments::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
+        .ecosystem-soundlab::before { background: linear-gradient(90deg, #3b82f6, #6366f1); }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+
+        .hero-bg {
+            background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Hero Section -->
+    <header class="hero-bg py-20 px-6 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-emerald-400 text-sm font-medium tracking-widest mb-4 fade-in">LEARNING JOURNEY</p>
+            <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 fade-in stagger-1">
+                <span class="gradient-text">2025</span>
+            </h1>
+            <p class="text-2xl md:text-3xl text-slate-300 mb-4 fade-in stagger-2">Year in Review</p>
+            <p class="text-slate-500 max-w-2xl mx-auto fade-in stagger-3">
+                El año de los ecosistemas. En lugar de proyectos aislados,
+                familias de herramientas que se potencian mutuamente.
+            </p>
+
+            <!-- Quote -->
+            <div class="mt-12 fade-in stagger-4">
+                <blockquote class="text-xl italic text-slate-400">
+                    "Piano piano se arriva lontano"
+                </blockquote>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="stat-card rounded-xl p-6 text-center fade-in">
+                    <div class="text-4xl font-bold text-emerald-400 mb-2">150+</div>
+                    <div class="text-slate-400 text-sm">Simulaciones</div>
+                </div>
+                <div class="stat-card rounded-xl p-6 text-center fade-in stagger-1">
+                    <div class="text-4xl font-bold text-blue-400 mb-2">65</div>
+                    <div class="text-slate-400 text-sm">Tools</div>
+                </div>
+                <div class="stat-card rounded-xl p-6 text-center fade-in stagger-2">
+                    <div class="text-4xl font-bold text-purple-400 mb-2">25</div>
+                    <div class="text-slate-400 text-sm">Proyectos</div>
+                </div>
+                <div class="stat-card rounded-xl p-6 text-center fade-in stagger-3">
+                    <div class="text-4xl font-bold text-amber-400 mb-2">60K+</div>
+                    <div class="text-slate-400 text-sm">Líneas de código</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 Ecosystems -->
+    <section class="py-16 px-6 bg-gradient-to-b from-transparent to-slate-900/30">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Los 4 Grandes Ecosistemas</h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- EigenLab -->
+                <div class="event-card ecosystem-card ecosystem-eigenlab rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-flask text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-emerald-400 mb-2">EigenLab</h3>
+                            <p class="text-slate-400 text-sm mb-3">Simulaciones educativas de física, química, biología, astronomía, matemáticas</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded">Canvas</span>
+                                <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded">Three.js</span>
+                                <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded">WASM</span>
+                            </div>
+                            <div class="mt-4 text-2xl font-bold text-white">150+ sims</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EigenTools -->
+                <div class="event-card ecosystem-card ecosystem-eigentools rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-terminal text-amber-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-amber-400 mb-2">EigenTools</h3>
+                            <p class="text-slate-400 text-sm mb-3">Herramientas de monitoreo de sistemas educativas</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-1 rounded">Rust</span>
+                                <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-1 rounded">Axum</span>
+                                <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-1 rounded">Ratatui</span>
+                            </div>
+                            <div class="mt-4 text-2xl font-bold text-white">10 tools + TUI</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EigenLab Instruments -->
+                <div class="event-card ecosystem-card ecosystem-instruments rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-music text-purple-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-400 mb-2">EigenLab Instruments</h3>
+                            <p class="text-slate-400 text-sm mb-3">Plugins de audio nativos con síntesis física</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">C++17</span>
+                                <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">JUCE</span>
+                                <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">VST3/AU</span>
+                            </div>
+                            <div class="mt-4 text-2xl font-bold text-white">6 plugins</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physics Sound Lab -->
+                <div class="event-card ecosystem-card ecosystem-soundlab rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-wave-square text-blue-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-400 mb-2">Physics Sound Lab</h3>
+                            <p class="text-slate-400 text-sm mb-3">Instrumentos generativos de música basados en física</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Canvas</span>
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Web Audio</span>
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">RK4</span>
+                            </div>
+                            <div class="mt-4 text-2xl font-bold text-white">7+ generativos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">Timeline de Eventos</h2>
+
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="timeline-line"></div>
+
+                <!-- December Events -->
+                <div class="mb-16">
+                    <h3 class="text-center mb-12">
+                        <span class="bg-slate-800 px-6 py-2 rounded-full text-emerald-400 font-semibold relative z-10">
+                            Diciembre 2025
+                        </span>
+                    </h3>
+
+                    <!-- Event: EigenTools v1.0 -->
+                    <div class="relative flex items-center mb-8 md:justify-end">
+                        <div class="timeline-dot bg-emerald-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-0 md:mr-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-emerald-400 font-mono">27 DIC</span>
+                                <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded">RELEASE</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">EigenTools v1.0</h4>
+                            <p class="text-slate-400 text-sm">10 herramientas + TUI Launcher + GitHub privado. Rust expert achieved.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event: JUCE Plugins -->
+                    <div class="relative flex items-center mb-8 md:justify-start">
+                        <div class="timeline-dot bg-purple-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-purple-400 font-mono">26 DIC</span>
+                                <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded">AUDIO</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">4 Nuevos Plugins JUCE</h4>
+                            <p class="text-slate-400 text-sm">Modal Percussion, GravityWell, MembraneSynth, FluidHarmonicField. Bessel + Navier-Stokes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event: Sympathetic 12 -->
+                    <div class="relative flex items-center mb-8 md:justify-end">
+                        <div class="timeline-dot bg-cyan-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-0 md:mr-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-cyan-400 font-mono">24 DIC</span>
+                                <span class="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded">WASM</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">Sympathetic 12</h4>
+                            <p class="text-slate-400 text-sm">12 cuerdas resonantes con Karplus-Strong. Primer proyecto Rust/WASM (58KB).</p>
+                        </div>
+                    </div>
+
+                    <!-- Event: eigenlab-core -->
+                    <div class="relative flex items-center mb-8 md:justify-start">
+                        <div class="timeline-dot bg-blue-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-blue-400 font-mono">23 DIC</span>
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded">C++/WASM</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">eigenlab-core</h4>
+                            <p class="text-slate-400 text-sm">Motor C++17 → WebAssembly (158KB). Navier-Stokes, Barnes-Hut, Boids, Erosión, Tela.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event: EigenLab Expansion -->
+                    <div class="relative flex items-center mb-8 md:justify-end">
+                        <div class="timeline-dot bg-emerald-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-0 md:mr-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-emerald-400 font-mono">15-21 DIC</span>
+                                <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded">SIMS</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">EigenLab Explosion</h4>
+                            <p class="text-slate-400 text-sm">Math (15), Chemistry (17), Biology (6), Geology (6), Astronomy (9), Computation (6), Generative Art (7).</p>
+                        </div>
+                    </div>
+
+                    <!-- Event: Physics Sound Lab -->
+                    <div class="relative flex items-center mb-8 md:justify-start">
+                        <div class="timeline-dot bg-indigo-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-indigo-400 font-mono">10-13 DIC</span>
+                                <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded">MUSIC</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">Physics Sound Lab</h4>
+                            <p class="text-slate-400 text-sm">Harmonices Mundi, Tonnetz Atractor (3 versiones), Paper académico, 7 metrónomos físicos.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event: DirectOS -->
+                    <div class="relative flex items-center mb-8 md:justify-end">
+                        <div class="timeline-dot bg-amber-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-0 md:mr-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-amber-400 font-mono">7-9 DIC</span>
+                                <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">CORE</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">DirectOS v10.10</h4>
+                            <p class="text-slate-400 text-sm">Canvas Pro, HITL completo, Memoria Evolutiva, Sistema Multi-Motor. 43 nodos.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event: BioMistral 100% -->
+                    <div class="relative flex items-center mb-8 md:justify-start">
+                        <div class="timeline-dot bg-pink-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-pink-400 font-mono">1 DIC</span>
+                                <span class="text-xs bg-pink-500/20 text-pink-300 px-2 py-0.5 rounded">IA</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">Sistema Híbrido 100%</h4>
+                            <p class="text-slate-400 text-sm">De 60.5% a 100% accuracy. Router + Plantillas + LLM fallback. 7ms/consulta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- November Events -->
+                <div class="mb-16">
+                    <h3 class="text-center mb-12">
+                        <span class="bg-slate-800 px-6 py-2 rounded-full text-blue-400 font-semibold relative z-10">
+                            Noviembre 2025
+                        </span>
+                    </h3>
+
+                    <!-- Event: BioMistral RAG -->
+                    <div class="relative flex items-center mb-8 md:justify-end">
+                        <div class="timeline-dot bg-blue-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-0 md:mr-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-blue-400 font-mono">27 NOV</span>
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded">IA</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">BioMistral RAG v1.3</h4>
+                            <p class="text-slate-400 text-sm">Estudio 200 casos farmacia. Chain of Thought + modo geriátrico STOPP/START.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event: farmaIA + DirectOS -->
+                    <div class="relative flex items-center mb-8 md:justify-start">
+                        <div class="timeline-dot bg-emerald-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-emerald-400 font-mono">24 NOV</span>
+                                <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded">CORE</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">farmaIA v5.0 + DirectOS v8.0</h4>
+                            <p class="text-slate-400 text-sm">Mi Botiquín Inteligente + Pipeline Builder + RAG + 42 patrones.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event: Genesis -->
+                    <div class="relative flex items-center mb-8 md:justify-end">
+                        <div class="timeline-dot bg-purple-500" style="top: 50%;"></div>
+                        <div class="event-card rounded-xl p-5 ml-12 md:ml-0 md:mr-12 md:w-5/12">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs text-purple-400 font-mono">22 NOV</span>
+                                <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded">GENESIS</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-1">Knowledge Base Creado</h4>
+                            <p class="text-slate-400 text-sm">minerOS documentado. Sistema de decisión universal. Inicio del journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Mastered -->
+    <section class="py-16 px-6 bg-gradient-to-b from-slate-900/30 to-transparent">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">Tecnologías Dominadas</h2>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-amber-500/20 text-amber-300 rounded-full text-sm font-medium">Rust</span>
+                <span class="px-4 py-2 bg-blue-500/20 text-blue-300 rounded-full text-sm font-medium">Tokio</span>
+                <span class="px-4 py-2 bg-purple-500/20 text-purple-300 rounded-full text-sm font-medium">Axum</span>
+                <span class="px-4 py-2 bg-emerald-500/20 text-emerald-300 rounded-full text-sm font-medium">Ratatui</span>
+                <span class="px-4 py-2 bg-pink-500/20 text-pink-300 rounded-full text-sm font-medium">C++17</span>
+                <span class="px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-full text-sm font-medium">JUCE</span>
+                <span class="px-4 py-2 bg-indigo-500/20 text-indigo-300 rounded-full text-sm font-medium">WebAssembly</span>
+                <span class="px-4 py-2 bg-rose-500/20 text-rose-300 rounded-full text-sm font-medium">Three.js</span>
+                <span class="px-4 py-2 bg-teal-500/20 text-teal-300 rounded-full text-sm font-medium">Web Audio</span>
+                <span class="px-4 py-2 bg-orange-500/20 text-orange-300 rounded-full text-sm font-medium">Canvas 2D</span>
+                <span class="px-4 py-2 bg-lime-500/20 text-lime-300 rounded-full text-sm font-medium">FastAPI</span>
+                <span class="px-4 py-2 bg-violet-500/20 text-violet-300 rounded-full text-sm font-medium">Ollama</span>
+            </div>
+
+            <div class="mt-12 grid md:grid-cols-3 gap-6 text-left">
+                <div class="event-card rounded-xl p-5">
+                    <h4 class="font-bold text-amber-400 mb-2"><i class="fas fa-cog mr-2"></i>Rust Journey</h4>
+                    <p class="text-slate-400 text-sm">De 0 a 10 herramientas en producción en 5 semanas. Ownership, async/await, sysinfo, WASM.</p>
+                </div>
+                <div class="event-card rounded-xl p-5">
+                    <h4 class="font-bold text-purple-400 mb-2"><i class="fas fa-music mr-2"></i>Audio DSP</h4>
+                    <p class="text-slate-400 text-sm">Karplus-Strong, FDN Reverb, funciones Bessel, Navier-Stokes para síntesis granular.</p>
+                </div>
+                <div class="event-card rounded-xl p-5">
+                    <h4 class="font-bold text-emerald-400 mb-2"><i class="fas fa-brain mr-2"></i>Física → Código</h4>
+                    <p class="text-slate-400 text-sm">RK4, Barnes-Hut, Maxwell-Boltzmann, Neo-Riemannian, Pitch-Class Set Theory.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Reflection -->
+    <section class="py-20 px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="event-card rounded-2xl p-10">
+                <i class="fas fa-quote-left text-4xl text-slate-700 mb-6"></i>
+                <blockquote class="text-xl md:text-2xl text-slate-300 mb-6 leading-relaxed">
+                    "2025 demostró que la profundidad supera a la amplitud. En lugar de 50 proyectos pequeños,
+                    construí 4 ecosistemas interconectados que seguirán creciendo."
+                </blockquote>
+                <p class="text-emerald-400 font-medium">
+                    Los proyectos son vehículos, no destinos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-slate-500 text-sm">
+                Learning Journey &copy; 2025
+            </div>
+            <div class="flex gap-4">
+                <a href="dashboard.html" class="text-slate-400 hover:text-white transition">
+                    <i class="fas fa-th-large mr-1"></i> Dashboard
+                </a>
+                <a href="graph.html" class="text-slate-400 hover:text-white transition">
+                    <i class="fas fa-project-diagram mr-1"></i> Graph
+                </a>
+                <a href="https://github.com/cjlkaiser-cpu" class="text-slate-400 hover:text-white transition">
+                    <i class="fab fa-github mr-1"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
