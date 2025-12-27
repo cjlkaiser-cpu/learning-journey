@@ -15,11 +15,12 @@
 
 | Métrica | Total |
 |---------|-------|
-| Proyectos completados | 45+ |
-| Proyectos en desarrollo | 4 |
+| Proyectos documentados | 25 |
+| Tools documentadas | 65 |
+| Patterns documentados | 42 |
+| Simulaciones EigenLab | 150+ |
 | Líneas de código | ~60,000+ |
 | Repos en GitHub | 22 |
-| Simulaciones EigenLab | 150+ |
 | Plugins JUCE | 6 |
 | Herramientas EigenTools | 10 |
 

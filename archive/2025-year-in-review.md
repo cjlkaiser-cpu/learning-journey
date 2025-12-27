@@ -21,8 +21,10 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Proyectos completados | 45+ |
-| Simulaciones creadas | 150+ |
+| Proyectos documentados | 25 |
+| Tools documentadas | 65 |
+| Patterns documentados | 42 |
+| Simulaciones EigenLab | 150+ |
 | Líneas de código | ~60,000+ |
 | Repos en GitHub | 22 |
 | Plugins de audio | 6 |
@@ -191,6 +193,36 @@ El patrón más importante aprendido: **los proyectos son vehículos, no destino
 - **24 nov**: Escaneo Vault + Fusión documentos + farmaIA v5.0 + DirectOS v8.0
 - **23 nov**: DirectOS v7.0 (Knowledge Base Edition)
 - **22 nov**: Documento base creado, minerOS documentado
+
+---
+
+---
+
+## Inventario Completo
+
+### Tools Documentadas (65)
+
+**Backend**: alpine, docker, express, fastapi, flask, nodejs, python, rust, sqlite, uvicorn
+
+**Frontend**: css, html, htmx, javascript, phaser
+
+**IA/ML**: chroma, claude, claude-node, clip, huggingface, ocr, ollama, sbert, whisper
+
+**Data**: bs4, httpx, jq, matplotlib, numpy, opencv, pandas, pymupdf, pypdf, scipy, simpy, statsmodels
+
+**DevOps**: faker, ffmpeg, git, jupyter, loguru, pytest, rich, ruff, typer, watchdog, yt-dlp
+
+**Audio**: juce
+
+**DirectOS Flows**: flow-delay, flow-if, flow-inspector, flow-loop, output-email, output-file, output-notify, output-slack, trigger-cron, trigger-file, trigger-manual, trigger-webhook
+
+### Proyectos Documentados (25)
+
+biomistral-validation, chacona-estudio, dashboard-mobile-mineros, dashboard-seguimiento, directos, docmine-fiscal, docmine, educacion-auditiva, eigentools, factoria-demo, farmaia, giga-estudio, limpiador-pdfs, mathkids, mi-juego-plataformas, mineros2, musickids, network-watcher, photomine, portfolio-dibujo, process-watcher, resonant-graph-synth, simulaciones-maz, videonotes, web-scraper-ia
+
+### Patterns Documentados (42)
+
+agentic-prompts-library, alquimista-contenido, api-architect, arquitecto-componentes, arquitectura-cliente-servidor, auditor-proyecto, bibliotecario-api, centinela-errores, cirujano-datos, code-optimizer, code-reviewer, comandante-terminal, conserje-datos, constructor-interfaz, data-explorer, debugger-sherlock, diagramador-auto, documentador-fantasma, dual-ui-rust, escudo-privacidad, y 22 más...
 
 ---
 
