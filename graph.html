@@ -628,6 +628,7 @@
                 { id: "biology-visual", label: "Biology Visual Lab", type: "project", status: "completado", desc: "6 simulaciones de biologia: Hodgkin-Huxley, Lotka-Volterra, Hardy-Weinberg, Mitosis, Meiosis, Algoritmo Genetico" },
                 { id: "geology-visual", label: "Geology Visual Lab", type: "project", status: "completado", desc: "6 simulaciones de geologia: terremotos, volcanes, tectonica de placas, ciclo de rocas, erosion, estratigrafia" },
                 { id: "computation-lab", label: "Computation Lab", type: "project", status: "completado", desc: "6 simulaciones de computacion: Bubble Sort, BST, Logic Gates, Stack/Heap, Perceptron, DFA + 6 guias pedagogicas" },
+                { id: "euler-lab", label: "Euler Lab", type: "project", status: "activo", desc: "20 problemas de Project Euler con Pyodide (Python en browser), 2-4 niveles pedagogicos, animaciones Canvas" },
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
                 { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
@@ -696,6 +697,7 @@
                 { id: "lua", label: "Lua", type: "tech", category: "backend", desc: "Scripting para automatizacion en Aseprite" },
                 { id: "juce", label: "JUCE", type: "tech", category: "backend", desc: "Framework C++ para audio plugins (VST3/AU)" },
                 { id: "cmake", label: "CMake", type: "tech", category: "devops", desc: "Build system multiplataforma" },
+                { id: "pyodide", label: "Pyodide", type: "tech", category: "frontend", desc: "Python compilado a WebAssembly para ejecutar en navegador" },
 
                 // === METODOLOGIAS ===
                 { id: "mineros", label: "minerOS", type: "methodology", desc: "ORO-GEMAS-TESORO: Scanner, Extractor, Clasificador, Pipeline, Vault, Compass" },
@@ -860,6 +862,17 @@
                 { source: "computation-lab", target: "javascript" },
                 { source: "computation-lab", target: "tailwind" },
                 { source: "computation-lab", target: "math-visual" },
+
+                // Euler Lab connections
+                { source: "euler-lab", target: "pyodide" },
+                { source: "euler-lab", target: "python" },
+                { source: "euler-lab", target: "canvas" },
+                { source: "euler-lab", target: "tailwind" },
+                { source: "euler-lab", target: "javascript" },
+                { source: "euler-lab", target: "math-visual" },
+                { source: "euler-lab", target: "computation-lab" },
+                { source: "pyodide", target: "wasm" },
+                { source: "pyodide", target: "python" },
 
                 // Physics Sound Lab connections
                 { source: "physics-sound", target: "canvas" },
