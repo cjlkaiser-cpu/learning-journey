@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 27 diciembre 2025
+> **Última actualización**: 28 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia 
 > **Location**: Madrid, España
@@ -15,12 +15,12 @@
 
 | Métrica | Total |
 |---------|-------|
-| Proyectos documentados | 25 |
+| Proyectos documentados | 26 |
 | Tools documentadas | 65 |
 | Patterns documentados | 42 |
 | Simulaciones EigenLab | 150+ |
 | Líneas de código | ~60,000+ |
-| Repos en GitHub | 22 |
+| Repos en GitHub | 23 |
 | Plugins JUCE | 6 |
 | Herramientas EigenTools | 10 |
 
@@ -97,7 +97,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
-*Empezando limpio...*
+- **28 dic 2025**: Creado **Euler Lab** - 20 problemas de Project Euler con Pyodide (Python en browser), 2-4 niveles pedagógicos cada uno, animaciones Canvas, filtros por categoría. Publicado en GitHub.
 
 ---
 
