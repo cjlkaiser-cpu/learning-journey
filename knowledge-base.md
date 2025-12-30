@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 28 diciembre 2025
+> **Última actualización**: 30 diciembre 2025
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia 
 > **Location**: Madrid, España
@@ -15,13 +15,13 @@
 
 | Métrica | Total |
 |---------|-------|
-| Proyectos documentados | 26 |
+| Proyectos documentados | 27 |
 | Tools documentadas | 65 |
-| Patterns documentados | 42 |
+| Patterns documentados | 43 |
 | Simulaciones EigenLab | 150+ |
 | Líneas de código | ~60,000+ |
-| Repos en GitHub | 23 |
-| Plugins JUCE | 6 |
+| Repos en GitHub | 24 |
+| Plugins JUCE | 7 |
 | Herramientas EigenTools | 10 |
 
 ### Stack Dominado
@@ -76,8 +76,9 @@ Router + Plantillas + LLM fallback = 100% accuracy con 7ms/query.
 - Ubicación: `~/Projects/EigenLab/`
 
 ### EigenLab Instruments
-6 plugins JUCE de síntesis física
+7 plugins JUCE de síntesis física
 - Ubicación: `~/Projects/eigenlab-instruments/`
+- GitHub Pages: https://cjlkaiser-cpu.github.io/eigenlab-instruments/
 
 ### Physics Sound Lab
 Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
@@ -97,6 +98,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
+- **30 dic 2025**: 🎹 Creado **ModalKeys** - Plugin JUCE de síntesis modal con resonadores 2-pole. Presets: Marimba, Vibraphone, Rhodes, Celesta, Bells. Fórmula: `y[n] = x[n] + 2r·cos(ω)·y[n-1] - r²·y[n-2]`. Publicado eigenlab-instruments en GitHub Pages.
 - **28 dic 2025**: Creado **Euler Lab** - 20 problemas de Project Euler con Pyodide (Python en browser), 2-4 niveles pedagógicos cada uno, animaciones Canvas, filtros por categoría. Publicado en GitHub.
 
 ---
