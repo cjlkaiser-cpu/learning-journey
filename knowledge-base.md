@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 30 diciembre 2025
+> **Última actualización**: 01 enero 2026
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia 
 > **Location**: Madrid, España
@@ -15,7 +15,7 @@
 
 | Métrica | Total |
 |---------|-------|
-| Proyectos documentados | 27 |
+| Proyectos documentados | 28 |
 | Tools documentadas | 65 |
 | Patterns documentados | 43 |
 | Simulaciones EigenLab | 150+ |
@@ -91,6 +91,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 | Proyecto | Ubicación | Estado |
 |----------|-----------|--------|
 | DirectOS | `~/Desktop/DirectOS/` | Evolución continua |
+| EigenLab Generative | `~/Projects/eigenlab-generative/` | v0.2.0 funcional |
 | Paper Tonnetz | `~/Desktop/Physics Sound Lab/paper-tonnetz-atractor/` | Redacción |
 | Harmonic Groove Engine | `~/Projects/eigenlab-instruments/` | WIP |
 
@@ -98,6 +99,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
+- **01 ene 2026**: 🎼 Creado **EigenLab Generative** - Plugins de partitura para MuseScore 4 (QML/JS). RameauSATB v0.2.0: Markov chains + voice leading SATB. Análisis profundo: Bach ≠ "Barroco", Jazz requiere plugin separado (7as). ROADMAP completo v0.2→v1.0 con dependencias (frase→modulación→7as).
 - **30 dic 2025**: 🎹 Creado **ModalKeys** - Plugin JUCE de síntesis modal con resonadores 2-pole. Presets: Marimba, Vibraphone, Rhodes, Celesta, Bells. Fórmula: `y[n] = x[n] + 2r·cos(ω)·y[n-1] - r²·y[n-2]`. Publicado eigenlab-instruments en GitHub Pages.
 - **28 dic 2025**: Creado **Euler Lab** - 20 problemas de Project Euler con Pyodide (Python en browser), 2-4 niveles pedagógicos cada uno, animaciones Canvas, filtros por categoría. Publicado en GitHub.
 

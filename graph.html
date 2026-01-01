@@ -644,6 +644,7 @@
                 { id: "fluid-harmonic", label: "FluidHarmonicField", type: "project", status: "produccion", desc: "Plugin C++/JUCE: Navier-Stokes → sintesis granular. 64 granos modulados por velocidad/presion del fluido" },
                 { id: "modal-keys", label: "ModalKeys", type: "project", status: "activo", desc: "Plugin C++/JUCE: sintesis modal con resonadores 2-pole. Marimba, Vibraphone, Rhodes, Celesta, Bells. Inharmonicidad controlable" },
                 { id: "eigenlab-instruments", label: "EigenLab Instruments", type: "project", status: "produccion", desc: "7 plugins JUCE de sintesis fisica: Karplus-Strong, Modal, Bessel, Navier-Stokes. GitHub Pages showcase" },
+                { id: "eigenlab-generative", label: "EigenLab Generative", type: "project", status: "activo", desc: "Plugins MuseScore 4 (QML/JS): RameauSATB genera progresiones con Markov chains + voice leading. Analisis: Bach ≠ Barroco, Jazz separado" },
                 { id: "paper-tonnetz", label: "Paper Tonnetz", type: "project", status: "activo", desc: "Paper academico: Neo-Riemannian + Chaos Theory. 6500 palabras, 8 figuras SVG. Target: Leonardo, CMJ" },
                 { id: "chacona", label: "Chacona Estudio", type: "project", status: "produccion", desc: "64 variaciones de Bach con grabacion y progreso" },
                 { id: "mathkids", label: "MathKids", type: "project", status: "completado", desc: "Dashboard matematico interactivo para ninos" },
@@ -667,6 +668,8 @@
                 // === TECNOLOGIAS ===
                 { id: "python", label: "Python", type: "tech", category: "backend", desc: "Lenguaje principal para backend y automatizacion" },
                 { id: "javascript", label: "JavaScript", type: "tech", category: "frontend", desc: "Vanilla JS sin frameworks" },
+                { id: "qml", label: "QML", type: "tech", category: "frontend", desc: "Qt Modeling Language para UIs declarativas. MuseScore plugins" },
+                { id: "musescore-api", label: "MuseScore API", type: "tech", category: "audio", desc: "Plugin API de MuseScore 4 para manipular partituras" },
                 { id: "html-css", label: "HTML/CSS", type: "tech", category: "frontend", desc: "Estructura y estilos web" },
                 { id: "flask", label: "Flask", type: "tech", category: "backend", desc: "Microframework web Python" },
                 { id: "fastapi", label: "FastAPI", type: "tech", category: "backend", desc: "API moderna con async y tipos" },
@@ -1076,6 +1079,12 @@
                 { source: "eigenlab-instruments", target: "gravity-well" },
                 { source: "eigenlab-instruments", target: "membrane-synth" },
                 { source: "eigenlab-instruments", target: "fluid-harmonic" },
+
+                // eigenlab-generative connections
+                { source: "eigenlab-generative", target: "qml" },
+                { source: "eigenlab-generative", target: "javascript" },
+                { source: "eigenlab-generative", target: "musescore-api" },
+                { source: "eigenlab-generative", target: "eigenlab-instruments" },
 
                 // eigenlab-core connections
                 { source: "eigenlab-core", target: "cpp" },
