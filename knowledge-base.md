@@ -15,12 +15,12 @@
 
 | Métrica | Total |
 |---------|-------|
-| Proyectos documentados | 28 |
+| Proyectos documentados | 29 |
 | Tools documentadas | 68 |
 | Patterns documentados | 43 |
 | Simulaciones EigenLab | 150+ |
 | Líneas de código | ~60,000+ |
-| Repos en GitHub | 24 |
+| Repos en GitHub | 25 |
 | Plugins JUCE | 7 |
 | Herramientas EigenTools | 10 |
 
@@ -99,6 +99,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
+- **02 ene 2026**: 🚀 **RameauJazz Web v0.2.0** - Separado en repo propio. Export MIDI/WAV/PDF, guardar progresiones, GitHub Pages: https://cjlkaiser-cpu.github.io/rameau-jazz-web/
 - **02 ene 2026**: 🎹 **RameauJazz Web App v0.1.0** - Generador jazz con Vue 3 + Tone.js + D3.js. Motor Markov (38 acordes, Coltrane changes), FM synth Rhodes, walking bass, drums. Visualización: force graph + piano roll. Tap tempo, swing, 5 voicings, 5 presets.
 - **02 ene 2026**: 🎷 **RameauJazz plugin v0.7.0** - 38 acordes jazz (diatónicos, secundarios, tritono subs, borrowed, Coltrane). Modulaciones a 8 targets incluyendo Giant Steps cycle.
 - **01 ene 2026**: 🎼 Creado **EigenLab Generative** - Plugins de partitura para MuseScore 4 (QML/JS). RameauSATB v0.2.0: Markov chains + voice leading SATB. Análisis profundo: Bach ≠ "Barroco", Jazz requiere plugin separado (7as). ROADMAP completo v0.2→v1.0 con dependencias (frase→modulación→7as).
