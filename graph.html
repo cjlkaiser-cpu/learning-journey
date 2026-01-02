@@ -644,7 +644,7 @@
                 { id: "fluid-harmonic", label: "FluidHarmonicField", type: "project", status: "produccion", desc: "Plugin C++/JUCE: Navier-Stokes → sintesis granular. 64 granos modulados por velocidad/presion del fluido" },
                 { id: "modal-keys", label: "ModalKeys", type: "project", status: "activo", desc: "Plugin C++/JUCE: sintesis modal con resonadores 2-pole. Marimba, Vibraphone, Rhodes, Celesta, Bells. Inharmonicidad controlable" },
                 { id: "eigenlab-instruments", label: "EigenLab Instruments", type: "project", status: "produccion", desc: "7 plugins JUCE de sintesis fisica: Karplus-Strong, Modal, Bessel, Navier-Stokes. GitHub Pages showcase" },
-                { id: "eigenlab-generative", label: "EigenLab Generative", type: "project", status: "activo", desc: "Plugins MuseScore 4 (QML/JS): RameauSATB genera progresiones con Markov chains + voice leading. Analisis: Bach ≠ Barroco, Jazz separado" },
+                { id: "eigenlab-generative", label: "EigenLab Generative", type: "project", status: "activo", desc: "Plugins MuseScore 4 + Web Apps: RameauJazz (38 acordes, Coltrane), RameauJazz Web (Vue+Tone.js+D3), RameauSATB. Markov chains + voice leading" },
                 { id: "paper-tonnetz", label: "Paper Tonnetz", type: "project", status: "activo", desc: "Paper academico: Neo-Riemannian + Chaos Theory. 6500 palabras, 8 figuras SVG. Target: Leonardo, CMJ" },
                 { id: "chacona", label: "Chacona Estudio", type: "project", status: "produccion", desc: "64 variaciones de Bach con grabacion y progreso" },
                 { id: "mathkids", label: "MathKids", type: "project", status: "completado", desc: "Dashboard matematico interactivo para ninos" },
@@ -703,6 +703,10 @@
                 { id: "juce", label: "JUCE", type: "tech", category: "backend", desc: "Framework C++ para audio plugins (VST3/AU)" },
                 { id: "cmake", label: "CMake", type: "tech", category: "devops", desc: "Build system multiplataforma" },
                 { id: "pyodide", label: "Pyodide", type: "tech", category: "frontend", desc: "Python compilado a WebAssembly para ejecutar en navegador" },
+                { id: "vue", label: "Vue.js", type: "tech", category: "frontend", desc: "Framework progresivo para UIs. Composition API + Pinia" },
+                { id: "tonejs", label: "Tone.js", type: "tech", category: "frontend", desc: "Framework Web Audio para musica interactiva. FM synth, Transport, Effects" },
+                { id: "pinia", label: "Pinia", type: "tech", category: "frontend", desc: "State management para Vue 3. Composition API style" },
+                { id: "vite", label: "Vite", type: "tech", category: "devops", desc: "Build tool ultrarapido para proyectos web modernos" },
 
                 // === METODOLOGIAS ===
                 { id: "mineros", label: "minerOS", type: "methodology", desc: "ORO-GEMAS-TESORO: Scanner, Extractor, Clasificador, Pipeline, Vault, Compass" },
@@ -1080,11 +1084,23 @@
                 { source: "eigenlab-instruments", target: "membrane-synth" },
                 { source: "eigenlab-instruments", target: "fluid-harmonic" },
 
-                // eigenlab-generative connections
+                // eigenlab-generative connections (MuseScore plugins)
                 { source: "eigenlab-generative", target: "qml" },
                 { source: "eigenlab-generative", target: "javascript" },
                 { source: "eigenlab-generative", target: "musescore-api" },
                 { source: "eigenlab-generative", target: "eigenlab-instruments" },
+                { source: "eigenlab-generative", target: "markov" },
+                // eigenlab-generative web app connections (RameauJazz Web)
+                { source: "eigenlab-generative", target: "vue" },
+                { source: "eigenlab-generative", target: "tonejs" },
+                { source: "eigenlab-generative", target: "d3" },
+                { source: "eigenlab-generative", target: "pinia" },
+                { source: "eigenlab-generative", target: "vite" },
+                { source: "eigenlab-generative", target: "canvas" },
+                // Vue ecosystem connections
+                { source: "vue", target: "pinia" },
+                { source: "vue", target: "vite" },
+                { source: "tonejs", target: "webaudio" },
 
                 // eigenlab-core connections
                 { source: "eigenlab-core", target: "cpp" },
