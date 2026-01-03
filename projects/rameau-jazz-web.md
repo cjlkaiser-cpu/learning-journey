@@ -26,7 +26,19 @@ Generador de progresiones armónicas jazz con motor de Markov, visualización in
 | Build | Vite |
 | Export | midi-writer-js, jsPDF |
 
-## Características v0.2.0
+## Características v0.2.5
+
+### AI Solo Generation
+- 3050 licks extraídos de Impro-Visor (Parker, Coltrane, Clifford Brown, Miles Davis)
+- Categorías: ii-V-I (515), blues (123), bebop (2412)
+- Selección inteligente con chord tone matching y proximity scoring
+- Sintetizador MonoSynth tipo trompeta jazz
+- Toggle ON/OFF durante playback
+
+### Export iReal Pro
+- Genera URLs compatibles con iReal Pro
+- Copia al clipboard para importar en la app
+- Mapeo de 38 tipos de acordes a notación iReal
 
 ### Motor de Armonía
 - 38 grados de acordes jazz (diatónicos, secundarios, tritono subs, borrowed, Coltrane)
@@ -76,6 +88,7 @@ src/
 
 ## Changelog
 
+- **03 ene 2026**: v0.2.5 - AI Solo con licks (3050), selección inteligente, export iReal Pro
 - **02 ene 2026**: v0.2.0 - Export MIDI/WAV/PDF, guardar progresiones, GitHub Pages
 - **02 ene 2026**: Separado en repo propio desde eigenlab-generative
 - **02 ene 2026**: v0.1.0 - Motor Markov, audio Tone.js, visualización D3

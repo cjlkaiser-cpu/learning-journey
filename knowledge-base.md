@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 02 enero 2026
+> **Última actualización**: 03 enero 2026
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia 
 > **Location**: Madrid, España
@@ -99,6 +99,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
+- **03 ene 2026**: 🎷 **RameauJazz Web v0.2.5** - AI Solo con licks (3050 patrones de Parker, Coltrane, Clifford Brown). Selección inteligente (chord tones, proximity). Export iReal Pro. Sin dependencia TensorFlow (~1MB vs 46MB).
 - **02 ene 2026**: 🚀 **RameauJazz Web v0.2.0** - Separado en repo propio. Export MIDI/WAV/PDF, guardar progresiones, GitHub Pages: https://cjlkaiser-cpu.github.io/rameau-jazz-web/
 - **02 ene 2026**: 🎹 **RameauJazz Web App v0.1.0** - Generador jazz con Vue 3 + Tone.js + D3.js. Motor Markov (38 acordes, Coltrane changes), FM synth Rhodes, walking bass, drums. Visualización: force graph + piano roll. Tap tempo, swing, 5 voicings, 5 presets.
 - **02 ene 2026**: 🎷 **RameauJazz plugin v0.7.0** - 38 acordes jazz (diatónicos, secundarios, tritono subs, borrowed, Coltrane). Modulaciones a 8 targets incluyendo Giant Steps cycle.
