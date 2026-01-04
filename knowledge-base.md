@@ -11,18 +11,26 @@
 
 ---
 
-## Estadísticas Acumuladas (hasta 2025)
+## Estadísticas Acumuladas
 
-| Métrica | Total |
-|---------|-------|
-| Proyectos documentados | 30 |
-| Tools documentadas | 68 |
-| Patterns documentados | 43 |
-| Simulaciones EigenLab | 150+ |
-| Líneas de código | ~60,000+ |
-| Repos en GitHub | 25 |
+| Métrica | Total | Detalle |
+|---------|-------|---------|
+| Proyectos | 54 | Labs + Plugins + Standalone |
+| Simulaciones | 150+ | EigenLab (12 labs) |
+| Plugins Audio | 13 | 7 JUCE + 6 MuseScore |
+| Tools Rust | 11 | EigenTools (Dual UI) |
+| Tools documentadas | 68 | |
+| Patterns documentados | 43 | |
+
+### Desglose de Proyectos
+
+| Categoría | Cuenta |
+|-----------|--------|
+| Labs EigenLab | 12 |
 | Plugins JUCE | 7 |
-| Herramientas EigenTools | 10 |
+| Plugins MuseScore | 6 |
+| Tools EigenTools | 11 |
+| Standalone | ~18 |
 
 ### Stack Dominado
 
