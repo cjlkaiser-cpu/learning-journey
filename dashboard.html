@@ -198,30 +198,61 @@
 
         <!-- Filters -->
         <section class="mb-6 animate-in delay-2">
-            <div class="flex flex-wrap gap-2 items-center">
-                <span class="text-xs text-slate-500 mr-2">Filtrar:</span>
-                <button onclick="filterProjects('all')" class="filter-btn active px-3 py-1 rounded-full text-xs border border-slate-700 text-slate-300" data-filter="all">
-                    Todos
+            <div class="flex flex-wrap gap-3 items-center">
+                <!-- Search -->
+                <div class="relative">
+                    <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar..."
+                           class="pl-8 pr-3 py-1.5 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 w-40 focus:border-blue-500 focus:outline-none"
+                           oninput="applyFilters()">
+                </div>
+
+                <!-- Ubicación -->
+                <select id="filterUbicacion" onchange="applyFilters()"
+                        class="px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 focus:border-blue-500 focus:outline-none cursor-pointer">
+                    <option value="all">📍 Ubicación</option>
+                    <option value="github">GitHub</option>
+                    <option value="local">Solo Local</option>
+                </select>
+
+                <!-- Ecosistema -->
+                <select id="filterEcosistema" onchange="applyFilters()"
+                        class="px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 focus:border-blue-500 focus:outline-none cursor-pointer">
+                    <option value="all">🏷️ Ecosistema</option>
+                    <option value="eigenlab">EigenLab</option>
+                    <option value="eigentools">EigenTools</option>
+                    <option value="instruments">Instruments</option>
+                    <option value="generative">Generative</option>
+                    <option value="standalone">Standalone</option>
+                </select>
+
+                <!-- Tecnología -->
+                <select id="filterTech" onchange="applyFilters()"
+                        class="px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 focus:border-blue-500 focus:outline-none cursor-pointer">
+                    <option value="all">🔧 Tecnología</option>
+                    <option value="rust">Rust</option>
+                    <option value="cpp">C++/JUCE</option>
+                    <option value="python">Python</option>
+                    <option value="web">Web/JS</option>
+                    <option value="arduino">Arduino</option>
+                </select>
+
+                <!-- Estado -->
+                <select id="filterEstado" onchange="applyFilters()"
+                        class="px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 focus:border-blue-500 focus:outline-none cursor-pointer">
+                    <option value="all">📊 Estado</option>
+                    <option value="produccion">Producción</option>
+                    <option value="activo">Activo</option>
+                    <option value="completado">Completado</option>
+                </select>
+
+                <!-- Reset -->
+                <button onclick="resetFilters()" class="px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-400 hover:text-white hover:border-slate-500 transition">
+                    <i class="fa-solid fa-xmark mr-1"></i> Reset
                 </button>
-                <button onclick="filterProjects('github')" class="filter-btn px-3 py-1 rounded-full text-xs border border-slate-700 text-slate-300" data-filter="github">
-                    <i class="fa-brands fa-github mr-1"></i> En GitHub
-                </button>
-                <button onclick="filterProjects('local')" class="filter-btn px-3 py-1 rounded-full text-xs border border-slate-700 text-slate-300" data-filter="local">
-                    <i class="fa-solid fa-hard-drive mr-1"></i> Solo Local
-                </button>
-                <span class="text-slate-700 mx-2">|</span>
-                <button onclick="filterProjects('produccion')" class="filter-btn px-3 py-1 rounded-full text-xs border border-slate-700 text-slate-300" data-filter="produccion">
-                    <span class="w-2 h-2 bg-emerald-400 rounded-full inline-block mr-1"></span> Produccion
-                </button>
-                <button onclick="filterProjects('web')" class="filter-btn px-3 py-1 rounded-full text-xs border border-slate-700 text-slate-300" data-filter="web">
-                    <i class="fa-solid fa-globe mr-1"></i> Web
-                </button>
-                <button onclick="filterProjects('python')" class="filter-btn px-3 py-1 rounded-full text-xs border border-slate-700 text-slate-300" data-filter="python">
-                    <i class="fa-brands fa-python mr-1"></i> Python
-                </button>
-                <button onclick="filterProjects('ia')" class="filter-btn px-3 py-1 rounded-full text-xs border border-slate-700 text-slate-300" data-filter="ia">
-                    <i class="fa-solid fa-brain mr-1"></i> IA/ML
-                </button>
+
+                <!-- Counter -->
+                <span id="filter-count" class="text-xs text-slate-500 ml-auto"></span>
             </div>
         </section>
 
@@ -280,7 +311,7 @@
                                 </td>
                             </tr>
                             <!-- Fisica / Simulaciones -->
-                            <tr class="project-row" data-tags="github produccion web">
+                            <tr class="project-row" data-tags="github produccion web eigenlab completado">
                                 <td class="p-3 font-medium text-white">
                                     <span class="text-blue-400">Physics Visual Lab</span>
                                     <span class="text-[10px] text-slate-500 ml-1">(19 sims)</span>
@@ -293,7 +324,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr class="project-row" data-tags="github produccion web">
+                            <tr class="project-row" data-tags="github produccion web eigenlab completado">
                                 <td class="p-3 font-medium text-white">
                                     <span class="text-emerald-400">Chemistry Visual Lab</span>
                                     <span class="text-[10px] text-slate-500 ml-1">(17 sims + 3D)</span>
@@ -306,7 +337,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr class="project-row" data-tags="github produccion web">
+                            <tr class="project-row" data-tags="github produccion web eigenlab completado">
                                 <td class="p-3 font-medium text-white">
                                     <span class="text-purple-400">Math Visual Lab</span>
                                     <span class="text-[10px] text-slate-500 ml-1">(22 sims)</span>
@@ -436,7 +467,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr class="project-row" data-tags="github produccion">
+                            <tr class="project-row" data-tags="github produccion instruments cpp juce activo">
                                 <td class="p-3 font-medium text-white">
                                     <span class="text-purple-400">Resonant Graph Synth</span>
                                     <span class="text-[10px] text-slate-500 ml-1">(JUCE plugin)</span>
@@ -859,7 +890,7 @@
                                 </td>
                             </tr>
                             <!-- EigenRobotics -->
-                            <tr class="project-row" data-tags="github produccion web">
+                            <tr class="project-row" data-tags="github produccion web standalone arduino">
                                 <td class="p-3 font-medium text-white">
                                     <span class="text-lime-400">EigenRobotics</span>
                                     <span class="text-[10px] text-slate-500 ml-1">(11 proyectos Arduino+LEGO)</span>
@@ -873,7 +904,7 @@
                                 </td>
                             </tr>
                             <!-- EigenTools -->
-                            <tr class="project-row" data-tags="github produccion">
+                            <tr class="project-row" data-tags="github produccion eigentools rust">
                                 <td class="p-3 font-medium text-white">
                                     <span class="text-orange-400">EigenTools</span>
                                     <span class="text-[10px] text-slate-500 ml-1">(10 tools + TUI launcher)</span>
@@ -1145,42 +1176,79 @@
     </div>
 
     <script>
-        // Filter projects
-        function filterProjects(filter) {
+        // Apply all filters
+        function applyFilters() {
             const rows = document.querySelectorAll('#projects-table tbody tr');
-            let visibleCount = 0;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const ubicacion = document.getElementById('filterUbicacion').value;
+            const ecosistema = document.getElementById('filterEcosistema').value;
+            const tech = document.getElementById('filterTech').value;
+            const estado = document.getElementById('filterEstado').value;
 
-            // Update active filter button
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.filter === filter) btn.classList.add('active');
-            });
+            let visibleCount = 0;
+            const totalCount = rows.length;
 
             rows.forEach(row => {
                 const tags = row.dataset.tags || '';
-                let show = false;
+                const text = row.textContent.toLowerCase();
+                let show = true;
 
-                if (filter === 'all') {
-                    show = true;
-                } else if (filter === 'github') {
-                    show = tags.includes('github');
-                } else if (filter === 'local') {
-                    show = tags.includes('local');
-                } else if (filter === 'produccion') {
-                    show = tags.includes('produccion');
-                } else if (filter === 'web') {
-                    show = tags.includes('web');
-                } else if (filter === 'python') {
-                    show = tags.includes('python');
-                } else if (filter === 'ia') {
-                    show = tags.includes('ia');
+                // Search filter
+                if (search && !text.includes(search)) show = false;
+
+                // Ubicación filter
+                if (show && ubicacion !== 'all') {
+                    show = tags.includes(ubicacion);
+                }
+
+                // Ecosistema filter
+                if (show && ecosistema !== 'all') {
+                    show = tags.includes(ecosistema);
+                }
+
+                // Tech filter
+                if (show && tech !== 'all') {
+                    if (tech === 'cpp') {
+                        show = tags.includes('cpp') || tags.includes('juce');
+                    } else if (tech === 'web') {
+                        show = tags.includes('web') || tags.includes('javascript');
+                    } else {
+                        show = tags.includes(tech);
+                    }
+                }
+
+                // Estado filter
+                if (show && estado !== 'all') {
+                    show = tags.includes(estado);
                 }
 
                 row.classList.toggle('hidden', !show);
                 if (show) visibleCount++;
             });
 
+            // Update counter
             document.getElementById('project-count').textContent = `${visibleCount} proyectos`;
+            document.getElementById('filter-count').textContent =
+                visibleCount < totalCount ? `Mostrando ${visibleCount} de ${totalCount}` : '';
+        }
+
+        // Reset all filters
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('filterUbicacion').value = 'all';
+            document.getElementById('filterEcosistema').value = 'all';
+            document.getElementById('filterTech').value = 'all';
+            document.getElementById('filterEstado').value = 'all';
+            applyFilters();
+        }
+
+        // Legacy function for compatibility
+        function filterProjects(filter) {
+            resetFilters();
+            if (filter !== 'all') {
+                document.getElementById('filterUbicacion').value = filter;
+                applyFilters();
+            }
         }
 
         // Copy path to clipboard
