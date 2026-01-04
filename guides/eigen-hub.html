@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eigen Ecosystem Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); }
+        .glow-blue { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3); }
+        .glow-purple { box-shadow: 0 0 30px rgba(168, 85, 247, 0.3); }
+        .glow-orange { box-shadow: 0 0 30px rgba(249, 115, 22, 0.3); }
+        .glow-lime { box-shadow: 0 0 30px rgba(132, 204, 22, 0.3); }
+        .glow-cyan { box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); }
+        .glow-pink { box-shadow: 0 0 30px rgba(236, 72, 153, 0.3); }
+        .glow-amber { box-shadow: 0 0 30px rgba(245, 158, 11, 0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+
+    <!-- Header -->
+    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold">
+                    E
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-white">Eigen <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Ecosystem</span></h1>
+                    <p class="text-[10px] text-slate-500">Hub Central</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 text-sm">
+                <span class="text-slate-500">150+ sims</span>
+                <span class="text-slate-700">|</span>
+                <span class="text-slate-500">13 plugins</span>
+                <span class="text-slate-700">|</span>
+                <span class="text-slate-500">11 tools</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="py-16 px-6 text-center bg-gradient-to-b from-slate-900 to-slate-950">
+        <h2 class="text-4xl font-bold text-white mb-4">
+            Un universo de proyectos
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">conectados</span>
+        </h2>
+        <p class="text-slate-400 max-w-xl mx-auto">
+            Simulaciones, plugins de audio, herramientas y robótica. Todo interconectado por la curiosidad y el aprendizaje.
+        </p>
+    </section>
+
+    <!-- Main Grid -->
+    <main class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- EigenLab Section -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-atom text-cyan-400"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white">EigenLab</h3>
+                <span class="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded-full">150+ simulaciones</span>
+            </div>
+
+            <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Physics Visual -->
+                <a href="https://cjlkaiser-cpu.github.io/physics-visual-lab/" target="_blank"
+                   class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-blue-500/50 hover:glow-blue">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">🔭</span>
+                        <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded">25 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Physics Visual Lab</h4>
+                    <p class="text-xs text-slate-500">Mecánica, relatividad, termodinámica</p>
+                </a>
+
+                <!-- Physics Sound -->
+                <a href="https://cjlkaiser-cpu.github.io/physics-sound-lab/" target="_blank"
+                   class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-amber-500/50 hover:glow-amber">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">🎵</span>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded">19 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Physics Sound Lab</h4>
+                    <p class="text-xs text-slate-500">11 generativos + 8 metrónomos</p>
+                </a>
+
+                <!-- Chemistry -->
+                <a href="https://cjlkaiser-cpu.github.io/chemistry-visual-lab/" target="_blank"
+                   class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-emerald-500/50">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">🧪</span>
+                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded">17 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Chemistry Visual Lab</h4>
+                    <p class="text-xs text-slate-500">Orbitales 3D, reacciones, tabla periódica</p>
+                </a>
+
+                <!-- Math Visual -->
+                <a href="https://cjlkaiser-cpu.github.io/math-visual-lab/" target="_blank"
+                   class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-purple-500/50 hover:glow-purple">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">📐</span>
+                        <span class="text-[10px] bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded">22 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Math Visual Lab</h4>
+                    <p class="text-xs text-slate-500">Topología, fractales, grupos</p>
+                </a>
+
+                <!-- Math Generative -->
+                <div class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 opacity-70">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">🎨</span>
+                        <span class="text-[10px] bg-pink-500/20 text-pink-400 px-2 py-0.5 rounded">7 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Math Generative Art</h4>
+                    <p class="text-xs text-slate-500">Perlin, IFS, Gray-Scott</p>
+                    <span class="text-[10px] text-slate-600">~/Projects/EigenLab/Mathematics/</span>
+                </div>
+
+                <!-- Euler Lab -->
+                <a href="https://cjlkaiser-cpu.github.io/euler-lab/" target="_blank"
+                   class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-cyan-500/50 hover:glow-cyan">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">🧮</span>
+                        <span class="text-[10px] bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded">20 problemas</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Euler Lab</h4>
+                    <p class="text-xs text-slate-500">Project Euler con Pyodide</p>
+                </a>
+
+                <!-- Biology -->
+                <div class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 opacity-70">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">🧬</span>
+                        <span class="text-[10px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded">6 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Biology Visual Lab</h4>
+                    <p class="text-xs text-slate-500">Hodgkin-Huxley, Lotka-Volterra</p>
+                    <span class="text-[10px] text-slate-600">Local</span>
+                </div>
+
+                <!-- Biochem -->
+                <div class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 opacity-70">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">🔬</span>
+                        <span class="text-[10px] bg-fuchsia-500/20 text-fuchsia-400 px-2 py-0.5 rounded">16 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Biochem Visual Lab</h4>
+                    <p class="text-xs text-slate-500">Michaelis-Menten, genética</p>
+                    <span class="text-[10px] text-slate-600">Local</span>
+                </div>
+
+                <!-- Astronomy Visual -->
+                <div class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 opacity-70">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">🌌</span>
+                        <span class="text-[10px] bg-indigo-500/20 text-indigo-400 px-2 py-0.5 rounded">6 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Astronomy Visual Lab</h4>
+                    <p class="text-xs text-slate-500">Órbitas, HR diagram</p>
+                    <span class="text-[10px] text-slate-600">Local</span>
+                </div>
+
+                <!-- Astronomy Sound -->
+                <div class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 opacity-70">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">📡</span>
+                        <span class="text-[10px] bg-indigo-500/20 text-indigo-400 px-2 py-0.5 rounded">3 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Astronomy Sound Lab</h4>
+                    <p class="text-xs text-slate-500">Púlsares, ondas gravitacionales</p>
+                    <span class="text-[10px] text-slate-600">Local</span>
+                </div>
+
+                <!-- Geology -->
+                <div class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 opacity-70">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">🌋</span>
+                        <span class="text-[10px] bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded">6 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Geology Visual Lab</h4>
+                    <p class="text-xs text-slate-500">Tectónica, volcanes, erosión</p>
+                    <span class="text-[10px] text-slate-600">Local</span>
+                </div>
+
+                <!-- Computation -->
+                <div class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-4 opacity-70">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-2xl">💻</span>
+                        <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded">6 sims</span>
+                    </div>
+                    <h4 class="font-medium text-white mb-1">Computation Lab</h4>
+                    <p class="text-xs text-slate-500">BST, DFA, Perceptrón</p>
+                    <span class="text-[10px] text-slate-600">Local</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audio Section -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-music text-purple-400"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white">Audio & Generativo</h3>
+                <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full">13 plugins</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <!-- Instruments -->
+                <a href="https://cjlkaiser-cpu.github.io/eigenlab-instruments/" target="_blank"
+                   class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-purple-500/50 hover:glow-purple">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl">🎹</span>
+                            <div>
+                                <h4 class="font-semibold text-white">EigenLab Instruments</h4>
+                                <p class="text-xs text-slate-500">Plugins JUCE de síntesis física</p>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded">7 plugins</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">ResonantGraphSynth</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">GravityWell</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">MembraneSynth</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">ModalPercussion</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">ModalKeys</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">FluidHarmonic</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">HarmonicGroove</span>
+                    </div>
+                </a>
+
+                <!-- Generative -->
+                <a href="https://cjlkaiser-cpu.github.io/rameau-jazz-web/" target="_blank"
+                   class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-pink-500/50 hover:glow-pink">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl">🎼</span>
+                            <div>
+                                <h4 class="font-semibold text-white">EigenLab Generative</h4>
+                                <p class="text-xs text-slate-500">Plugins MuseScore + Web App</p>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-pink-500/20 text-pink-400 px-2 py-1 rounded">6 plugins</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">RameauJazz</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">RameauBach</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">RameauPiano</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">RameauGuitar</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">RameauGenerator</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">DeepBach</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Tools & Education Section -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-wrench text-orange-400"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white">Herramientas & Educación</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <!-- EigenTools -->
+                <a href="https://github.com/cjlkaiser-cpu/eigentools" target="_blank"
+                   class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-orange-500/50 hover:glow-orange">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🔧</span>
+                        <div>
+                            <h4 class="font-semibold text-white">EigenTools</h4>
+                            <p class="text-xs text-slate-500">Herramientas Rust + Dual UI</p>
+                        </div>
+                    </div>
+                    <div class="text-xs text-orange-400 mb-2">11 tools</div>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">network</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">process</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">disk</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">crypto</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">+7</span>
+                    </div>
+                </a>
+
+                <!-- EigenRobotics -->
+                <a href="https://cjlkaiser-cpu.github.io/eigenrobotics/" target="_blank"
+                   class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-lime-500/50 hover:glow-lime">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🤖</span>
+                        <div>
+                            <h4 class="font-semibold text-white">EigenRobotics</h4>
+                            <p class="text-xs text-slate-500">Arduino + LEGO en familia</p>
+                        </div>
+                    </div>
+                    <div class="text-xs text-lime-400 mb-2">11 proyectos</div>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">blink</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">robot</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">brazo</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">IR</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">+7</span>
+                    </div>
+                </a>
+
+                <!-- EigenLab Odyssey -->
+                <div class="card-hover bg-slate-900 border border-slate-800 rounded-xl p-5 opacity-70">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🎮</span>
+                        <div>
+                            <h4 class="font-semibold text-white">EigenLab Odyssey</h4>
+                            <p class="text-xs text-slate-500">Juego narrativo + 150 sims</p>
+                        </div>
+                    </div>
+                    <div class="text-xs text-blue-400 mb-2">9 reinos</div>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">Phaser.js</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">Vite</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded">12 eigenvalores</span>
+                    </div>
+                    <span class="text-[10px] text-slate-600 mt-2 block">En desarrollo</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Engine -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-microchip text-blue-400"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white">Motor Core</h3>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <span class="text-4xl">⚡</span>
+                        <div>
+                            <h4 class="font-semibold text-white text-lg">eigenlab-core</h4>
+                            <p class="text-sm text-slate-500">Motor C++/WebAssembly de alto rendimiento</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-blue-400">158KB</div>
+                        <div class="text-xs text-slate-500">5 sims @ 60fps</div>
+                    </div>
+                </div>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Navier-Stokes</span>
+                    <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Boids</span>
+                    <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">N-body Barnes-Hut</span>
+                    <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Erosion</span>
+                    <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Cloth PBD</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connections Diagram -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-slate-700 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-diagram-project text-slate-400"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white">Conexiones</h3>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 font-mono text-sm">
+                <pre class="text-slate-400 overflow-x-auto">
+<span class="text-cyan-400">EigenLab</span> (150+ sims)
+    │
+    ├──► <span class="text-blue-400">eigenlab-core</span> (rendimiento WASM)
+    │
+    └──► <span class="text-purple-400">EigenLab Odyssey</span> (juego conecta sims)
+              │
+<span class="text-amber-400">Physics Sound Lab</span>
+    │
+    └──► <span class="text-purple-400">EigenLab Instruments</span> (física del sonido → plugins)
+              │
+              └──► <span class="text-pink-400">EigenLab Generative</span> (teoría musical)
+                        │
+                        └──► <span class="text-pink-400">RameauJazz Web</span> (web app)
+
+<span class="text-lime-400">EigenRobotics</span> ◄──── Conceptos físicos de EigenLab
+    │
+    └──► Arduino + sensores + actuadores
+
+<span class="text-orange-400">EigenTools</span> ──────── Patrón Dual UI reutilizable
+                </pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-8 text-center">
+        <p class="text-slate-500 italic">"Piano piano se arriva lontano"</p>
+        <p class="text-xs text-slate-600 mt-2">Ecosistema Eigen - Learning Journey 2026</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <a href="../dashboard.html" class="text-xs text-slate-500 hover:text-blue-400 transition">Dashboard</a>
+            <a href="../graph.html" class="text-xs text-slate-500 hover:text-blue-400 transition">Graph</a>
+            <a href="https://github.com/cjlkaiser-cpu" target="_blank" class="text-xs text-slate-500 hover:text-blue-400 transition">GitHub</a>
+        </div>
+    </footer>
+
+</body>
+</html>
