@@ -708,6 +708,7 @@
                 { id: "tonejs", label: "Tone.js", type: "tech", category: "frontend", desc: "Framework Web Audio para musica interactiva. FM synth, Transport, Effects" },
                 { id: "pinia", label: "Pinia", type: "tech", category: "frontend", desc: "State management para Vue 3. Composition API style" },
                 { id: "vite", label: "Vite", type: "tech", category: "devops", desc: "Build tool ultrarapido para proyectos web modernos" },
+                { id: "arduino", label: "Arduino", type: "tech", category: "hardware", desc: "Plataforma de prototipado electronico. C++ para microcontroladores ATmega" },
 
                 // === METODOLOGIAS ===
                 { id: "mineros", label: "minerOS", type: "methodology", desc: "ORO-GEMAS-TESORO: Scanner, Extractor, Clasificador, Pipeline, Vault, Compass" },
@@ -1202,9 +1203,12 @@
                 { source: "dual-ui", target: "tokio" },
 
                 // EigenRobotics connections
+                { source: "eigenrobotics", target: "arduino" },
+                { source: "eigenrobotics", target: "cpp" },
                 { source: "eigenrobotics", target: "javascript" },
                 { source: "eigenrobotics", target: "html-css" },
                 { source: "eigenrobotics", target: "canvas" },
+                { source: "arduino", target: "cpp" },
 
                 // Rust ecosystem connections
                 { source: "axum", target: "rust" },
