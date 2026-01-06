@@ -630,7 +630,8 @@
                 { id: "computation-lab", label: "Computation Lab", type: "project", status: "completado", desc: "6 simulaciones de computacion: Bubble Sort, BST, Logic Gates, Stack/Heap, Perceptron, DFA + 6 guias pedagogicas" },
                 { id: "euler-lab", label: "Euler Lab", type: "project", status: "activo", desc: "20 problemas de Project Euler con Pyodide (Python en browser), 2-4 niveles pedagogicos, animaciones Canvas" },
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
-                { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados" },
+                { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados. Modo NASA con picos espectrales Voyager" },
+                { id: "kepler-voyager", label: "Kepler vs Voyager", type: "project", status: "produccion", desc: "Comparativa empirica: Kepler 1619 vs NASA Voyager PWS. Analisis espectral PSD + web A/B test" },
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
                 { id: "orbifold", label: "Orbifold Walker", type: "project", status: "produccion", desc: "Explorador 3D del espacio de acordes de Tymoczko. Three.js + Web Audio" },
                 { id: "cadencia", label: "Cadencia Orbital", type: "project", status: "produccion", desc: "Multi-atractores + progresiones armonicas. Modulacion automatica + grabacion" },
@@ -896,6 +897,16 @@
                 { source: "harmonices", target: "webaudio" },
                 { source: "harmonices", target: "kepler" },
                 { source: "harmonices", target: "physics-sound" },
+                { source: "harmonices", target: "kepler-voyager" },
+
+                // Kepler vs Voyager connections
+                { source: "kepler-voyager", target: "python" },
+                { source: "kepler-voyager", target: "canvas" },
+                { source: "kepler-voyager", target: "webaudio" },
+                { source: "kepler-voyager", target: "javascript" },
+                { source: "kepler-voyager", target: "kepler" },
+                { source: "kepler-voyager", target: "fourier" },
+                { source: "kepler-voyager", target: "physics-sound" },
 
                 // Tonnetz Atractor connections
                 { source: "tonnetz", target: "canvas" },
