@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 04 enero 2026
+> **Última actualización**: 06 enero 2026
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia 
 > **Location**: Madrid, España
@@ -15,7 +15,7 @@
 
 | Métrica | Total | Detalle |
 |---------|-------|---------|
-| Proyectos | 54 | Labs + Plugins + Standalone |
+| Proyectos | 56 | Labs + Plugins + Standalone |
 | Simulaciones | 150+ | EigenLab (12 labs) |
 | Plugins Audio | 13 | 7 JUCE + 6 MuseScore |
 | Tools Rust | 11 | EigenTools (Dual UI) |
@@ -30,7 +30,7 @@
 | Plugins JUCE | 7 |
 | Plugins MuseScore | 6 |
 | Tools EigenTools | 11 |
-| Standalone | ~18 |
+| Standalone | ~20 |
 
 ### Stack Dominado
 
@@ -107,6 +107,8 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
+- **06 ene 2026**: 🛰️ **Kepler vs Voyager** - Comparativa empírica Kepler (1619) vs NASA Voyager PWS. Pipeline: yt-dlp → ffmpeg → scipy PSD Welch → find_peaks. 4 planetas analizados (Júpiter, Saturno, Urano, Neptuno). Web comparativa con A/B test audio. Conclusión: fenómenos físicamente diferentes (cinemática vs electromagnetismo).
+- **06 ene 2026**: 🪐 **Harmonices Mundi NASA Mode** - Nuevo modo de sonificación usando picos espectrales reales de Voyager. Multi-oscillator synthesis (2-3 picos simultáneos por planeta). Síntesis atenuada 30% para planetas interiores. GitHub: https://github.com/cjlkaiser-cpu/harmonices-mundi
 - **04 ene 2026**: 🤖 **EigenRobotics** - 11 proyectos Arduino+LEGO para aprender robótica en familia. Showcase interactivo con demos Canvas, diagramas SVG, simuladores Wokwi. P0-P10: Blink, Semáforo, Nave, Alarma, Girasol, Robot, Control IR, Brazo, Seguidor Línea, LCD I2C, Comunicación Serial. GitHub Pages: https://cjlkaiser-cpu.github.io/eigenrobotics/
 - **03 ene 2026**: 🎷 **RameauJazz Web v0.2.5** - AI Solo con licks (3050 patrones de Parker, Coltrane, Clifford Brown). Selección inteligente (chord tones, proximity). Export iReal Pro. Sin dependencia TensorFlow (~1MB vs 46MB).
 - **02 ene 2026**: 🚀 **RameauJazz Web v0.2.0** - Separado en repo propio. Export MIDI/WAV/PDF, guardar progresiones, GitHub Pages: https://cjlkaiser-cpu.github.io/rameau-jazz-web/
