@@ -656,8 +656,9 @@
                 { id: "hibrido", label: "Sistema Hibrido", type: "project", status: "produccion", desc: "100% accuracy con router + plantillas, 7ms/query" },
                 { id: "mi-juego", label: "Mi Juego Plataformas", type: "project", status: "completado", desc: "Juego 2D con Phaser.js: selector de 5 personajes, enemigos, monedas, 3 escenas" },
                 { id: "ecodelalma", label: "Eco del Alma", type: "project", status: "activo", desc: "Puzzle musical con Phaser.js: sistema Lira (Do-Re-Mi-Fa-Sol), puzzles de secuencias, narrativa typewriter, tilemap Castle-Dungeon" },
+                { id: "eigenlab", label: "EigenLab", type: "project", status: "produccion", desc: "128+ simulaciones educativas en 14 labs, 9 disciplinas. Física, Química, Biología, Matemáticas, Astronomía. Canvas 2D + Three.js + Web Audio. Knowledge graph 240+ conexiones. 8 CLAUDE.md documentados" },
                 { id: "eigenlab-core", label: "eigenlab-core", type: "project", status: "produccion", desc: "Motor C++/WASM de alto rendimiento: Navier-Stokes, Boids, N-body Barnes-Hut, Erosion, Cloth PBD. 158KB, 5 sims @ 60fps" },
-                { id: "eigenlab-odyssey", label: "EigenLab Odyssey", type: "project", status: "produccion", desc: "Juego narrativo que conecta 150+ simulaciones EigenLab. Phaser.js + Vite + Web Audio. 9 reinos, 12 eigenvalores, sistema de exploracion" },
+                { id: "eigenlab-odyssey", label: "EigenLab Odyssey", type: "project", status: "produccion", desc: "Juego narrativo que conecta 128+ simulaciones EigenLab. Phaser.js + Vite + Web Audio. 9 reinos, 12 eigenvalores, sistema de exploracion" },
                 { id: "eigentools", label: "EigenTools", type: "project", status: "produccion", desc: "Monorepo Rust v1.0: 10 herramientas educativas + TUI launcher. GitHub privado. Patrón Dual UI" },
                 { id: "eigenrobotics", label: "EigenRobotics", type: "project", status: "produccion", desc: "11 proyectos Arduino+LEGO para aprender robotica en familia. Showcase interactivo con demos, diagramas SVG y simuladores Wokwi" },
                 { id: "auth-playground", label: "Auth Playground", type: "project", status: "produccion", desc: "Lab de autenticación v1.0: JWT, bcrypt/argon2, TOTP/2FA, OAuth2, CORS/CSRF/XSS" },
@@ -1140,6 +1141,19 @@
                 { source: "eigenlab-odyssey", target: "computation-lab" },
                 { source: "eigenlab-odyssey", target: "harmonices" },
                 { source: "eigenlab-odyssey", target: "ecodelalma" },
+
+                // EigenLab main project connections
+                { source: "eigenlab", target: "canvas" },
+                { source: "eigenlab", target: "threejs" },
+                { source: "eigenlab", target: "webaudio" },
+                { source: "eigenlab", target: "javascript" },
+                { source: "eigenlab", target: "wasm" },
+                { source: "eigenlab", target: "d3" },
+                { source: "eigenlab", target: "eigenlab-core" },
+                { source: "eigenlab", target: "eigenlab-instruments" },
+                { source: "eigenlab", target: "eigenlab-generative" },
+                { source: "eigenlab", target: "eigenlab-odyssey" },
+                { source: "eigenlab-odyssey", target: "eigenlab" },
 
                 // Cross-project evolution
                 { source: "docmine", target: "photomine" },
