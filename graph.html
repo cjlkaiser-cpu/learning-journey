@@ -661,6 +661,7 @@
                 { id: "eigenlab-odyssey", label: "EigenLab Odyssey", type: "project", status: "produccion", desc: "Juego narrativo que conecta 128+ simulaciones EigenLab. Phaser.js + Vite + Web Audio. 9 reinos, 12 eigenvalores, sistema de exploracion" },
                 { id: "eigentools", label: "EigenTools", type: "project", status: "produccion", desc: "Monorepo Rust v1.0: 10 herramientas educativas + TUI launcher. GitHub privado. Patrón Dual UI" },
                 { id: "eigenrobotics", label: "EigenRobotics", type: "project", status: "produccion", desc: "11 proyectos Arduino+LEGO para aprender robotica en familia. Showcase interactivo con demos, diagramas SVG y simuladores Wokwi" },
+                { id: "gpt-bach-wtc", label: "GPT Bach WTC", type: "project", status: "produccion", desc: "Primer modelo IA completo from scratch. Transformer 4.29M params entrenado en 33 preludios de Bach. 99% calidad Bach (59.55/100). Interfaz Gradio con piano roll + export MIDI/MusicXML. 20 samples generados" },
                 { id: "auth-playground", label: "Auth Playground", type: "project", status: "produccion", desc: "Lab de autenticación v1.0: JWT, bcrypt/argon2, TOTP/2FA, OAuth2, CORS/CSRF/XSS" },
                 { id: "eigentools-launcher", label: "EigenTools Launcher", type: "project", status: "produccion", desc: "TUI central para gestionar las 10 herramientas. Ratatui standalone" },
                 { id: "network-watcher", label: "Network Watcher", type: "project", status: "produccion", desc: "Monitor de red v1.0: pcap, dispositivos, 5 experimentos Lab Mode. Web + TUI" },
@@ -698,6 +699,9 @@
                 { id: "clip", label: "CLIP", type: "tech", category: "ia", desc: "Modelo vision-lenguaje OpenAI" },
                 { id: "ollama", label: "Ollama", type: "tech", category: "ia", desc: "Runtime para LLMs locales" },
                 { id: "claude", label: "Claude API", type: "tech", category: "ia", desc: "API de Anthropic para LLMs" },
+                { id: "pytorch", label: "PyTorch", type: "tech", category: "ia", desc: "Framework deep learning con autograd. Transformers, embeddings, generacion autoregressiva" },
+                { id: "gradio", label: "Gradio", type: "tech", category: "frontend", desc: "Framework Python para interfaces web de ML/IA. Sliders, progress tracking, file downloads" },
+                { id: "music21", label: "music21", type: "tech", category: "audio", desc: "Toolkit MIT para analisis computacional musical. Parsing MIDI, analisis armonico, export MusicXML" },
                 { id: "ocr", label: "OCR/Tesseract", type: "tech", category: "ia", desc: "Reconocimiento optico de caracteres" },
                 { id: "git", label: "Git/GitHub", type: "tech", category: "devops", desc: "Control de versiones y colaboracion" },
                 { id: "phaser", label: "Phaser.js", type: "tech", category: "frontend", desc: "Framework de videojuegos 2D para web con Arcade Physics" },
@@ -719,6 +723,7 @@
                 { id: "memoria", label: "Memoria Evolutiva", type: "methodology", desc: "Principio #0: El conocimiento se compone" },
                 { id: "kiss", label: "KISS", type: "methodology", desc: "Keep It Simple - Sin sobreingenieria" },
                 { id: "dual-ui", label: "Dual UI Pattern", type: "methodology", desc: "Web + TUI desde estado compartido Arc<RwLock>. Axum + Ratatui" },
+                { id: "transformer-pipeline", label: "Transformer Training", type: "methodology", desc: "Pipeline completo para entrenar transformers: tokenizacion estructurada, augmentation escalonada, musical early stopping, AdamW+cosine, generation con sampling" },
 
                 // === CONCEPTOS ===
                 { id: "bessel", label: "Bessel Functions", type: "concept", desc: "Funciones especiales J_m(x) que describen modos de vibracion de membranas circulares" },
@@ -1234,6 +1239,18 @@
                 { source: "eigenrobotics", target: "html-css" },
                 { source: "eigenrobotics", target: "canvas" },
                 { source: "arduino", target: "cpp" },
+
+                // GPT Bach WTC connections
+                { source: "gpt-bach-wtc", target: "pytorch" },
+                { source: "gpt-bach-wtc", target: "gradio" },
+                { source: "gpt-bach-wtc", target: "music21" },
+                { source: "gpt-bach-wtc", target: "python" },
+                { source: "gpt-bach-wtc", target: "transformer-pipeline" },
+                { source: "transformer-pipeline", target: "pytorch" },
+                { source: "transformer-pipeline", target: "gradio" },
+                { source: "pytorch", target: "python" },
+                { source: "gradio", target: "python" },
+                { source: "music21", target: "python" },
 
                 // Rust ecosystem connections
                 { source: "axum", target: "rust" },

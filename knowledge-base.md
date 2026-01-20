@@ -1,8 +1,8 @@
 # Knowledge Base 2026
 
-> **Filosofía**: "Piano piano se arriva lontano" - KISS - Salud por delante
+> **Filosofía**: "Piano piano se arriva lontano" - KISS
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 10 enero 2026
+> **Última actualización**: 20 enero 2026
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia 
 > **Location**: Madrid, España
@@ -15,12 +15,12 @@
 
 | Métrica | Total | Detalle |
 |---------|-------|---------|
-| Proyectos | 56 | Labs + Plugins + Standalone |
+| Proyectos | 57 | Labs + Plugins + Standalone + IA |
 | Simulaciones | 128+ | EigenLab (14 labs) |
 | Plugins Audio | 13 | 7 JUCE + 6 MuseScore |
 | Tools Rust | 11 | EigenTools (Dual UI) |
-| Tools documentadas | 68 | |
-| Patterns documentados | 43 | |
+| Tools documentadas | 71 | Backend, Frontend, Audio, IA |
+| Patterns documentados | 44 | Workflows probados |
 
 ### Desglose de Proyectos
 
@@ -39,8 +39,8 @@
 | **Rust** | Tokio, Axum, Ratatui, WASM |
 | **C++** | JUCE, Emscripten, WebAssembly |
 | **Web** | Canvas, Three.js, Web Audio, PWA |
-| **Python** | FastAPI, Flask, Ollama |
-| **IA/ML** | RAG, Embeddings, LLMs locales |
+| **Python** | FastAPI, Flask, Ollama, Gradio |
+| **IA/ML** | PyTorch, Transformers, RAG, Embeddings, LLMs locales |
 
 ---
 
@@ -107,6 +107,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
+- **20 ene 2026**: 🎵 **HITO: GPT Bach WTC - Primer modelo de IA completo from scratch** - Transformer (4.29M params) entrenado en 33 preludios de Bach. 100 epochs (~2h CPU), 99% calidad Bach (59.55/100 vs 60.12 ground truth). Stack: PyTorch, Gradio, music21. 5 mejoras: tokenización estructurada, relative positional encoding, baseline metrics, data augmentation escalonada, musical early stopping. Interfaz web Gradio con piano roll + métricas + export MIDI/MusicXML. 20 samples generados (1K-3K tokens). Preparado para HuggingFace Spaces. Nueva vía de desarrollo: Generative AI + Music. **Primera experiencia con PyTorch, Gradio, music21**. Pattern: Transformer Training Pipeline.
 - **10 ene 2026**: 📚 **EigenLab Documentation Sprint** - Documentación técnica masiva para EigenLab. Creados 8 archivos CLAUDE.md detallados (Biology, Geology, Astronomy Visual/Sound, Computation, Physics Sound, Math Generative Art). Total ~2,800 líneas de documentación técnica. Actualizado knowledge graph (+8 nodos Math Sound Lab, +14 conexiones). Sincronizado showcase + portal con conteos correctos (128+ sims, 14 labs, 9 disciplinas). Commits a 3 repositorios (main + 2 submodules). Patrón: **Documentación Modular Jerárquica**.
 - **06 ene 2026**: 🛰️ **Kepler vs Voyager** - Comparativa empírica Kepler (1619) vs NASA Voyager PWS. Pipeline: yt-dlp → ffmpeg → scipy PSD Welch → find_peaks. 4 planetas analizados (Júpiter, Saturno, Urano, Neptuno). Web comparativa con A/B test audio. Conclusión: fenómenos físicamente diferentes (cinemática vs electromagnetismo).
 - **06 ene 2026**: 🪐 **Harmonices Mundi NASA Mode** - Nuevo modo de sonificación usando picos espectrales reales de Voyager. Multi-oscillator synthesis (2-3 picos simultáneos por planeta). Síntesis atenuada 30% para planetas interiores. GitHub: https://github.com/cjlkaiser-cpu/harmonices-mundi
