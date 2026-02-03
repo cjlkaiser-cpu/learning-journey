@@ -15,8 +15,8 @@
 
 | Métrica | Total | Detalle |
 |---------|-------|---------|
-| Proyectos | 58 | Labs + Plugins + Standalone + IA |
-| Simulaciones | 148+ | EigenLab (15 labs) |
+| Proyectos | 59 | Labs + Plugins + Standalone + IA |
+| Simulaciones | 157+ | EigenLab (16 labs) |
 | Plugins Audio | 13 | 7 JUCE + 6 MuseScore |
 | Tools Rust | 11 | EigenTools (Dual UI) |
 | Tools documentadas | 72 | Backend, Frontend, Audio, IA |
@@ -26,7 +26,7 @@
 
 | Categoría | Cuenta |
 |-----------|--------|
-| Labs EigenLab | 15 |
+| Labs EigenLab | 16 |
 | Plugins JUCE | 7 |
 | Plugins MuseScore | 6 |
 | Tools EigenTools | 11 |
@@ -80,7 +80,7 @@ Router + Plantillas + LLM fallback = 100% accuracy con 7ms/query.
 - Ubicación: `~/Projects/eigentools/`
 
 ### EigenLab
-170+ simulaciones educativas (física, química, biología, astronomía, matemáticas, IA/ML)
+180+ simulaciones educativas (física, química, biología, astronomía, matemáticas, IA/ML, música)
 - Ubicación: `~/Projects/EigenLab/`
 
 ### EigenLab Instruments
@@ -107,6 +107,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
+- **03 feb 2026**: 🎵 **Music Theory Lab** - 9 simulaciones interactivas de teoría musical basada en la proporción áurea. 3 sistemas de afinación (12-phiW, 15 notas, cromática áurea) × 3 herramientas (escalas, armonizadores, compositores). Motor golden-harmony-engine.js. Paper académico incluido. GitHub Pages: https://cjlkaiser-cpu.github.io/music-theory-lab/
 - **03 feb 2026**: 🤖 **AI Visual Lab** - 20 simulaciones interactivas de IA/ML con sonificación. Perceptrón, Gradient Descent, Backprop, CNNs, GANs, Transformers, Diffusion, RL, MoE, Superposition. Canvas 2D + Web Audio. 20 guías científicas con KaTeX + tutorial completo. Mobile responsive (3 breakpoints, touch events). GitHub Pages: https://cjlkaiser-cpu.github.io/AI-Visual-Lab/
 - **28 ene 2026**: 🎨 **Estudio de Encaje Venus** - Herramienta HTML para estudio de dibujo anatómico. SVG interactivo con 60+ puntos arrastrables, 15 capas de análisis (ejes, plomadas, triángulos, espacios negativos). Nuevas funciones: cargar dibujo propio, vista comparativa lado a lado, undo/redo (50 pasos), herramienta de medición (distancia en módulos de cabeza, ángulos). Capas de modelado tonal (mapa de valores, terminador, flujo de sombras, volúmenes simplificados). Galería de práctica con 16 láminas de Wikimedia (Leonardo, Vesalius, écorché, Michelangelo). Contenido extenso: anatomía artística (landmarks óseos, músculos por región), métodos de atelier (Sight-Size, Bargue, Envelope, Block-in). Wikimedia Commons API para verificar URLs de imágenes.
 - **20 ene 2026**: 🎵 **HITO: GPT Bach WTC - Primer modelo de IA completo from scratch** - Transformer (4.29M params) entrenado en 33 preludios de Bach. 100 epochs (~2h CPU), 99% calidad Bach (59.55/100 vs 60.12 ground truth). Stack: PyTorch, Gradio, music21. 5 mejoras: tokenización estructurada, relative positional encoding, baseline metrics, data augmentation escalonada, musical early stopping. Interfaz web Gradio con piano roll + métricas + export MIDI/MusicXML. 20 samples generados (1K-3K tokens). Preparado para HuggingFace Spaces. Nueva vía de desarrollo: Generative AI + Music. **Primera experiencia con PyTorch, Gradio, music21**. Pattern: Transformer Training Pipeline.

@@ -630,6 +630,7 @@
                 { id: "computation-lab", label: "Computation Lab", type: "project", status: "completado", desc: "6 simulaciones de computacion: Bubble Sort, BST, Logic Gates, Stack/Heap, Perceptron, DFA + 6 guias pedagogicas" },
                 { id: "euler-lab", label: "Euler Lab", type: "project", status: "activo", desc: "20 problemas de Project Euler con Pyodide (Python en browser), 2-4 niveles pedagogicos, animaciones Canvas" },
                 { id: "physics-sound", label: "Physics Sound Lab", type: "project", status: "produccion", desc: "7 metronomos fisicos con Web Audio API" },
+                { id: "music-theory-lab", label: "Music Theory Lab", type: "project", status: "produccion", desc: "9 simulaciones de teoria musical basada en proporcion aurea. 3 sistemas de afinacion (12-phiW, 15 notas, cromatica aurea) x 3 herramientas. Motor golden-harmony-engine.js. Paper academico. GitHub Pages" },
                 { id: "harmonices", label: "Harmonices Mundi", type: "project", status: "produccion", desc: "Coro planetario de Kepler con 8 planetas sonificados. Modo NASA con picos espectrales Voyager" },
                 { id: "kepler-voyager", label: "Kepler vs Voyager", type: "project", status: "produccion", desc: "Comparativa empirica: Kepler 1619 vs NASA Voyager PWS. Analisis espectral PSD + web A/B test" },
                 { id: "tonnetz", label: "Tonnetz Atractor", type: "project", status: "produccion", desc: "Fisica del caos + teoria Neo-Riemanniana = musica emergente. 5 modos armonicos" },
@@ -657,7 +658,7 @@
                 { id: "mi-juego", label: "Mi Juego Plataformas", type: "project", status: "completado", desc: "Juego 2D con Phaser.js: selector de 5 personajes, enemigos, monedas, 3 escenas" },
                 { id: "ecodelalma", label: "Eco del Alma", type: "project", status: "activo", desc: "Puzzle musical con Phaser.js: sistema Lira (Do-Re-Mi-Fa-Sol), puzzles de secuencias, narrativa typewriter, tilemap Castle-Dungeon" },
                 { id: "ai-visual-lab", label: "AI Visual Lab", type: "project", status: "produccion", desc: "20 simulaciones interactivas de IA/ML: Perceptron, Gradient Descent, Backprop, CNNs, GANs, Transformers, Diffusion, RL, MoE, Superposition. 20 guias cientificas + tutorial completo. Canvas 2D + Web Audio + KaTeX. Mobile responsive. GitHub Pages" },
-                { id: "eigenlab", label: "EigenLab", type: "project", status: "produccion", desc: "148+ simulaciones educativas en 15 labs, 10 disciplinas. Física, Química, Biología, Matemáticas, Astronomía, IA/ML. Canvas 2D + Three.js + Web Audio. Knowledge graph 240+ conexiones. 8 CLAUDE.md documentados" },
+                { id: "eigenlab", label: "EigenLab", type: "project", status: "produccion", desc: "157+ simulaciones educativas en 16 labs, 11 disciplinas. Física, Química, Biología, Matemáticas, Astronomía, IA/ML, Música. Canvas 2D + Three.js + Web Audio. Knowledge graph 240+ conexiones" },
                 { id: "eigenlab-core", label: "eigenlab-core", type: "project", status: "produccion", desc: "Motor C++/WASM de alto rendimiento: Navier-Stokes, Boids, N-body Barnes-Hut, Erosion, Cloth PBD. 158KB, 5 sims @ 60fps" },
                 { id: "eigenlab-odyssey", label: "EigenLab Odyssey", type: "project", status: "produccion", desc: "Juego narrativo que conecta 128+ simulaciones EigenLab. Phaser.js + Vite + Web Audio. 9 reinos, 12 eigenvalores, sistema de exploracion" },
                 { id: "eigentools", label: "EigenTools", type: "project", status: "produccion", desc: "Monorepo Rust v1.0: 10 herramientas educativas + TUI launcher. GitHub privado. Patrón Dual UI" },
@@ -898,6 +899,13 @@
                 { source: "physics-sound", target: "webaudio" },
                 { source: "physics-sound", target: "javascript" },
                 { source: "physics-sound", target: "rk4" },
+
+                // Music Theory Lab connections
+                { source: "music-theory-lab", target: "canvas" },
+                { source: "music-theory-lab", target: "webaudio" },
+                { source: "music-theory-lab", target: "javascript" },
+                { source: "music-theory-lab", target: "eigenlab" },
+                { source: "eigenlab", target: "music-theory-lab" },
 
                 // Harmonices Mundi connections
                 { source: "harmonices", target: "canvas" },
