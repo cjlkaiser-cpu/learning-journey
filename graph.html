@@ -656,7 +656,8 @@
                 { id: "hibrido", label: "Sistema Hibrido", type: "project", status: "produccion", desc: "100% accuracy con router + plantillas, 7ms/query" },
                 { id: "mi-juego", label: "Mi Juego Plataformas", type: "project", status: "completado", desc: "Juego 2D con Phaser.js: selector de 5 personajes, enemigos, monedas, 3 escenas" },
                 { id: "ecodelalma", label: "Eco del Alma", type: "project", status: "activo", desc: "Puzzle musical con Phaser.js: sistema Lira (Do-Re-Mi-Fa-Sol), puzzles de secuencias, narrativa typewriter, tilemap Castle-Dungeon" },
-                { id: "eigenlab", label: "EigenLab", type: "project", status: "produccion", desc: "128+ simulaciones educativas en 14 labs, 9 disciplinas. Física, Química, Biología, Matemáticas, Astronomía. Canvas 2D + Three.js + Web Audio. Knowledge graph 240+ conexiones. 8 CLAUDE.md documentados" },
+                { id: "ai-visual-lab", label: "AI Visual Lab", type: "project", status: "produccion", desc: "20 simulaciones interactivas de IA/ML: Perceptron, Gradient Descent, Backprop, CNNs, GANs, Transformers, Diffusion, RL, MoE, Superposition. 20 guias cientificas + tutorial completo. Canvas 2D + Web Audio + KaTeX. Mobile responsive. GitHub Pages" },
+                { id: "eigenlab", label: "EigenLab", type: "project", status: "produccion", desc: "148+ simulaciones educativas en 15 labs, 10 disciplinas. Física, Química, Biología, Matemáticas, Astronomía, IA/ML. Canvas 2D + Three.js + Web Audio. Knowledge graph 240+ conexiones. 8 CLAUDE.md documentados" },
                 { id: "eigenlab-core", label: "eigenlab-core", type: "project", status: "produccion", desc: "Motor C++/WASM de alto rendimiento: Navier-Stokes, Boids, N-body Barnes-Hut, Erosion, Cloth PBD. 158KB, 5 sims @ 60fps" },
                 { id: "eigenlab-odyssey", label: "EigenLab Odyssey", type: "project", status: "produccion", desc: "Juego narrativo que conecta 128+ simulaciones EigenLab. Phaser.js + Vite + Web Audio. 9 reinos, 12 eigenvalores, sistema de exploracion" },
                 { id: "eigentools", label: "EigenTools", type: "project", status: "produccion", desc: "Monorepo Rust v1.0: 10 herramientas educativas + TUI launcher. GitHub privado. Patrón Dual UI" },
@@ -1146,6 +1147,13 @@
                 { source: "eigenlab-odyssey", target: "computation-lab" },
                 { source: "eigenlab-odyssey", target: "harmonices" },
                 { source: "eigenlab-odyssey", target: "ecodelalma" },
+
+                // AI Visual Lab connections
+                { source: "ai-visual-lab", target: "canvas" },
+                { source: "ai-visual-lab", target: "webaudio" },
+                { source: "ai-visual-lab", target: "javascript" },
+                { source: "ai-visual-lab", target: "eigenlab" },
+                { source: "eigenlab", target: "ai-visual-lab" },
 
                 // EigenLab main project connections
                 { source: "eigenlab", target: "canvas" },

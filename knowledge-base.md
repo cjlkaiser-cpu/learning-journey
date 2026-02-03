@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 28 enero 2026
+> **Última actualización**: 03 febrero 2026
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia 
 > **Location**: Madrid, España
@@ -15,8 +15,8 @@
 
 | Métrica | Total | Detalle |
 |---------|-------|---------|
-| Proyectos | 57 | Labs + Plugins + Standalone + IA |
-| Simulaciones | 128+ | EigenLab (14 labs) |
+| Proyectos | 58 | Labs + Plugins + Standalone + IA |
+| Simulaciones | 148+ | EigenLab (15 labs) |
 | Plugins Audio | 13 | 7 JUCE + 6 MuseScore |
 | Tools Rust | 11 | EigenTools (Dual UI) |
 | Tools documentadas | 72 | Backend, Frontend, Audio, IA |
@@ -26,7 +26,7 @@
 
 | Categoría | Cuenta |
 |-----------|--------|
-| Labs EigenLab | 14 |
+| Labs EigenLab | 15 |
 | Plugins JUCE | 7 |
 | Plugins MuseScore | 6 |
 | Tools EigenTools | 11 |
@@ -80,7 +80,7 @@ Router + Plantillas + LLM fallback = 100% accuracy con 7ms/query.
 - Ubicación: `~/Projects/eigentools/`
 
 ### EigenLab
-150+ simulaciones educativas (física, química, biología, astronomía, matemáticas)
+170+ simulaciones educativas (física, química, biología, astronomía, matemáticas, IA/ML)
 - Ubicación: `~/Projects/EigenLab/`
 
 ### EigenLab Instruments
@@ -107,6 +107,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
+- **03 feb 2026**: 🤖 **AI Visual Lab** - 20 simulaciones interactivas de IA/ML con sonificación. Perceptrón, Gradient Descent, Backprop, CNNs, GANs, Transformers, Diffusion, RL, MoE, Superposition. Canvas 2D + Web Audio. 20 guías científicas con KaTeX + tutorial completo. Mobile responsive (3 breakpoints, touch events). GitHub Pages: https://cjlkaiser-cpu.github.io/AI-Visual-Lab/
 - **28 ene 2026**: 🎨 **Estudio de Encaje Venus** - Herramienta HTML para estudio de dibujo anatómico. SVG interactivo con 60+ puntos arrastrables, 15 capas de análisis (ejes, plomadas, triángulos, espacios negativos). Nuevas funciones: cargar dibujo propio, vista comparativa lado a lado, undo/redo (50 pasos), herramienta de medición (distancia en módulos de cabeza, ángulos). Capas de modelado tonal (mapa de valores, terminador, flujo de sombras, volúmenes simplificados). Galería de práctica con 16 láminas de Wikimedia (Leonardo, Vesalius, écorché, Michelangelo). Contenido extenso: anatomía artística (landmarks óseos, músculos por región), métodos de atelier (Sight-Size, Bargue, Envelope, Block-in). Wikimedia Commons API para verificar URLs de imágenes.
 - **20 ene 2026**: 🎵 **HITO: GPT Bach WTC - Primer modelo de IA completo from scratch** - Transformer (4.29M params) entrenado en 33 preludios de Bach. 100 epochs (~2h CPU), 99% calidad Bach (59.55/100 vs 60.12 ground truth). Stack: PyTorch, Gradio, music21. 5 mejoras: tokenización estructurada, relative positional encoding, baseline metrics, data augmentation escalonada, musical early stopping. Interfaz web Gradio con piano roll + métricas + export MIDI/MusicXML. 20 samples generados (1K-3K tokens). Preparado para HuggingFace Spaces. Nueva vía de desarrollo: Generative AI + Music. **Primera experiencia con PyTorch, Gradio, music21**. Pattern: Transformer Training Pipeline.
 - **10 ene 2026**: 📚 **EigenLab Documentation Sprint** - Documentación técnica masiva para EigenLab. Creados 8 archivos CLAUDE.md detallados (Biology, Geology, Astronomy Visual/Sound, Computation, Physics Sound, Math Generative Art). Total ~2,800 líneas de documentación técnica. Actualizado knowledge graph (+8 nodos Math Sound Lab, +14 conexiones). Sincronizado showcase + portal con conteos correctos (128+ sims, 14 labs, 9 disciplinas). Commits a 3 repositorios (main + 2 submodules). Patrón: **Documentación Modular Jerárquica**.
