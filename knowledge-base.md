@@ -2,7 +2,7 @@
 
 > **Filosofía**: "Piano piano se arriva lontano" - KISS
 > **Principio #0**: MEMORIA EVOLUTIVA - Cada proyecto alimenta al siguiente
-> **Última actualización**: 03 febrero 2026
+> **Última actualización**: 07 febrero 2026
 >
 > **Background**: Lic. Física Teórica (UAM) + Lic. Farmacia 
 > **Location**: Madrid, España
@@ -15,11 +15,11 @@
 
 | Métrica | Total | Detalle |
 |---------|-------|---------|
-| Proyectos | 59 | Labs + Plugins + Standalone + IA |
+| Proyectos | 60 | Labs + Plugins + Standalone + IA + Data |
 | Simulaciones | 157+ | EigenLab (16 labs) |
 | Plugins Audio | 13 | 7 JUCE + 6 MuseScore |
 | Tools Rust | 11 | EigenTools (Dual UI) |
-| Tools documentadas | 72 | Backend, Frontend, Audio, IA |
+| Tools documentadas | 74 | Backend, Frontend, Audio, IA, Data |
 | Patterns documentados | 45 | Workflows probados |
 
 ### Desglose de Proyectos
@@ -39,7 +39,7 @@
 | **Rust** | Tokio, Axum, Ratatui, WASM |
 | **C++** | JUCE, Emscripten, WebAssembly |
 | **Web** | Canvas, Three.js, Web Audio, PWA |
-| **Python** | FastAPI, Flask, Ollama, Gradio |
+| **Python** | FastAPI, Flask, Ollama, Gradio, Streamlit, Pandas |
 | **IA/ML** | PyTorch, Transformers, RAG, Embeddings, LLMs locales |
 
 ---
@@ -107,6 +107,7 @@ Instrumentos generativos de música (Tonnetz, Kepler, Orbifold)
 
 ## Changelog 2026
 
+- **07 feb 2026**: 🗄️ **BD Parafarmacia + Dashboard** - Módulo database/ completo en scripts_python. SQLite con 6 tablas normalizadas (22,417 productos, 18 familias, 771 labs). Importador Excel→SQLite con detección PUC no fiable (60.4%). Dashboard Streamlit+Plotly con 8 tabs (Familias, Labs, Top Productos, Pareto ABC, Alertas, Ficha Producto, Duplicados, Consola SQL). Filtros globales, exportación Excel, acceso directo .command en Desktop. Roadmap 6 fases hasta operativa Farmacia Colón. Nuevas tools: Streamlit, Plotly.
 - **03 feb 2026**: 🎵 **Music Theory Lab** - 9 simulaciones interactivas de teoría musical basada en la proporción áurea. 3 sistemas de afinación (12-phiW, 15 notas, cromática áurea) × 3 herramientas (escalas, armonizadores, compositores). Motor golden-harmony-engine.js. Paper académico incluido. GitHub Pages: https://cjlkaiser-cpu.github.io/music-theory-lab/
 - **03 feb 2026**: 🤖 **AI Visual Lab** - 20 simulaciones interactivas de IA/ML con sonificación. Perceptrón, Gradient Descent, Backprop, CNNs, GANs, Transformers, Diffusion, RL, MoE, Superposition. Canvas 2D + Web Audio. 20 guías científicas con KaTeX + tutorial completo. Mobile responsive (3 breakpoints, touch events). GitHub Pages: https://cjlkaiser-cpu.github.io/AI-Visual-Lab/
 - **28 ene 2026**: 🎨 **Estudio de Encaje Venus** - Herramienta HTML para estudio de dibujo anatómico. SVG interactivo con 60+ puntos arrastrables, 15 capas de análisis (ejes, plomadas, triángulos, espacios negativos). Nuevas funciones: cargar dibujo propio, vista comparativa lado a lado, undo/redo (50 pasos), herramienta de medición (distancia en módulos de cabeza, ángulos). Capas de modelado tonal (mapa de valores, terminador, flujo de sombras, volúmenes simplificados). Galería de práctica con 16 láminas de Wikimedia (Leonardo, Vesalius, écorché, Michelangelo). Contenido extenso: anatomía artística (landmarks óseos, músculos por región), métodos de atelier (Sight-Size, Bargue, Envelope, Block-in). Wikimedia Commons API para verificar URLs de imágenes.

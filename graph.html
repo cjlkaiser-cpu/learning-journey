@@ -717,6 +717,12 @@
                 { id: "pinia", label: "Pinia", type: "tech", category: "frontend", desc: "State management para Vue 3. Composition API style" },
                 { id: "vite", label: "Vite", type: "tech", category: "devops", desc: "Build tool ultrarapido para proyectos web modernos" },
                 { id: "arduino", label: "Arduino", type: "tech", category: "hardware", desc: "Plataforma de prototipado electronico. C++ para microcontroladores ATmega" },
+                { id: "streamlit", label: "Streamlit", type: "tech", category: "frontend", desc: "Framework Python para dashboards web interactivos sin HTML/CSS/JS" },
+                { id: "plotly", label: "Plotly", type: "tech", category: "frontend", desc: "Graficos interactivos para Python. Hover, zoom, tooltips nativos" },
+                { id: "pandas", label: "Pandas", type: "tech", category: "backend", desc: "Libreria Python para analisis y manipulacion de datos tabulares" },
+
+                // === PROYECTOS DATA ===
+                { id: "bd-parafarmacia", label: "BD Parafarmacia", type: "project", status: "activo", desc: "SQLite + Streamlit Dashboard para analisis de parafarmacia. 22K productos, 18 familias, 771 labs. 8 tabs interactivos" },
 
                 // === METODOLOGIAS ===
                 { id: "mineros", label: "minerOS", type: "methodology", desc: "ORO-GEMAS-TESORO: Scanner, Extractor, Clasificador, Pipeline, Vault, Compass" },
@@ -1273,7 +1279,19 @@
                 { source: "ratatui", target: "rust" },
                 { source: "tokio", target: "rust" },
                 { source: "sysinfo", target: "rust" },
-                { source: "pcap", target: "rust" }
+                { source: "pcap", target: "rust" },
+
+                // BD Parafarmacia connections
+                { source: "bd-parafarmacia", target: "sqlite" },
+                { source: "bd-parafarmacia", target: "streamlit" },
+                { source: "bd-parafarmacia", target: "plotly" },
+                { source: "bd-parafarmacia", target: "pandas" },
+                { source: "bd-parafarmacia", target: "python" },
+                { source: "bd-parafarmacia", target: "farmaia" },
+                // Python data ecosystem connections
+                { source: "streamlit", target: "python" },
+                { source: "plotly", target: "python" },
+                { source: "pandas", target: "python" }
             ]
         };
 
